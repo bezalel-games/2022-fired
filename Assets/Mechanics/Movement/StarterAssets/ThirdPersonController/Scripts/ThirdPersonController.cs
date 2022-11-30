@@ -1,4 +1,8 @@
-﻿using UnityEngine;
+﻿using System.Numerics;
+using UnityEngine;
+using Quaternion = UnityEngine.Quaternion;
+using Vector2 = UnityEngine.Vector2;
+using Vector3 = UnityEngine.Vector3;
 #if ENABLE_INPUT_SYSTEM && STARTER_ASSETS_PACKAGES_CHECKED
 using UnityEngine.InputSystem;
 #endif
@@ -86,6 +90,9 @@ namespace StarterAssets
         private float _rotationVelocity;
         private float _verticalVelocity;
         private float _terminalVelocity = 53.0f;
+        private Vector3 _targetDirection;
+        private Vector3 _directionVelocity;
+
 
         // timeout deltatime
         private float _jumpTimeoutDelta;
@@ -155,7 +162,7 @@ namespace StarterAssets
         private void Update()
         {
             _hasAnimator = TryGetComponent(out _animator);
-
+            
             JumpAndGravity();
             GroundedCheck();
             Move();
@@ -214,8 +221,8 @@ namespace StarterAssets
         private void Move()
         {
             // set target speed based on move speed, sprint speed and if sprint is pressed
-            float targetSpeed = _input.sprint ? SprintSpeed : MoveSpeed;
-
+            float targetSpeed = _input.sprint ? SprintSpeed : _input.walk ? MoveSpeed : MoveSpeed * 2f;
+            
             // a simplistic acceleration and deceleration designed to be easy to remove, replace, or iterate upon
 
             // note: Vector2's == operator uses approximation so is not floating point error prone, and is cheaper than magnitude
@@ -250,22 +257,30 @@ namespace StarterAssets
 
             // normalise input direction
             Vector3 inputDirection = new Vector3(_input.move.x, 0.0f, _input.move.y).normalized;
-
+            _targetDirection =
+                Vector3.SmoothDamp(_targetDirection, inputDirection, ref _directionVelocity, 0.2f);
+            // Vector3 lookDirection = new Vector3(_input.look.x, 0.0f, _input.look.y).normalized;
+            
             // note: Vector2's != operator uses approximation so is not floating point error prone, and is cheaper than magnitude
             // if there is a move input rotate player when the player is moving
-            if (_input.move != Vector2.zero)
+            if (true || _input.move != Vector2.zero)
             {
-                _targetRotation = Mathf.Atan2(inputDirection.x, inputDirection.z) * Mathf.Rad2Deg +
-                                  _mainCamera.transform.eulerAngles.y;
+                // _targetRotation = Mathf.Atan2(inputDirection.x, inputDirection.z) * Mathf.Rad2Deg +
+                //                   _mainCamera.transform.eulerAngles.y;
+                _targetRotation = _mainCamera.transform.eulerAngles.y;
                 float rotation = Mathf.SmoothDampAngle(transform.eulerAngles.y, _targetRotation, ref _rotationVelocity,
                     RotationSmoothTime);
-
-                // rotate to face input direction relative to camera position
+                // Debug.Log($"Target: {_targetRotation}, actual: {transform.eulerAngles.y}, rotation: {rotation}", this);
+                // rotate to face input direction relative to    camera position
                 transform.rotation = Quaternion.Euler(0.0f, rotation, 0.0f);
             }
 
+            var targetRotationOrig = Mathf.Atan2(inputDirection.x, inputDirection.z) * Mathf.Rad2Deg +
+                                     _mainCamera.transform.eulerAngles.y;
 
-            Vector3 targetDirection = Quaternion.Euler(0.0f, _targetRotation, 0.0f) * Vector3.forward;
+            // var target = Quaternion.Euler(0.0f, targetRotationOrig, 0.0f) * Vector3.forward;
+            // _targetDirection = Vector3.SmoothDamp(_targetDirection, target, ref _directionVelocity, 0.01f);
+            var targetDirection = Quaternion.Euler(0.0f, targetRotationOrig, 0.0f) * Vector3.forward;
 
             // move the player
             _controller.Move(targetDirection.normalized * (_speed * Time.deltaTime) +
@@ -274,8 +289,15 @@ namespace StarterAssets
             // update animator if using character
             if (_hasAnimator)
             {
+                var r = _targetRotation - transform.eulerAngles.y;
+                r = r <= 180 ? r : r - 360f;
+                _animator.SetFloat("Input Direction X", _targetDirection.x);
+                _animator.SetFloat("Input Direction Z", _targetDirection.z);
+                _animator.SetFloat("Turning Direction", r);
                 _animator.SetFloat(_animIDSpeed, _animationBlend);
                 _animator.SetFloat(_animIDMotionSpeed, inputMagnitude);
+                _animator.SetBool("Sprinting", _input.sprint);
+                _animator.SetBool("Walking", _input.walk);
             }
         }
 
