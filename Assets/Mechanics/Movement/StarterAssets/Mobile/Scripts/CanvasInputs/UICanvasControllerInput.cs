@@ -28,6 +28,11 @@ namespace StarterAssets
             starterAssetsInputs.SprintInput(virtualSprintState);
         }
         
+        public void VirtualWalkInput(bool virtualWalkState)
+        {
+            starterAssetsInputs.WalkInput(virtualWalkState);
+        }
+        
     }
 
 }
