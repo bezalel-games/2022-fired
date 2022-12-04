@@ -772,7 +772,7 @@ PlayerSettings:
   webGLDecompressionFallback: 0
   webGLPowerPreference: 2
   scriptingDefineSymbols:
-    Standalone: DEBUG_LOG
+    Standalone: 
   additionalCompilerArguments:
     Standalone: []
   platformArchitecture: {}

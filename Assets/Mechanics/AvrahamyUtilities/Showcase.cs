@@ -1,10 +1,7 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using Avrahamy;
 using BitStrap;
 using UnityEngine;
-using Random = UnityEngine.Random;
+using Logger = Nemesh.Logger;
 
 [RequireComponent(typeof(Animator))]
 public class Showcase : MonoBehaviour
@@ -25,7 +22,8 @@ public class Showcase : MonoBehaviour
     
     private void OnValidate()
     {
-        DebugLog.Log($"float: {floatParam.name}, bool: {boolParam.name}", Color.blue);
+        string message = $"<color=green>Float: {floatParam.name}</color>, <color=blue>Bool: {boolParam.name}</color>";
+        Logger.Log(message, Logger.DontFormat);
         animator = GetComponent<Animator>();
     }
 
@@ -33,10 +31,11 @@ public class Showcase : MonoBehaviour
     void Awake()
     {
         animator = GetComponent<Animator>();
-        DebugLog.Log("Normal Log", this);
-        DebugLog.Log("Colored Log", Color.green, this);
-        DebugLog.LogError("Error", this);
-        DebugLog.LogWarning("Warning", this);
+        Logger.Log("Normal Log", this);
+        Logger.Log("Colored Log", Color.green, this);
+        Logger.LogAssertion("Assertion", this);
+        Logger.LogWarning("Warning", this);
+        Logger.LogException("Exception", this);
         timer.Start();
     }
 
@@ -47,7 +46,7 @@ public class Showcase : MonoBehaviour
         timer.Clear();
         timer.Start();
         var color = Random.ColorHSV();
-        DebugLog.Log("Timer reached", color);
+        Logger.Log("Timer reached", color);
     }
 
 }
