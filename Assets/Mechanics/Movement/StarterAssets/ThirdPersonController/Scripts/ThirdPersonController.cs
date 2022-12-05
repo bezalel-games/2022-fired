@@ -1,4 +1,5 @@
-﻿using Avrahamy;
+﻿using System;
+using Avrahamy;
 using BitStrap;
 using UnityEngine;
 using Quaternion = UnityEngine.Quaternion;
@@ -9,6 +10,48 @@ using Vector3 = UnityEngine.Vector3;
 
 namespace StarterAssets
 {
+    [Serializable]
+    public struct PlayerAnimatorParameters
+    {
+        [Header("Booleans")]
+        [SerializeField]
+        public BoolAnimationParameter useAnalogParameter;
+
+        [Space]
+        [SerializeField]
+        public BoolAnimationParameter groundedParameter;
+
+        [SerializeField]
+        public BoolAnimationParameter sprintingParameter;
+
+        [SerializeField]
+        public BoolAnimationParameter walkingParameter;
+
+        [SerializeField]
+        public BoolAnimationParameter jumpingParameter;
+
+        [SerializeField]
+        public BoolAnimationParameter fallingParameter;
+
+        [Space]
+        [Header("Floats")]
+        [SerializeField]
+        public FloatAnimationParameter analogSpeedParameter;
+
+        [SerializeField]
+        public FloatAnimationParameter motionSpeedParameter;
+
+        [Space]
+        [SerializeField]
+        public FloatAnimationParameter directionXParameter;
+
+        [SerializeField]
+        public FloatAnimationParameter directionZParameter;
+
+        [SerializeField]
+        public FloatAnimationParameter rotationParameter;
+    }
+
     [RequireComponent(typeof(CharacterController))]
     public class ThirdPersonController : OptimizedBehaviour
     {
@@ -83,42 +126,8 @@ namespace StarterAssets
         [Tooltip("Check if the player always faces the same direction as the camera")]
         private bool playerFollowCamera = true;
 
-        [Header("Animator Parameters")]
         [SerializeField]
-        private BoolAnimationParameter useAnalogParameter;
-
-        [Space]
-        [SerializeField]
-        private BoolAnimationParameter groundedParameter;
-
-        [SerializeField]
-        private BoolAnimationParameter sprintingParameter;
-
-        [SerializeField]
-        private BoolAnimationParameter walkingParameter;
-
-        [SerializeField]
-        private BoolAnimationParameter jumpingParameter;
-
-        [SerializeField]
-        private BoolAnimationParameter fallingParameter;
-
-        [Space]
-        [SerializeField]
-        private FloatAnimationParameter analogSpeedParameter;
-
-        [SerializeField]
-        private FloatAnimationParameter motionSpeedParameter;
-
-        [Space]
-        [SerializeField]
-        private FloatAnimationParameter directionXParameter;
-
-        [SerializeField]
-        private FloatAnimationParameter directionZParameter;
-
-        [SerializeField]
-        private FloatAnimationParameter rotationParameter;
+        private PlayerAnimatorParameters playerAnimatorParameters;
 
         // cinemachine
         private float _cinemachineTargetYaw;
@@ -189,9 +198,8 @@ namespace StarterAssets
         private void GroundedCheck()
         {
             // set sphere position, with offset
-            Vector3 spherePosition = new Vector3(transform.position.x,
-                transform.position.y - groundedOffset,
-                transform.position.z);
+            var position = transform.position;
+            Vector3 spherePosition = new Vector3(position.x, position.y - groundedOffset, position.z);
 
             grounded = Physics.CheckSphere(spherePosition,
                 groundedRadius,
@@ -201,7 +209,7 @@ namespace StarterAssets
             // update animator if using character
             if (_hasAnimator)
             {
-                groundedParameter.Set(_animator, grounded);
+                playerAnimatorParameters.groundedParameter.Set(_animator, grounded);
             }
         }
 
@@ -225,7 +233,8 @@ namespace StarterAssets
             cinemachineCameraTarget.transform.rotation = Quaternion.Euler(
                 _cinemachineTargetPitch + cameraAngleOverride,
                 _cinemachineTargetYaw,
-                0.0f);
+                0.0f
+            );
         }
 
         private void Move()
@@ -297,21 +306,21 @@ namespace StarterAssets
 
             // move the player
             _controller.Move(targetDirection.normalized * (_speed * Time.deltaTime) +
-                             new Vector3(0.0f, _verticalVelocity, 0.0f) * Time.deltaTime);
+                             new Vector3(0.0f, _verticalVelocity * Time.deltaTime, 0.0f));
 
             // update animator if using character
             if (_hasAnimator)
             {
                 var r = _rotationVelocity;
                 r = ClampAngle(_rotationVelocity * rotationSmoothTime, -180, 180);
-                directionXParameter.Set(_animator, _targetDirection.x);
-                directionZParameter.Set(_animator, _targetDirection.z);
-                rotationParameter.Set(_animator, r);
-                analogSpeedParameter.Set(_animator, _speed);
-                motionSpeedParameter.Set(_animator, inputMagnitude);
-                useAnalogParameter.Set(_animator, _input.analogMovement);
-                sprintingParameter.Set(_animator, _input.sprint);
-                walkingParameter.Set(_animator, _input.walk);
+                playerAnimatorParameters.directionXParameter.Set(_animator, _targetDirection.x);
+                playerAnimatorParameters.directionZParameter.Set(_animator, _targetDirection.z);
+                playerAnimatorParameters.rotationParameter.Set(_animator, r);
+                playerAnimatorParameters.analogSpeedParameter.Set(_animator, _speed);
+                playerAnimatorParameters.motionSpeedParameter.Set(_animator, inputMagnitude);
+                playerAnimatorParameters.useAnalogParameter.Set(_animator, _input.analogMovement);
+                playerAnimatorParameters.sprintingParameter.Set(_animator, _input.sprint);
+                playerAnimatorParameters.walkingParameter.Set(_animator, _input.walk);
             }
         }
 
@@ -325,8 +334,8 @@ namespace StarterAssets
                 // update animator if using character
                 if (_hasAnimator)
                 {
-                    jumpingParameter.Set(_animator, false);
-                    fallingParameter.Set(_animator, false);
+                    playerAnimatorParameters.jumpingParameter.Set(_animator, false);
+                    playerAnimatorParameters.fallingParameter.Set(_animator, false);
                 }
 
                 // stop our velocity dropping infinitely when grounded
@@ -344,7 +353,7 @@ namespace StarterAssets
                     // update animator if using character
                     if (_hasAnimator)
                     {
-                        jumpingParameter.Set(_animator, true);
+                        playerAnimatorParameters.jumpingParameter.Set(_animator, true);
                     }
                 }
 
@@ -369,7 +378,7 @@ namespace StarterAssets
                     // update animator if using character
                     if (_hasAnimator)
                     {
-                        fallingParameter.Set(_animator, true);
+                        playerAnimatorParameters.fallingParameter.Set(_animator, true);
                     }
                 }
 
@@ -386,8 +395,10 @@ namespace StarterAssets
 
         private static float ClampAngle(float lfAngle, float lfMin, float lfMax)
         {
-            if (lfAngle < -360f) lfAngle += 360f;
-            if (lfAngle > 360f) lfAngle -= 360f;
+            if (lfAngle < -360f)
+                lfAngle += 360f;
+            if (lfAngle > 360f)
+                lfAngle -= 360f;
             return Mathf.Clamp(lfAngle, lfMin, lfMax);
         }
 
@@ -396,15 +407,11 @@ namespace StarterAssets
             Color transparentGreen = new Color(0.0f, 1.0f, 0.0f, 0.35f);
             Color transparentRed = new Color(1.0f, 0.0f, 0.0f, 0.35f);
 
-            if (grounded) Gizmos.color = transparentGreen;
-            else Gizmos.color = transparentRed;
+            Gizmos.color = grounded ? transparentGreen : transparentRed;
 
             // when selected, draw a gizmo in the position of, and matching radius of, the grounded collider
-            Gizmos.DrawSphere(
-                new Vector3(transform.position.x,
-                    transform.position.y - groundedOffset,
-                    transform.position.z),
-                groundedRadius);
+            var position = transform.position;
+            Gizmos.DrawSphere(new Vector3(position.x, position.y - groundedOffset, position.z), groundedRadius);
         }
 
         #region Animation Event Callbacks
@@ -416,18 +423,22 @@ namespace StarterAssets
                 if (footstepAudioClips.Length > 0)
                 {
                     var index = Random.Range(0, footstepAudioClips.Length);
-                    AudioSource.PlayClipAtPoint(footstepAudioClips[index],
+                    AudioSource.PlayClipAtPoint(
+                        footstepAudioClips[index],
                         transform.TransformPoint(_controller.center),
-                        footstepAudioVolume);
+                        footstepAudioVolume
+                    );
                 }
             }
         }
 
         private void OnLand(AnimationEvent animationEvent)
         {
-            AudioSource.PlayClipAtPoint(landingAudioClip,
+            AudioSource.PlayClipAtPoint(
+                landingAudioClip,
                 transform.TransformPoint(_controller.center),
-                footstepAudioVolume);
+                footstepAudioVolume
+            );
         }
 
         #endregion
