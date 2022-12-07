@@ -12,6 +12,7 @@ Material:
     type: 3}
   m_ValidKeywords:
   - _RECEIVE_SHADOWS_OFF
+  - _SPHERICALTYPE_REGULAR
   - _SPLIT_ALPHA
   - _SURFACE_TYPE_TRANSPARENT
   m_InvalidKeywords: []
@@ -85,6 +86,7 @@ Material:
     m_Ints: []
     m_Floats:
     - _AlphaClip: 0
+    - _Alpha_Clip_Threshold: 0.5
     - _Ambient_Occlusion: 0.5
     - _Blend: 0
     - _BumpScale: 1
@@ -102,18 +104,19 @@ Material:
     - _GlossyReflections: 0
     - _Metallic: 0
     - _Noise_Amplitude: 0.5
-    - _Noise_Scale: 10
+    - _Noise_Scale: 8.74
     - _OcclusionStrength: 1
     - _Parallax: 0.005
     - _QueueControl: 0
     - _QueueOffset: 0
     - _ReceiveShadows: 0
+    - _SPHERICALTYPE: 1
     - _SPLIT_ALPHA: 1
     - _Smoothness: 0.5
     - _SmoothnessTextureChannel: 0
     - _SpecularHighlights: 1
     - _SrcBlend: 5
-    - _Step_Edge: 0.25
+    - _Step_Edge: 0
     - _Surface: 1
     - _TIme_Factor: 20
     - _WorkflowMode: 1
@@ -121,15 +124,16 @@ Material:
     - _ZWrite: 0
     - _ZWriteControl: 0
     m_Colors:
-    - _BaseColor: {r: 0.98039216, g: 0.717805, b: 0.29019615, a: 0.5019608}
+    - _BaseColor: {r: 0.98039216, g: 0.717805, b: 0.29019612, a: 0.7490196}
     - _Color: {r: 1, g: 1, b: 1, a: 1}
     - _Emission: {r: 0.2627451, g: 0.08962178, b: 0, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
-    - _FlameUpLerp: {r: 0.5, g: 0.5, b: 0.5, a: 0}
+    - _FlameUpLerp: {r: 1, g: 0.75, b: 1, a: 0}
     - _Noise_Amplitude: {r: 0, g: 1, b: 0, a: 0}
     - _Noise_Period: {r: 10, g: 10, b: 10, a: 0}
     - _Random_Seed: {r: 0, g: 0, b: 0, a: 0}
     - _SpecColor: {r: 0.19999996, g: 0.19999996, b: 0.19999996, a: 1}
+    - _Specular_Color: {r: 0.5, g: 0.5, b: 0.5, a: 0}
   m_BuildTextureStacks: []
 --- !u!114 &7050026935048591493
 MonoBehaviour:
