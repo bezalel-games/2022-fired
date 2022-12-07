@@ -1,0 +1,2 @@
+Movement:
+change to navmesh, to allow using it to make the AI avoid the player if he is on fire?
