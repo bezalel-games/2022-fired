@@ -15,7 +15,7 @@ namespace Mechanics.Infection
         // Start is called before the first frame update
         void Start()
         {
-            
+            // hello
             _instance = this;
             _allFires = new LinkedPool<GameObject>(CreateFire, null, null, null, false, 200);
         }
