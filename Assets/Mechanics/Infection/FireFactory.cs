@@ -16,6 +16,7 @@ namespace Mechanics.Infection
         void Start()
         {
             // hey
+            // hello
             _instance = this;
             _allFires = new LinkedPool<GameObject>(CreateFire, null, null, null, false, 200);
         }
