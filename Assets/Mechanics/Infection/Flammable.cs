@@ -29,9 +29,8 @@ namespace Mechanics.Infection
         private GameObject _fire;
         private void OnTriggerEnter(Collider other)
         {
-            Logger.Log($"On Fire: {gameObject.name}",Color.red, other);
             if (_fireOn) return;
-
+            Logger.Log($"On Fire: {gameObject.name}",Color.red, other);
             var pointOfCollision = other.ClosestPoint(transform.position);
             _fire = FireFactory.GetNewFire();
             _fire.transform.position = pointOfCollision;
