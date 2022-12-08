@@ -36,6 +36,7 @@ namespace Mechanics.Infection
         {
             fire.SetActive(false);
             _instance._allFires.Release(fire);
+            
         }
     }
 }
