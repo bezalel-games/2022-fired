@@ -10,6 +10,8 @@ namespace Mechanics.Infection
 
         private bool _putOut = false;
 
+        [SerializeField] private float putOfSpeed = 0.96f;
+
         public Transform ToFollow
         {
             set
@@ -22,7 +24,7 @@ namespace Mechanics.Infection
 
         [SerializeField] private float moveSpeed = 9f;
 
-        [SerializeField] private float spreadSpeed = 5f;
+        [SerializeField] private float spreadSpeed = 2f;
         // Start is called before the first frame update
         void Start()
         {
@@ -45,12 +47,13 @@ namespace Mechanics.Infection
 
             if (_putOut)
             {
-                transform1.localScale *= 0.9f;
+                transform1.localScale *= putOfSpeed;
                 if (transform1.localScale.y < 0.01f)
                 {
                     var flammable = _toFollow.GetComponent<Flammable>();
                     if (flammable != null)
                     {
+                        _putOut = false;
                         flammable.FireOn = false;
                     }
                 }
@@ -77,6 +80,14 @@ namespace Mechanics.Infection
             if (other.tag == "Water")
             {
                 _putOut = true;
+            }
+        }
+
+        private void OnTriggerExit(Collider other)
+        {
+            if (other.tag == "Water")
+            {
+                _putOut = false;
             }
         }
     }
