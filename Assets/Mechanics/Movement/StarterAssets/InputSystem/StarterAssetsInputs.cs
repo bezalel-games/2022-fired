@@ -49,11 +49,18 @@ namespace StarterAssets
 
         private void OnValidate()
         {
+            ValidateSensitivity();
+        }
+
+        private void ValidateSensitivity()
+        {
             if (_myControls != null)
             {
+                // TODO: change only for mouse?
                 _myControls.Player.Look.ApplyBindingOverride(
                     new InputBinding
                     {
+                        groups = "KeyboardMouse",
                         overrideProcessors =
                             $"InvertVector2(invertX=false),ScaleVector2(x={mouseSensitivity.x},y={mouseSensitivity.y})"
                     }
@@ -70,6 +77,7 @@ namespace StarterAssets
             }
 
             _myControls.Player.Enable();
+            ValidateSensitivity();
         }
 
         private void OnDisable()
