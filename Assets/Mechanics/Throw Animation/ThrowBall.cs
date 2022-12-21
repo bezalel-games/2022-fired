@@ -36,7 +36,7 @@ public class ThrowBall : MonoBehaviour
     [Button]
     private void OnThrow(bool shouldThrow = true)
     {
-        if (shouldThrow)
+        if (shouldThrow)  // TODO: and not already in state!
         {
             throwTrigger.Set(_animator);
         }
