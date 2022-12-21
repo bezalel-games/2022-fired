@@ -92,8 +92,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e7c036a1084318340b4e86db809872bd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  weightHigh: 0.95
-  blendTime: 0.4
+  weightHigh: 1
+  blendTime: 0.45
 --- !u!1101 &-8300376284105721575
 AnimatorStateTransition:
   m_ObjectHideFlags: 1

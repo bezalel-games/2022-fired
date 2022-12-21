@@ -7,6 +7,7 @@ public class WeightControl : StateMachineBehaviour
 {
     [SerializeField]
     private float weightHigh = 1f;
+
     [SerializeField]
     private float blendTime = 0.4f;
 
@@ -20,10 +21,16 @@ public class WeightControl : StateMachineBehaviour
     }
 
     // OnStateUpdate is called on each Update frame between OnStateEnter and OnStateExit callbacks
-    //override public void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
-    //{
-    //    
-    //}
+    override public void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
+    {
+        if (!_ending) // && stateInfo.normalizedTime >= blendTime
+        {
+            var normalizedT = Mathf.Lerp(weightHigh, 0f, (stateInfo.normalizedTime - blendTime) / (1 - blendTime));
+            var t = Mathf.SmoothStep(0f, weightHigh, normalizedT);
+            // var t = Mathf.SmoothStep(weightHigh, 0f,stateInfo.normalizedTime);
+            animator.SetLayerWeight(layerIndex, t);
+        }
+    }
 
     // OnStateExit is called when a transition ends and the state machine finishes evaluating this state
     override public void OnStateExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
@@ -33,14 +40,10 @@ public class WeightControl : StateMachineBehaviour
     }
 
     // OnStateMove is called right after Animator.OnAnimatorMove()
-    override public void OnStateMove(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
-    {
-        if (!_ending && stateInfo.normalizedTime >= blendTime)
-        {
-            var t = Mathf.Lerp(weightHigh, 0f, stateInfo.normalizedTime - blendTime);
-            animator.SetLayerWeight(layerIndex, t);
-        }
-    }
+    // override public void OnStateMove(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
+    // {
+
+    // }
 
     // OnStateIK is called right after Animator.OnAnimatorIK()
     //override public void OnStateIK(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
