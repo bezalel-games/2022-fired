@@ -3,6 +3,7 @@ using BitStrap;
 using Nemesh;
 using UnityEditor;
 using UnityEngine;
+using UnityEngine.Events;
 using Logger = Nemesh.Logger;
 #if ENABLE_INPUT_SYSTEM && STARTER_ASSETS_PACKAGES_CHECKED
 using UnityEngine.InputSystem;
@@ -18,6 +19,10 @@ namespace StarterAssets
         public bool jump;
         public bool sprint;
         public bool walk;
+        public bool fire;
+
+        [Header("Events")]
+        public UnityEvent<bool> onFireEvent;
 
         [field: ReadOnly]
         [field: SerializeField]
@@ -146,6 +151,19 @@ namespace StarterAssets
             }
         }
 
+        public void OnFire(InputAction.CallbackContext context)
+        {
+            if (context.started)
+            {
+                FireInput(true);
+            }
+            else if (context.canceled)
+            {
+                FireInput(false);
+            }
+        }
+        
+
         #endregion
 
         public void MoveInput(Vector2 newMoveDirection)
@@ -181,6 +199,12 @@ namespace StarterAssets
         private void SetCursorState(bool newState)
         {
             Cursor.lockState = newState ? CursorLockMode.Locked : CursorLockMode.None;
+        }
+        
+        private void FireInput(bool newState)
+        {
+            fire = newState;
+            onFireEvent.Invoke(newState);
         }
     }
 }
