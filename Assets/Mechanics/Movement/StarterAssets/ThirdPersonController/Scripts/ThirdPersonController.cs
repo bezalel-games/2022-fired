@@ -2,6 +2,7 @@
 using Avrahamy;
 using BitStrap;
 using UnityEngine;
+using Logger = Nemesh.Logger;
 using Quaternion = UnityEngine.Quaternion;
 using Random = UnityEngine.Random;
 using Vector2 = UnityEngine.Vector2;
