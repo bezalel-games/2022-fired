@@ -124,7 +124,6 @@ public class Flee : MonoBehaviour
             randomDirection += transform.position;
             NavMeshHit hit;
             Vector3 finalPosition = Vector3.zero;
-            // finalPosition += transform.position;
             if (NavMesh.SamplePosition(randomDirection, out hit, radius, 1)) {
                 finalPosition = hit.position;            
             }
