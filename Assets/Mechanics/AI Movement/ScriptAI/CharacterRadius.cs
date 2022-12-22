@@ -7,12 +7,13 @@ using UnityEngine;
 public class CharacterRadius : MonoBehaviour
 {
     // private Transform fire;
+    private int cout = 0;
 
     public HashSet<Transform> fire;
     // Start is called before the first frame update
     void Start()
     {
-        
+        fire = new HashSet<Transform>();
     }
 
     // Update is called once per frame
@@ -23,6 +24,10 @@ public class CharacterRadius : MonoBehaviour
 
     public Transform FindFire(Transform transform)
     {
+        if (fire.Count == 0)
+        {
+            return null;
+        }
         var max = fire.First(t => t!=null);
         // () => transform.position()
         var curMax = Vector3.Distance(max.position, transform.position);
@@ -40,11 +45,14 @@ public class CharacterRadius : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-       fire.Add(other.transform);
+        print("yap");
+            fire.Add(other.transform);
     }
 
     private void OnTriggerExit(Collider other)
     {
-        fire.Remove(other.transform);
+        print("nap" +cout);
+        cout++;
+            fire.Remove(other.transform);
     }
 }

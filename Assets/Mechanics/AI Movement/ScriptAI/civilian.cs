@@ -2,15 +2,22 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
+using Random = UnityEngine.Random;
+
 
 public class civilian : CharacterAI
 {
     // Start is called before the first frame update
     [SerializeField]
-    private float MinDistance = 1.0f;
+    private float MinDistanceFromPlayer = 10.0f;
+    [SerializeField]
+    private float angleMax = 45;
     protected override void Start()
     {
         base.Start();
+        goal = null;
+        _agent.destination = RandomNavmeshLocation();
     }
 
    
@@ -19,13 +26,24 @@ public class civilian : CharacterAI
     protected override void Update()
     {
         base.Update();
+        MoveCharacter();
     }
 
-    protected override void MoveTo()
+    protected override void MoveCharacter()
     {
         goal = radiusWithCol.FindFire(transform);
-        if(Distance(transform, goal)< MinDistance)
+        if(goal != null)
             RunAway();
+        else if (_agent.remainingDistance < stoppingDistance)
+        {
+            _agent.destination = RandomNavmeshLocation();
+        }
+        else if (Distance(transform, goal) < MinDistanceFromPlayer)
+        {
+            transform.rotation = Quaternion.LookRotation(player.transform.position);
+            _agent.destination = player.position;
+        }
+        
     }
     
     private void RunAway()
@@ -34,8 +52,8 @@ public class civilian : CharacterAI
         transform.rotation = Quaternion.LookRotation(dirToPlayer);
 
         Vector3 newPos = transform.position + dirToPlayer;
-
-        _agent.SetDestination(newPos);        
+        // _agent.SetDestination(newPos);        
+        _agent.destination = newPos;        
     }
     
     private float Distance(Transform in_player, Transform me)
@@ -47,11 +65,22 @@ public class civilian : CharacterAI
         float distance = Vector3.Distance(FixedMe ,FixedPlayer);
         return distance;
     }
-
     
-
-    // private void OnCollisionEnter(Collision collision)
-    // {
-    //     if(collision.gameObject )
-    // }
+    public Vector3 RandomNavmeshLocation() {
+        Vector3 randomDirection = Random.insideUnitSphere * radius;
+        randomDirection += transform.position;
+        NavMeshHit hit;
+        Vector3 finalPosition = Vector3.zero;
+        if (NavMesh.SamplePosition(randomDirection, out hit, radius, 1)) {
+            finalPosition = hit.position;            
+        }
+        return finalPosition;
+    }  
+    
+    private bool ISFacing()
+    {
+        float angleToPlayer = Vector3.Angle(player.transform.forward,( transform.position - player.transform.position));
+        // Debug.Log(angleToPlayer);
+        return angleToPlayer < angleMax;
+    }
 }

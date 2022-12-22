@@ -5,28 +5,24 @@ using UnityEngine.AI;
 
 public abstract class CharacterAI : MonoBehaviour
 {
-    [SerializeField]
     protected Transform goal;
-
+    [SerializeField]
+    protected Transform player;
     [SerializeField]
     protected float stoppingDistance = 0.5f;
-
+    [SerializeField]
+    protected float radius = 2f;
     [SerializeField]
     protected bool autoBreaking;
-
-    [SerializeField]
+    
     protected NavMeshAgent _agent;
-
-    // [SerializeField] protected Collider radiusOfCharacter;
     [SerializeField] protected CharacterRadius radiusWithCol;
-    protected abstract void MoveTo();
+    protected abstract void MoveCharacter();
     // Start is called before the first frame update
     protected virtual void  Start()
     {
         _agent = GetComponent<NavMeshAgent>();
         _agent.autoBraking = autoBreaking;
-        _agent.destination = goal.position;
-        // radiusWithCol = new CharacterRadius();
     }
 
     // Update is called once per frame
