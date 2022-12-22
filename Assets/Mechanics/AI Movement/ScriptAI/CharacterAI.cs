@@ -45,6 +45,43 @@ public abstract class CharacterAI : MonoBehaviour
     {
         
     }
+    
+    // this function returns random point in the radius of the character
+    protected Vector3 RandomNavmeshLocation() {
+        Vector3 randomDirection = Random.insideUnitSphere * radius;
+        randomDirection += transform.position;
+        NavMeshHit hit;
+        Vector3 finalPosition = Vector3.zero;
+        if (NavMesh.SamplePosition(randomDirection, out hit, radius, 1)) {
+            finalPosition = hit.position;            
+        }
+        return finalPosition;
+    }  
+    
+    //makes character run from goal
+    protected void RunAway(Transform runFrom)
+    {
+        Vector3 dirToFire = transform.position - runFrom.position;
+        transform.rotation = Quaternion.LookRotation(dirToFire);
+        Vector3 newPos = transform.position + dirToFire;       
+        _agent.destination = newPos;        
+    }
+
+    protected void Seek(Transform other)
+    {
+        transform.rotation = Quaternion.LookRotation(other.position);
+        _agent.destination = other.position;
+    }
+    //calculate distance between two transforms
+    protected float Distance(Transform in_player, Transform me)
+    {
+        Vector3 FixedPlayer = in_player.transform.position;
+        FixedPlayer.y = 0;
+        Vector3 FixedMe = me.position;
+        FixedMe.y = 0;
+        float distance = Vector3.Distance(FixedMe ,FixedPlayer);
+        return distance;
+    }
 
     
 }
