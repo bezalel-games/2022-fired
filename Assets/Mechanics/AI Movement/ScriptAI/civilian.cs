@@ -8,11 +8,12 @@ using Random = UnityEngine.Random;
 
 public class civilian : CharacterAI
 {
-    // Start is called before the first frame update
+    // min distance from player, if farther then  civilian go back. 
     [SerializeField]
     private float MinDistanceFromPlayer = 10.0f;
     [SerializeField]
     private float angleMax = 45;
+    // Start is called before the first frame update
     protected override void Start()
     {
         base.Start();
