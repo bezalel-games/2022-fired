@@ -1,14 +1,10 @@
-using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.AI;
-using Random = UnityEngine.Random;
 
-
-public class civilian : CharacterAI
+public class FleePlayer : CharacterAI
 {
-    // min distance from player, if farther then  civilian go back. 
+    // min distance from player, if farther then  character go back. 
     [SerializeField]
     private float MaxDistanceFromPlayer = 10.0f;
     [SerializeField]
@@ -20,8 +16,7 @@ public class civilian : CharacterAI
         goal = player;
         _agent.destination = RandomNavmeshLocation();
     }
-
-   
+    
 
     // Update is called once per frame
     protected override void Update()
@@ -33,11 +28,11 @@ public class civilian : CharacterAI
     //the function from which the character moves
     protected override void MoveCharacter()
     {
-        goal = radiusWithCol.FindFire(transform);
-        if (goal != null)
+        if (ISFacing())
         {
             RunAway(goal);
         }
+
         else if (_agent.remainingDistance < stoppingDistance)
         {
             _agent.destination = RandomNavmeshLocation();
@@ -49,7 +44,8 @@ public class civilian : CharacterAI
        
     }
     
-    
+   
+    // does player face character?
     private bool ISFacing()
     {
         float angleToPlayer = Vector3.Angle(player.transform.forward,( transform.position - player.transform.position));
