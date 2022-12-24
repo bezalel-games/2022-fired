@@ -1,10 +1,10 @@
 using UnityEngine;
 
-public class FireFighterScript : CharacterAI
+public class EnemyFireFighterScript : CharacterAI
 {
     [SerializeField]
     [Range(0, 100)]
-    private float percentage;
+    private float perceantege;
 
     //how much does it take to extinguish fire in percent;
     [SerializeField]
@@ -13,14 +13,19 @@ public class FireFighterScript : CharacterAI
     [SerializeField]
     private float timeToExtinguish = 0;
 
-    private float _timer;  // TODO: switch to PassiveTimer!
+    [SerializeField]
+    private float minDistanceFromPlayer = 5.0f;
 
+    [SerializeField]
+    private float maxDistanceFromPlayer = 15.0f;
+
+    private float _timer; // TODO: use the PassiveTimer object!
 
     // Start is called before the first frame update
     protected override void Start()
     {
         base.Start();
-        Goal = null;
+        Goal = player;
         Agent.destination = RandomNavmeshLocation();
     }
 
@@ -34,10 +39,13 @@ public class FireFighterScript : CharacterAI
     //the function from which the character moves
     protected override void MoveCharacter()
     {
-        Goal = radiusWithCol.FindFire(transform);
-        if (Goal != null)  // TODO: use and API - also this is done in all of the inheritances?
+        Goal = Distance(player, transform) < minDistanceFromPlayer ||
+               Distance(player, transform) > maxDistanceFromPlayer
+            ? player
+            : radiusWithCol.FindFire(transform);
+        if (Goal != null) // TODO: use an API
         {
-            if (percentage > 0)
+            if (perceantege > 0)
             {
                 HandleFire();
             }
@@ -54,13 +62,10 @@ public class FireFighterScript : CharacterAI
 
     private void HandleFire()
     {
+        Seek(Goal);
         if (Agent.remainingDistance < stoppingDistance && _timer >= timeToExtinguish)
         {
             ExtinguishFire();
-        }
-        else
-        {
-            Seek(Goal);
         }
 
         if (_timer < timeToExtinguish)
@@ -71,7 +76,7 @@ public class FireFighterScript : CharacterAI
     private void ExtinguishFire()
     {
         _timer = 0;
-        percentage -= costToExtinguishFire;
+        perceantege -= costToExtinguishFire;
         // here we need to call a function that put the fire of
     }
 }
