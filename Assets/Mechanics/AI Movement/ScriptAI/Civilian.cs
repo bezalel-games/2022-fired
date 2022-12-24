@@ -1,27 +1,23 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.AI;
-using Random = UnityEngine.Random;
 
 
-public class civilian : CharacterAI
+public class Civilian : CharacterAI
 {
     // min distance from player, if farther then  civilian go back. 
     [SerializeField]
-    private float MaxDistanceFromPlayer = 10.0f;
+    private float maxDistanceFromPlayer = 10.0f;
+
     [SerializeField]
     private float angleMax = 45;
+
     // Start is called before the first frame update
     protected override void Start()
     {
         base.Start();
-        goal = player;
-        _agent.destination = RandomNavmeshLocation();
+        Goal = player;
+        Agent.destination = RandomNavmeshLocation();
     }
 
-   
 
     // Update is called once per frame
     protected override void Update()
@@ -33,26 +29,26 @@ public class civilian : CharacterAI
     //the function from which the character moves
     protected override void MoveCharacter()
     {
-        goal = radiusWithCol.FindFire(transform);
+        var goal = radiusWithCol.FindFire(transform);  // TODO: use the API instead!
         if (goal != null)
         {
-            RunAway(goal);
+            RunAway(Goal);
         }
-        else if (_agent.remainingDistance < stoppingDistance)
+        else if (Agent.remainingDistance < stoppingDistance)
         {
-            _agent.destination = RandomNavmeshLocation();
+            Agent.destination = RandomNavmeshLocation();
         }
-        else if (Distance(transform, goal) > MaxDistanceFromPlayer)
+        else if (Distance(transform, Goal) > maxDistanceFromPlayer)
         {
             Seek(player);
         }
-       
+
     }
-    
-    
-    private bool ISFacing()
+
+
+    private bool IsFacing()
     {
-        float angleToPlayer = Vector3.Angle(player.transform.forward,( transform.position - player.transform.position));
+        float angleToPlayer = Vector3.Angle(player.transform.forward, (transform.position - player.transform.position));
         // Debug.Log(angleToPlayer);
         return angleToPlayer < angleMax;
     }

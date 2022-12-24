@@ -1,22 +1,22 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class FleePlayer : CharacterAI
 {
     // min distance from player, if farther then  character go back. 
     [SerializeField]
-    private float MaxDistanceFromPlayer = 10.0f;
+    private float maxDistanceFromPlayer = 10.0f;
+
     [SerializeField]
     private float angleMax = 45;
+
     // Start is called before the first frame update
     protected override void Start()
     {
         base.Start();
-        goal = player;
-        _agent.destination = RandomNavmeshLocation();
+        Goal = player;
+        Agent.destination = RandomNavmeshLocation();
     }
-    
+
 
     // Update is called once per frame
     protected override void Update()
@@ -28,27 +28,27 @@ public class FleePlayer : CharacterAI
     //the function from which the character moves
     protected override void MoveCharacter()
     {
-        if (ISFacing())
+        if (IsFacing())
         {
-            RunAway(goal);
+            RunAway(Goal);
         }
 
-        else if (_agent.remainingDistance < stoppingDistance)
+        else if (Agent.remainingDistance < stoppingDistance)
         {
-            _agent.destination = RandomNavmeshLocation();
+            Agent.destination = RandomNavmeshLocation();
         }
-        else if (Distance(transform, goal) > MaxDistanceFromPlayer)
+        else if (Distance(transform, Goal) > maxDistanceFromPlayer)
         {
             Seek(player);
         }
-       
+
     }
-    
-   
+
     // does player face character?
-    private bool ISFacing()
+    private bool IsFacing()
     {
-        float angleToPlayer = Vector3.Angle(player.transform.forward,( transform.position - player.transform.position));
+        var playerTransform = player.transform;
+        float angleToPlayer = Vector3.Angle(playerTransform.forward, (transform.position - playerTransform.position));
         // Debug.Log(angleToPlayer);
         return angleToPlayer < angleMax;
     }

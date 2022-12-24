@@ -1,58 +1,60 @@
-using System;
-using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
+using Logger = Nemesh.Logger;
 
 public class CharacterRadius : MonoBehaviour
 {
     // private Transform fire;
-    private int cout = 0;
+    private int _count = 0;
 
-    public HashSet<Transform> fire;
+    public HashSet<Transform> Fire { get; set; } = new();
+
     // Start is called before the first frame update
     void Start()
     {
-        fire = new HashSet<Transform>();
+
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+
     }
 
-    public Transform FindFire(Transform transform)
+    public Transform FindFire(Transform trans)
     {
-        if (fire.Count == 0)
+        if (Fire.Count == 0)
         {
             return null;
         }
-        var max = fire.First(t => t!=null);
+
+        var max = Fire.First(t => t != null);  // TODO: use some sort of API
         // () => transform.position()
-        var curMax = Vector3.Distance(max.position, transform.position);
-        foreach (var curFire in fire)
+        var curMax = Vector3.Distance(max.position, trans.position);
+        foreach (var curFire in Fire)
         {
-            var cur = Vector3.Distance(curFire.position, transform.position);
-            if((Vector3.Distance(max.position, transform.position))<curMax)
+            var cur = Vector3.Distance(curFire.position, trans.position);
+            if ((Vector3.Distance(max.position, trans.position)) < curMax)
             {
                 curMax = cur;
                 max = curFire;
             }
         }
+
         return max;
     }
 
     private void OnTriggerEnter(Collider other)
     {
-        print("yap");
-            fire.Add(other.transform);
+        Logger.Log("trigger entered", this);
+        Fire.Add(other.transform);
     }
 
     private void OnTriggerExit(Collider other)
     {
-        print("nap" +cout);
-        cout++;
-            fire.Remove(other.transform);
+        Logger.Log("trigger exited" + _count, this);
+        _count++;
+        Fire.Remove(other.transform);
     }
 }
