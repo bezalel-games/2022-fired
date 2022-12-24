@@ -4,15 +4,19 @@ public class FireFighterScript : CharacterAI
 {
     [SerializeField]
     [Range(0, 100)]
+    private float initPerceantege;
     private float percentage;
 
     //how much does it take to extinguish fire in percent;
     [SerializeField]
+    [Range(0, 100)]
     private float costToExtinguishFire;
 
     [SerializeField]
     private float timeToExtinguish = 0;
 
+    
+    
     private float _timer;  // TODO: switch to PassiveTimer!
 
 
@@ -22,6 +26,7 @@ public class FireFighterScript : CharacterAI
         base.Start();
         Goal = null;
         Agent.destination = RandomNavmeshLocation();
+        percentage = initPerceantege;
     }
 
     // Update is called once per frame

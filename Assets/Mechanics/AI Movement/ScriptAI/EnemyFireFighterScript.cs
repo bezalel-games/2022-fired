@@ -4,10 +4,12 @@ public class EnemyFireFighterScript : CharacterAI
 {
     [SerializeField]
     [Range(0, 100)]
-    private float perceantege;
+    private float initPerceantege;
+    private float percentage;
 
     //how much does it take to extinguish fire in percent;
     [SerializeField]
+    [Range(0, 100)]
     private float costToExtinguishFire;
 
     [SerializeField]
@@ -27,6 +29,7 @@ public class EnemyFireFighterScript : CharacterAI
         base.Start();
         Goal = player;
         Agent.destination = RandomNavmeshLocation();
+        percentage = initPerceantege;
     }
 
     // Update is called once per frame
@@ -39,13 +42,15 @@ public class EnemyFireFighterScript : CharacterAI
     //the function from which the character moves
     protected override void MoveCharacter()
     {
-        Goal = Distance(player, transform) < minDistanceFromPlayer ||
-               Distance(player, transform) > maxDistanceFromPlayer
-            ? player
-            : radiusWithCol.FindFire(transform);
+        // Goal = Distance(player, transform) < minDistanceFromPlayer ||
+        //        Distance(player, transform) > maxDistanceFromPlayer
+        //     ? player
+        //     : radiusWithCol.FindFire(transform);
+        Goal = Distance(player, transform) < minDistanceFromPlayer
+            ? player : radiusWithCol.FindFire(transform);
         if (Goal != null) // TODO: use an API
         {
-            if (perceantege > 0)
+            if (percentage > 0)
             {
                 HandleFire();
             }
@@ -76,7 +81,7 @@ public class EnemyFireFighterScript : CharacterAI
     private void ExtinguishFire()
     {
         _timer = 0;
-        perceantege -= costToExtinguishFire;
+        percentage -= costToExtinguishFire;
         // here we need to call a function that put the fire of
     }
 }
