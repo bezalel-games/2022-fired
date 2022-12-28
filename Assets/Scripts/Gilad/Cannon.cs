@@ -8,11 +8,15 @@ namespace Gilad
     {
         private LinkedPool<Shooter> _pool;
 
-        [SerializeField] private float force = 1f;
+        [SerializeField]
+        private float force = 1f;
 
-        [SerializeField] private Transform forward;
+        [SerializeField]
+        private Transform forward;
 
-        [SerializeField] private GameObject fireBallObGameObject;
+        [SerializeField]
+        private GameObject fireBallObGameObject;
+
         // Start is called before the first frame update
         void Start()
         {
@@ -36,6 +40,7 @@ namespace Gilad
             {
                 throw new Exception("no shooter script for object: " + ball.name);
             }
+
             fireShooter.Create();
             fireShooter.FirePool = _pool;
             return fireShooter;
