@@ -62,10 +62,16 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5210094230173871712, guid: 8dd4e9c402d71e5409bae1e1f5becf95,
+        type: 3}
+      propertyPath: fireBallObGameObject
+      value: 
+      objectReference: {fileID: 1289318078810796351, guid: 2073ebf181e154f43ab965cb439f0749,
+        type: 3}
     - target: {fileID: 6218243181550380217, guid: 8dd4e9c402d71e5409bae1e1f5becf95,
         type: 3}
       propertyPath: m_Name
-      value: FireCannon
+      value: Water Cannon
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8dd4e9c402d71e5409bae1e1f5becf95, type: 3}
