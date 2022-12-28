@@ -1,6 +1,4 @@
-﻿using System;
-using Avrahamy;
-using BitStrap;
+﻿using Avrahamy;
 using UnityEngine;
 using Logger = Nemesh.Logger;
 using Quaternion = UnityEngine.Quaternion;
@@ -11,47 +9,6 @@ using Vector3 = UnityEngine.Vector3;
 
 namespace StarterAssets
 {
-    [Serializable]
-    public struct PlayerAnimatorParameters
-    {
-        [Header("Booleans")]
-        [SerializeField]
-        public BoolAnimationParameter useAnalogParameter;
-
-        [Space]
-        [SerializeField]
-        public BoolAnimationParameter groundedParameter;
-
-        [SerializeField]
-        public BoolAnimationParameter sprintingParameter;
-
-        [SerializeField]
-        public BoolAnimationParameter walkingParameter;
-
-        [SerializeField]
-        public BoolAnimationParameter jumpingParameter;
-
-        [SerializeField]
-        public BoolAnimationParameter fallingParameter;
-
-        [Space]
-        [Header("Floats")]
-        [SerializeField]
-        public FloatAnimationParameter analogSpeedParameter;
-
-        [SerializeField]
-        public FloatAnimationParameter motionSpeedParameter;
-
-        [Space]
-        [SerializeField]
-        public FloatAnimationParameter directionXParameter;
-
-        [SerializeField]
-        public FloatAnimationParameter directionZParameter;
-
-        [SerializeField]
-        public FloatAnimationParameter rotationParameter;
-    }
 
     [RequireComponent(typeof(CharacterController))]
     public class ThirdPersonController : OptimizedBehaviour
