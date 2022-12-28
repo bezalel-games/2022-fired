@@ -6,6 +6,10 @@ namespace Gilad
 {
     public class Flammable : MonoBehaviour
     {
+
+        private static readonly List<Flammable> allFlammables = new List<Flammable>();
+
+        private static int _numBurned = 0;
         //flames to light
         [SerializeField] private GameObject[] flames;
 
@@ -24,11 +28,11 @@ namespace Gilad
         //how many hits does time worth
         [SerializeField] private int timePower = 1;
 
-        [SerializeField] private float lifeTime = 10f;
+        [SerializeField] private float lifeTime = 20f;
 
         private float _timeOnFire = 0f;
 
-        private static readonly List<Flammable> allFlammables = new List<Flammable>();
+
 
         public static List<Flammable> AllFlammables => allFlammables;
 
@@ -73,6 +77,7 @@ namespace Gilad
             // todo add some shut down mechanics
             GrowFire(-numOfHits);
             this.enabled = false;
+            _numBurned++;
         }
 
         private void CheckTime()
@@ -132,6 +137,11 @@ namespace Gilad
         public bool IsDoneBurning()
         {
             return enabled = false;
+        }
+
+        public static bool IsAllBurned()
+        {
+            return _numBurned == allFlammables.Count;
         }
     }
 }
