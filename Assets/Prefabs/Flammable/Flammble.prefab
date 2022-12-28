@@ -142,7 +142,6 @@ GameObject:
   - component: {fileID: 2039669696251029}
   - component: {fileID: 7476640940745055523}
   - component: {fileID: 5431328360555645753}
-  - component: {fileID: 1791852241364921862}
   m_Layer: 0
   m_Name: Flammble
   m_TagString: Untagged
@@ -182,7 +181,7 @@ MeshRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5217433069857249306}
-  m_Enabled: 0
+  m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
@@ -249,23 +248,6 @@ MonoBehaviour:
   waterPower: 1
   timePower: 1
   lifeTime: 10
---- !u!114 &1791852241364921862
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5217433069857249306}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0f0a34bad4954ba79e211137e61cd6ae, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  onBurned:
-    m_PersistentCalls:
-      m_Calls: []
-  changeMaterialColor: 1
-  changeToColor: {r: 0, g: 0, b: 0, a: 0}
 --- !u!1 &5971865934872528315
 GameObject:
   m_ObjectHideFlags: 0

@@ -1,42 +1,44 @@
-using System;
 using Avrahamy.EditorGadgets;
 using BitStrap;
 using UnityEngine;
 using UnityEngine.Events;
+using Logger = Nemesh.Logger;
 
 namespace Flames
 {
     public class BurnedEvent : MonoBehaviour
     {
         [SerializeField]
-        private UnityEvent onBurned;
+        protected UnityEvent onBurned;
 
         [SerializeField]
-        private bool changeMaterialColor = true;
+        protected bool changeMaterialColor = true;
 
         [ConditionalHide("changeMaterialColor")]
         [SerializeField]
-        private Color changeToColor;
+        protected Color changeToColor;
 
-        private Renderer _myRenderer;
+        protected Renderer MyRenderer;
         
-        private void Awake()
+        protected virtual void Start()
         {
             onBurned.AddListener(MaterialChange);
-            TryGetComponent(out _myRenderer);
+            TryGetComponent(out MyRenderer);
         }
 
         private void MaterialChange()
         {
             if (changeMaterialColor)
             {
-                _myRenderer.material.color = changeToColor;
+                MyRenderer.material.color = changeToColor;
             }
         }
         
         [Button]
         public void ObjectBurned()
         {
+            var c = new Color(1f, 0.26f, 0.05f);
+            Logger.Log("Burned", c, this);
             onBurned.Invoke();
         }
     }

@@ -1,4 +1,5 @@
 using System;
+using Flames;
 using UnityEngine;
 
 namespace Gilad
@@ -13,6 +14,13 @@ namespace Gilad
         private void OnTriggerEnter(Collider other)
         {
             flammable.Detect(isFire);
+            if (ExplosionPool.Instance.Pool != null)
+            {
+                ExplosionPool.Instance.Pool.Get(out var exp);
+                exp.transform.position = other.transform.position;
+                exp.ObjectBurned();
+            }
+
             other.gameObject.SetActive(false);
         }
     }
