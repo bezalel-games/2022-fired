@@ -27,7 +27,7 @@ Transform:
   m_GameObject: {fileID: 3632853135133472440}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.1, y: 0.1, z: 0.1}
+  m_LocalScale: {x: 0.3, y: 0.3, z: 0.3}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 2576646907515074472}
@@ -673,7 +673,7 @@ ParticleSystem:
         m_PostInfinity: 2
         m_RotationOrder: 4
     randomizeRotationDirection: 0
-    maxNumParticles: 60
+    maxNumParticles: 200
     customEmitterVelocity: {x: 0, y: 0, z: 0}
     size3D: 0
     rotation3D: 0
@@ -939,7 +939,7 @@ ParticleSystem:
     rateOverTime:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 20
+      scalar: 30
       minScalar: 10
       maxCurve:
         serializedVersion: 2
@@ -4848,7 +4848,7 @@ Transform:
   m_GameObject: {fileID: 4072814670199522210}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.1, y: 0.1, z: 0.1}
+  m_LocalScale: {x: 0.3, y: 0.3, z: 0.3}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 2576646907515074472}
@@ -5494,7 +5494,7 @@ ParticleSystem:
         m_PostInfinity: 2
         m_RotationOrder: 4
     randomizeRotationDirection: 0
-    maxNumParticles: 1000
+    maxNumParticles: 200
     customEmitterVelocity: {x: 0, y: 0, z: 0}
     size3D: 0
     rotation3D: 0
@@ -5760,7 +5760,7 @@ ParticleSystem:
     rateOverTime:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 6
+      scalar: 20
       minScalar: 10
       maxCurve:
         serializedVersion: 2
@@ -9676,7 +9676,7 @@ Transform:
   m_GameObject: {fileID: 5812443373641945668}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.1, y: 0.1, z: 0.1}
+  m_LocalScale: {x: 0.2, y: 0.2, z: 0.2}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 5671093408536938188}
@@ -9692,7 +9692,7 @@ Rigidbody:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5812443373641945668}
   serializedVersion: 2
-  m_Mass: 0.9
+  m_Mass: 0.8
   m_Drag: 0
   m_AngularDrag: 0
   m_UseGravity: 1
@@ -9777,6 +9777,30 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   lifeTimer:
     duration: 2
+  sizeOverLifer:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0.0058893003
+      value: 0.21682745
+      inSlope: -0.00032527396
+      outSlope: -0.00032527396
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0.4232539
+    - serializedVersion: 3
+      time: 1.0002491
+      value: 0.601703
+      inSlope: 0.004148938
+      outSlope: 0.004148938
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.4036695
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
 --- !u!114 &8666006283109748644
 MonoBehaviour:
   m_ObjectHideFlags: 0
