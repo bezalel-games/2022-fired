@@ -23,7 +23,7 @@ namespace StarterAssets
 
         [Header("Events")]
         public UnityEvent<bool> onFireEvent;
-
+        
         [field: ReadOnly]
         [field: SerializeField]
         [field: InspectorName("Using Mouse to Look")]
@@ -168,6 +168,11 @@ namespace StarterAssets
 
         public void MoveInput(Vector2 newMoveDirection)
         {
+            if (!cursorInputForLook)
+            {
+                look = newMoveDirection;
+                UsingMouseToLook = true;
+            }
             move = newMoveDirection;
         }
 
