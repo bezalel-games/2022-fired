@@ -23,7 +23,6 @@ namespace Gilad
         void Start()
         {
             _pool = new LinkedPool<Shooter>(CreateBall, GetBall, ReleaseBall, null, false, 20);
-            Logger.Log(fireBallObGameObject.name,this);
         }
 
         private Shooter CreateBall()
@@ -56,7 +55,6 @@ namespace Gilad
 
         public void ShootBall()
         {
-            Logger.Log(fireBallObGameObject.name, this);
             _pool.Get();
         }
 
