@@ -22,10 +22,10 @@ namespace Gilad
         //todo need to remove
         private void Update()
         {
-            if (Input.GetKeyDown(KeyCode.Space))
-            {
-                ShootBall();
-            }
+            // if (Input.GetKeyDown(KeyCode.Space))
+            // {
+            //     ShootBall();
+            // }
         }
 
         private Shooter CreateBall()
@@ -57,6 +57,11 @@ namespace Gilad
         public void ShootBall()
         {
             _pool.Get();
+        }
+
+        public void StartShoot()
+        {
+
         }
 
 
