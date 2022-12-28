@@ -32,5 +32,10 @@ namespace Flames
                 _myRenderer.material.color = changeToColor;
             }
         }
+
+        public void ObjectBurned()
+        {
+            onBurned.Invoke();
+        }
     }
 }

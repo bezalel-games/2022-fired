@@ -7,11 +7,11 @@ namespace Flames
     {
         private static readonly int LerpVec = Shader.PropertyToID("_LerpVector");
 
-        private MeshRenderer _myMeshRendered;
+        private Renderer _myMeshRendered;
         private Vector3 _myVelocity;
         private bool _hasMeshRenderer;
 
-        public MeshRenderer MyMeshRendered
+        public Renderer MyMeshRendered
         {
             get => _myMeshRendered;
             set
