@@ -62,6 +62,12 @@ namespace Gilad
 
         private void OnDisable()
         {
+            if (ExplosionPool.Instance.Pool != null)
+            {
+                ExplosionPool.Instance.Pool.Get(out var exp);
+                exp.transform.position = transform.position;
+                exp.ObjectBurned();
+            }
             FirePool.Release(this);
         }
 

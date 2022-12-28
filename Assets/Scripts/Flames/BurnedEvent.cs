@@ -12,6 +12,17 @@ namespace Flames
         protected UnityEvent onBurned;
 
         [SerializeField]
+        protected bool activateAnimationBool = true;
+
+        // [ConditionalHide("activateAnimationBool")]
+        [SerializeField]
+        private BoolAnimationParameter boolAnimatorParameter;
+
+        [ConditionalHide("activateAnimationBool")]
+        [SerializeField]
+        protected Animator myAnimator;
+
+        [SerializeField]
         protected bool changeMaterialColor = true;
 
         [ConditionalHide("changeMaterialColor")]
@@ -19,21 +30,33 @@ namespace Flames
         protected Color changeToColor;
 
         protected Renderer MyRenderer;
-        
+
         protected virtual void Start()
         {
             onBurned.AddListener(MaterialChange);
             TryGetComponent(out MyRenderer);
+            if (myAnimator == null)
+            {
+                activateAnimationBool = TryGetComponent(out myAnimator);
+            }
         }
 
         private void MaterialChange()
         {
             if (changeMaterialColor)
             {
-                MyRenderer.material.color = changeToColor;
+                foreach (var material in MyRenderer.materials)
+                {
+                    material.color = changeToColor;
+                }
+            }
+
+            if (activateAnimationBool)
+            {
+                boolAnimatorParameter.Set(myAnimator, true);
             }
         }
-        
+
         [Button]
         public void ObjectBurned()
         {

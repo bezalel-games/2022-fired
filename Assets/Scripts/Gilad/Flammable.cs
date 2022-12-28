@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using Flames;
 using UnityEngine;
+using Logger = Nemesh.Logger;
 
 namespace Gilad
 {
@@ -13,7 +14,7 @@ namespace Gilad
         private static readonly List<Flammable> allFlammables = new List<Flammable>();
 
         private static int _numBurned = 0;
-        
+
         //flames to light
         [SerializeField]
         private GameObject[] flames;
@@ -46,19 +47,22 @@ namespace Gilad
         private BurnedEvent onBurnedEvent;
 
         private float _timeOnFire = 0f;
-        
+
         private int _powerLevel = 0;
 
         private Vector3[] _startSizes;
 
         private float _timeCount = 0f;
+        private bool _onBurnedEventExists;
 
         private void Awake()
         {
-            if (onBurnedEvent != null)
+            if (onBurnedEvent == null)
             {
                 onBurnedEvent = GetComponentInParent<BurnedEvent>();
             }
+
+            _onBurnedEventExists = onBurnedEvent != null;
         }
 
         // Start is called before the first frame update
@@ -97,7 +101,11 @@ namespace Gilad
 
         private void ShutDown()
         {
-            onBurnedEvent.ObjectBurned();
+            if (_onBurnedEventExists)
+            {
+                onBurnedEvent.ObjectBurned();
+            }
+
             GrowFire(-numOfHits);
             this.enabled = false;
             _numBurned++;
@@ -124,17 +132,10 @@ namespace Gilad
         private void SetSizes()
         {
             var putOut = _powerLevel == 0;
-            
+
             for (int i = 0; i < flames.Length; i++)
             {
-                if (putOut)
-                {
-                    flames[i].SetActive(false);
-                }
-                else
-                {
-                    flames[i].SetActive(true);
-                }
+                flames[i].SetActive(!putOut);
                 flames[i].transform.localScale = _startSizes[i] * _powerLevel;
             }
         }
