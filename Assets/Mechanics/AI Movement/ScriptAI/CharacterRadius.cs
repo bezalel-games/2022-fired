@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using System.Linq;
+using Gilad;
 using UnityEngine;
 using Logger = Nemesh.Logger;
 
@@ -9,6 +10,7 @@ public class CharacterRadius : MonoBehaviour
     private int _count = 0;
 
     public HashSet<Transform> Fire { get; set; } = new();
+    private List<GameObject> Flames;
 
     // Start is called before the first frame update
     void Start()
@@ -19,7 +21,7 @@ public class CharacterRadius : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
+        
     }
 
     public Transform FindFire(Transform trans)
@@ -28,9 +30,16 @@ public class CharacterRadius : MonoBehaviour
         {
             return null;
         }
-
+        for (int i = Flames.Count -1; i >=0; i--)
+        {
+            Flammable flammable =Flames[i].GetComponent<Flammable>();
+            if (flammable.IsDoneBurning())
+            {
+                Fire.Remove(Flames[i].transform);
+                Flames.Remove(Flames[i]);
+            }
+        }
         var max = Fire.First(t => t != null);  // TODO: use some sort of API
-        // () => transform.position()
         var curMax = Vector3.Distance(max.position, trans.position);
         foreach (var curFire in Fire)
         {
@@ -48,7 +57,13 @@ public class CharacterRadius : MonoBehaviour
     private void OnTriggerEnter(Collider other)
     {
         Logger.Log("trigger entered", this);
-        Fire.Add(other.transform);
+        Flammable flame = other.gameObject.GetComponent<Flammable>();
+        if (flame.IsOnFire())
+        {
+            Fire.Add(other.transform);
+            Flames.Add(other.gameObject);
+        }
+            
     }
 
     private void OnTriggerExit(Collider other)
@@ -56,5 +71,6 @@ public class CharacterRadius : MonoBehaviour
         Logger.Log("trigger exited" + _count, this);
         _count++;
         Fire.Remove(other.transform);
+        Flames.Remove(other.gameObject);
     }
 }

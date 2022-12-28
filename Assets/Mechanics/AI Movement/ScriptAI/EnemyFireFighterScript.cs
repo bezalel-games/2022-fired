@@ -59,26 +59,31 @@ public class EnemyFireFighterScript : CharacterAI
             }
             else
             {
+                _shooter.StopShooting();
                 RunAway(Goal);
             }
         }
         else if (Agent.remainingDistance < stoppingDistance)
         {
+            _shooter.StopShooting();
             Agent.destination = RandomNavmeshLocation();
         }
     }
 
     private void HandleFire()
     {
-        Seek(Goal);
         if (Agent.remainingDistance < stoppingDistance && _timer >= timeToExtinguish)
         {
             ExtinguishFire();
         }
+        else
+        {
+            Seek(Goal);
+            _shooter.StopShooting();
+        }
 
         if (_timer < timeToExtinguish)
         {
-            _shooter.StopShooting();
             _timer += Time.deltaTime;
         }
 

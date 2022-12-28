@@ -50,6 +50,7 @@ public class FireFighterScript : CharacterAI
             else
             {
                 RunAway(Goal);
+                shooter.StopShooting();
             }
         }
         else if (Agent.remainingDistance < stoppingDistance)
@@ -67,12 +68,12 @@ public class FireFighterScript : CharacterAI
         else
         {
             Seek(Goal);
+            shooter.StopShooting();
         }
 
         if (_timer < timeToExtinguish)
         {
              _timer += Time.deltaTime;
-             shooter.StopShooting();
         }
         
     }
