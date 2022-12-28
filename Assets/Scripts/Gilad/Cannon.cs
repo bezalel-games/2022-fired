@@ -1,4 +1,5 @@
 using System;
+using Avrahamy.Math;
 using UnityEngine;
 using UnityEngine.Pool;
 
@@ -51,7 +52,7 @@ namespace Gilad
             var position = forward.position;
             shooter.gameObject.transform.position = position;
             shooter.gameObject.SetActive(true);
-            shooter.Shoot((position - transform.position) * force);
+            shooter.Shoot((position - transform.position).GetWithMagnitude(force));
         }
 
         private void ReleaseBall(Shooter shooter)

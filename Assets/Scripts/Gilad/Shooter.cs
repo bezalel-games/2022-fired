@@ -1,14 +1,17 @@
 using System;
 using Avrahamy;
+using Avrahamy.Math;
 using UnityEngine;
 using UnityEngine.Pool;
 using Logger = Nemesh.Logger;
+using Random = UnityEngine.Random;
 
 namespace Gilad
 {
     public class Shooter : MonoBehaviour
     {
         private static readonly int LerpVec = Shader.PropertyToID("_LerpVector");
+        private static readonly int RandomSeed = Shader.PropertyToID("_Random_Seed");
 
         [SerializeField]
         private PassiveTimer lifeTimer = new(2f);
@@ -16,13 +19,11 @@ namespace Gilad
         public LinkedPool<Shooter> FirePool { get; set; }
 
         private Rigidbody _rigidbody;
-        private Material _myMaterial;
         private MeshRenderer _myMeshRendered;
 
         private void Awake()
         {
             TryGetComponent(out _myMeshRendered);
-            // _myMaterial = GetComponent<MeshRenderer>().material;
         }
 
         public void Create()
@@ -38,13 +39,13 @@ namespace Gilad
             {
                 if (!lifeTimer.IsActive)
                 {
-                    Logger.Log("Fireball dead", this);
                     lifeTimer.Clear();
                     gameObject.SetActive(false);
                 }
                 else
                 {
-                    var vel = Vector3.Reflect(_rigidbody.velocity, Vector3.up);
+                    var rigidVelocity = _rigidbody.velocity;
+                    var vel = new Vector4(-rigidVelocity.x, Math.Abs(rigidVelocity.y), -rigidVelocity.z);
                     _myMeshRendered.material.SetVector(LerpVec, vel);
                 }
 
@@ -56,10 +57,11 @@ namespace Gilad
             FirePool.Release(this);
         }
 
-        public void Shoot(Vector3 direction)
+        public void Shoot(Vector3 force)
         {
             _rigidbody.isKinematic = false;
-            _rigidbody.AddForce(direction, ForceMode.Impulse);
+            _rigidbody.AddForce(force, ForceMode.Impulse);
+            _myMeshRendered.material.SetVector(RandomSeed, Random.insideUnitCircle);
             lifeTimer.Start();
         }
 
@@ -67,7 +69,7 @@ namespace Gilad
         {
             _rigidbody.isKinematic = true;
             _rigidbody.velocity = Vector3.zero;
+            lifeTimer.Clear();
         }
-
     }
 }
