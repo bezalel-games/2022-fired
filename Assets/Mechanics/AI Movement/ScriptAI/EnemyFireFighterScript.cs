@@ -1,3 +1,4 @@
+using Gilad;
 using UnityEngine;
 
 public class EnemyFireFighterScript : CharacterAI
@@ -15,11 +16,13 @@ public class EnemyFireFighterScript : CharacterAI
     [SerializeField]
     private float timeToExtinguish = 0;
 
+    [SerializeField] private WaterShooter _shooter;
     [SerializeField]
     private float minDistanceFromPlayer = 5.0f;
 
     [SerializeField]
     private float maxDistanceFromPlayer = 15.0f;
+    
 
     private float _timer; // TODO: use the PassiveTimer object!
 
@@ -74,7 +77,11 @@ public class EnemyFireFighterScript : CharacterAI
         }
 
         if (_timer < timeToExtinguish)
+        {
+            _shooter.StopShooting();
             _timer += Time.deltaTime;
+        }
+
 
     }
 
@@ -83,5 +90,6 @@ public class EnemyFireFighterScript : CharacterAI
         _timer = 0;
         percentage -= costToExtinguishFire;
         // here we need to call a function that put the fire of
+        _shooter.StartShooting();
     }
 }
