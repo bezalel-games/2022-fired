@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using BitStrap;
+using Gilad;
 using StarterAssets;
 using UnityEngine;
 
@@ -16,11 +17,13 @@ public class ThrowBall : MonoBehaviour
 
     private Animator _animator;
     private StarterAssetsInputs _input;
+    private Cannon _cannon;
 
     private void Awake()
     {
         _animator = GetComponent<Animator>();
         _input = GetComponent<StarterAssetsInputs>();
+        _cannon = GetComponentInChildren<Cannon>();
     }
 
     private void OnEnable()
@@ -32,13 +35,23 @@ public class ThrowBall : MonoBehaviour
     {
         _input.onFireEvent.RemoveListener(OnThrow);
     }
-
+    
     [Button]
-    private void OnThrow(bool shouldThrow = true)
+    private void OnThrow()
+    {
+        OnThrow(true);
+    }
+
+    private void OnThrow(bool shouldThrow)
     {
         if (shouldThrow)  // TODO: and not already in state!
         {
             throwTrigger.Set(_animator);
         }
+    }
+
+    public void ThrowAnimationTrigger()
+    {
+        _cannon.ShootBall();
     }
 }
