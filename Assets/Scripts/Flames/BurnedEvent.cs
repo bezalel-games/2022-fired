@@ -1,5 +1,6 @@
 using System;
 using Avrahamy.EditorGadgets;
+using BitStrap;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -32,7 +33,8 @@ namespace Flames
                 _myRenderer.material.color = changeToColor;
             }
         }
-
+        
+        [Button]
         public void ObjectBurned()
         {
             onBurned.Invoke();
