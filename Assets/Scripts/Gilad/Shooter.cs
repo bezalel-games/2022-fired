@@ -1,6 +1,7 @@
 using System;
 using Avrahamy;
 using Avrahamy.Math;
+using Avrahamy.Utils;
 using UnityEngine;
 using UnityEngine.Pool;
 using Logger = Nemesh.Logger;
@@ -15,6 +16,9 @@ namespace Gilad
 
         [SerializeField]
         private PassiveTimer lifeTimer = new(2f);
+
+        [SerializeField]
+        private AnimationCurve sizeOverLifer;
 
         public LinkedPool<Shooter> FirePool { get; set; }
 
@@ -47,6 +51,7 @@ namespace Gilad
                     var rigidVelocity = _rigidbody.velocity;
                     var vel = new Vector4(-rigidVelocity.x, Math.Abs(rigidVelocity.y), -rigidVelocity.z);
                     _myMeshRendered.material.SetVector(LerpVec, vel);
+                    transform.SetScale(sizeOverLifer.Evaluate(lifeTimer.Progress));
                 }
 
             }
@@ -63,6 +68,7 @@ namespace Gilad
             _rigidbody.AddForce(force, ForceMode.Impulse);
             _myMeshRendered.material.SetVector(RandomSeed, Random.insideUnitCircle);
             lifeTimer.Start();
+            transform.SetScale(sizeOverLifer.Evaluate(0));
         }
 
         public void ShutDown()
