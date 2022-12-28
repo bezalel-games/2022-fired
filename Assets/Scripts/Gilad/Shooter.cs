@@ -2,6 +2,7 @@ using System;
 using Avrahamy;
 using Avrahamy.Math;
 using Avrahamy.Utils;
+using Flames;
 using UnityEngine;
 using UnityEngine.Pool;
 using Logger = Nemesh.Logger;
@@ -9,6 +10,7 @@ using Random = UnityEngine.Random;
 
 namespace Gilad
 {
+    [RequireComponent(typeof(FlameDirection))]
     public class Shooter : MonoBehaviour
     {
         private static readonly int LerpVec = Shader.PropertyToID("_LerpVector");
@@ -24,10 +26,13 @@ namespace Gilad
 
         private Rigidbody _rigidbody;
         private MeshRenderer _myMeshRendered;
+        private FlameDirection _myFlameDirection;
 
         private void Awake()
         {
             TryGetComponent(out _myMeshRendered);
+            TryGetComponent(out _myFlameDirection);
+            _myFlameDirection.MyMeshRendered = _myMeshRendered;
         }
 
         public void Create()
@@ -48,9 +53,7 @@ namespace Gilad
                 }
                 else
                 {
-                    var rigidVelocity = _rigidbody.velocity;
-                    var vel = new Vector4(-rigidVelocity.x, Math.Abs(rigidVelocity.y), -rigidVelocity.z);
-                    _myMeshRendered.material.SetVector(LerpVec, vel);
+                    _myFlameDirection.MyVelocity = _rigidbody.velocity; 
                     transform.SetScale(sizeOverLifer.Evaluate(lifeTimer.Progress));
                 }
 
