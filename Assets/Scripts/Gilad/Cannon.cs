@@ -2,6 +2,7 @@ using System;
 using Avrahamy.Math;
 using UnityEngine;
 using UnityEngine.Pool;
+using Logger = Nemesh.Logger;
 
 namespace Gilad
 {
@@ -22,15 +23,7 @@ namespace Gilad
         void Start()
         {
             _pool = new LinkedPool<Shooter>(CreateBall, GetBall, ReleaseBall, null, false, 20);
-        }
-
-        //todo need to remove
-        private void Update()
-        {
-            // if (Input.GetKeyDown(KeyCode.Space))
-            // {
-            //     ShootBall();
-            // }
+            Logger.Log(fireBallObGameObject.name,this);
         }
 
         private Shooter CreateBall()
@@ -39,6 +32,7 @@ namespace Gilad
             var fireShooter = ball.GetComponent<Shooter>();
             if (fireShooter == null)
             {
+                // Logger.LogException("no shooter script for object: " + ball.name);
                 throw new Exception("no shooter script for object: " + ball.name);
             }
 
@@ -62,6 +56,7 @@ namespace Gilad
 
         public void ShootBall()
         {
+            Logger.Log(fireBallObGameObject.name, this);
             _pool.Get();
         }
 
