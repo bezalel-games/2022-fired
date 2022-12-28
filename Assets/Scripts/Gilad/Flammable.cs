@@ -67,6 +67,7 @@ namespace Gilad
             _powerLevel += power;
             _powerLevel = _powerLevel <= numOfHits ? _powerLevel : numOfHits;
             _powerLevel = _powerLevel >= 0 ? _powerLevel : 0;
+            SetSizes();
 
         }
 

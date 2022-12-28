@@ -127,7 +127,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c82c201f1a9a18144baaa602e360b3c8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  flammable: {fileID: 0}
+  flammable: {fileID: 5431328360555645753}
   isFire: 1
 --- !u!1 &5217433069857249306
 GameObject:
@@ -141,6 +141,7 @@ GameObject:
   - component: {fileID: 2651221816351171578}
   - component: {fileID: 2039669696251029}
   - component: {fileID: 7476640940745055523}
+  - component: {fileID: 5431328360555645753}
   m_Layer: 0
   m_Name: Flammble
   m_TagString: Untagged
@@ -228,6 +229,24 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &5431328360555645753
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5217433069857249306}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c2d3cd8cd4ee7fd49aa8ac9d6bb829b9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  flames: []
+  numOfHits: 10
+  hitDuration: 1
+  firePower: 1
+  waterPower: 1
+  timePower: 1
 --- !u!1 &5971865934872528315
 GameObject:
   m_ObjectHideFlags: 0
@@ -355,5 +374,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c82c201f1a9a18144baaa602e360b3c8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  flammable: {fileID: 0}
+  flammable: {fileID: 5431328360555645753}
   isFire: 0
