@@ -1,4 +1,5 @@
 using System;
+using Flames;
 using UnityEngine;
 
 namespace Gilad
@@ -13,6 +14,7 @@ namespace Gilad
         private void OnTriggerEnter(Collider other)
         {
             flammable.Detect(isFire);
+
             other.gameObject.SetActive(false);
         }
     }
