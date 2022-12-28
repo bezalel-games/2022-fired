@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using UnityEngine;
 
 namespace Gilad
@@ -23,6 +24,14 @@ namespace Gilad
         //how many hits does time worth
         [SerializeField] private int timePower = 1;
 
+        [SerializeField] private float lifeTime = 10f;
+
+        private float _timeOnFire = 0f;
+
+        private static readonly List<Flammable> allFlammables = new List<Flammable>();
+
+        public static List<Flammable> AllFlammables => allFlammables;
+
         private int _powerLevel = 0;
 
         private Vector3[] _startSizes;
@@ -31,6 +40,7 @@ namespace Gilad
         // Start is called before the first frame update
         void Start()
         {
+            allFlammables.Add(this);
             if (numOfHits <= 0)
             {
                 throw new Exception("num of hits must be larger than 0");
@@ -48,8 +58,21 @@ namespace Gilad
         {
             if (_powerLevel > 0)
             {
+                _timeOnFire += Time.deltaTime;
+                if (_timeOnFire >= lifeTime)
+                {
+                    ShutDown();
+                    return;
+                }
                 CheckTime();
             }
+        }
+
+        private void ShutDown()
+        {
+            // todo add some shut down mechanics
+            GrowFire(-numOfHits);
+            this.enabled = false;
         }
 
         private void CheckTime()
@@ -101,9 +124,14 @@ namespace Gilad
             GrowFire(firePower);
         }
 
-        public bool isOnFire()
+        public bool IsOnFire()
         {
             return _powerLevel > 0;
+        }
+
+        public bool IsDoneBurning()
+        {
+            return enabled = false;
         }
     }
 }
