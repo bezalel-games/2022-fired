@@ -13,7 +13,6 @@ Material:
   m_ValidKeywords:
   - _RECEIVE_SHADOWS_OFF
   - _SPHERICALTYPE_REGULAR
-  - _SPLIT_ALPHA
   - _SURFACE_TYPE_TRANSPARENT
   m_InvalidKeywords: []
   m_LightmapFlags: 4
@@ -111,12 +110,12 @@ Material:
     - _QueueOffset: 0
     - _ReceiveShadows: 0
     - _SPHERICALTYPE: 1
-    - _SPLIT_ALPHA: 1
+    - _SPLIT_ALPHA: 0
     - _Smoothness: 0.5
     - _SmoothnessTextureChannel: 0
     - _SpecularHighlights: 1
     - _SrcBlend: 5
-    - _Step_Edge: -0.8
+    - _Step_Edge: -1
     - _Surface: 1
     - _TIme_Factor: 15
     - _WorkflowMode: 1
