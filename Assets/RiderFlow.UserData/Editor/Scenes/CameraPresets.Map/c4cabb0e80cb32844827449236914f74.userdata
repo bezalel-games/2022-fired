@@ -1,0 +1,15 @@
+{
+  "c456b8fc2753229488b7f6cfc0da1e08": {
+    "sceneGuid": "c4cabb0e80cb32844827449236914f74",
+    "uniqueCameraId": "c456b8fc2753229488b7f6cfc0da1e08",
+    "name": "bus stop",
+    "pointX": 30.6282234,
+    "pointY": -78.0469055,
+    "pointZ": -312.2846,
+    "directionX": -0.00464901747,
+    "directionY": -0.99156034,
+    "directionZ": 0.124395438,
+    "directionW": -0.03564117,
+    "zoom": 163.118134
+  }
+}
