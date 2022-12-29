@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 5466594374725245658}
   - component: {fileID: 7570020131347792010}
   - component: {fileID: 970905166543491889}
+  - component: {fileID: 5076970376998781009}
   m_Layer: 0
   m_Name: garbcontainer_0
   m_TagString: Untagged
@@ -108,6 +109,20 @@ MonoBehaviour:
   myAnimator: {fileID: 0}
   changeMaterialColor: 1
   changeToColor: {r: 0, g: 0, b: 0, a: 0}
+--- !u!64 &5076970376998781009
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7161819223681669777}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 2443873284356057500, guid: 063e25794aff4154ab48f4647dc2659a, type: 3}
 --- !u!1001 &296737965334361219
 PrefabInstance:
   m_ObjectHideFlags: 0
