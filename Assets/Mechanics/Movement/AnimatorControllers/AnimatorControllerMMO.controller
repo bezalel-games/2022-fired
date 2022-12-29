@@ -93,7 +93,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   weightHigh: 1
-  blendTime: 0.45
+  blendTime: 0.3
 --- !u!1101 &-8300376284105721575
 AnimatorStateTransition:
   m_ObjectHideFlags: 1
@@ -3259,7 +3259,7 @@ AnimatorState:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: Throw
-  m_Speed: 2
+  m_Speed: 4
   m_CycleOffset: 0
   m_Transitions:
   - {fileID: -3194293243098951949}

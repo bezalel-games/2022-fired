@@ -9777,7 +9777,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   lifeTimer:
-    duration: 1
+    duration: 3
   sizeOverLifer:
     serializedVersion: 2
     m_Curve:
