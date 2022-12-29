@@ -154,11 +154,13 @@ namespace Gilad
 
         private void WaterDetect()
         {
+            if (!enabled) return;
             GrowFire(-waterPower);
         }
 
         private void FireDetect()
         {
+            if (!enabled) return;
             GrowFire(firePower);
         }
 
@@ -169,7 +171,7 @@ namespace Gilad
 
         public bool IsDoneBurning()
         {
-            return enabled = false;
+            return enabled == false;
         }
 
         public static bool IsAllBurned()
