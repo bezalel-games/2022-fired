@@ -3,32 +3,7 @@ guid: c584ffca598dbbd4e8081d0f0f6b0336
 ModelImporter:
   serializedVersion: 21300
   internalIDToNameTable: []
-  externalObjects:
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: Mat
-    second: {fileID: 2100000, guid: 67dfe50b87efc2f458d7817bef57ac18, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: Mat.3
-    second: {fileID: 2100000, guid: 839c37f2023b48046873263e8057b37a, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: Material_2
-    second: {fileID: 2100000, guid: b1bd1c4009760434a9e785dafbfa05ea, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: pavement
-    second: {fileID: 2100000, guid: 1dd86ad777cbfc74691d958cc3819731, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: window
-    second: {fileID: 2100000, guid: 1f1c44f9af1a6d2469901f65c8289ef1, type: 2}
+  externalObjects: {}
   materials:
     materialImportMode: 2
     materialName: 0

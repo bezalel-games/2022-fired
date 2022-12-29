@@ -106,7 +106,7 @@ namespace Gilad
                 onBurnedEvent.ObjectBurned();
             }
 
-            GrowFire(-numOfHits);
+            // GrowFire(-numOfHits);
             this.enabled = false;
             _numBurned++;
         }

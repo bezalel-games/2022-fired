@@ -30,20 +30,22 @@ namespace Flames
         protected Color changeToColor;
 
         protected Renderer MyRenderer;
+        private bool _hasAnimator;
+        private bool _hasRenderer;
 
         protected virtual void Start()
         {
             onBurned.AddListener(MaterialChange);
-            TryGetComponent(out MyRenderer);
+            _hasRenderer = TryGetComponent(out MyRenderer);
             if (myAnimator == null)
             {
-                activateAnimationBool = TryGetComponent(out myAnimator);
+                _hasAnimator = TryGetComponent(out myAnimator);
             }
         }
 
         private void MaterialChange()
         {
-            if (changeMaterialColor)
+            if (changeMaterialColor && _hasRenderer)
             {
                 foreach (var material in MyRenderer.materials)
                 {
@@ -51,7 +53,7 @@ namespace Flames
                 }
             }
 
-            if (activateAnimationBool)
+            if (activateAnimationBool && _hasAnimator)
             {
                 boolAnimatorParameter.Set(myAnimator, true);
             }
