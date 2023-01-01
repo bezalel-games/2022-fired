@@ -27,30 +27,31 @@ public class CharacterRadius : MonoBehaviour
 
     public Transform FindFire(Transform trans)
     {
-        var listOfFlames = Flammable.AllFlammables;
+        var listOfFlames = Flammable.AllBurning;
         if (listOfFlames.Count == 0)
         {
             return null;
         }
         var max = listOfFlames.First(t => t != null);  // TODO: use some sort of API
-        max = listOfFlames.First(t => t.IsOnFire());  // TODO: use some sort of API
-        
         if (max == null) return null;
         var curMax = Vector3.Distance(max.transform.position, trans.position);
         foreach (var curFire in Flammable.AllFlammables)
         {
             if(!curFire.IsOnFire()) continue;
             var cur = Vector3.Distance(curFire.transform.position, trans.position);
-            if ((((Vector3.Distance(max.transform.position, trans.position)) < curMax) &&
-                 (Vector3.Distance(max.transform.position, trans.position)) < radius))
+            if ((Vector3.Distance(max.transform.position, trans.position)) < curMax)
             {
                   curMax = cur;
                   max = curFire;
             }
           
         }
-        if(!max.IsOnFire()){}
-        return max.transform;
+
+        if (Vector3.Distance(max.transform.position, trans.position) < radius)
+        {
+            return max.transform;}
+
+        return null;
         // if (Fire.Count == 0)
         // {
         //     return null;
