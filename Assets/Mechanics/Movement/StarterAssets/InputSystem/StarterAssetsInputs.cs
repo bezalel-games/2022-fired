@@ -1,6 +1,9 @@
 using System;
 using BitStrap;
+using Nemesh;
+using UnityEditor;
 using UnityEngine;
+using UnityEngine.Events;
 using Logger = Nemesh.Logger;
 #if ENABLE_INPUT_SYSTEM && STARTER_ASSETS_PACKAGES_CHECKED
 using UnityEngine.InputSystem;
@@ -8,185 +11,205 @@ using UnityEngine.InputSystem;
 
 namespace StarterAssets
 {
-	public class StarterAssetsInputs : MonoBehaviour, StarterAssetsActions.IPlayerActions
-	{
-		
-		[Header("Character Input Values")]
-		public Vector2 move;
-		public Vector2 look;
-		public bool jump;
-		public bool sprint;
-		public bool walk;
-		
-		[field: ReadOnly]
-		[field: SerializeField]
-		[field: InspectorName("Using Mouse to Look")]
-		public bool UsingMouseToLook { get; set; }
-		// {
-		// 	get => useMouse;
-		// 	private set => useMouse = value;
-		// }
+    public class StarterAssetsInputs : MonoBehaviour, StarterAssetsActions.IPlayerActions
+    {
+        [Header("Character Input Values")]
+        public Vector2 move;
+        public Vector2 look;
+        public bool jump;
+        public bool sprint;
+        public bool walk;
+        public bool fire;
 
-		[Header("Movement Settings")]
-		public bool analogMovement;
+        [Header("Events")]
+        public UnityEvent<bool> onFireEvent;
+        
+        [field: ReadOnly]
+        [field: SerializeField]
+        [field: InspectorName("Using Mouse to Look")]
+        public bool UsingMouseToLook { get; set; }
+        // {
+        // 	get => useMouse;
+        // 	private set => useMouse = value;
+        // }
 
-		[SerializeField]
-		private bool sprintToggle = true;
-		
-		[SerializeField]
-		private bool walkToggle = true;
+        [Header("Movement Settings")]
+        public bool analogMovement;
 
-		[Header("Mouse Cursor Settings")]
-		public bool cursorLocked = true;
-		public bool cursorInputForLook = true;
-		
-		private StarterAssetsActions _myControls;
+        [SerializeField]
+        private bool sprintToggle = true;
 
-		private void OnEnable()
-		{
-			if (_myControls == null)
-			{
-				_myControls = new StarterAssetsActions();
-				_myControls.Player.SetCallbacks(this);
-			}
-			_myControls.Player.Enable();
-		}
-		
-		private void OnDisable()
-		{
-			_myControls.Player.Disable();
-		}
+        [SerializeField]
+        private bool walkToggle = true;
 
+        [Header("Mouse Cursor Settings")]
+        public bool cursorLocked = true;
+        public bool cursorInputForLook = true;
+        
+        [SerializeField]
+        [VectorRange(0, 1, 0, 1)]
+        private Vector2 mouseSensitivity = new Vector2(0.25f, 0.25f);
+        
+        private StarterAssetsActions _myControls;
 
-#if ENABLE_INPUT_SYSTEM && STARTER_ASSETS_PACKAGES_CHECKED
-		public void OnMove(InputValue value)
-		{
-			MoveInput(value.Get<Vector2>());
-		}
+        private void OnValidate()
+        {
+            ValidateSensitivity();
+        }
 
-		public void OnLook(InputValue value)
-		{
-			if(cursorInputForLook)
-			{
-				LookInput(value.Get<Vector2>());
-			}
-		}
+        private void ValidateSensitivity()
+        {
+            if (_myControls != null)
+            {
+                // TODO: change only for mouse?
+                _myControls.Player.Look.ApplyBindingOverride(
+                    new InputBinding
+                    {
+                        groups = "KeyboardMouse",
+                        overrideProcessors =
+                            $"InvertVector2(invertX=false),ScaleVector2(x={mouseSensitivity.x},y={mouseSensitivity.y})"
+                    }
+                );
+            }
+        }
 
-		public void OnJump(InputValue value)
-		{
-			JumpInput(value.isPressed);
-		}
+        private void OnEnable()
+        {
+            if (_myControls == null)
+            {
+                _myControls = new StarterAssetsActions();
+                _myControls.Player.SetCallbacks(this);
+            }
 
-		public void OnSprint(InputValue value)
-		{
-			SprintInput(value.isPressed);
-		}
-		
-		public void OnWalk(InputValue value)
-		{
-			WalkInput(value.isPressed);
-		}
-		
-		
-		#region Input Callbacks
+            _myControls.Player.Enable();
+            ValidateSensitivity();
+        }
 
-		public void OnMove(InputAction.CallbackContext context)
-		{
-			MoveInput(context.ReadValue<Vector2>());
-		}
+        private void OnDisable()
+        {
+            _myControls.Player.Disable();
+        }
 
-		public void OnLook(InputAction.CallbackContext context)
-		{
-			if(cursorInputForLook)
-			{
-				LookInput(context.ReadValue<Vector2>());
-				UsingMouseToLook = context.control.device == Mouse.current;
-			}
-		}
+        #region Input Callbacks
 
-		public void OnJump(InputAction.CallbackContext context)
-		{
-			switch (context.phase)
-			{
-				case InputActionPhase.Started:
-					JumpInput(true);
-					break;
-				case InputActionPhase.Canceled:
-					JumpInput(false);
-					break;
-				default:
-					return;
-			}
-		}
+        public void OnMove(InputAction.CallbackContext context)
+        {
+            MoveInput(context.ReadValue<Vector2>());
+        }
 
-		public void OnSprint(InputAction.CallbackContext context)
-		{
-			switch(context.phase)
-			{
-				case InputActionPhase.Started:
-					SprintInput(!sprintToggle || !sprint);
-					break;
-				case InputActionPhase.Canceled:
-					SprintInput(sprintToggle && sprint);
-					break;
-				default:
-					return;
-			}
-		}
+        public void OnLook(InputAction.CallbackContext context)
+        {
+            if (cursorInputForLook)
+            {
+                LookInput(context.ReadValue<Vector2>());
+                UsingMouseToLook = context.control.device == Mouse.current;
+            }
+        }
 
-		public void OnWalk(InputAction.CallbackContext context)
-		{
-			switch(context.phase)
-			{
-				case InputActionPhase.Started:
-					WalkInput(!walkToggle || !walk);
-					break;
-				case InputActionPhase.Canceled:
-					WalkInput(walkToggle && walk);
-					break;
-				default:
-					return;
-			}
-		}
+        public void OnJump(InputAction.CallbackContext context)
+        {
+            switch (context.phase)
+            {
+                case InputActionPhase.Started:
+                    JumpInput(true);
+                    break;
+                case InputActionPhase.Canceled:
+                    JumpInput(false);
+                    break;
+                default:
+                    return;
+            }
+        }
 
-		#endregion
-#endif
+        public void OnSprint(InputAction.CallbackContext context)
+        {
+            switch (context.phase)
+            {
+                case InputActionPhase.Started:
+                    SprintInput(!sprintToggle || !sprint);
+                    break;
+                case InputActionPhase.Canceled:
+                    SprintInput(sprintToggle && sprint);
+                    break;
+                default:
+                    return;
+            }
+        }
 
+        public void OnWalk(InputAction.CallbackContext context)
+        {
+            switch (context.phase)
+            {
+                case InputActionPhase.Started:
+                    WalkInput(!walkToggle || !walk);
+                    break;
+                case InputActionPhase.Canceled:
+                    WalkInput(walkToggle && walk);
+                    break;
+                default:
+                    return;
+            }
+        }
 
-		public void MoveInput(Vector2 newMoveDirection)
-		{
-			move = newMoveDirection;
-		} 
+        public void OnFire(InputAction.CallbackContext context)
+        {
+            if (context.started)
+            {
+                FireInput(true);
+            }
+            else if (context.canceled)
+            {
+                FireInput(false);
+            }
+        }
+        
 
-		public void LookInput(Vector2 newLookDirection)
-		{
-			look = newLookDirection;
-		}
+        #endregion
 
-		public void JumpInput(bool newJumpState)
-		{
-			jump = newJumpState;
-		}
+        public void MoveInput(Vector2 newMoveDirection)
+        {
+            if (!cursorInputForLook)
+            {
+                look = newMoveDirection;
+                UsingMouseToLook = true;
+            }
+            move = newMoveDirection;
+        }
 
-		public void SprintInput(bool newSprintState)
-		{
-			sprint = newSprintState;
-		}
-		
-		public void WalkInput(bool newWalkState)
-		{
-			walk = newWalkState;
-		}
+        public void LookInput(Vector2 newLookDirection)
+        {
+            look = newLookDirection;
+        }
 
-		private void OnApplicationFocus(bool hasFocus)
-		{
-			SetCursorState(cursorLocked);
-		}
+        public void JumpInput(bool newJumpState)
+        {
+            jump = newJumpState;
+        }
 
-		private void SetCursorState(bool newState)
-		{
-			Cursor.lockState = newState ? CursorLockMode.Locked : CursorLockMode.None;
-		}
-	}
-	
+        public void SprintInput(bool newSprintState)
+        {
+            sprint = newSprintState;
+        }
+
+        public void WalkInput(bool newWalkState)
+        {
+            walk = newWalkState;
+        }
+
+        private void OnApplicationFocus(bool hasFocus)
+        {
+            SetCursorState(cursorLocked);
+        }
+
+        private void SetCursorState(bool newState)
+        {
+            Cursor.lockState = newState ? CursorLockMode.Locked : CursorLockMode.None;
+        }
+        
+        private void FireInput(bool newState)
+        {
+            fire = newState;
+            onFireEvent.Invoke(newState);
+        }
+    }
 }

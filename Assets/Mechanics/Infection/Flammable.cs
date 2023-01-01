@@ -13,6 +13,8 @@ namespace Mechanics.Infection
 
         private bool _fireOn = false;
 
+        private GameObject _fire;
+
         public bool FireOn
         {
             get => _fireOn;
@@ -26,7 +28,11 @@ namespace Mechanics.Infection
             }
         }
 
-        private GameObject _fire;
+        private void Start()
+        {
+            fireTotalTime = 200f;
+        }
+
         private void OnTriggerEnter(Collider other)
         {
             if (_fireOn) return;
