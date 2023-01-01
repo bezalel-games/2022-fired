@@ -1,3 +1,4 @@
+using Avrahamy;
 using Gilad;
 using UnityEngine;
 
@@ -23,6 +24,7 @@ public class EnemyFireFighterScript : CharacterAI
     [SerializeField]
     private float maxDistanceFromPlayer = 15.0f;
     private float angleMax = 30;
+    [SerializeField]private PassiveTimer timeToGo;
     
 
     private float _timer; // TODO: use the PassiveTimer object!
@@ -32,7 +34,7 @@ public class EnemyFireFighterScript : CharacterAI
     {
         base.Start();
         Goal = player;
-        Agent.destination = RandomNavmeshLocation();
+        Agent.destination = player.transform.position;
         percentage = initPerceantege;
     }
 
@@ -46,6 +48,7 @@ public class EnemyFireFighterScript : CharacterAI
     //the function from which the character moves
     protected override void MoveCharacter()
     {
+        
         // Goal = Distance(player, transform) < minDistanceFromPlayer ||
         //        Distance(player, transform) > maxDistanceFromPlayer
         //     ? player
@@ -60,14 +63,28 @@ public class EnemyFireFighterScript : CharacterAI
             }
             else
             {
-                _shooter.StopShooting();
-                RunAway(Goal);
+                if (timeToGo.IsSet)
+                {
+                    if (timeToGo.IsActive)
+                    {
+                    }
+                    else
+                    {
+                        timeToGo.Clear();
+                        _shooter.StopShooting();
+                        RunAway(Goal);
+                    }
+                }
+                else
+                {
+                    timeToGo.Start();
+                }
             }
         }
         else if (Agent.remainingDistance < stoppingDistance)
         {
             _shooter.StopShooting();
-            Agent.destination = RandomNavmeshLocation(); ;
+            Agent.destination = RandomNavmeshLocation(); 
         }
     }
 
@@ -80,7 +97,7 @@ public class EnemyFireFighterScript : CharacterAI
         else
         {
             Seek(Goal);
-            _shooter.StopShooting();
+            // _shooter.StopShooting();
         }
 
         if (_timer < timeToExtinguish)

@@ -1,4 +1,5 @@
 using UnityEngine;
+using Avrahamy;
 
 
 public class Civilian : CharacterAI
@@ -11,6 +12,7 @@ public class Civilian : CharacterAI
 
     [SerializeField]
     private float angleMax = 45;
+    [SerializeField]private PassiveTimer timeToGo;
 
     // Start is called before the first frame update
     protected override void Start()
@@ -31,23 +33,50 @@ public class Civilian : CharacterAI
     //the function from which the character moves
     protected override void MoveCharacter()
     {
-        var goal = radiusWithCol.FindFire(transform);  // TODO: use the API instead!
-        if (goal != null)
+        if (timeToGo.IsSet)
         {
-            RunAway(Goal);
+            if (timeToGo.IsActive)
+            {
+            }
+            else
+            {
+                Goal = radiusWithCol.FindFire(transform);
+                if (Goal != null )
+                {
+                    timeToGo.Clear();
+                    RunAway(Goal);
+                }
+                else if (Agent.remainingDistance < stoppingDistance)
+                {
+                    Agent.destination = RandomNavmeshLocation();
+                    timeToGo.Clear();
+                }
+                
+            }
         }
-        else if (Distance(transform, Goal) < minDistanceFromPlayer)
+        else
         {
-            RunAway(player);
+            timeToGo.Start();
         }
-        else if (Agent.remainingDistance < stoppingDistance)
-        {
-            Agent.destination = RandomNavmeshLocation();
-        }
-        else if (Distance(transform, Goal) > maxDistanceFromPlayer)
-        {
-            Seek(player);
-        }
+        // Goal = radiusWithCol.FindFire(transform);  // TODO: use the API instead!
+        // if (Goal != null && Distance(transform, Goal) < minDistanceFromPlayer)
+        // {
+        //     timeToGo.Clear();
+        //     RunAway(Goal);
+        // }
+        // // else if (Distance(transform, player) < minDistanceFromPlayer)
+        // // {
+        // //     RunAway(player);
+        // // }
+        // else if (Agent.remainingDistance < stoppingDistance)
+        // {
+        //     Agent.destination = RandomNavmeshLocation();
+        // }
+        // else if (Distance(transform, player) > maxDistanceFromPlayer)
+        // {
+        //     Agent.destination = RandomNavmeshLocation();
+        //     // Seek(player);
+        // }
 
     }
 

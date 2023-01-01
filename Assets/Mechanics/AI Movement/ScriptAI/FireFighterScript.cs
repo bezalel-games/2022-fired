@@ -1,3 +1,4 @@
+using Avrahamy;
 using Gilad;
 using UnityEngine;
 
@@ -22,6 +23,7 @@ public class FireFighterScript : CharacterAI
     [SerializeField] private WaterShooter shooter;
     private float _timer;  // TODO: switch to PassiveTimer!
     private bool fireShoot;
+    [SerializeField]private PassiveTimer timeToGo;
 
 
     // Start is called before the first frame update
@@ -53,8 +55,22 @@ public class FireFighterScript : CharacterAI
             }
             else
             {
-                RunAway(Goal);
-                shooter.StopShooting();
+                if (timeToGo.IsSet)
+                {
+                    if (timeToGo.IsActive)
+                    {
+                    }
+                    else
+                    {
+                        timeToGo.Clear();
+                        shooter.StopShooting();
+                        RunAway(Goal);
+                    }
+                }
+                else
+                {
+                    timeToGo.Start();
+                }
             }
         }
         else if (Agent.remainingDistance < stoppingDistance)
