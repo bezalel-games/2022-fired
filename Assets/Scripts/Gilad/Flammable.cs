@@ -13,6 +13,8 @@ namespace Gilad
 
         private static readonly List<Flammable> allFlammables = new List<Flammable>();
 
+        public static HashSet<Flammable> AllBurning = new HashSet<Flammable>();
+
         private static int _numBurned = 0;
 
         //flames to light
@@ -42,6 +44,8 @@ namespace Gilad
         [SerializeField]
         [Tooltip("After this time the object is considered burned")]
         private float lifeTime = 20f;
+
+        private bool _startedBurning = false;
 
         [SerializeField]
         private BurnedEvent onBurnedEvent;
@@ -107,8 +111,9 @@ namespace Gilad
             }
 
             // GrowFire(-numOfHits);
-            this.enabled = false;
+            enabled = false;
             _numBurned++;
+            AllBurning.Remove(this);
         }
 
         private void CheckTime()
@@ -132,7 +137,14 @@ namespace Gilad
         private void SetSizes()
         {
             var putOut = _powerLevel == 0;
-
+            if (putOut)
+            {
+                AllBurning.Remove(this);
+            }
+            else if (enabled)
+            {
+                AllBurning.Add(this);
+            }
             for (int i = 0; i < flames.Length; i++)
             {
                 flames[i].SetActive(!putOut);
@@ -161,7 +173,17 @@ namespace Gilad
         private void FireDetect()
         {
             if (!enabled) return;
+            if (!_startedBurning)
+            {
+                StartBurning();
+            }
             GrowFire(firePower);
+        }
+
+        private void StartBurning()
+        {
+            _startedBurning = true;
+            // todo add started method
         }
 
         public bool IsOnFire()
@@ -174,9 +196,13 @@ namespace Gilad
             return enabled == false;
         }
 
-        public static bool IsAllBurned()
+        public static float BurningRatio()
         {
-            return _numBurned == allFlammables.Count;
+            if (allFlammables.Count == 0)
+            {
+                return 0;
+            }
+            return (float)_numBurned / allFlammables.Count;
         }
     }
 }
