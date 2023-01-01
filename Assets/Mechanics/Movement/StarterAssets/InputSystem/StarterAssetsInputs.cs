@@ -23,7 +23,7 @@ namespace StarterAssets
 
         [Header("Events")]
         public UnityEvent<bool> onFireEvent;
-        
+
         [field: ReadOnly]
         [field: SerializeField]
         [field: InspectorName("Using Mouse to Look")]
@@ -42,14 +42,27 @@ namespace StarterAssets
         [SerializeField]
         private bool walkToggle = true;
 
+        [SerializeField]
+        private bool walkAlways;
+        
+        [HideInInspector]
+        [SerializeField]
+        [Range(0, 1)]
+        private float alwaysWalkFactor = 0.5f;
+
         [Header("Mouse Cursor Settings")]
         public bool cursorLocked = true;
         public bool cursorInputForLook = true;
-        
+
         [SerializeField]
         [VectorRange(0, 1, 0, 1)]
         private Vector2 mouseSensitivity = new Vector2(0.25f, 0.25f);
-        
+
+        [Space]
+        [Header("Fire Input Settings")]
+        [SerializeField]
+        private bool continuousFire;
+
         private StarterAssetsActions _myControls;
 
         private void OnValidate()
@@ -153,7 +166,7 @@ namespace StarterAssets
 
         public void OnFire(InputAction.CallbackContext context)
         {
-            if (context.started)
+            if (context.started || (context.performed && continuousFire))
             {
                 FireInput(true);
             }
@@ -162,18 +175,26 @@ namespace StarterAssets
                 FireInput(false);
             }
         }
-        
 
         #endregion
 
         public void MoveInput(Vector2 newMoveDirection)
         {
+            alwaysWalkFactor = 0.5f;
             if (!cursorInputForLook)
             {
-                look = newMoveDirection;
+                look = new Vector2(newMoveDirection.x, 0);
                 UsingMouseToLook = true;
+                move = walkAlways
+                    ? new Vector2(0f, Mathf.Max(alwaysWalkFactor, newMoveDirection.y))
+                    : new Vector2(0f, newMoveDirection.y);
             }
-            move = newMoveDirection;
+            else
+            {
+                move = walkAlways
+                    ? new Vector2(newMoveDirection.x, Mathf.Max(alwaysWalkFactor, newMoveDirection.y))
+                    : newMoveDirection;
+            }
         }
 
         public void LookInput(Vector2 newLookDirection)
@@ -205,7 +226,7 @@ namespace StarterAssets
         {
             Cursor.lockState = newState ? CursorLockMode.Locked : CursorLockMode.None;
         }
-        
+
         private void FireInput(bool newState)
         {
             fire = newState;
