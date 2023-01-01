@@ -5,15 +5,22 @@ using BitStrap;
 using Gilad;
 using StarterAssets;
 using UnityEngine;
+using Logger = Nemesh.Logger;
 
 public class ThrowBall : MonoBehaviour
 {
+    [HideInInspector]
     [SerializeField]
     private TriggerAnimationParameter throwTrigger;
 
-    [InspectorName("Throw Boolean - NOT USED RIGHT NOW")]
     [SerializeField]
     private BoolAnimationParameter throwBoolean;
+
+    [SerializeField]
+    private FloatAnimationParameter throwSpeed;
+    
+    [SerializeField]
+    private float throwAnimationSpeed = 3f;
 
     private Animator _animator;
     private StarterAssetsInputs _input;
@@ -44,14 +51,17 @@ public class ThrowBall : MonoBehaviour
 
     private void OnThrow(bool shouldThrow)
     {
-        if (shouldThrow)  // TODO: and not already in state!
-        {
-            throwTrigger.Set(_animator);
-        }
+        // if (shouldThrow)  // TODO: and not already in state!
+        // {
+        //     throwTrigger.Set(_animator);
+        // }
+        throwBoolean.Set(_animator, shouldThrow);
+        throwSpeed.Set(_animator, throwAnimationSpeed);
     }
 
     public void ThrowAnimationTrigger()
     {
+        Logger.Log("Shooting");
         _cannon.ShootBall();
     }
 }
