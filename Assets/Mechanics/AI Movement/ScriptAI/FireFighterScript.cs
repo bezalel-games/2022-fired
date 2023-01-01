@@ -32,7 +32,7 @@ public class FireFighterScript : CharacterAI
         fireShoot = false;
         base.Start();
         Goal = null;
-        Agent.destination = RandomNavmeshLocation();
+        Agent.SetDestination(RandomNavmeshLocation());
         percentage = initPerceantege;
     }
 
@@ -81,14 +81,19 @@ public class FireFighterScript : CharacterAI
 
     private void HandleFire()
     {
-        if (Agent.remainingDistance < stoppingDistance && _timer >= timeToExtinguish&& IsFacing())
+        if (Agent.remainingDistance < stoppingDistance && _timer >= timeToExtinguish)
         {
-            ExtinguishFire();
+            if( IsFacing())
+                ExtinguishFire();
+            else
+            {
+                transform.rotation = Quaternion.LookRotation(Goal.position);
+            }
         }
         else
         {
             Seek(Goal);
-            shooter.StopShooting();
+            // shooter.StopShooting();
         }
 
         if (_timer < timeToExtinguish)

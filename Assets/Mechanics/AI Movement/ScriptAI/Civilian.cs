@@ -19,7 +19,7 @@ public class Civilian : CharacterAI
     {
         base.Start();
         Goal = player;
-        Agent.destination = RandomNavmeshLocation();
+        Agent.SetDestination(RandomNavmeshLocation());
     }
 
 
@@ -27,6 +27,7 @@ public class Civilian : CharacterAI
     protected override void Update()
     {
         base.Update();
+        
         MoveCharacter();
     }
 
@@ -37,21 +38,24 @@ public class Civilian : CharacterAI
         {
             if (timeToGo.IsActive)
             {
+                if (Agent.remainingDistance < stoppingDistance)
+                {
+                    Agent.SetDestination(RandomNavmeshLocation());
+                }
             }
             else
             {
-                Goal = radiusWithCol.FindFire(transform);
+                Goal = FindFire(transform);
                 if (Goal != null )
                 {
-                    timeToGo.Clear();
                     RunAway(Goal);
-                }
-                else if (Agent.remainingDistance < stoppingDistance)
-                {
-                    Agent.destination = RandomNavmeshLocation();
                     timeToGo.Clear();
                 }
-                
+                else
+                {
+                    Agent.SetDestination(RandomNavmeshLocation());
+                    timeToGo.Clear();
+                }
             }
         }
         else
