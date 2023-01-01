@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.18028346, g: 0.22571373, b: 0.30692244, a: 1}
+  m_IndirectSpecularColor: {r: 0.18028334, g: 0.22571328, b: 0.3069217, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -883,6 +883,11 @@ PrefabInstance:
       propertyPath: m_LocalPosition.y
       value: -0.18
       objectReference: {fileID: 0}
+    - target: {fileID: -2940732024825049584, guid: f310a35485d09274fabbe48a47649175,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: f310a35485d09274fabbe48a47649175,
         type: 3}
       propertyPath: m_Name
@@ -1435,7 +1440,7 @@ PrefabInstance:
     - target: {fileID: 516193418161192212, guid: 0c7978cec9f758941ade0470358447eb,
         type: 3}
       propertyPath: force
-      value: 18
+      value: 40
       objectReference: {fileID: 0}
     - target: {fileID: 1814872646991034317, guid: 0c7978cec9f758941ade0470358447eb,
         type: 3}
@@ -1446,17 +1451,17 @@ PrefabInstance:
     - target: {fileID: 3366170875885279896, guid: 0c7978cec9f758941ade0470358447eb,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0.05
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3366170875885279896, guid: 0c7978cec9f758941ade0470358447eb,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.05
+      value: 0.2
       objectReference: {fileID: 0}
     - target: {fileID: 3366170875885279896, guid: 0c7978cec9f758941ade0470358447eb,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0.4
+      value: 0.58
       objectReference: {fileID: 0}
     - target: {fileID: 4786356717605997851, guid: 0c7978cec9f758941ade0470358447eb,
         type: 3}
@@ -1521,7 +1526,7 @@ PrefabInstance:
     - target: {fileID: 5310987532897729735, guid: 0c7978cec9f758941ade0470358447eb,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0.25
+      value: 0.02
       objectReference: {fileID: 0}
     - target: {fileID: 6902825007405054712, guid: 0c7978cec9f758941ade0470358447eb,
         type: 3}
@@ -1529,6 +1534,46 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 3443629218296621865, guid: 0000000000000000d000000000000000,
         type: 0}
+    - target: {fileID: 6914037532096622083, guid: 0c7978cec9f758941ade0470358447eb,
+        type: 3}
+      propertyPath: gravity
+      value: -50
+      objectReference: {fileID: 0}
+    - target: {fileID: 6914037532096622083, guid: 0c7978cec9f758941ade0470358447eb,
+        type: 3}
+      propertyPath: topClamp
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 6914037532096622083, guid: 0c7978cec9f758941ade0470358447eb,
+        type: 3}
+      propertyPath: moveSpeed
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 6914037532096622083, guid: 0c7978cec9f758941ade0470358447eb,
+        type: 3}
+      propertyPath: walkSpeed
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 6914037532096622083, guid: 0c7978cec9f758941ade0470358447eb,
+        type: 3}
+      propertyPath: bottomClamp
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 6914037532096622083, guid: 0c7978cec9f758941ade0470358447eb,
+        type: 3}
+      propertyPath: sprintSpeed
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 6914037532096622109, guid: 0c7978cec9f758941ade0470358447eb,
+        type: 3}
+      propertyPath: mouseSensitivity.x
+      value: 0.13
+      objectReference: {fileID: 0}
+    - target: {fileID: 6914037532096622109, guid: 0c7978cec9f758941ade0470358447eb,
+        type: 3}
+      propertyPath: mouseSensitivity.y
+      value: 0.13
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0c7978cec9f758941ade0470358447eb, type: 3}
 --- !u!4 &673920045 stripped
@@ -5794,7 +5839,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7144321420229163274}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 0f0a34bad4954ba79e211137e61cd6ae, type: 3}
   m_Name: 

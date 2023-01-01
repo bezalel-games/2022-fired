@@ -24,7 +24,7 @@ namespace Flames
                 return;
             }
             Instance = this;
-            Pool = new LinkedPool<ShotEndsEvent>(CreateEvent, BorrowEvent, ReleaseEvent, null, false, 20);
+            Pool = new LinkedPool<ShotEndsEvent>(CreateEvent, BorrowEvent, ReleaseEvent, null, false, 40);
         }
 
         private void ReleaseEvent(ShotEndsEvent obj)
