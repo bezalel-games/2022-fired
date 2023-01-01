@@ -5,7 +5,9 @@ public class Civilian : CharacterAI
 {
     // min distance from player, if farther then  civilian go back. 
     [SerializeField]
-    private float maxDistanceFromPlayer = 10.0f;
+    private float maxDistanceFromPlayer = 20.0f;
+    [SerializeField]
+    private float minDistanceFromPlayer = 5.0f;
 
     [SerializeField]
     private float angleMax = 45;
@@ -33,6 +35,10 @@ public class Civilian : CharacterAI
         if (goal != null)
         {
             RunAway(Goal);
+        }
+        else if (Distance(transform, Goal) < minDistanceFromPlayer)
+        {
+            RunAway(player);
         }
         else if (Agent.remainingDistance < stoppingDistance)
         {
