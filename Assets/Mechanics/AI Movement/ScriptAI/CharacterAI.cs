@@ -28,6 +28,10 @@ public abstract class CharacterAI : MonoBehaviour
     // radius that gives us the fire object (more about that in CharacterRadius)
     [SerializeField]
     protected CharacterRadius radiusWithCol;
+    
+    protected MovementAnimationControl _myAnimationController;
+    private bool _hasAnimator;
+
 
     //the function from which we decide how the character would move
     protected abstract void MoveCharacter();
@@ -35,6 +39,7 @@ public abstract class CharacterAI : MonoBehaviour
     // Start is called before the first frame update
     protected virtual void Start()
     {
+        _hasAnimator = TryGetComponent(out _myAnimationController);
         TryGetComponent(out Agent);
         Agent.autoBraking = autoBreaking;
     }
@@ -42,6 +47,11 @@ public abstract class CharacterAI : MonoBehaviour
     // Update is called once per frame
     protected virtual void Update()
     {
+        if (_hasAnimator)
+        {
+            _myAnimationController.TargetDirection = Agent.velocity;
+            _myAnimationController.Speed = Agent.velocity.magnitude;
+        }
 
     }
 

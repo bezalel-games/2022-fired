@@ -22,6 +22,7 @@ public class EnemyFireFighterScript : CharacterAI
 
     [SerializeField]
     private float maxDistanceFromPlayer = 15.0f;
+    private float angleMax = 30;
     
 
     private float _timer; // TODO: use the PassiveTimer object!
@@ -66,13 +67,13 @@ public class EnemyFireFighterScript : CharacterAI
         else if (Agent.remainingDistance < stoppingDistance)
         {
             _shooter.StopShooting();
-            Agent.destination = RandomNavmeshLocation();
+            Agent.destination = RandomNavmeshLocation(); ;
         }
     }
 
     private void HandleFire()
     {
-        if (Agent.remainingDistance < stoppingDistance && _timer >= timeToExtinguish)
+        if (Agent.remainingDistance < stoppingDistance && _timer >= timeToExtinguish&& IsFacing())
         {
             ExtinguishFire();
         }
@@ -96,5 +97,12 @@ public class EnemyFireFighterScript : CharacterAI
         percentage -= costToExtinguishFire;
         // here we need to call a function that put the fire of
         _shooter.StartShooting();
+    }
+    
+    private bool IsFacing()
+    {
+        float angleToPlayer = Vector3.Angle(Goal.transform.forward, (transform.position - Goal.transform.position));
+        // Debug.Log(angleToPlayer);
+        return angleToPlayer < angleMax;
     }
 }

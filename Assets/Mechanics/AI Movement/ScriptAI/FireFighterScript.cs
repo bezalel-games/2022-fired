@@ -15,15 +15,19 @@ public class FireFighterScript : CharacterAI
 
     [SerializeField]
     private float timeToExtinguish = 0;
+    [SerializeField]
+    private float angleMax = 30;
 
 
     [SerializeField] private WaterShooter shooter;
     private float _timer;  // TODO: switch to PassiveTimer!
+    private bool fireShoot;
 
 
     // Start is called before the first frame update
     protected override void Start()
     {
+        fireShoot = false;
         base.Start();
         Goal = null;
         Agent.destination = RandomNavmeshLocation();
@@ -61,7 +65,7 @@ public class FireFighterScript : CharacterAI
 
     private void HandleFire()
     {
-        if (Agent.remainingDistance < stoppingDistance && _timer >= timeToExtinguish)
+        if (Agent.remainingDistance < stoppingDistance && _timer >= timeToExtinguish&& IsFacing())
         {
             ExtinguishFire();
         }
@@ -84,5 +88,12 @@ public class FireFighterScript : CharacterAI
         percentage -= costToExtinguishFire;
         shooter.StartShooting();
         // here we need to call a function that put the fire of
+    }
+    
+    private bool IsFacing()
+    {
+        float angleToPlayer = Vector3.Angle(Goal.transform.forward, (transform.position - Goal.transform.position));
+        // Debug.Log(angleToPlayer);
+        return angleToPlayer < angleMax;
     }
 }
