@@ -47,11 +47,12 @@ public class CharacterRadius : MonoBehaviour
           
         }
 
-        if (Vector3.Distance(max.transform.position, trans.position) < radius)
-        {
-            return max.transform;}
-
-        return null;
+        return max.gameObject.transform;
+        // if (Vector3.Distance(max.transform.position, trans.position) < radius)
+        // {
+        //     return max.transform;}
+        //
+        // return null;
         // if (Fire.Count == 0)
         // {
         //     return null;

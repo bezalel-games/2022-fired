@@ -1,5 +1,8 @@
+// using BitStrap;
 using UnityEngine;
 using UnityEngine.AI;
+using Gilad;
+using System.Linq;
 
 public abstract class CharacterAI : MonoBehaviour
 {
@@ -77,14 +80,14 @@ public abstract class CharacterAI : MonoBehaviour
         Vector3 dirToFire = position - runFrom.position;
         transform.rotation = Quaternion.LookRotation(dirToFire);
         Vector3 newPos = position + dirToFire;
-        Agent.destination = newPos;
+        Agent.SetDestination(newPos);
     }
 
     protected void Seek(Transform other)
     {
         var position = other.position;
         transform.rotation = Quaternion.LookRotation(position);
-        Agent.destination = position;
+        Agent.SetDestination(position);
     }
 
     //calculate distance between two transforms
@@ -96,6 +99,31 @@ public abstract class CharacterAI : MonoBehaviour
         fixedMe.y = 0;
         float distance = Vector3.Distance(fixedMe, fixedPlayer);
         return distance;
+    }
+
+    protected Transform FindFire(Transform trans)
+    {
+        var listOfFlames = Flammable.AllBurning;
+        if (listOfFlames.Count == 0)
+        {
+            return null;
+        }
+
+        var max = listOfFlames.First(t => t != null); // TODO: use some sort of API
+        if (max == null) return null;
+        var curMax = Distance(max.transform, trans);
+        foreach (var curFire in Flammable.AllFlammables)
+        {
+            var cur = Distance(curFire.transform, trans);
+            if ((Distance(max.transform, trans)) < curMax)
+            {
+                curMax = cur;
+                max = curFire;
+            }
+
+        }
+
+        return max.gameObject.transform;
     }
 
 
