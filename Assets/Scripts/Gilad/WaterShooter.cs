@@ -4,9 +4,11 @@ namespace Gilad
 {
     public class WaterShooter : MonoBehaviour
     {
-        [SerializeField] private Cannon cannon;
+        [SerializeField]
+        private Cannon cannon;
 
-        [SerializeField] private float shootDuration = 0.2f;
+        [SerializeField]
+        private float shootDuration = 0.2f;
 
         private float _timePassed = 0f;
 
