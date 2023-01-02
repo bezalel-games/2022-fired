@@ -78,7 +78,7 @@ public abstract class CharacterAI : MonoBehaviour
     {
         var position = transform.position;
         Vector3 dirToFire = position - runFrom.position;
-        transform.rotation = Quaternion.LookRotation(dirToFire);
+        // transform.rotation = Quaternion.LookRotation(dirToFire);
         Vector3 newPos = position + dirToFire;
         Agent.SetDestination(newPos);
     }
@@ -86,7 +86,7 @@ public abstract class CharacterAI : MonoBehaviour
     protected void Seek(Transform other)
     {
         var position = other.position;
-        transform.rotation = Quaternion.LookRotation(position);
+        // transform.rotation = Quaternion.LookRotation(position);
         Agent.SetDestination(position);
     }
 

@@ -27,6 +27,7 @@ public class Civilian : CharacterAI
     protected override void Update()
     {
         base.Update();
+        
         MoveCharacter();
     }
 
@@ -44,7 +45,7 @@ public class Civilian : CharacterAI
             }
             else
             {
-                Goal = radiusWithCol.FindFire(transform);
+                Goal = FindFire(transform);
                 if (Goal != null )
                 {
                     RunAway(Goal);
@@ -52,14 +53,13 @@ public class Civilian : CharacterAI
                 }
                 else
                 {
+                    Agent.SetDestination(RandomNavmeshLocation());
                     timeToGo.Clear();
                 }
-
             }
         }
         else
         {
-            Agent.SetDestination(RandomNavmeshLocation());
             timeToGo.Start();
         }
         // Goal = radiusWithCol.FindFire(transform);  // TODO: use the API instead!

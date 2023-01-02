@@ -955,27 +955,27 @@ PrefabInstance:
     - target: {fileID: -8679921383154817045, guid: f310a35485d09274fabbe48a47649175,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: -34.82
+      value: -37.96
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: f310a35485d09274fabbe48a47649175,
         type: 3}
       propertyPath: m_LocalRotation.w
-      value: 1
+      value: 0.7071068
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: f310a35485d09274fabbe48a47649175,
         type: 3}
       propertyPath: m_LocalRotation.x
-      value: -0
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: f310a35485d09274fabbe48a47649175,
         type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0
+      value: 0.7071068
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: f310a35485d09274fabbe48a47649175,
         type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: f310a35485d09274fabbe48a47649175,
         type: 3}
@@ -2171,7 +2171,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 673920046}
-  stoppingDistance: 0.5
+  stoppingDistance: 1
   radius: 2
   autoBreaking: 0
   radiusWithCol: {fileID: 1265421189}
@@ -2179,7 +2179,7 @@ MonoBehaviour:
   minDistanceFromPlayer: 5
   angleMax: 45
   timeToGo:
-    duration: 1
+    duration: 0.1
 --- !u!195 &817806583
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -4727,11 +4727,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 673920046}
-  stoppingDistance: 1
+  stoppingDistance: 2
   radius: 2
   autoBreaking: 0
   radiusWithCol: {fileID: 1066353315}
-  initPerceantege: 57
+  initPerceantege: 46.7
   costToExtinguishFire: 0
   timeToExtinguish: 0
   _shooter: {fileID: 1664581186}
@@ -4740,9 +4740,9 @@ MonoBehaviour:
   timeToGo:
     duration: 0.1
   whenStopShoot:
-    duration: 1
+    duration: 2
   _timer:
-    duration: 1
+    duration: 0.5
 --- !u!136 &1663577629
 CapsuleCollider:
   m_ObjectHideFlags: 0

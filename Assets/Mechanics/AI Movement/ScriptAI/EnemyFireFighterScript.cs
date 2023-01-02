@@ -64,6 +64,7 @@ public class EnemyFireFighterScript : CharacterAI
             }
             else
             {
+                _shooter.StopShooting();
                 if (timeToGo.IsSet)
                 {
                     if (timeToGo.IsActive)
@@ -77,7 +78,6 @@ public class EnemyFireFighterScript : CharacterAI
                 }
                 else
                 {
-                    _shooter.StopShooting();
                     timeToGo.Start();
                 }
             }
@@ -93,7 +93,7 @@ public class EnemyFireFighterScript : CharacterAI
     private void HandleFire()
     {
         
-        if (Agent.remainingDistance < stoppingDistance && whenStopShoot.IsSet && _timer.IsActive)
+        if (Agent.remainingDistance < stoppingDistance && (!_timer.IsSet || !_timer.IsActive))
         {
             if(IsFacing())
                 ExtinguishFire();
@@ -139,6 +139,7 @@ public class EnemyFireFighterScript : CharacterAI
             whenStopShoot.Start();
             _shooter.StartShooting();
         }
+        
 
         
         
