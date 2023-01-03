@@ -1,13 +1,15 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+using Gilad;
+using Logger = Nemesh.Logger;
 using Avrahamy;
 using BitStrap;
-using Gilad;
-using UnityEngine;
-using Logger = Nemesh.Logger;
 
-public class EnemyFireFighterScript : CharacterAI
+public class flyingEnemy : CharacterAI
 {
     [Space(2)]
-    [Header("FireFighter")]
+    [Header("Flying Enemy")]
     [SerializeField]
     [Range(0, 100)]
     private float initPerceantege;
@@ -48,8 +50,14 @@ public class EnemyFireFighterScript : CharacterAI
     {
         base.Start();
         Goal = player;
-        Agent.SetDestination(RandomNavmeshLocation());
+        var goal = ToXZ(RandomNavmeshLocation());
+        Agent.SetDestination(goal);
         percentage = initPerceantege;
+    }
+
+    protected Vector3 ToXZ(Vector3 vector)
+    {
+        return new Vector3(vector.x, transform.position.y, vector.y);
     }
 
     // Update is called once per frame
@@ -109,7 +117,7 @@ public class EnemyFireFighterScript : CharacterAI
         else if (Agent.remainingDistance < stoppingDistance)
         {
             _shooter.StopShooting();
-            var t = Agent.SetDestination(RandomNavmeshLocation());
+            var t = Agent.SetDestination(ToXZ(RandomNavmeshLocation()));
             Logger.Log($"{Agent.destination} : {t}", this);
 
         }
@@ -121,20 +129,18 @@ public class EnemyFireFighterScript : CharacterAI
         
         if (Agent.remainingDistance < stoppingDistance + 1f)
         {
-            transform.LookAt(Goal.position);  // TODO: use slerp/lerp to rotate gradually
-            Agent.updateRotation = false;
-
-            if (IsFacing())
+            // transform.LookAt(Goal.position);  // TODO: use slerp/lerp to rotate gradually
+            // Agent.updateRotation = false;
+            
+            if (timeBetweenShots.IsSet && timeBetweenShots.IsActive || !timeBetweenShots.IsSet) // TODO patch
             {
-                if (timeBetweenShots.IsSet && timeBetweenShots.IsActive || !timeBetweenShots.IsSet)  // TODO patch
-                {
-                    ExtinguishFire();
-                }
+                ExtinguishFire();
             }
+
         }
         else
         {
-            Agent.updateRotation = true;
+            // Agent.updateRotation = true;
             Seek(Goal);
         }
 
@@ -172,9 +178,17 @@ public class EnemyFireFighterScript : CharacterAI
         // here we need to call a function that put the fire of
     }
 
-    // private bool IsFacing()
-    // {
-    //     float angleToPlayer = Vector3.Angle(transform.forward, (Goal.position - transform.position).normalized);
-    //     return Mathf.Abs(angleToPlayer) < angleMax;
-    // }
+    protected override void Seek(Transform other)
+    {
+        Agent.SetDestination(ToXZ(other.position));
+    }
+
+    protected override void RunAway(Transform runFrom)
+    {
+        var position = transform.position;
+        Vector3 dirToFire = position - runFrom.position;
+        // transform.rotation = Quaternion.LookRotation(dirToFire);
+        Vector3 newPos = position + dirToFire;
+        Agent.SetDestination(ToXZ(newPos));
+    }
 }

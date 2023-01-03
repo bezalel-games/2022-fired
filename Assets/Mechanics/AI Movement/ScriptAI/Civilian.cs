@@ -10,8 +10,7 @@ public class Civilian : CharacterAI
     [SerializeField]
     private float minDistanceFromPlayer = 5.0f;
 
-    [SerializeField]
-    private float angleMax = 45;
+    
     [SerializeField]private PassiveTimer timeToGo;
 
     // Start is called before the first frame update
@@ -85,10 +84,10 @@ public class Civilian : CharacterAI
     }
 
 
-    private bool IsFacing()
-    {
-        float angleToPlayer = Vector3.Angle(player.transform.forward, (transform.position - player.transform.position));
-        // Debug.Log(angleToPlayer);
-        return angleToPlayer < angleMax;
-    }
+    // private bool IsFacing()
+    // {
+    //     float angleToPlayer = Vector3.Angle(player.transform.forward, (transform.position - player.transform.position));
+    //     // Debug.Log(angleToPlayer);
+    //     return angleToPlayer < angleMax;
+    // }
 }

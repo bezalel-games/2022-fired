@@ -23,10 +23,13 @@ public abstract class CharacterAI : MonoBehaviour
     // to auto brake
     [SerializeField]
     protected bool autoBreaking;
+    
+    [SerializeField]
+    protected float angleMax = 45;
 
     // radius that gives us the fire object (more about that in CharacterRadius)
-    [SerializeField]
-    protected CharacterRadius radiusWithCol;
+    // [SerializeField]
+    // protected CharacterRadius radiusWithCol;
 
     [SerializeField]
     [HideInInspector]
@@ -111,7 +114,7 @@ public abstract class CharacterAI : MonoBehaviour
     }
 
     //makes character run from goal
-    protected void RunAway(Transform runFrom)
+    protected virtual void RunAway(Transform runFrom)
     {
         var position = transform.position;
         Vector3 dirToFire = position - runFrom.position;
@@ -120,7 +123,7 @@ public abstract class CharacterAI : MonoBehaviour
         Agent.SetDestination(newPos);
     }
 
-    protected void Seek(Transform other)
+    protected virtual void Seek(Transform other)
     {
         var position = other.position;
         // transform.rotation = Quaternion.LookRotation(position);
@@ -161,6 +164,12 @@ public abstract class CharacterAI : MonoBehaviour
         }
 
         return max.gameObject.transform;
+    }
+    
+    protected bool IsFacing()
+    {
+        float angleToPlayer = Vector3.Angle(transform.forward, (Goal.position - transform.position).normalized);
+        return Mathf.Abs(angleToPlayer) < angleMax;
     }
 
 

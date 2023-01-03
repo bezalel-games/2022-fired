@@ -16,8 +16,6 @@ public class FireFighterScript : CharacterAI
 
     [SerializeField]
     private float timeToExtinguish = 0;
-    [SerializeField]
-    private float angleMax = 30;
 
 
     [SerializeField] private WaterShooter shooter;
@@ -46,7 +44,7 @@ public class FireFighterScript : CharacterAI
     //the function from which the character moves
     protected override void MoveCharacter()
     {
-        Goal = radiusWithCol.FindFire(transform);
+        Goal = FindFire(transform);
         if (Goal != null)  // TODO: use and API - also this is done in all of the inheritances?
         {
             if (percentage > 0)
@@ -111,10 +109,10 @@ public class FireFighterScript : CharacterAI
         // here we need to call a function that put the fire of
     }
     
-    private bool IsFacing()
-    {
-        float angleToPlayer = Vector3.Angle(Goal.transform.forward, (transform.position - Goal.transform.position));
-        // Debug.Log(angleToPlayer);
-        return angleToPlayer < angleMax;
-    }
+    // private bool IsFacing()
+    // {
+    //     float angleToPlayer = Vector3.Angle(Goal.transform.forward, (transform.position - Goal.transform.position));
+    //     // Debug.Log(angleToPlayer);
+    //     return angleToPlayer < angleMax;
+    // }
 }
