@@ -18,9 +18,6 @@ public class EnemyFireFighterScript : CharacterAI
     private float costToExtinguishFire;
 
     [SerializeField]
-    private float timeToExtinguish = 0;
-
-    [SerializeField]
     private WaterShooter _shooter;
 
     [SerializeField]
