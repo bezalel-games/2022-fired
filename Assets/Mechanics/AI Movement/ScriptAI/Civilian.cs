@@ -82,12 +82,5 @@ public class Civilian : CharacterAI
         // }
 
     }
-
-
-    // private bool IsFacing()
-    // {
-    //     float angleToPlayer = Vector3.Angle(player.transform.forward, (transform.position - player.transform.position));
-    //     // Debug.Log(angleToPlayer);
-    //     return angleToPlayer < angleMax;
-    // }
+    
 }

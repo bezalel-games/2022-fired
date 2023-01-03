@@ -182,7 +182,6 @@ GameObject:
   - component: {fileID: 324890988264155086}
   - component: {fileID: 218573964702746778}
   - component: {fileID: 218573964702746757}
-  - component: {fileID: 218573964702746759}
   - component: {fileID: 218573964702746756}
   - component: {fileID: 2209395147975802918}
   m_Layer: 0
@@ -241,32 +240,6 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 2.4069061, y: 2.8966768, z: 7.305968}
   m_Center: {x: -0.050361633, y: 1.4552971, z: -0.19927287}
---- !u!114 &218573964702746759
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1137702122377559412}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 58c583cc705365f49b09435d7a46443e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  player: {fileID: 0}
-  stoppingDistance: 2
-  radius: 5
-  autoBreaking: 0
-  angleMax: 30
-  distanceToStopFromFire: 15
-  speed: 6
-  speedChangeRate: 10
-  initPerceantege: 18.1
-  costToExtinguishFire: 0
-  timeToExtinguish: 0
-  shooter: {fileID: 9018299117672571462}
-  timeToGo:
-    duration: 0
 --- !u!195 &218573964702746756
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -276,7 +249,7 @@ NavMeshAgent:
   m_GameObject: {fileID: 1137702122377559412}
   m_Enabled: 1
   m_AgentTypeID: 0
-  m_Radius: 0.5
+  m_Radius: 4
   m_Speed: 10
   m_Acceleration: 8
   avoidancePriority: 50
@@ -311,7 +284,6 @@ MonoBehaviour:
   speedChangeRate: 10
   initPerceantege: 46.9
   costToExtinguishFire: 0
-  timeToExtinguish: 0
   _shooter: {fileID: 9018299117672571462}
   minDistanceFromPlayer: 5
   maxDistanceFromPlayer: 15
@@ -1198,7 +1170,7 @@ PrefabInstance:
     - target: {fileID: 820697226647995384, guid: b9d9b7b5963a8e74298de2f1300e2f22,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0.1
+      value: -0.05
       objectReference: {fileID: 0}
     - target: {fileID: 820697226647995384, guid: b9d9b7b5963a8e74298de2f1300e2f22,
         type: 3}
@@ -1245,10 +1217,27 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2097580147026331079, guid: b9d9b7b5963a8e74298de2f1300e2f22,
+        type: 3}
+      propertyPath: m_Icon
+      value: 
+      objectReference: {fileID: -5397416234189338067, guid: 0000000000000000d000000000000000,
+        type: 0}
+    - target: {fileID: 6627154383465089266, guid: b9d9b7b5963a8e74298de2f1300e2f22,
+        type: 3}
+      propertyPath: m_Icon
+      value: 
+      objectReference: {fileID: 3306451490063965843, guid: 0000000000000000d000000000000000,
+        type: 0}
     - target: {fileID: 6627154383465089266, guid: b9d9b7b5963a8e74298de2f1300e2f22,
         type: 3}
       propertyPath: m_Name
       value: Water Cannon
+      objectReference: {fileID: 0}
+    - target: {fileID: 7809473001611421095, guid: b9d9b7b5963a8e74298de2f1300e2f22,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b9d9b7b5963a8e74298de2f1300e2f22, type: 3}
