@@ -2828,12 +2828,27 @@ PrefabInstance:
       propertyPath: timeBetweenShots.duration
       value: 0.5
       objectReference: {fileID: 0}
+    - target: {fileID: 4658904159321827778, guid: 25b56c9d7fad2fb42b59644ee0ccd978,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 9.62
+      objectReference: {fileID: 0}
+    - target: {fileID: 4658904159321827778, guid: 25b56c9d7fad2fb42b59644ee0ccd978,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -0.16
+      objectReference: {fileID: 0}
     - target: {fileID: 5113481355848818188, guid: 25b56c9d7fad2fb42b59644ee0ccd978,
         type: 3}
       propertyPath: fireBallObGameObject
       value: 
       objectReference: {fileID: 1289318078810796351, guid: 2073ebf181e154f43ab965cb439f0749,
         type: 3}
+    - target: {fileID: 6068860056919117365, guid: 25b56c9d7fad2fb42b59644ee0ccd978,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 218573964702746759, guid: 25b56c9d7fad2fb42b59644ee0ccd978, type: 3}
     - {fileID: 218573964702746778, guid: 25b56c9d7fad2fb42b59644ee0ccd978, type: 3}
@@ -5920,7 +5935,8 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 2488908585195742037, guid: 0000000000000000d000000000000000,
         type: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 1663577632, guid: eb585f4a557eb064781ba03a11412ec3, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: eb585f4a557eb064781ba03a11412ec3, type: 3}
 --- !u!1001 &2379654798432442527
 PrefabInstance:
@@ -6150,7 +6166,8 @@ PrefabInstance:
       propertyPath: m_Name
       value: tank rando
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 3727740081874247756, guid: 10313ce63d83e5e4eb2586a69bb663a7, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 10313ce63d83e5e4eb2586a69bb663a7, type: 3}
 --- !u!1001 &4257835164296199049
 PrefabInstance:

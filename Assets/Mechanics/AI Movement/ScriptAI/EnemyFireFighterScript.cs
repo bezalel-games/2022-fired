@@ -169,9 +169,4 @@ public class EnemyFireFighterScript : CharacterAI
         // here we need to call a function that put the fire of
     }
 
-    // private bool IsFacing()
-    // {
-    //     float angleToPlayer = Vector3.Angle(transform.forward, (Goal.position - transform.position).normalized);
-    //     return Mathf.Abs(angleToPlayer) < angleMax;
-    // }
 }
