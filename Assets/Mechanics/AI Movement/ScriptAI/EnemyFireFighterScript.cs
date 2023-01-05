@@ -53,6 +53,10 @@ public class EnemyFireFighterScript : CharacterAI
     protected override void Update()
     {
         base.Update();
+        if(timeToInit.IsSet && !timeToInit.IsActive)
+        {
+            return;
+        }
         MoveCharacter();
     }
 
