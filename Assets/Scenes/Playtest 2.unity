@@ -26315,6 +26315,11 @@ PrefabInstance:
       propertyPath: m_StaticEditorFlags
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4480551012659952987, guid: d44c0408300b13c4babb059e8277be8f,
+        type: 3}
+      propertyPath: useRandomlySelectedSeed
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4482852366166225927, guid: d44c0408300b13c4babb059e8277be8f,
         type: 3}
       propertyPath: m_StaticEditorFlags
