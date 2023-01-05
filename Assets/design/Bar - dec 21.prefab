@@ -1747,9 +1747,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 26e54e5a728a9234ab24fcf1460ed8a2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 4
-  sprintSpeed: 6
-  walkSpeed: 2
+  moveSpeed: 15
+  sprintSpeed: 20
+  walkSpeed: 5
   rotationSmoothTime: 0.12
   speedChangeRate: 10
   landingAudioClip: {fileID: 8300000, guid: ff697d3070687ce4583faa0561a145a2, type: 3}
@@ -1766,7 +1766,7 @@ MonoBehaviour:
   - {fileID: 8300000, guid: a3194b8bbc96ef84fab1f98f4b7dae3e, type: 3}
   footstepAudioVolume: 0.5
   jumpHeight: 1.2
-  gravity: -15
+  gravity: -20
   jumpTimeout: 0.5
   fallTimeout: 0.15
   grounded: 1
@@ -1776,8 +1776,8 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 1025
   cinemachineCameraTarget: {fileID: 6914037530796284614}
-  topClamp: 10
-  bottomClamp: 10
+  topClamp: 20
+  bottomClamp: 0
   cameraAngleOverride: 0
   lockCameraPosition: 0
   playerFollowCamera: 1
@@ -1870,12 +1870,12 @@ PrefabInstance:
     - target: {fileID: 491016816526798771, guid: 8dd4e9c402d71e5409bae1e1f5becf95,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0.093
+      value: 0.02
       objectReference: {fileID: 0}
     - target: {fileID: 491016816526798771, guid: 8dd4e9c402d71e5409bae1e1f5becf95,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.265
+      value: -0.01
       objectReference: {fileID: 0}
     - target: {fileID: 491016816526798771, guid: 8dd4e9c402d71e5409bae1e1f5becf95,
         type: 3}
@@ -1917,10 +1917,25 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5210094230173871712, guid: 8dd4e9c402d71e5409bae1e1f5becf95,
+        type: 3}
+      propertyPath: force
+      value: 40
+      objectReference: {fileID: 0}
     - target: {fileID: 6218243181550380217, guid: 8dd4e9c402d71e5409bae1e1f5becf95,
         type: 3}
       propertyPath: m_Name
       value: FireCannon
+      objectReference: {fileID: 0}
+    - target: {fileID: 7048996153246829036, guid: 8dd4e9c402d71e5409bae1e1f5becf95,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7048996153246829036, guid: 8dd4e9c402d71e5409bae1e1f5becf95,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0.6
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8dd4e9c402d71e5409bae1e1f5becf95, type: 3}

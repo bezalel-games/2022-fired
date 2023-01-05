@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 4257835163864801503}
   - component: {fileID: 4257835163864801500}
   m_Layer: 0
-  m_Name: BlueCar
+  m_Name: BlueCarMoving
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -94,6 +94,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 4257835163864801501}
     m_Modifications:
+    - target: {fileID: 4263196702114754958, guid: a388530601c111f4a9c68e0359da3dd0,
+        type: 3}
+      propertyPath: m_Name
+      value: Burned
+      objectReference: {fileID: 0}
     - target: {fileID: 8157584460393452984, guid: a388530601c111f4a9c68e0359da3dd0,
         type: 3}
       propertyPath: m_Name
