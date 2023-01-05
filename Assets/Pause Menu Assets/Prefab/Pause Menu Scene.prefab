@@ -1135,7 +1135,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 11499738}
-        m_TargetAssemblyTypeName: 
+        m_TargetAssemblyTypeName: GreatArcStudios.PauseManager, Assembly-CSharp
         m_MethodName: updateMasterVol
         m_Mode: 0
         m_Arguments:
@@ -2117,7 +2117,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 11499738}
-        m_TargetAssemblyTypeName: 
+        m_TargetAssemblyTypeName: GreatArcStudios.PauseManager, Assembly-CSharp
         m_MethodName: updateShadowDistance
         m_Mode: 0
         m_Arguments:
@@ -2696,7 +2696,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 11499738}
-        m_TargetAssemblyTypeName: 
+        m_TargetAssemblyTypeName: GreatArcStudios.PauseManager, Assembly-CSharp
         m_MethodName: updateEffectsVol
         m_Mode: 0
         m_Arguments:
@@ -5208,7 +5208,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 11499738}
-        m_TargetAssemblyTypeName: 
+        m_TargetAssemblyTypeName: GreatArcStudios.PauseManager, Assembly-CSharp
         m_MethodName: toggleAO
         m_Mode: 0
         m_Arguments:
@@ -6969,7 +6969,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 11499738}
-        m_TargetAssemblyTypeName: 
+        m_TargetAssemblyTypeName: GreatArcStudios.PauseManager, Assembly-CSharp
         m_MethodName: updateTex
         m_Mode: 0
         m_Arguments:
@@ -8359,7 +8359,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 11499738}
-        m_TargetAssemblyTypeName: 
+        m_TargetAssemblyTypeName: GreatArcStudios.PauseManager, Assembly-CSharp
         m_MethodName: updateFOV
         m_Mode: 0
         m_Arguments:
@@ -8655,7 +8655,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 11499738}
-        m_TargetAssemblyTypeName: 
+        m_TargetAssemblyTypeName: GreatArcStudios.PauseManager, Assembly-CSharp
         m_MethodName: lodBias
         m_Mode: 0
         m_Arguments:
@@ -8795,7 +8795,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 11499738}
-        m_TargetAssemblyTypeName: 
+        m_TargetAssemblyTypeName: GreatArcStudios.PauseManager, Assembly-CSharp
         m_MethodName: updateMusicVol
         m_Mode: 0
         m_Arguments:
@@ -10182,7 +10182,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 11499738}
-        m_TargetAssemblyTypeName: 
+        m_TargetAssemblyTypeName: GreatArcStudios.PauseManager, Assembly-CSharp
         m_MethodName: enableSimpleTerrain
         m_Mode: 0
         m_Arguments:
@@ -11146,6 +11146,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: edc997a6468b3484fb1dc2380fa842f7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  menuInputAction:
+    m_Name: Menu Input
+    m_Type: 0
+    m_ExpectedControlType: 
+    m_Id: 2dc664e1-ab46-45ed-9b15-940c5317ebd0
+    m_Processors: 
+    m_Interactions: 
+    m_SingletonActionBindings: []
+    m_Flags: 0
+  onMenuEnter:
+    m_PersistentCalls:
+      m_Calls: []
+  onMenuExit:
+    m_PersistentCalls:
+      m_Calls: []
   mainPanel: {fileID: 161058}
   vidPanel: {fileID: 126156}
   audioPanel: {fileID: 131496}
@@ -12203,6 +12218,7 @@ GameObject:
   m_Component:
   - component: {fileID: 492846}
   - component: {fileID: 10860832}
+  - component: {fileID: 2818032390147113574}
   m_Layer: 5
   m_Name: Directional light
   m_TagString: Untagged
@@ -12287,6 +12303,26 @@ Light:
   m_UseViewFrustumForShadowCasterCull: 1
   m_ShadowRadius: 0
   m_ShadowAngle: 0
+--- !u!114 &2818032390147113574
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 156564}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 474bcb49853aa07438625e644c072ee6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Version: 1
+  m_UsePipelineSettings: 1
+  m_AdditionalLightsShadowResolutionTier: 2
+  m_LightLayerMask: 1
+  m_CustomShadowLayers: 0
+  m_ShadowLayerMask: 1
+  m_LightCookieSize: {x: 1, y: 1}
+  m_LightCookieOffset: {x: 0, y: 0}
 --- !u!1 &157268
 GameObject:
   m_ObjectHideFlags: 0
@@ -15323,7 +15359,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 11499738}
-        m_TargetAssemblyTypeName: 
+        m_TargetAssemblyTypeName: GreatArcStudios.PauseManager, Assembly-CSharp
         m_MethodName: updateTerrainLod
         m_Mode: 0
         m_Arguments:
@@ -16156,7 +16192,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 11499738}
-        m_TargetAssemblyTypeName: 
+        m_TargetAssemblyTypeName: GreatArcStudios.PauseManager, Assembly-CSharp
         m_MethodName: toggleVSync
         m_Mode: 0
         m_Arguments:
@@ -16467,7 +16503,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 11499738}
-        m_TargetAssemblyTypeName: 
+        m_TargetAssemblyTypeName: GreatArcStudios.PauseManager, Assembly-CSharp
         m_MethodName: updateCascades
         m_Mode: 0
         m_Arguments:
@@ -18227,7 +18263,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 11499738}
-        m_TargetAssemblyTypeName: 
+        m_TargetAssemblyTypeName: GreatArcStudios.PauseManager, Assembly-CSharp
         m_MethodName: lodBias
         m_Mode: 0
         m_Arguments:
@@ -18848,7 +18884,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 11499738}
-        m_TargetAssemblyTypeName: 
+        m_TargetAssemblyTypeName: GreatArcStudios.PauseManager, Assembly-CSharp
         m_MethodName: toggleDOF
         m_Mode: 0
         m_Arguments:
@@ -19012,7 +19048,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 11499738}
-        m_TargetAssemblyTypeName: 
+        m_TargetAssemblyTypeName: GreatArcStudios.PauseManager, Assembly-CSharp
         m_MethodName: setFullScreen
         m_Mode: 0
         m_Arguments:
@@ -20503,7 +20539,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 11499738}
-        m_TargetAssemblyTypeName: 
+        m_TargetAssemblyTypeName: GreatArcStudios.PauseManager, Assembly-CSharp
         m_MethodName: updateRenderDist
         m_Mode: 0
         m_Arguments:
@@ -20606,7 +20642,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 11499738}
-        m_TargetAssemblyTypeName: 
+        m_TargetAssemblyTypeName: GreatArcStudios.PauseManager, Assembly-CSharp
         m_MethodName: updateDensity
         m_Mode: 0
         m_Arguments:

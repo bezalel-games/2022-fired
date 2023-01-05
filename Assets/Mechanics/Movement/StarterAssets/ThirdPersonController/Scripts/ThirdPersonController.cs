@@ -401,5 +401,7 @@ namespace StarterAssets
 
         #endregion
 
+        public void LockCameraPosition(bool state) => lockCameraPosition = state;
+
     }
 }

@@ -5,6 +5,7 @@ using UnityEngine.UI;
 using UnityEngine.EventSystems;
 using System.IO;
 using UnityEngine.Events;
+using UnityEngine.InputSystem;
 
 //using UnityStandardAssets.ImageEffects;
 /// <summary>
@@ -17,6 +18,9 @@ namespace GreatArcStudios
     /// </summary>
     public class PauseManager : MonoBehaviour
     {
+        [SerializeField]
+        private InputAction menuInputAction;
+        
         [Header("Events")]
         [SerializeField]
         public UnityEvent onMenuEnter;
@@ -363,8 +367,56 @@ namespace GreatArcStudios
             blurEffect = (Blur)mainCamObj.GetComponent(typeof(Blur));
             blurEffect.blurShader = blurEffectShader;
             blurEffect.enabled = false;  */
-
+            
         }
+
+        private void OnEnable()
+        {
+            menuInputAction.Enable();
+
+            menuInputAction.started += HandleInput;
+        }
+
+        private void OnDisable()
+        {
+            menuInputAction.started -= HandleInput;
+            
+            menuInputAction.Disable();
+        }
+        
+        public void HandleInput(InputAction.CallbackContext context)
+        {
+            Nemesh.Logger.Log(context.phase, this);
+            if (mainPanel.active)
+            {
+                Resume();
+            }
+            else
+            {
+                EnterMenu();
+            }
+        }
+
+        private void EnterMenu()
+        {
+            uiEventSystem.SetSelectedGameObject(defualtSelectedMain);
+            mainPanel.SetActive(true);
+            vidPanel.SetActive(false);
+            audioPanel.SetActive(false);
+            TitleTexts.SetActive(true);
+            mask.SetActive(true);
+            Time.timeScale = 0;
+            for (int i = 0; i < otherUIElements.Length; i++)
+            {
+                otherUIElements[i].gameObject.SetActive(false);
+            }
+            /* if (blurBool == false)
+              {
+                 blurEffect.enabled = true;
+             }  */
+            onMenuEnter.Invoke();
+        }
+
         /// <summary>
         /// Restart the level by loading the loaded level.
         /// </summary>
@@ -398,6 +450,7 @@ namespace GreatArcStudios
                  //if you want to add in your own stuff do so here
                  return;
              } */
+            onMenuExit.Invoke();
         }
         /// <summary>
         /// All the methods relating to qutting should be called here.
@@ -458,39 +511,39 @@ namespace GreatArcStudios
                 pauseMenu.text = "Pause Menu";
             }
 
-            if (Input.GetKeyDown(KeyCode.Escape) && mainPanel.active == false)
-            {
-
-                uiEventSystem.SetSelectedGameObject(defualtSelectedMain);
-                mainPanel.SetActive(true);
-                vidPanel.SetActive(false);
-                audioPanel.SetActive(false);
-                TitleTexts.SetActive(true);
-                mask.SetActive(true);
-                Time.timeScale = 0;
-                for (int i = 0; i < otherUIElements.Length; i++)
-                {
-                    otherUIElements[i].gameObject.SetActive(false);
-                }
-                /* if (blurBool == false)
-                  {
-                     blurEffect.enabled = true;
-                 }  */
-                onMenuEnter.Invoke();
-            }
-            else if(Input.GetKeyDown(KeyCode.Escape) && mainPanel.active == true) {
-                Time.timeScale = timeScale;
-                mainPanel.SetActive(false);
-                vidPanel.SetActive(false);
-                audioPanel.SetActive(false);
-                TitleTexts.SetActive(false);
-                mask.SetActive(false);
-                for (int i = 0; i < otherUIElements.Length; i++)
-                {
-                    otherUIElements[i].gameObject.SetActive(true);
-                }
-                onMenuExit.Invoke();
-            }
+            // if (Input.GetKeyDown(KeyCode.Escape) && mainPanel.active == false)
+            // {
+            //
+            //     uiEventSystem.SetSelectedGameObject(defualtSelectedMain);
+            //     mainPanel.SetActive(true);
+            //     vidPanel.SetActive(false);
+            //     audioPanel.SetActive(false);
+            //     TitleTexts.SetActive(true);
+            //     mask.SetActive(true);
+            //     Time.timeScale = 0;
+            //     for (int i = 0; i < otherUIElements.Length; i++)
+            //     {
+            //         otherUIElements[i].gameObject.SetActive(false);
+            //     }
+            //     /* if (blurBool == false)
+            //       {
+            //          blurEffect.enabled = true;
+            //      }  */
+            //     onMenuEnter.Invoke();
+            // }
+            // else if(Input.GetKeyDown(KeyCode.Escape) && mainPanel.active == true) {
+            //     Time.timeScale = timeScale;
+            //     mainPanel.SetActive(false);
+            //     vidPanel.SetActive(false);
+            //     audioPanel.SetActive(false);
+            //     TitleTexts.SetActive(false);
+            //     mask.SetActive(false);
+            //     for (int i = 0; i < otherUIElements.Length; i++)
+            //     {
+            //         otherUIElements[i].gameObject.SetActive(true);
+            //     }
+            //     onMenuExit.Invoke();
+            // }
 
 
 
