@@ -141,8 +141,12 @@ namespace StarterAssets
 
         private void Update()
         {
-            _hasAnimator = TryGetComponent(out _animator);
-
+            if (Time.timeScale == 0f)  // TODO: just send some sort of bool from menu in the LockCameraPosition function
+            {
+                return;
+            }
+            _hasAnimator = TryGetComponent(out _animator);  // TODO: do only once at start!
+            
             JumpAndGravity();
             GroundedCheck();
             Move();

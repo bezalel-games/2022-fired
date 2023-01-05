@@ -1,5 +1,6 @@
 using UnityEngine;
 using Avrahamy;
+using Logger = Nemesh.Logger;
 
 
 public class Civilian : CharacterAI

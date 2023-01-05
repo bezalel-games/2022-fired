@@ -6,6 +6,7 @@ using UnityEngine.EventSystems;
 using System.IO;
 using UnityEngine.Events;
 using UnityEngine.InputSystem;
+using UnityEngine.SceneManagement;
 
 //using UnityStandardAssets.ImageEffects;
 /// <summary>
@@ -387,7 +388,7 @@ namespace GreatArcStudios
         public void HandleInput(InputAction.CallbackContext context)
         {
             Nemesh.Logger.Log(context.phase, this);
-            if (mainPanel.active)
+            if (mainPanel.activeSelf)
             {
                 Resume();
             }
@@ -422,7 +423,8 @@ namespace GreatArcStudios
         /// </summary>
         public void Restart()
         {
-            Application.LoadLevel(Application.loadedLevel);
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+            // Application.LoadLevel(Application.loadedLevel);
             uiEventSystem.firstSelectedGameObject = defualtSelectedMain;
         }
         /// <summary>
@@ -485,7 +487,8 @@ namespace GreatArcStudios
         /// </summary>
         public void returnToMenu()
         {
-            Application.LoadLevel(mainMenu);
+            SceneManager.LoadScene(mainMenu);
+            // Application.LoadLevel(mainMenu);
             uiEventSystem.SetSelectedGameObject(defualtSelectedMain);
         }
 
@@ -498,15 +501,15 @@ namespace GreatArcStudios
             readUseSimpleTerrain = useSimpleTerrain;
             useSimpleTerrain = readUseSimpleTerrain;
             //colorCrossfade();
-            if (vidPanel.active == true)
+            if (vidPanel.activeSelf == true)
             {
                 pauseMenu.text = "Video Menu";
             }
-            else if (audioPanel.active == true)
+            else if (audioPanel.activeSelf == true)
             {
                 pauseMenu.text = "Audio Menu";
             }
-            else if (mainPanel.active == true)
+            else if (mainPanel.activeSelf == true)
             {
                 pauseMenu.text = "Pause Menu";
             }
@@ -1097,7 +1100,7 @@ namespace GreatArcStudios
         /// Toggle on or off Ambient Occulusion. This is meant to be used with a checkbox.
         /// </summary>
         /// <param name="b"></param>
-        public void toggleAO(Boolean b)
+        public void toggleAO(Boolean b)  // TODO: fix this
         {
             try
             {
