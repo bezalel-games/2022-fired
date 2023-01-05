@@ -108,6 +108,75 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 2962948626368686677}
   m_PrefabAsset: {fileID: 0}
+--- !u!1001 &3722739394954270082
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 7006560811080571222}
+    m_Modifications:
+    - target: {fileID: 6370957390300656556, guid: 5558482d4b6913541bbfef504cfc2c19,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 6370957390300656556, guid: 5558482d4b6913541bbfef504cfc2c19,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -5.7353983
+      objectReference: {fileID: 0}
+    - target: {fileID: 6370957390300656556, guid: 5558482d4b6913541bbfef504cfc2c19,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.402152
+      objectReference: {fileID: 0}
+    - target: {fileID: 6370957390300656556, guid: 5558482d4b6913541bbfef504cfc2c19,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0.040855676
+      objectReference: {fileID: 0}
+    - target: {fileID: 6370957390300656556, guid: 5558482d4b6913541bbfef504cfc2c19,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6370957390300656556, guid: 5558482d4b6913541bbfef504cfc2c19,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6370957390300656556, guid: 5558482d4b6913541bbfef504cfc2c19,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6370957390300656556, guid: 5558482d4b6913541bbfef504cfc2c19,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6370957390300656556, guid: 5558482d4b6913541bbfef504cfc2c19,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6370957390300656556, guid: 5558482d4b6913541bbfef504cfc2c19,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6370957390300656556, guid: 5558482d4b6913541bbfef504cfc2c19,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8203377020985344840, guid: 5558482d4b6913541bbfef504cfc2c19,
+        type: 3}
+      propertyPath: m_Name
+      value: Burned
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 5558482d4b6913541bbfef504cfc2c19, type: 3}
 --- !u!1001 &8407526388601634827
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -119,6 +188,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: WHITE_CAR
+      objectReference: {fileID: 0}
+    - target: {fileID: 6186704665356904711, guid: 71e0b4f2dc81a4843b23cd43070c7819,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 9141146380720329868, guid: 71e0b4f2dc81a4843b23cd43070c7819,
         type: 3}
@@ -183,3 +257,22 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 8407526388601634827}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &2411149464645101836 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6186704665356904711, guid: 71e0b4f2dc81a4843b23cd43070c7819,
+    type: 3}
+  m_PrefabInstance: {fileID: 8407526388601634827}
+  m_PrefabAsset: {fileID: 0}
+--- !u!65 &2506395770206886590
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2411149464645101836}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 3.1447208, y: 1.4971317, z: 4.9398127}
+  m_Center: {x: -0.09517264, y: 0, z: 0.48088014}
