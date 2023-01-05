@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 710628939037305217}
   - component: {fileID: 4517871702676166437}
   - component: {fileID: 1636899708123233962}
+  - component: {fileID: 4485176551782978033}
   m_Layer: 0
   m_Name: Smoke
   m_TagString: Untagged
@@ -4821,6 +4822,20 @@ ParticleSystem:
         m_PostInfinity: 2
         m_RotationOrder: 4
     vectorLabel1_3: W
+--- !u!114 &4485176551782978033
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 895822001841749836}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6e616262da395bc4d9de94378d3d2d0d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  particleController:
+    rootParticleSystem: {fileID: 0}
 --- !u!1 &2636067407747013427
 GameObject:
   m_ObjectHideFlags: 0
@@ -4915,6 +4930,7 @@ GameObject:
   - component: {fileID: 5887384864149171532}
   - component: {fileID: 2170912867602154833}
   - component: {fileID: 4003412510334715079}
+  - component: {fileID: 4522575430556705868}
   m_Layer: 0
   m_Name: Sparks
   m_TagString: Untagged
@@ -9725,6 +9741,20 @@ ParticleSystem:
         m_PostInfinity: 2
         m_RotationOrder: 4
     vectorLabel1_3: W
+--- !u!114 &4522575430556705868
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4616380120013018779}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6e616262da395bc4d9de94378d3d2d0d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  particleController:
+    rootParticleSystem: {fileID: 0}
 --- !u!1 &6420156932893287402
 GameObject:
   m_ObjectHideFlags: 0
