@@ -105,5 +105,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f3d561737db417c4d8297af21d2e935a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cannon: {fileID: 5043534534453314091}
+  cannons:
+  - {fileID: 5043534534453314091}
   shootDuration: 0.2
