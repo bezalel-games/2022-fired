@@ -1,6 +1,7 @@
 using System;
 using BitStrap;
 using Nemesh;
+// using Nemesh.Editor;
 using UnityEditor;
 using UnityEngine;
 using UnityEngine.Events;
@@ -55,7 +56,7 @@ namespace StarterAssets
         public bool cursorInputForLook = true;
 
         [SerializeField]
-        [VectorRange(0, 1, 0, 1)]
+        // [VectorRange(0, 1, 0, 1)]
         private Vector2 mouseSensitivity = new Vector2(0.25f, 0.25f);
 
         [Space]
