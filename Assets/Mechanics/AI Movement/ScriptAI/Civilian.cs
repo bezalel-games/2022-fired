@@ -1,21 +1,24 @@
 using UnityEngine;
+using Avrahamy;
 
 
 public class Civilian : CharacterAI
 {
     // min distance from player, if farther then  civilian go back. 
     [SerializeField]
-    private float maxDistanceFromPlayer = 10.0f;
-
+    private float maxDistanceFromPlayer = 20.0f;
     [SerializeField]
-    private float angleMax = 45;
+    private float minDistanceFromPlayer = 5.0f;
+
+    
+    [SerializeField]private PassiveTimer timeToGo;
 
     // Start is called before the first frame update
     protected override void Start()
     {
         base.Start();
         Goal = player;
-        Agent.destination = RandomNavmeshLocation();
+        Agent.SetDestination(RandomNavmeshLocation());
     }
 
 
@@ -23,33 +26,64 @@ public class Civilian : CharacterAI
     protected override void Update()
     {
         base.Update();
+        if(timeToInit.IsSet && !timeToInit.IsActive)
+        {
+            return;
+        }
         MoveCharacter();
     }
 
     //the function from which the character moves
     protected override void MoveCharacter()
     {
-        var goal = radiusWithCol.FindFire(transform);  // TODO: use the API instead!
-        if (goal != null)
+        if (timeToGo.IsSet)
         {
-            RunAway(Goal);
+            if (timeToGo.IsActive)
+            {
+                if (Agent.remainingDistance < stoppingDistance)
+                {
+                    Agent.SetDestination(RandomNavmeshLocation());
+                }
+            }
+            else
+            {
+                Goal = FindFire(transform);
+                if (Goal != null )
+                {
+                    RunAway(Goal);
+                    timeToGo.Clear();
+                }
+                else
+                {
+                    Agent.SetDestination(RandomNavmeshLocation());
+                    timeToGo.Clear();
+                }
+            }
         }
-        else if (Agent.remainingDistance < stoppingDistance)
+        else
         {
-            Agent.destination = RandomNavmeshLocation();
+            timeToGo.Start();
         }
-        else if (Distance(transform, Goal) > maxDistanceFromPlayer)
-        {
-            Seek(player);
-        }
+        // Goal = radiusWithCol.FindFire(transform);  // TODO: use the API instead!
+        // if (Goal != null && Distance(transform, Goal) < minDistanceFromPlayer)
+        // {
+        //     timeToGo.Clear();
+        //     RunAway(Goal);
+        // }
+        // // else if (Distance(transform, player) < minDistanceFromPlayer)
+        // // {
+        // //     RunAway(player);
+        // // }
+        // else if (Agent.remainingDistance < stoppingDistance)
+        // {
+        //     Agent.destination = RandomNavmeshLocation();
+        // }
+        // else if (Distance(transform, player) > maxDistanceFromPlayer)
+        // {
+        //     Agent.destination = RandomNavmeshLocation();
+        //     // Seek(player);
+        // }
 
     }
-
-
-    private bool IsFacing()
-    {
-        float angleToPlayer = Vector3.Angle(player.transform.forward, (transform.position - player.transform.position));
-        // Debug.Log(angleToPlayer);
-        return angleToPlayer < angleMax;
-    }
+    
 }

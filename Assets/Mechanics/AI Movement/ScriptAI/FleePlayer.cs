@@ -6,9 +6,6 @@ public class FleePlayer : CharacterAI
     [SerializeField]
     private float maxDistanceFromPlayer = 10.0f;
 
-    [SerializeField]
-    private float angleMax = 45;
-
     // Start is called before the first frame update
     protected override void Start()
     {
@@ -45,11 +42,11 @@ public class FleePlayer : CharacterAI
     }
 
     // does player face character?
-    private bool IsFacing()
-    {
-        var playerTransform = player.transform;
-        float angleToPlayer = Vector3.Angle(playerTransform.forward, (transform.position - playerTransform.position));
-        // Debug.Log(angleToPlayer);
-        return angleToPlayer < angleMax;
-    }
+    // private bool IsFacing()
+    // {
+    //     var playerTransform = player.transform;
+    //     float angleToPlayer = Vector3.Angle(playerTransform.forward, (transform.position - playerTransform.position));
+    //     // Debug.Log(angleToPlayer);
+    //     return angleToPlayer < angleMax;
+    // }
 }

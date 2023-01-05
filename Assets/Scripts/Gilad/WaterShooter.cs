@@ -4,23 +4,17 @@ namespace Gilad
 {
     public class WaterShooter : MonoBehaviour
     {
-        [SerializeField] private Cannon cannon;
+        [SerializeField]
+        private Cannon[] cannons;
 
-        [SerializeField] private float shootDuration = 0.2f;
+        [SerializeField]
+        private float shootDuration = 0.2f;
 
         private float _timePassed = 0f;
 
         private bool _isShooting;
-        // Start is called before the first frame update
-
-
-        // Update is called once per frame
         void Update()
         {
-            // if (Input.GetKeyDown(KeyCode.Return))
-            // {
-            //     _isShooting = !_isShooting;
-            // }
             if (_isShooting)
             {
                 ShootCannon();
@@ -31,7 +25,10 @@ namespace Gilad
         {
             if (_timePassed >= shootDuration)
             {
-                cannon.ShootBall();
+                foreach (var cannon in cannons)
+                {
+                    cannon.ShootBall();
+                }
                 _timePassed = 0f;
             }
             else

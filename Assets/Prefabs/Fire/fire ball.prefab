@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 5671093408536938188}
   - component: {fileID: 7388662656223938902}
   - component: {fileID: 3252737022406228312}
+  - component: {fileID: 2245041931191714096}
   m_Layer: 0
   m_Name: Sparks
   m_TagString: Untagged
@@ -4821,6 +4822,20 @@ ParticleSystem:
         m_PostInfinity: 2
         m_RotationOrder: 4
     vectorLabel1_3: W
+--- !u!114 &2245041931191714096
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3632853135133472440}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6e616262da395bc4d9de94378d3d2d0d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  particleController:
+    rootParticleSystem: {fileID: 0}
 --- !u!1 &4072814670199522210
 GameObject:
   m_ObjectHideFlags: 0
@@ -4832,6 +4847,7 @@ GameObject:
   - component: {fileID: 2904752116744224448}
   - component: {fileID: 7733205154994315462}
   - component: {fileID: 7546692923203236499}
+  - component: {fileID: 2521359417994697791}
   m_Layer: 0
   m_Name: Smoke
   m_TagString: Untagged
@@ -9642,6 +9658,20 @@ ParticleSystem:
         m_PostInfinity: 2
         m_RotationOrder: 4
     vectorLabel1_3: W
+--- !u!114 &2521359417994697791
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4072814670199522210}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6e616262da395bc4d9de94378d3d2d0d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  particleController:
+    rootParticleSystem: {fileID: 0}
 --- !u!1 &5812443373641945668
 GameObject:
   m_ObjectHideFlags: 0
@@ -9656,8 +9686,6 @@ GameObject:
   - component: {fileID: 8308895910248496341}
   - component: {fileID: 3127863824300336053}
   - component: {fileID: 9085110679039076369}
-  - component: {fileID: 8666006283109748644}
-  - component: {fileID: 1895855204228896785}
   - component: {fileID: 4511936031363470533}
   - component: {fileID: 9171349856133014367}
   - component: {fileID: 2137107263171051421}
@@ -9693,7 +9721,7 @@ Rigidbody:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5812443373641945668}
   serializedVersion: 2
-  m_Mass: 1
+  m_Mass: 2.2
   m_Drag: 0
   m_AngularDrag: 0
   m_UseGravity: 1
@@ -9802,34 +9830,6 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
---- !u!114 &8666006283109748644
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5812443373641945668}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8d0034e6476a1a8449c5a441f6ef9422, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  particleController:
-    rootParticleSystem: {fileID: 3252737022406228312}
---- !u!114 &1895855204228896785
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5812443373641945668}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8d0034e6476a1a8449c5a441f6ef9422, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  particleController:
-    rootParticleSystem: {fileID: 7546692923203236499}
 --- !u!108 &4511936031363470533
 Light:
   m_ObjectHideFlags: 0

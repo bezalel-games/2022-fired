@@ -1,18 +1,21 @@
+// using BitStrap;
+
 using UnityEngine;
 using UnityEngine.AI;
+using Gilad;
+using System.Linq;
+using Avrahamy;
 
 public abstract class CharacterAI : MonoBehaviour
 {
-    // the goal of said character
-    protected Transform Goal;
-
+    [Header("CharacterAI Base")]
     // the player
     [SerializeField]
     protected Transform player;
 
     // the distance from which the 
     [SerializeField]
-    protected float stoppingDistance = 0.5f;
+    protected float stoppingDistance = 15f;
 
     // the radius of said character 
     [SerializeField]
@@ -21,13 +24,37 @@ public abstract class CharacterAI : MonoBehaviour
     // to auto brake
     [SerializeField]
     protected bool autoBreaking;
+    
+    [SerializeField]
+    protected float angleMax = 45;
+    
+    protected PassiveTimer timeToInit;
+
+    // radius that gives us the fire object (more about that in CharacterRadius)
+    // [SerializeField]
+    // protected CharacterRadius radiusWithCol;
+
+    [SerializeField]
+    [HideInInspector]
+    protected float distanceToStopFromFire = 15f;
+
+    [Space]
+    [Header("Movement Animation Parameters")]
+    [SerializeField]
+    protected float speed;
+
+    [SerializeField]
+    private float speedChangeRate = 10f;
 
     // the agent (the character)
     protected NavMeshAgent Agent;
 
-    // radius that gives us the fire object (more about that in CharacterRadius)
-    [SerializeField]
-    protected CharacterRadius radiusWithCol;
+    // the goal of said character
+    protected Transform Goal;
+
+    protected MovementAnimationControl MyAnimationController;
+
+    protected bool HasAnimator;
 
     //the function from which we decide how the character would move
     protected abstract void MoveCharacter();
@@ -35,14 +62,44 @@ public abstract class CharacterAI : MonoBehaviour
     // Start is called before the first frame update
     protected virtual void Start()
     {
+        HasAnimator = TryGetComponent(out MyAnimationController);
         TryGetComponent(out Agent);
         Agent.autoBraking = autoBreaking;
+        timeToInit = new PassiveTimer(Random.Range(0f, 1f));
     }
 
     // Update is called once per frame
     protected virtual void Update()
     {
+        if (!HasAnimator)
+        {
+            return;
+        }
 
+        var velocity = Agent.velocity;
+        var currentHorizontal = new Vector3(velocity.x, 0.0f, velocity.z);
+        float inputMagnitude = currentHorizontal.magnitude;
+        float speedOffset = 0.1f;
+
+        if (inputMagnitude < speed - speedOffset ||
+            inputMagnitude > speed + speedOffset)
+        {
+            speed = Mathf.Lerp(inputMagnitude,
+                this.speed,
+                Time.deltaTime * speedChangeRate);
+
+            speed = Mathf.Round(speed * 1000f) / 1000f;
+        }
+        else
+        {
+            speed = speed * inputMagnitude;
+        }
+
+        MyAnimationController.TargetDirection = velocity;
+        var motionSpeed = speed;
+        MyAnimationController.Speed = motionSpeed;
+        
+        // TODO: add rotation parameter like in ThirdPersonController
     }
 
     // this function returns random point in the radius of the character
@@ -61,20 +118,20 @@ public abstract class CharacterAI : MonoBehaviour
     }
 
     //makes character run from goal
-    protected void RunAway(Transform runFrom)
+    protected virtual void RunAway(Transform runFrom)
     {
         var position = transform.position;
         Vector3 dirToFire = position - runFrom.position;
-        transform.rotation = Quaternion.LookRotation(dirToFire);
+        // transform.rotation = Quaternion.LookRotation(dirToFire);
         Vector3 newPos = position + dirToFire;
-        Agent.destination = newPos;
+        Agent.SetDestination(newPos);
     }
 
-    protected void Seek(Transform other)
+    protected virtual void Seek(Transform other)
     {
         var position = other.position;
-        transform.rotation = Quaternion.LookRotation(position);
-        Agent.destination = position;
+        // transform.rotation = Quaternion.LookRotation(position);
+        Agent.SetDestination(position);
     }
 
     //calculate distance between two transforms
@@ -86,6 +143,37 @@ public abstract class CharacterAI : MonoBehaviour
         fixedMe.y = 0;
         float distance = Vector3.Distance(fixedMe, fixedPlayer);
         return distance;
+    }
+
+    protected Transform FindFire(Transform trans)
+    {
+        var listOfFlames = Flammable.AllBurning;
+        if (listOfFlames.Count == 0)
+        {
+            return null;
+        }
+
+        var max = listOfFlames.First(t => t != null); // TODO: use some sort of API
+        if (max == null) return null;
+        var curMax = Distance(max.transform, trans);
+        foreach (var curFire in Flammable.AllFlammables)
+        {
+            var cur = Distance(curFire.transform, trans);
+            if ((Distance(max.transform, trans)) < curMax)
+            {
+                curMax = cur;
+                max = curFire;
+            }
+
+        }
+
+        return max.gameObject.transform;
+    }
+    
+    protected bool IsFacing()
+    {
+        float angleToPlayer = Vector3.Angle(transform.forward, (Goal.position - transform.position).normalized);
+        return Mathf.Abs(angleToPlayer) < angleMax;
     }
 
 
