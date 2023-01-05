@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.AI;
 using Gilad;
 using System.Linq;
+using Avrahamy;
 
 public abstract class CharacterAI : MonoBehaviour
 {
@@ -26,6 +27,8 @@ public abstract class CharacterAI : MonoBehaviour
     
     [SerializeField]
     protected float angleMax = 45;
+    
+    protected PassiveTimer timeToInit;
 
     // radius that gives us the fire object (more about that in CharacterRadius)
     // [SerializeField]
@@ -62,6 +65,7 @@ public abstract class CharacterAI : MonoBehaviour
         HasAnimator = TryGetComponent(out MyAnimationController);
         TryGetComponent(out Agent);
         Agent.autoBraking = autoBreaking;
+        timeToInit = new PassiveTimer(Random.Range(0f, 1f));
     }
 
     // Update is called once per frame
