@@ -232,23 +232,21 @@ MonoBehaviour:
   stoppingDistance: 15
   radius: 40
   autoBreaking: 1
-  radiusWithCol: {fileID: 1066353315}
+  angleMax: 45
   distanceToStopFromFire: 15
   speed: 6
   speedChangeRate: 10
   initPerceantege: 46.7
   costToExtinguishFire: 0
-  timeToExtinguish: 0
   _shooter: {fileID: 7792504109510795146}
   minDistanceFromPlayer: 5
   maxDistanceFromPlayer: 15
   timeToGo:
-    duration: 0.25
+    duration: 1
   shootDuration:
     duration: 1
   timeBetweenShots:
     duration: 0.25
-  angleMax: 45
   percentage: 0
 --- !u!195 &1663577630
 NavMeshAgent:

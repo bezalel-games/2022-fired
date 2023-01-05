@@ -288,11 +288,11 @@ MonoBehaviour:
   minDistanceFromPlayer: 5
   maxDistanceFromPlayer: 15
   timeToGo:
-    duration: 0
+    duration: 1
   shootDuration:
-    duration: 0
+    duration: 0.5
   timeBetweenShots:
-    duration: 0
+    duration: 0.5
   percentage: 0
 --- !u!1 &1317871345269268631
 GameObject:

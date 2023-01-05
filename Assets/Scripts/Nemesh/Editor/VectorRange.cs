@@ -1,7 +1,7 @@
 using UnityEditor;
 using UnityEngine;
 
-namespace Nemesh
+namespace Nemesh.Editor
 {
     public class VectorRangeAttribute : PropertyAttribute
     {
