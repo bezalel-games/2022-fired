@@ -4849,6 +4849,7 @@ GameObject:
   - component: {fileID: 1337178495447109192}
   - component: {fileID: 1337178495447109195}
   - component: {fileID: 1337178495447109194}
+  - component: {fileID: -6299467305151386117}
   m_Layer: 0
   m_Name: Fire Sphere 2
   m_TagString: Untagged
@@ -5005,6 +5006,22 @@ MonoBehaviour:
   m_ShadowLayerMask: 1
   m_LightCookieSize: {x: 1, y: 1}
   m_LightCookieOffset: {x: 0, y: 0}
+--- !u!114 &-6299467305151386117
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1337178495447109207}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 075e34a2302746e0a0a0a2a7872a43a5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  useManuallyEnteredSeed: 0
+  seed: {x: 0, y: 0}
+  hasRandomSeedVectorInMaterial: 0
+  currentSeed: {x: 0, y: 0}
 --- !u!1 &4192537228574779910
 GameObject:
   m_ObjectHideFlags: 0

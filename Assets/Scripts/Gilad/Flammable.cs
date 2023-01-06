@@ -15,7 +15,7 @@ namespace Gilad
 
         public static HashSet<Flammable> AllBurning = new HashSet<Flammable>();
 
-        private static int _numBurned = 0;
+        public static int NumBurned = 0;
 
         //flames to light
         [SerializeField]
@@ -112,7 +112,7 @@ namespace Gilad
 
             // GrowFire(-numOfHits);
             enabled = false;
-            _numBurned++;
+            NumBurned++;
             AllBurning.Remove(this);
         }
 
@@ -202,7 +202,7 @@ namespace Gilad
             {
                 return 0;
             }
-            return (float)_numBurned / allFlammables.Count;
+            return (float)NumBurned / allFlammables.Count;
         }
     }
 }

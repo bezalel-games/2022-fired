@@ -43,12 +43,12 @@ NavMeshAgent:
   m_GameObject: {fileID: 983896444804439074}
   m_Enabled: 1
   m_AgentTypeID: -334000983
-  m_Radius: 3
+  m_Radius: 2.5
   m_Speed: 5
   m_Acceleration: 8
   avoidancePriority: 50
   m_AngularSpeed: 120
-  m_StoppingDistance: 0
+  m_StoppingDistance: 0.5
   m_AutoTraverseOffMeshLink: 1
   m_AutoBraking: 1
   m_AutoRepath: 1
@@ -79,7 +79,7 @@ MonoBehaviour:
   timeToGo:
     duration: 1
   DistanceFromFireToPanic: 5
-  m_Flammable: {fileID: 0}
+  m_Flammable: {fileID: 3050573258545989543}
   points:
   - {fileID: 0}
   - {fileID: 0}
@@ -162,3 +162,15 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 5197704671803794979}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &3050573258545989543 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7094335904997728644, guid: 43eb1b76ff7412b4aa9262b1f364e478,
+    type: 3}
+  m_PrefabInstance: {fileID: 5197704671803794979}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c2d3cd8cd4ee7fd49aa8ac9d6bb829b9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

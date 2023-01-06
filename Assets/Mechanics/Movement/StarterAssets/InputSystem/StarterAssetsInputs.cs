@@ -233,5 +233,10 @@ namespace StarterAssets
             fire = newState;
             onFireEvent.Invoke(newState);
         }
+
+        public void LockCursor(bool state)
+        {
+            SetCursorState(state && cursorLocked);
+        }
     }
 }
