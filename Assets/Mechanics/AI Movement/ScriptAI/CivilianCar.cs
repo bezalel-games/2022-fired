@@ -34,9 +34,15 @@ public class CivilianCar : CharacterAI
         {
             return;
         }
-        if(!m_Flammable.IsOnFire() && toMove)
+        if(!m_Flammable.IsOnFire())
         {
+            toMove = true;
             MoveCharacter();
+        }
+        else
+        {
+            // Agent.isStopped= true;
+            Agent.enabled = false;
         }
     }
     
@@ -45,8 +51,11 @@ public class CivilianCar : CharacterAI
         if (m_Flammable.IsDoneBurning())
         {
             toMove = false;
+            Agent.isStopped= true;
+            Agent.enabled = false;
             return;
         }
+        if(!toMove){return;}
             
         if (timeToGo.IsSet)
         {
