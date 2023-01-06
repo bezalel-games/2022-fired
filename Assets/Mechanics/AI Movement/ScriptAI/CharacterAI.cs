@@ -15,7 +15,7 @@ public abstract class CharacterAI : MonoBehaviour
 
     // the distance from which the 
     [SerializeField]
-    protected float stoppingDistance = 15f;
+    protected float stoppingDistance = 5f;
 
     // the radius of said character 
     [SerializeField]
@@ -36,7 +36,7 @@ public abstract class CharacterAI : MonoBehaviour
 
     [SerializeField]
     [HideInInspector]
-    protected float distanceToStopFromFire = 15f;
+    protected float distanceToStopFromFire = 8f;
 
     [Space]
     [Header("Movement Animation Parameters")]
@@ -106,15 +106,27 @@ public abstract class CharacterAI : MonoBehaviour
     protected Vector3 RandomNavmeshLocation()
     {
         Vector3 randomDirection = Random.insideUnitSphere * radius;
+        // return randomDirection;
         randomDirection += transform.position;
-        NavMeshHit hit;
-        Vector3 finalPosition = Vector3.zero;
-        if (NavMesh.SamplePosition(randomDirection, out hit, radius, 1))
+        return randomDirection;
+        // NavMeshHit hit;
+        // Vector3 finalPosition = Vector3.zero;
+        Vector3 center = transform.position;
+        for (int i = 0; i < radius; i++)
         {
-            finalPosition = hit.position;
+            Vector3 res;
+            if (RandomPoint(center, 10f, out res))
+            {
+                center = res;
+            }
+            
         }
+        // if (NavMesh.SamplePosition(randomDirection, out hit, 1f, NavMesh.AllAreas))
+        // {
+            // finalPosition = hit.position;
+        // }
 
-        return finalPosition;
+        return center;
     }
 
     //makes character run from goal
@@ -129,7 +141,15 @@ public abstract class CharacterAI : MonoBehaviour
 
     protected virtual void Seek(Transform other)
     {
+        Vector3 randomPoint = transform.position + Random.insideUnitSphere * 2f;
+        NavMeshHit hit;
         var position = other.position;
+        // if (NavMesh.SamplePosition(randomPoint, out hit, 1.0f, NavMesh.AllAreas))
+        // {
+        //     position = hit.position;
+        // }
+
+        // position = other.position;
         // transform.rotation = Quaternion.LookRotation(position);
         Agent.SetDestination(position);
     }
@@ -174,6 +194,20 @@ public abstract class CharacterAI : MonoBehaviour
     {
         float angleToPlayer = Vector3.Angle(transform.forward, (Goal.position - transform.position).normalized);
         return Mathf.Abs(angleToPlayer) < angleMax;
+    }
+    
+    public float range = 10.0f;
+    bool RandomPoint(Vector3 center, float range, out Vector3 result) {
+        for (int i = 0; i < 30; i++) {
+            Vector3 randomPoint = center + Random.insideUnitSphere * range;
+            NavMeshHit hit;
+            if (NavMesh.SamplePosition(randomPoint, out hit, 1.0f, NavMesh.AllAreas)) {
+                result = hit.position;
+                return true;
+            }
+        }
+        result = Vector3.zero;
+        return false;
     }
 
 

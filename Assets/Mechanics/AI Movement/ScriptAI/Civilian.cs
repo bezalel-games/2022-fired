@@ -1,6 +1,7 @@
 using UnityEngine;
 using Avrahamy;
 using Logger = Nemesh.Logger;
+using Gilad;
 
 
 public class Civilian : CharacterAI
@@ -10,6 +11,8 @@ public class Civilian : CharacterAI
     private float maxDistanceFromPlayer = 20.0f;
     [SerializeField]
     private float minDistanceFromPlayer = 5.0f;
+    [SerializeField]
+    private Flammable m_Flammable;
 
     
     [SerializeField]private PassiveTimer timeToGo;
@@ -31,7 +34,19 @@ public class Civilian : CharacterAI
         {
             return;
         }
-        MoveCharacter();
+        
+        
+        if(!m_Flammable.IsOnFire())
+        {
+            // Agent.isStopped= true;
+            MoveCharacter();
+        }
+        else
+        {
+            // Agent.isStopped= true;
+            if(m_Flammable.IsDoneBurning())
+                Agent.enabled = false;
+        }
     }
 
     //the function from which the character moves

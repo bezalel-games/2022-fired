@@ -107,14 +107,18 @@ public class EnemyFireFighterScript : CharacterAI
             }
 
         }
-        else if (Agent.remainingDistance < stoppingDistance)
+        else if (timeToGo.IsSet&& !timeToGo.IsActive)
         {
             _shooter.StopShooting();
             var t = Agent.SetDestination(RandomNavmeshLocation());
             Logger.Log($"{Agent.destination} : {t}", this);
-
+            timeToGo.Clear();
         }
-        timeToGo.Start();
+        else if (!timeToGo.IsSet)
+        {
+            timeToGo.Start();
+        }
+        
     }
 
     private void HandleFire()
