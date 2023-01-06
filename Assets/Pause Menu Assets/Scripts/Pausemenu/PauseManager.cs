@@ -369,6 +369,14 @@ namespace GreatArcStudios
             blurEffect.blurShader = blurEffectShader;
             blurEffect.enabled = false;  */
             
+            if (mainPanel.activeSelf)
+            {
+                Resume();
+            }
+            else
+            {
+                EnterMenu();
+            }
         }
 
         private void OnEnable()
@@ -387,7 +395,6 @@ namespace GreatArcStudios
         
         public void HandleInput(InputAction.CallbackContext context)
         {
-            Nemesh.Logger.Log(context.phase, this);
             if (mainPanel.activeSelf)
             {
                 Resume();
