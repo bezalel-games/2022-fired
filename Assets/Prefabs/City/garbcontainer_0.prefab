@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 7570020131347792010}
   - component: {fileID: 970905166543491889}
   - component: {fileID: 5076970376998781009}
+  - component: {fileID: 8848234784863971740}
   m_Layer: 0
   m_Name: garbcontainer_0
   m_TagString: Untagged
@@ -123,6 +124,22 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: 2443873284356057500, guid: 063e25794aff4154ab48f4647dc2659a, type: 3}
+--- !u!208 &8848234784863971740
+NavMeshObstacle:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7161819223681669777}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Shape: 1
+  m_Extents: {x: 0.28, y: 0.80500007, z: 0.372}
+  m_MoveThreshold: 0.1
+  m_Carve: 0
+  m_CarveOnlyStationary: 1
+  m_Center: {x: -0.001, y: 0.09, z: 0.13000001}
+  m_TimeToStationary: 0.5
 --- !u!1001 &296737965334361219
 PrefabInstance:
   m_ObjectHideFlags: 0

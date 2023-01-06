@@ -340,6 +340,22 @@ MonoBehaviour:
   myAnimator: {fileID: 0}
   changeMaterialColor: 1
   changeToColor: {r: 0, g: 0, b: 0, a: 0}
+--- !u!208 &1743284941468729834
+NavMeshObstacle:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5867011917796238266}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Shape: 1
+  m_Extents: {x: 8.3220005, y: 16.016, z: 8.826}
+  m_MoveThreshold: 0.1
+  m_Carve: 0
+  m_CarveOnlyStationary: 1
+  m_Center: {x: 3.3350003, y: 16.016, z: 0.694}
+  m_TimeToStationary: 0.5
 --- !u!4 &6494191683789011200 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 432715d45b0b03541b7bd5215f911d65,
