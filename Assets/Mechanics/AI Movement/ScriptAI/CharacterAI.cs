@@ -5,6 +5,7 @@ using UnityEngine.AI;
 using Gilad;
 using System.Linq;
 using Avrahamy;
+using Avrahamy.EditorGadgets;
 
 public abstract class CharacterAI : MonoBehaviour
 {
@@ -36,7 +37,7 @@ public abstract class CharacterAI : MonoBehaviour
 
     [SerializeField]
     [HideInInspector]
-    protected float distanceToStopFromFire = 8f;
+    protected float distanceToStopFromFire = 2f;
 
     [Space]
     [Header("Movement Animation Parameters")]
@@ -49,8 +50,15 @@ public abstract class CharacterAI : MonoBehaviour
     // the agent (the character)
     protected NavMeshAgent Agent;
 
+    
+    [SerializeField]
+    [ReadOnly]
     // the goal of said character
     protected Transform Goal;
+
+    [SerializeField]
+    [ReadOnly]
+    protected Flammable fireGoal;
 
     protected MovementAnimationControl MyAnimationController;
 
@@ -66,6 +74,7 @@ public abstract class CharacterAI : MonoBehaviour
         TryGetComponent(out Agent);
         Agent.autoBraking = autoBreaking;
         timeToInit = new PassiveTimer(Random.Range(0f, 1f));
+        timeToInit.Start();
     }
 
     // Update is called once per frame
@@ -105,12 +114,6 @@ public abstract class CharacterAI : MonoBehaviour
     // this function returns random point in the radius of the character
     protected Vector3 RandomNavmeshLocation()
     {
-        Vector3 randomDirection = Random.insideUnitSphere * radius;
-        // return randomDirection;
-        randomDirection += transform.position;
-        return randomDirection;
-        // NavMeshHit hit;
-        // Vector3 finalPosition = Vector3.zero;
         Vector3 center = transform.position;
         for (int i = 0; i < radius; i++)
         {
@@ -121,12 +124,15 @@ public abstract class CharacterAI : MonoBehaviour
             }
             
         }
-        // if (NavMesh.SamplePosition(randomDirection, out hit, 1f, NavMesh.AllAreas))
-        // {
-            // finalPosition = hit.position;
-        // }
-
         return center;
+        // for (int i = 0; i < 30; i++)
+        // {
+        //     if (NavMesh.SamplePosition(randomDirection, out hit, radius, NavMesh.AllAreas))
+        //     {
+        //        return hit.position;
+        //     }
+        // }
+        
     }
 
     //makes character run from goal
@@ -134,24 +140,14 @@ public abstract class CharacterAI : MonoBehaviour
     {
         var position = transform.position;
         Vector3 dirToFire = position - runFrom.position;
-        // transform.rotation = Quaternion.LookRotation(dirToFire);
         Vector3 newPos = position + dirToFire;
         Agent.SetDestination(newPos);
     }
 
     protected virtual void Seek(Transform other)
     {
-        Vector3 randomPoint = transform.position + Random.insideUnitSphere * 2f;
-        NavMeshHit hit;
-        var position = other.position;
-        // if (NavMesh.SamplePosition(randomPoint, out hit, 1.0f, NavMesh.AllAreas))
-        // {
-        //     position = hit.position;
-        // }
-
-        // position = other.position;
-        // transform.rotation = Quaternion.LookRotation(position);
-        Agent.SetDestination(position);
+        // var position = other.position;
+        Agent.SetDestination(other.position);
     }
 
     //calculate distance between two transforms
@@ -186,7 +182,7 @@ public abstract class CharacterAI : MonoBehaviour
             }
 
         }
-
+        fireGoal = max;
         return max.gameObject.transform;
     }
     
@@ -196,12 +192,12 @@ public abstract class CharacterAI : MonoBehaviour
         return Mathf.Abs(angleToPlayer) < angleMax;
     }
     
-    public float range = 10.0f;
+    // public float range = 10.0f;
     bool RandomPoint(Vector3 center, float range, out Vector3 result) {
         for (int i = 0; i < 30; i++) {
             Vector3 randomPoint = center + Random.insideUnitSphere * range;
             NavMeshHit hit;
-            if (NavMesh.SamplePosition(randomPoint, out hit, 1.0f, NavMesh.AllAreas)) {
+            if (NavMesh.SamplePosition(randomPoint, out hit, Agent.height * 2f, NavMesh.AllAreas)) {
                 result = hit.position;
                 return true;
             }

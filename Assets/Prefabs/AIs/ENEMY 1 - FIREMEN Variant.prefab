@@ -291,19 +291,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 0}
-  stoppingDistance: 2
+  stoppingDistance: 5
   radius: 40
   autoBreaking: 1
   angleMax: 45
   distanceToStopFromFire: 15
   speed: 6
   speedChangeRate: 10
-  range: 10
+  Goal: {fileID: 0}
+  fireGoal: {fileID: 0}
   initPerceantege: 100
   costToExtinguishFire: 1
   _shooter: {fileID: 7792504109510795146}
-  minDistanceFromPlayer: 5
-  maxDistanceFromPlayer: 15
+  minDistanceFromPlayer: 15
+  maxDistanceFromPlayer: 30
   timeToGo:
     duration: 1
   shootDuration:
@@ -445,7 +446,7 @@ PrefabInstance:
     - target: {fileID: 5043534534453314091, guid: b9d9b7b5963a8e74298de2f1300e2f22,
         type: 3}
       propertyPath: force
-      value: 25
+      value: 35
       objectReference: {fileID: 0}
     - target: {fileID: 6627154383465089266, guid: b9d9b7b5963a8e74298de2f1300e2f22,
         type: 3}
@@ -574,7 +575,7 @@ PrefabInstance:
     - target: {fileID: 5043534534453314091, guid: b9d9b7b5963a8e74298de2f1300e2f22,
         type: 3}
       propertyPath: force
-      value: 25
+      value: 30
       objectReference: {fileID: 0}
     - target: {fileID: 5043534534453314091, guid: b9d9b7b5963a8e74298de2f1300e2f22,
         type: 3}
