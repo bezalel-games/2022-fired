@@ -151,23 +151,23 @@ namespace GreatArcStudios
                 else if (read.anisoLevel == 2)
                 {
                     QualitySettings.anisotropicFiltering = AnisotropicFiltering.Enable;
-                }
-                try
-                {
-                    if (read.useSimpleTerrain)
-                    {
-                        PauseManager.readTerrain.heightmapMaximumLOD = (int)read.terrainHeightMapLOD;
-                    }
-                    else
-                    {
-                        PauseManager.readSimpleTerrain.heightmapMaximumLOD = (int)read.terrainHeightMapLOD;
-                    }
-                    PauseManager.readUseSimpleTerrain = read.useSimpleTerrain;
-                }
-                catch
-                {
-                    Debug.Log("Cannot read terain heightmap LOD because the terrain was not assigned.");
-                }
+                }// try
+                                 // {
+                                 //     if (read.useSimpleTerrain)
+                                 //     {
+                                 //         PauseManager.readTerrain.heightmapMaximumLOD = (int)read.terrainHeightMapLOD;
+                                 //     }
+                                 //     else
+                                 //     {
+                                 //         PauseManager.readSimpleTerrain.heightmapMaximumLOD = (int)read.terrainHeightMapLOD;
+                                 //     }
+                                 //     PauseManager.readUseSimpleTerrain = read.useSimpleTerrain;
+                                 // }
+                                 // catch
+                                 // {
+                                 //     Debug.Log("Cannot read terain heightmap LOD because the terrain was not assigned.");
+                                 // }
+                
             }
             catch (FileNotFoundException)
             {

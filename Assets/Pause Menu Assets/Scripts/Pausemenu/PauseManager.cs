@@ -1061,8 +1061,8 @@ namespace GreatArcStudios
         /// <param name="qual"></param>
         public void updateTerrainLod(float qual)
         {
-            try { if (useSimpleTerrain == true) { simpleTerrain.heightmapMaximumLOD = (int)qual; } else { terrain.heightmapMaximumLOD = (int)qual; } }
-            catch { Debug.Log("Terrain not assigned"); return; }
+            // try { if (useSimpleTerrain == true) { simpleTerrain.heightmapMaximumLOD = (int)qual; } else { terrain.heightmapMaximumLOD = (int)qual; } }
+            // catch { Debug.Log("Terrain not assigned"); return; }
 
         }
         /// <summary>
@@ -1079,26 +1079,26 @@ namespace GreatArcStudios
         /// <param name="b"></param>
         public void toggleDOF(Boolean b)
         {
-            try
-            {
-                tempScript = (MonoBehaviour)mainCamObj.GetComponent(DOFScriptName);
-
-                if (b == true)
-                {
-                    tempScript.enabled = true;
-                    dofBool = true;
-                }
-                else
-                {
-                    tempScript.enabled = false;
-                    dofBool = false;
-                }
-            }
-            catch
-            {
-                Debug.Log("No AO post processing found");
-                return;
-            }
+            // try
+            // {
+            //     tempScript = (MonoBehaviour)mainCamObj.GetComponent(DOFScriptName);
+            //
+            //     if (b == true)
+            //     {
+            //         tempScript.enabled = true;
+            //         dofBool = true;
+            //     }
+            //     else
+            //     {
+            //         tempScript.enabled = false;
+            //         dofBool = false;
+            //     }
+            // }
+            // catch
+            // {
+            //     Debug.Log("No AO post processing found");
+            //     return;
+            // }
 
 
 
@@ -1109,27 +1109,27 @@ namespace GreatArcStudios
         /// <param name="b"></param>
         public void toggleAO(Boolean b)  // TODO: fix this
         {
-            try
-            {
-
-                tempScript = (MonoBehaviour)mainCamObj.GetComponent(AOScriptName);
-
-                if (b == true)
-                {
-                    tempScript.enabled = true;
-                    aoBool = true;
-                }
-                else
-                {
-                    tempScript.enabled = false;
-                    aoBool = false;
-                }
-            }
-            catch
-            {
-                Debug.Log("No AO post processing found");
-                return;
-            }
+            // try
+            // {
+            //
+            //     tempScript = (MonoBehaviour)mainCamObj.GetComponent(AOScriptName);
+            //
+            //     if (b == true)
+            //     {
+            //         tempScript.enabled = true;
+            //         aoBool = true;
+            //     }
+            //     else
+            //     {
+            //         tempScript.enabled = false;
+            //         aoBool = false;
+            //     }
+            // }
+            // catch
+            // {
+            //     Debug.Log("No AO post processing found");
+            //     return;
+            // }
         }
         /// <summary>
         /// Set the game to windowed or full screen. This is meant to be used with a checkbox
