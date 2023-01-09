@@ -21,7 +21,7 @@ public class EnemyFireFighterScript : CharacterAI
     private WaterShooter _shooter;
 
     [SerializeField]
-    private float minDistanceFromPlayer = 5.0f;
+    private float minDistanceFromPlayer = 8.0f;
 
     [SerializeField]
     private float maxDistanceFromPlayer = 15.0f;
@@ -38,6 +38,8 @@ public class EnemyFireFighterScript : CharacterAI
     [SerializeField]
     [ReadOnly]
     private float percentage;
+
+    private bool wentRandom;
     
     
     // Start is called before the first frame update
@@ -53,7 +55,7 @@ public class EnemyFireFighterScript : CharacterAI
     protected override void Update()
     {
         base.Update();
-        if(timeToInit.IsSet && !timeToInit.IsActive)
+        if(timeToInit.IsSet && timeToInit.IsActive)
         {
             return;
         }
@@ -67,70 +69,80 @@ public class EnemyFireFighterScript : CharacterAI
         {
             timeToGo.Start();
         }
-        if (timeToGo.IsActive)
+        if (!timeToGo.IsActive)
         {
-            return;
+            Goal = Distance(player, transform) < minDistanceFromPlayer
+                ? player
+                : FindFire(transform);
+            timeToGo.Clear();
+            wentRandom = false;
         }
 
         // Goal = Distance(player, transform) < minDistanceFromPlayer ||
         //        Distance(player, transform) > maxDistanceFromPlayer
         //     ? player
         //     : radiusWithCol.FindFire(transform);
-        Goal = Distance(player, transform) < minDistanceFromPlayer
-            ? player
-            : FindFire(transform);
-        if (Goal != null) // TODO: use an API
+        // Goal = Distance(player, transform) < minDistanceFromPlayer
+        //     ? player
+        //     : FindFire(transform);
+        if (Goal != null && GoalOnfire()) // TODO: use an API
         {
-
-            if (percentage > 0)
+            
+            if (HandleFire())
             {
-                HandleFire();
             }
             else
             {
-                _shooter.StopShooting();
-                if (timeToGo.IsSet)
-                {
-                    if (timeToGo.IsActive)
-                    {
-                    }
-                    else
-                    {
-                        timeToGo.Clear();
-                        RunAway(Goal);
-                    }
-                }
-                else
-                {
-                    timeToGo.Start();
-                }
+                wentRandom = false;
+                RunAway(Goal);
             }
 
         }
-        else if (Agent.remainingDistance < stoppingDistance)
+        else
         {
             _shooter.StopShooting();
-            var t = Agent.SetDestination(RandomNavmeshLocation());
-            Logger.Log($"{Agent.destination} : {t}", this);
-
+            if (!Agent.pathPending && Agent.remainingDistance < stoppingDistance|| !wentRandom)
+            {
+                // Agent.SetDestination(RandomNavmeshLocation());
+                var t = Agent.SetDestination(RandomNavmeshLocation());
+                Logger.Log($"{Agent.destination} : {t}", this);
+                timeToGo.Clear();
+                wentRandom = true;
+            }
         }
-        timeToGo.Start();
+        
+        // timeToGo.Start();
+        
+        
     }
 
-    private void HandleFire()
+    //return true if go after the fire
+    private bool HandleFire()
     {
-        
-        if (Agent.remainingDistance < stoppingDistance + 1f)
+        if (percentage <= 0)
+        {
+            _shooter.StopShooting();
+            return false;
+        }
+        if (Agent.remainingDistance < distanceToStopFromFire + 1f)
         {
             transform.LookAt(Goal.position);  // TODO: use slerp/lerp to rotate gradually
             Agent.updateRotation = false;
 
             if (IsFacing())
             {
-                if (timeBetweenShots.IsSet && timeBetweenShots.IsActive || !timeBetweenShots.IsSet)  // TODO patch
+                if (!(timeBetweenShots.IsSet && timeBetweenShots.IsActive))  // TODO patch
                 {
                     ExtinguishFire();
                 }
+                else
+                {
+                    Seek(Goal);
+                }
+            }
+            else
+            {
+                Seek(Goal);
             }
         }
         else
@@ -138,7 +150,6 @@ public class EnemyFireFighterScript : CharacterAI
             Agent.updateRotation = true;
             Seek(Goal);
         }
-
         if (shootDuration.IsSet && !shootDuration.IsActive)
         {
             percentage -= costToExtinguishFire;
@@ -152,9 +163,13 @@ public class EnemyFireFighterScript : CharacterAI
             timeBetweenShots.Clear();
         }
 
-
+        return true;
     }
 
+    private bool GoalOnfire()
+    {
+        return fireGoal != null && fireGoal.IsOnFire() && !fireGoal.IsDoneBurning();
+    }
     private void ExtinguishFire()
     {
         if (shootDuration.IsSet)
@@ -164,6 +179,12 @@ public class EnemyFireFighterScript : CharacterAI
                 Seek(Goal);
                 _shooter.StartShooting();
             }
+            else
+            {
+                // _shooter.StopShooting();
+                // shootDuration.Clear();
+                // timeBetweenShots.Start();
+            }
         }
         else
         {
@@ -172,5 +193,6 @@ public class EnemyFireFighterScript : CharacterAI
         }
         // here we need to call a function that put the fire of
     }
+    
 
 }

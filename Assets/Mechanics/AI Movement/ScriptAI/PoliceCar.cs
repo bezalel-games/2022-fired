@@ -22,7 +22,7 @@ public class PoliceCar : CharacterAI
     protected override void Update()
     {
         base.Update();
-        if(timeToInit.IsSet && !timeToInit.IsActive)
+        if(timeToInit.IsSet && timeToInit.IsActive)
         {
             return;
         }

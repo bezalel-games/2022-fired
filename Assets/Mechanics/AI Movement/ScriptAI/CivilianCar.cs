@@ -30,17 +30,19 @@ public class CivilianCar : CharacterAI
     protected override void Update()
     {
         base.Update();
-        if(timeToInit.IsSet && !timeToInit.IsActive)
+        if(timeToInit.IsSet && timeToInit.IsActive)
         {
             return;
         }
         if(!m_Flammable.IsOnFire())
         {
             toMove = true;
+            Agent.enabled = true;
             MoveCharacter();
         }
         else
         {
+            toMove = false;
             // Agent.isStopped= true;
             Agent.enabled = false;
         }

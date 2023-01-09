@@ -61,7 +61,7 @@ public class ThrowBall : MonoBehaviour
 
     public void ThrowAnimationTrigger()
     {
-        Logger.Log("Shooting");
+        // Logger.Log("Shooting");
         _cannon.ShootBall();
     }
 }
