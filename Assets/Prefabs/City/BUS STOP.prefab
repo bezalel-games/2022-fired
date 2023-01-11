@@ -759,6 +759,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5431328360555645753, guid: 5808795ab31a67a449fd8a2e9a6de631,
         type: 3}
+      propertyPath: onBurnedEvent
+      value: 
+      objectReference: {fileID: 9005061123458532723}
+    - target: {fileID: 5431328360555645753, guid: 5808795ab31a67a449fd8a2e9a6de631,
+        type: 3}
       propertyPath: flames.Array.size
       value: 6
       objectReference: {fileID: 0}
@@ -1008,6 +1013,16 @@ PrefabInstance:
       propertyPath: m_AABB.m_Extent.z
       value: 2.1183681
       objectReference: {fileID: 0}
+    - target: {fileID: -3887185075125053422, guid: a846bfaac1f7d9b46bfd64d1ef7cf35a,
+        type: 3}
+      propertyPath: m_BlendShapeWeights.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: -3887185075125053422, guid: a846bfaac1f7d9b46bfd64d1ef7cf35a,
+        type: 3}
+      propertyPath: m_BlendShapeWeights.Array.data[0]
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: a846bfaac1f7d9b46bfd64d1ef7cf35a,
         type: 3}
       propertyPath: m_Name
@@ -1031,7 +1046,7 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 7956187245286793934}
   m_PrefabAsset: {fileID: 0}
---- !u!64 &7466232778273740437
+--- !u!64 &9051155988831583395
 MeshCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1044,7 +1059,7 @@ MeshCollider:
   serializedVersion: 4
   m_Convex: 0
   m_CookingOptions: 30
-  m_Mesh: {fileID: 0}
+  m_Mesh: {fileID: -5371771884513514748, guid: a846bfaac1f7d9b46bfd64d1ef7cf35a, type: 3}
 --- !u!208 &4376893592637930166
 NavMeshObstacle:
   m_ObjectHideFlags: 0

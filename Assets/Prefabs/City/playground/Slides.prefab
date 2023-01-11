@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 480645573367694047}
   - component: {fileID: 480645573367694046}
   - component: {fileID: 8808599513744384891}
+  - component: {fileID: 3885947209072608487}
   m_Layer: 0
   m_Name: Slides
   m_TagString: Untagged
@@ -146,6 +147,20 @@ NavMeshObstacle:
   m_CarveOnlyStationary: 1
   m_Center: {x: 0.16900001, y: 0.057000004, z: 0.165}
   m_TimeToStationary: 0.5
+--- !u!64 &3885947209072608487
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 480645573367694043}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: -3329902420748629119, guid: d9d043de106481440b93bbf0251b34ab, type: 3}
 --- !u!1 &3341183259924484609
 GameObject:
   m_ObjectHideFlags: 0
