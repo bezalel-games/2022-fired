@@ -19,6 +19,8 @@ namespace GreatArcStudios
     /// </summary>
     public class PauseManager : MonoBehaviour
     {
+        public static bool Paused { get; set; } = false;
+        
         [SerializeField]
         private InputAction menuInputAction;
         
@@ -414,6 +416,7 @@ namespace GreatArcStudios
             TitleTexts.SetActive(true);
             mask.SetActive(true);
             Time.timeScale = 0;
+            Paused = true;
             for (int i = 0; i < otherUIElements.Length; i++)
             {
                 otherUIElements[i].gameObject.SetActive(false);
@@ -440,6 +443,7 @@ namespace GreatArcStudios
         public void Resume()
         {
             Time.timeScale = timeScale;
+            Paused = false;
 
             mainPanel.SetActive(false);
             vidPanel.SetActive(false);

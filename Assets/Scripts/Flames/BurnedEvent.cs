@@ -62,8 +62,6 @@ namespace Flames
         [Button]
         public void ObjectBurned()
         {
-            var c = new Color(1f, 0.26f, 0.05f);
-            Logger.Log("Burned", c, this);
             onBurned.Invoke();
         }
     }

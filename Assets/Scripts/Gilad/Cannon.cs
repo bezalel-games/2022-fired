@@ -1,5 +1,7 @@
 using System;
 using Avrahamy.Math;
+using BitStrap;
+using Flames;
 using UnityEngine;
 using UnityEngine.Pool;
 using Logger = Nemesh.Logger;
@@ -18,16 +20,31 @@ namespace Gilad
 
         [SerializeField]
         private GameObject fireBallObGameObject;
+        
+        [RequiredReference]
+        [SerializeField]
+        private ExplosionPool explosionPool;
+
+        [SerializeField]
+        private Transform parentTransform;
+
+        private bool _hasExplosion;
 
         // Start is called before the first frame update
         void Start()
         {
+            // TODO: unified pool for all water cannons!
             _pool = new LinkedPool<Shooter>(CreateBall, GetBall, ReleaseBall, null, false, 20);
+            _hasExplosion = explosionPool != null;
+            if (parentTransform == null)
+            {
+                parentTransform = FlameRestartManager.Instance.transform;
+            }
         }
 
         private Shooter CreateBall()
         {
-            var ball = Instantiate(fireBallObGameObject);
+            var ball = Instantiate(fireBallObGameObject, parentTransform);
             var fireShooter = ball.GetComponent<Shooter>();
             if (fireShooter == null)
             {
@@ -50,7 +67,14 @@ namespace Gilad
 
         private void ReleaseBall(Shooter shooter)
         {
+            var pos = shooter.transform.position;
             shooter.ShutDown();
+            if (!_hasExplosion)
+            {
+                return;
+            }
+            var explosion = explosionPool.Pool.Get();
+            explosion.transform.position = pos;
         }
 
         public void ShootBall()

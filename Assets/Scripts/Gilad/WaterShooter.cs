@@ -1,21 +1,25 @@
+using Avrahamy;
+using GreatArcStudios;
 using UnityEngine;
 
 namespace Gilad
 {
-    public class WaterShooter : MonoBehaviour
+    public class WaterShooter : OptimizedBehaviour
     {
         [SerializeField]
         private Cannon[] cannons;
 
         [SerializeField]
-        private float shootDuration = 0.2f;
+        private PassiveTimer shootDuration = new(0.2f);
 
-        private float _timePassed = 0f;
-
-        private bool _isShooting;
         void Update()
         {
-            if (_isShooting)
+            if (PauseManager.Paused)
+            {
+                return;
+            }
+
+            if (shootDuration.IsSet)
             {
                 ShootCannon();
             }
@@ -23,30 +27,28 @@ namespace Gilad
 
         private void ShootCannon()
         {
-            if (_timePassed >= shootDuration)
+            if (shootDuration.IsActive)
             {
-                foreach (var cannon in cannons)
-                {
-                    cannon.ShootBall();
-                }
-                _timePassed = 0f;
+                return;
             }
-            else
+
+            foreach (var cannon in cannons)
             {
-                _timePassed += Time.deltaTime;
+                cannon.ShootBall();
             }
+
+            shootDuration.Start();
         }
 
         public void StartShooting()
         {
-            _isShooting = true;
-            _timePassed = shootDuration;
+            shootDuration.Start();
+            shootDuration.SetRemainingTimeAndPreserveStartTime(0);
         }
 
         public void StopShooting()
         {
-            _isShooting = false;
-            _timePassed = 0f;
+            shootDuration.Clear();
         }
 
 
