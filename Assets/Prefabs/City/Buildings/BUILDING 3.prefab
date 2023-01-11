@@ -58,6 +58,7 @@ GameObject:
   - component: {fileID: 8077944940554956062}
   - component: {fileID: 3053389865507972795}
   - component: {fileID: 1431636915205338248}
+  - component: {fileID: 6147840599881827035}
   m_Layer: 0
   m_Name: BUILDING 3
   m_TagString: Untagged
@@ -139,12 +140,12 @@ NavMeshObstacle:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7317433038085060693}
-  m_Enabled: 0
+  m_Enabled: 1
   serializedVersion: 3
   m_Shape: 1
   m_Extents: {x: 0.07, y: 0.045, z: 0.07}
   m_MoveThreshold: 0.1
-  m_Carve: 0
+  m_Carve: 1
   m_CarveOnlyStationary: 1
   m_Center: {x: 0.002, y: 0.025, z: 0.068}
   m_TimeToStationary: 0.5
@@ -183,6 +184,29 @@ MonoBehaviour:
   myAnimator: {fileID: 0}
   changeMaterialColor: 1
   changeToColor: {r: 0, g: 0, b: 0, a: 0}
+--- !u!114 &6147840599881827035
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7317433038085060693}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6ec3c03900adde14aba71fbeb21860f7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  useManuallyEnteredColor: 0
+  color: {r: 0.5, g: 0.5, b: 0.5, a: 1}
+  hueRange:
+    min: 0
+    max: 0.1
+  saturationRange:
+    min: 0
+    max: 1
+  valueRange:
+    min: 0.85
+    max: 1
 --- !u!1001 &504905663528270693
 PrefabInstance:
   m_ObjectHideFlags: 0

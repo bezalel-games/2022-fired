@@ -7,7 +7,7 @@ namespace Gilad
     public class FlameDetect : MonoBehaviour
     {
         // Start is called before the first frame update
-        [SerializeField] private Flammable flammable;
+        [SerializeField] protected Flammable flammable;
 
         [SerializeField] private bool isFire = true;
 
