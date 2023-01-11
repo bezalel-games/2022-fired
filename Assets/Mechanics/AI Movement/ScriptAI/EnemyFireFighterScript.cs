@@ -103,9 +103,7 @@ public class EnemyFireFighterScript : CharacterAI
             _shooter.StopShooting();
             if (!Agent.pathPending && Agent.remainingDistance < stoppingDistance|| !wentRandom)
             {
-                // Agent.SetDestination(RandomNavmeshLocation());
                 var t = Agent.SetDestination(RandomNavmeshLocation());
-                Logger.Log($"{Agent.destination} : {t}", this);
                 timeToGo.Clear();
                 wentRandom = true;
             }
