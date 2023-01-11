@@ -5949,6 +5949,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1997023465756028405}
     m_Modifications:
+    - target: {fileID: 549952329502572730, guid: f32e43625ae25f74aaac19d6fa598a49,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1337178495447109198, guid: f32e43625ae25f74aaac19d6fa598a49,
         type: 3}
       propertyPath: m_RootOrder
@@ -6023,6 +6028,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Fire Sphere (2)
+      objectReference: {fileID: 0}
+    - target: {fileID: 1337178495447109207, guid: f32e43625ae25f74aaac19d6fa598a49,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3131341515593848510, guid: f32e43625ae25f74aaac19d6fa598a49,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f32e43625ae25f74aaac19d6fa598a49, type: 3}
@@ -6136,6 +6151,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1997023465756028405}
     m_Modifications:
+    - target: {fileID: 549952329502572730, guid: f32e43625ae25f74aaac19d6fa598a49,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1337178495447109198, guid: f32e43625ae25f74aaac19d6fa598a49,
         type: 3}
       propertyPath: m_RootOrder
@@ -6211,6 +6231,16 @@ PrefabInstance:
       propertyPath: m_Name
       value: Fire Sphere (3)
       objectReference: {fileID: 0}
+    - target: {fileID: 1337178495447109207, guid: f32e43625ae25f74aaac19d6fa598a49,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3131341515593848510, guid: f32e43625ae25f74aaac19d6fa598a49,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f32e43625ae25f74aaac19d6fa598a49, type: 3}
 --- !u!4 &6132203968129098125 stripped
@@ -6232,6 +6262,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1997023465756028405}
     m_Modifications:
+    - target: {fileID: 549952329502572730, guid: f32e43625ae25f74aaac19d6fa598a49,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1337178495447109198, guid: f32e43625ae25f74aaac19d6fa598a49,
         type: 3}
       propertyPath: m_RootOrder
@@ -6307,6 +6342,16 @@ PrefabInstance:
       propertyPath: m_Name
       value: Fire Sphere (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 1337178495447109207, guid: f32e43625ae25f74aaac19d6fa598a49,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3131341515593848510, guid: f32e43625ae25f74aaac19d6fa598a49,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f32e43625ae25f74aaac19d6fa598a49, type: 3}
 --- !u!1 &4785934123789527781 stripped
@@ -6328,6 +6373,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1997023465756028405}
     m_Modifications:
+    - target: {fileID: 60205741901859869, guid: 14f63c062a90ec341ab1de6a3507a38a,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1337178495447109198, guid: 14f63c062a90ec341ab1de6a3507a38a,
         type: 3}
       propertyPath: m_RootOrder
@@ -6398,6 +6448,16 @@ PrefabInstance:
       propertyPath: m_Name
       value: Fire Sphere 2
       objectReference: {fileID: 0}
+    - target: {fileID: 1337178495447109207, guid: 14f63c062a90ec341ab1de6a3507a38a,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4192537228574779910, guid: 14f63c062a90ec341ab1de6a3507a38a,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 14f63c062a90ec341ab1de6a3507a38a, type: 3}
 --- !u!4 &5692420912217017643 stripped
@@ -6419,6 +6479,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1997023465756028405}
     m_Modifications:
+    - target: {fileID: 549952329502572730, guid: f32e43625ae25f74aaac19d6fa598a49,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1337178495447109198, guid: f32e43625ae25f74aaac19d6fa598a49,
         type: 3}
       propertyPath: m_RootOrder
@@ -6494,6 +6559,16 @@ PrefabInstance:
       propertyPath: m_Name
       value: Fire Sphere
       objectReference: {fileID: 0}
+    - target: {fileID: 1337178495447109207, guid: f32e43625ae25f74aaac19d6fa598a49,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3131341515593848510, guid: f32e43625ae25f74aaac19d6fa598a49,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f32e43625ae25f74aaac19d6fa598a49, type: 3}
 --- !u!4 &8484450247001149391 stripped
@@ -6515,6 +6590,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1997023465756028405}
     m_Modifications:
+    - target: {fileID: 549952329502572730, guid: f32e43625ae25f74aaac19d6fa598a49,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1337178495447109198, guid: f32e43625ae25f74aaac19d6fa598a49,
         type: 3}
       propertyPath: m_RootOrder
@@ -6589,6 +6669,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Fire Sphere (4)
+      objectReference: {fileID: 0}
+    - target: {fileID: 1337178495447109207, guid: f32e43625ae25f74aaac19d6fa598a49,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3131341515593848510, guid: f32e43625ae25f74aaac19d6fa598a49,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f32e43625ae25f74aaac19d6fa598a49, type: 3}
