@@ -754,7 +754,7 @@ MonoBehaviour:
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 4
-  m_FillAmount: 0
+  m_FillAmount: 1
   m_FillClockwise: 1
   m_FillOrigin: 2
   m_UseSpriteMesh: 0
@@ -889,6 +889,8 @@ MonoBehaviour:
     sceneAsset: {fileID: 102900000, guid: bf50e49db2dc033498ee5bc65575b281, type: 3}
     sceneAssetGuidHex: bf50e49db2dc033498ee5bc65575b281
   loadMode: 0
+  unloadIfAdditive: 1
+  loadOnStart: 1
   loadNext: 0
   currentLoadingProgress: 0
   sentReadyMassage: 0
