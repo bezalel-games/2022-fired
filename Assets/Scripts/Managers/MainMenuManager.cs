@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using BitStrap;
+using Eflatun.SceneReference;
 using UnityEditor;
 using UnityEngine;
 using UnityEngine.Events;
@@ -11,9 +12,8 @@ namespace Managers
 {
     public class MainMenuManager : MonoBehaviour
     {
-        
         [SerializeField]
-        private int sceneToLoad = 1;  // TODO: scene selector drawer?
+        private SceneReference sceneToLoad;  // TODO: scene selector drawer?
 
         [SerializeField]
         private LoadSceneMode loadMode = LoadSceneMode.Single;
@@ -47,7 +47,14 @@ namespace Managers
 
         private void Start()
         {
-            StartCoroutine(LoadScene(sceneToLoad));
+            if (sceneToLoad.IsSafeToUse)
+            {
+                StartCoroutine(LoadScene(sceneToLoad));
+            }
+            else
+            {
+                Logger.LogWarning("Not a valid scene!");
+            }
         }
 
         public void GoToNext()
@@ -55,13 +62,13 @@ namespace Managers
             loadNext = true;
         }
 
-        private IEnumerator LoadScene(int scene)
+        private IEnumerator LoadScene(SceneReference scene)
         {
             yield return null;
 
-            AsyncOperation asyncOperation = SceneManager.LoadSceneAsync(scene, LoadSceneMode.Single);
+            AsyncOperation asyncOperation = SceneManager.LoadSceneAsync(scene.BuildIndex, LoadSceneMode.Single);
             asyncOperation.allowSceneActivation = false;
-            Logger.Log($"Start async load scene {scene}", this);
+            Logger.Log($"Start async load scene {scene.Name}", this);
             
             while (!asyncOperation.isDone)
             {
@@ -72,13 +79,13 @@ namespace Managers
                 {
                     if (!sentReadyMassage)
                     {
-                        Logger.Log($"Ready to switch to scene {scene}", this);
+                        Logger.Log($"Ready to switch to scene {scene.Name}", this);
                         onReadyState.Invoke();
                         sentReadyMassage = true;
                     }
                     if (loadNext)
                     {
-                        Logger.Log($"Allowing scene {scene} activation");
+                        Logger.Log($"Allowing scene {scene.Name} activation");
                         onStartSwitch.Invoke();
                         asyncOperation.allowSceneActivation = true;
                     }
