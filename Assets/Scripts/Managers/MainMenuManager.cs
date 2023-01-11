@@ -14,7 +14,13 @@ namespace Managers
         
         [ReadOnly]
         [SerializeField]
-        private bool loadNext; 
+        [InspectorName("Received load next massage")]
+        private bool loadNext;
+
+        [ReadOnly]
+        [SerializeField]
+        [InspectorName("Scene ready to load")]
+        private bool sentReadyMassage;
 
         private void Start()
         {
@@ -30,9 +36,7 @@ namespace Managers
         {
             yield return null;
 
-            //Begin to load the Scene you specify
             AsyncOperation asyncOperation = SceneManager.LoadSceneAsync(scene);
-            //Don't let the Scene activate until you allow it to
             asyncOperation.allowSceneActivation = false;
             Logger.Log($"Start async load scene {scene}", this);
 
@@ -42,11 +46,14 @@ namespace Managers
                 // Check if the load has finished
                 if (asyncOperation.progress >= 0.9f)
                 {
-                    // DebugLog.Log(LogTag.Default, "Ready to load", this);
-                    //Wait to you press the space key to activate the Scene
+                    if (!sentReadyMassage)
+                    {
+                        Logger.Log($"Ready to switch to scene {scene}", this);
+                        sentReadyMassage = true;
+                    }
                     if (loadNext)
                     {
-                        //Activate the Scene
+                        Logger.Log($"Allowing scene {scene} activation");
                         asyncOperation.allowSceneActivation = true;
                     }
                 }
