@@ -22,12 +22,15 @@ public class ThrowBall : MonoBehaviour
     [SerializeField]
     private float throwAnimationSpeed = 3f;
 
+    public bool IsShooting { set; get; }
+
     private Animator _animator;
     private StarterAssetsInputs _input;
     private Cannon _cannon;
 
     private void Awake()
     {
+        IsShooting = true;
         _animator = GetComponent<Animator>();
         _input = GetComponent<StarterAssetsInputs>();
         _cannon = GetComponentInChildren<Cannon>();
@@ -51,6 +54,7 @@ public class ThrowBall : MonoBehaviour
 
     private void OnThrow(bool shouldThrow)
     {
+        if (!IsShooting) return;
         // if (shouldThrow)  // TODO: and not already in state!
         // {
         //     throwTrigger.Set(_animator);
