@@ -125,7 +125,7 @@ NavMeshSettings:
     preserveTilesOutsideBounds: 0
     debug:
       m_Flags: 0
-  m_NavMeshData: {fileID: 23800000, guid: 0b26aba9543d3eb4e96d22f3bcac94e5, type: 2}
+  m_NavMeshData: {fileID: 23800000, guid: 257176a3ce843c44d867eae97d7780de, type: 2}
 --- !u!1001 &1236204
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -584,6 +584,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: ROAD1919 - Copy (5)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 1917cd0ce5eb2ff41b74a5819c005023,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 8
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1917cd0ce5eb2ff41b74a5819c005023, type: 3}
@@ -1345,7 +1350,7 @@ PrefabInstance:
     - target: {fileID: 180024261715337055, guid: 364c271b3b06beb4e8acb36dea69ae3c,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: -1.21
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 180024261715337055, guid: 364c271b3b06beb4e8acb36dea69ae3c,
         type: 3}
@@ -2682,6 +2687,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: ROAD1919 - Copy (9)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 1917cd0ce5eb2ff41b74a5819c005023,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 8
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1917cd0ce5eb2ff41b74a5819c005023, type: 3}
 --- !u!4 &133383989 stripped
@@ -3108,6 +3118,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: JUNCTION (2)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 9a3ef2cc96c7d9447af5edfbc3ec602d,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 8
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9a3ef2cc96c7d9447af5edfbc3ec602d, type: 3}
@@ -4225,7 +4240,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 8
   m_IsActive: 1
 --- !u!4 &267370626
 Transform:
@@ -4403,6 +4418,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: JUNCTION
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 9a3ef2cc96c7d9447af5edfbc3ec602d,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 8
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9a3ef2cc96c7d9447af5edfbc3ec602d, type: 3}
@@ -5140,6 +5160,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   onShotEndObject: {fileID: 2421302679148124712, guid: e2ce76fca980fc342b3977b243d4488c,
     type: 3}
+  initialPoolSize: 10
 --- !u!4 &328950213
 Transform:
   m_ObjectHideFlags: 0
@@ -6170,6 +6191,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: ROAD1919 - Copy (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 1917cd0ce5eb2ff41b74a5819c005023,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 8
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1917cd0ce5eb2ff41b74a5819c005023, type: 3}
 --- !u!1 &403942168
@@ -6953,6 +6979,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: ROAD1919 - Copy (10)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 1917cd0ce5eb2ff41b74a5819c005023,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 8
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1917cd0ce5eb2ff41b74a5819c005023, type: 3}
 --- !u!4 &458488783 stripped
@@ -7070,6 +7101,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: ROAD1919 - Copy (8)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 1917cd0ce5eb2ff41b74a5819c005023,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 8
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1917cd0ce5eb2ff41b74a5819c005023, type: 3}
@@ -7299,6 +7335,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: JUNCTION (4)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 9a3ef2cc96c7d9447af5edfbc3ec602d,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 8
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9a3ef2cc96c7d9447af5edfbc3ec602d, type: 3}
@@ -12608,6 +12649,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: ROAD1919 - Copy (11)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 1917cd0ce5eb2ff41b74a5819c005023,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 8
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1917cd0ce5eb2ff41b74a5819c005023, type: 3}
 --- !u!4 &895118346 stripped
@@ -12713,6 +12759,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: ROAD1919 - Copy
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 1917cd0ce5eb2ff41b74a5819c005023,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 8
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1917cd0ce5eb2ff41b74a5819c005023, type: 3}
@@ -13093,12 +13144,12 @@ PrefabInstance:
     - target: {fileID: 1549758163421445266, guid: eb585f4a557eb064781ba03a11412ec3,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 82.07
+      value: 75.38
       objectReference: {fileID: 0}
     - target: {fileID: 1549758163421445266, guid: eb585f4a557eb064781ba03a11412ec3,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: -1.2299995
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1549758163421445266, guid: eb585f4a557eb064781ba03a11412ec3,
         type: 3}
@@ -13493,6 +13544,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: JUNCTION (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 9a3ef2cc96c7d9447af5edfbc3ec602d,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 8
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9a3ef2cc96c7d9447af5edfbc3ec602d, type: 3}
@@ -16425,7 +16481,7 @@ PrefabInstance:
     - target: {fileID: 180024261715337055, guid: 364c271b3b06beb4e8acb36dea69ae3c,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: -1.21
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 180024261715337055, guid: 364c271b3b06beb4e8acb36dea69ae3c,
         type: 3}
@@ -18160,6 +18216,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: ROAD1919 - Copy (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 1917cd0ce5eb2ff41b74a5819c005023,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 8
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1917cd0ce5eb2ff41b74a5819c005023, type: 3}
 --- !u!4 &1243243418 stripped
@@ -19696,6 +19757,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: ROAD1919 - Copy (3)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 1917cd0ce5eb2ff41b74a5819c005023,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 8
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1917cd0ce5eb2ff41b74a5819c005023, type: 3}
 --- !u!1001 &1412076495
@@ -21138,6 +21204,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: ROAD1919 - Copy (4)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 1917cd0ce5eb2ff41b74a5819c005023,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 8
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1917cd0ce5eb2ff41b74a5819c005023, type: 3}
 --- !u!1 &1516050716
@@ -21407,7 +21478,7 @@ PrefabInstance:
     - target: {fileID: 180024261715337055, guid: 364c271b3b06beb4e8acb36dea69ae3c,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: -1.21
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 180024261715337055, guid: 364c271b3b06beb4e8acb36dea69ae3c,
         type: 3}
@@ -22053,6 +22124,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: JUNCTION (3)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 9a3ef2cc96c7d9447af5edfbc3ec602d,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 8
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9a3ef2cc96c7d9447af5edfbc3ec602d, type: 3}
@@ -25429,7 +25505,7 @@ PrefabInstance:
     - target: {fileID: 1549758163421445266, guid: eb585f4a557eb064781ba03a11412ec3,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: -1.2299995
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1549758163421445266, guid: eb585f4a557eb064781ba03a11412ec3,
         type: 3}
@@ -25697,6 +25773,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: ROAD1919 - Copy (7)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 1917cd0ce5eb2ff41b74a5819c005023,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 8
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1917cd0ce5eb2ff41b74a5819c005023, type: 3}
 --- !u!4 &2026603718 stripped
@@ -25787,6 +25868,8 @@ MonoBehaviour:
   distanceToStopFromFire: 15
   speed: 10
   speedChangeRate: 10
+  Goal: {fileID: 0}
+  fireGoal: {fileID: 0}
   initPerceantege: 38
   costToExtinguishFire: 0
   timeToExtinguish: 0
@@ -26813,6 +26896,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: ROAD1919 - Copy (6)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 1917cd0ce5eb2ff41b74a5819c005023,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 8
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1917cd0ce5eb2ff41b74a5819c005023, type: 3}
 --- !u!4 &2084740506 stripped
@@ -27312,7 +27400,7 @@ PrefabInstance:
     - target: {fileID: 180024261715337055, guid: 364c271b3b06beb4e8acb36dea69ae3c,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: -1.21
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 180024261715337055, guid: 364c271b3b06beb4e8acb36dea69ae3c,
         type: 3}
@@ -27656,6 +27744,11 @@ PrefabInstance:
     - target: {fileID: 180024261715337055, guid: 364c271b3b06beb4e8acb36dea69ae3c,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 429295938663410058, guid: 364c271b3b06beb4e8acb36dea69ae3c,
+        type: 3}
+      propertyPath: m_LocalPosition.y
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
