@@ -33,7 +33,7 @@ namespace Flames
 
         private void ReleaseEvent(ShotEndsEvent obj)
         {
-            obj.gameObject.SetActive(true);
+            obj.gameObject.SetActive(false);
         }
 
         private void BorrowEvent(ShotEndsEvent obj)
