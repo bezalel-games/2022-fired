@@ -1,5 +1,6 @@
 using System;
 using System.Linq;
+using Avrahamy;
 using BitStrap;
 using UnityEngine;
 using UnityEngine.Pool;
@@ -7,7 +8,7 @@ using Logger = Nemesh.Logger;
 
 namespace Flames
 {
-    public class ExplosionPool : MonoBehaviour
+    public class ExplosionPool : OptimizedBehaviour
     {
         public static ExplosionPool Instance { get; private set; }
         public LinkedPool<ShotEndsEvent> Pool { get; private set; }
@@ -16,25 +17,27 @@ namespace Flames
         [RequiredReference]
         private GameObject onShotEndObject;
 
+        [ReadOnly(onlyInPlaymode = true)]
+        [SerializeField]
+        private int initialPoolSize = 10;
+
         private void Awake()
         {
             if (Instance is not null)
             {
-                Destroy(this);
-                return;
+                Destroy(Instance);
             }
             Instance = this;
-            Pool = new LinkedPool<ShotEndsEvent>(CreateEvent, BorrowEvent, ReleaseEvent, null, false, 40);
+            Pool = new LinkedPool<ShotEndsEvent>(CreateEvent, BorrowEvent, ReleaseEvent, null, false, initialPoolSize);
         }
 
         private void ReleaseEvent(ShotEndsEvent obj)
         {
-            Logger.Log("Returned explosion", obj);
+            obj.gameObject.SetActive(false);
         }
 
         private void BorrowEvent(ShotEndsEvent obj)
         {
-            Logger.Log("Borrowed explosion", obj);
             obj.InitObject();
             obj.gameObject.SetActive(true);
         }
@@ -48,6 +51,7 @@ namespace Flames
             }
 
             shotEnd.MyPool = Pool;
+            explosionObj.SetActive(true);
             return shotEnd;
         }
 
@@ -60,8 +64,6 @@ namespace Flames
             }
 
             Pool.Get(out ShotEndsEvent exp);
-            exp.ObjectBurned();
-
         }
     }
 }

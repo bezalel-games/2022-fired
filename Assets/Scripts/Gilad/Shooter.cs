@@ -3,6 +3,7 @@ using Avrahamy;
 using Avrahamy.Math;
 using Avrahamy.Utils;
 using Flames;
+using GreatArcStudios;
 using UnityEngine;
 using UnityEngine.Pool;
 using Logger = Nemesh.Logger;
@@ -11,7 +12,7 @@ using Random = UnityEngine.Random;
 namespace Gilad
 {
     [RequireComponent(typeof(FlameDirection))]
-    public class Shooter : MonoBehaviour
+    public class Shooter : OptimizedBehaviour
     {
         private static readonly int LerpVec = Shader.PropertyToID("_LerpVector");
         private static readonly int RandomSeed = Shader.PropertyToID("_Random_Seed");
@@ -44,9 +45,9 @@ namespace Gilad
         // Update is called once per frame
         void Update()
         {
-            if (lifeTimer.IsSet)
+            if (lifeTimer.IsSet && !PauseManager.Paused)
             {
-                if (!lifeTimer.IsActive)
+                if (!lifeTimer.IsActive || transform.position.y <= 0f)  // TODO: better system
                 {
                     lifeTimer.Clear();
                     gameObject.SetActive(false);
@@ -62,12 +63,6 @@ namespace Gilad
 
         private void OnDisable()
         {
-            // if (ExplosionPool.Instance.Pool != null)
-            // {
-            //     ExplosionPool.Instance.Pool.Get(out var exp);
-            //     exp.transform.position = transform.position;
-            //     exp.ObjectBurned();
-            // }
             FirePool.Release(this);
         }
 

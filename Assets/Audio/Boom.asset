@@ -1,0 +1,24 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ebd6b217463f948e89ef6b141a525352, type: 3}
+  m_Name: Boom
+  m_EditorClassIdentifier: 
+  nameInSerialization: Boom
+  clip: {fileID: 8300000, guid: 36018106776215340a0e4e0b4c7e6202, type: 3}
+  mixerGroup: {fileID: 0}
+  volume:
+    min: 0.1
+    max: 0.5
+  pitch:
+    min: 0.5
+    max: 0.6
+  stereoPan: 0

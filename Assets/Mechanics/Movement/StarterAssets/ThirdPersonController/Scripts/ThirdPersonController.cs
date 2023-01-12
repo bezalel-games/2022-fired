@@ -1,4 +1,5 @@
 ﻿using Avrahamy;
+using GreatArcStudios;
 using UnityEngine;
 using Logger = Nemesh.Logger;
 using Quaternion = UnityEngine.Quaternion;
@@ -141,7 +142,7 @@ namespace StarterAssets
 
         private void Update()
         {
-            if (Time.timeScale == 0f)  // TODO: just send some sort of bool from menu in the LockCameraPosition function
+            if (PauseManager.Paused)  // TODO: just send some sort of bool from menu in the LockCameraPosition function
             {
                 return;
             }
