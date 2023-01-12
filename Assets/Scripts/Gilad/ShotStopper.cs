@@ -1,4 +1,5 @@
 using System;
+using Flames;
 using UnityEngine;
 
 namespace Gilad
@@ -33,6 +34,8 @@ namespace Gilad
             _timeToStart = 0f;
             throwBall.IsShooting = true;
             headFlame.SetActive(true);
+            var explosion = ExplosionPool.Instance.Pool.Get();
+            explosion.transform.position = headFlame.transform.position;
         }
 
         private void OnTriggerEnter(Collider other)

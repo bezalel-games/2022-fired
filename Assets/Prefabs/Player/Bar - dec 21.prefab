@@ -1934,7 +1934,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 908a896bd6591404497b8d8dff8dc7ef, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  stopTime: 1
+  stopTime: 3
   throwBall: {fileID: 6914037532096622081}
   headFlame: {fileID: 7401309085876112944}
 --- !u!1 &6914037530796284614
