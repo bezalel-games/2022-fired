@@ -112,7 +112,7 @@ Animator:
   m_GameObject: {fileID: 4574247696640101207}
   m_Enabled: 1
   m_Avatar: {fileID: 9000000, guid: fa7326d022ff01c4dbb40036409b5da6, type: 3}
-  m_Controller: {fileID: 9100000, guid: f28a25212b92ae7408d1bb688949e3bf, type: 2}
+  m_Controller: {fileID: 22100000, guid: ac8da1e0fcf4fc942b126e785e465337, type: 2}
   m_CullingMode: 1
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -134,16 +134,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d1bdc7f15cc9a4c4e8146602e0f757d0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  speed: 10
+  walkSpeed: 2
+  runSpeed: 10
+  speedChangeRate: 5
   player: {fileID: 0}
-  stoppingDistance: 3
-  radius: 40
+  stoppingDistance: 0.5
+  radius: 8
   autoBreaking: 0
   angleMax: 45
   distanceToStopFromFire: 15
-  speed: 10
-  speedChangeRate: 10
   Goal: {fileID: 0}
   fireGoal: {fileID: 0}
+  debugDest: 0
+  dest: {x: 0, y: 0, z: 0}
+  minDistanceToFire: 20
   maxDistanceFromPlayer: 10
   minDistanceFromPlayer: 5
   m_Flammable: {fileID: 4824802906240564506}
@@ -158,14 +163,14 @@ NavMeshAgent:
   m_GameObject: {fileID: 4574247696640101207}
   m_Enabled: 1
   m_AgentTypeID: 0
-  m_Radius: 0.6
+  m_Radius: 0.3
   m_Speed: 3.5
   m_Acceleration: 8
-  avoidancePriority: 50
+  avoidancePriority: 40
   m_AngularSpeed: 120
-  m_StoppingDistance: 0
+  m_StoppingDistance: 0.5
   m_AutoTraverseOffMeshLink: 1
-  m_AutoBraking: 1
+  m_AutoBraking: 0
   m_AutoRepath: 1
   m_Height: 2
   m_BaseOffset: 0
@@ -197,6 +202,8 @@ MonoBehaviour:
       name: Walking
     fallingParameter:
       name: FreeFall
+    dropDead:
+      name: Drop Dead
     analogSpeedParameter:
       name: Speed
     motionSpeedParameter:

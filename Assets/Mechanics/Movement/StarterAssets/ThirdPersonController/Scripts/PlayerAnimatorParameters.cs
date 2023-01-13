@@ -27,6 +27,9 @@ namespace StarterAssets
         [SerializeField]
         public BoolAnimationParameter fallingParameter;
 
+        [SerializeField]
+        public BoolAnimationParameter dropDead;
+
         [Space]
         [Header("Floats")]
         [SerializeField]

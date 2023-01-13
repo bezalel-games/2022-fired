@@ -290,21 +290,27 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 340891ebfe109a449b8dff295bdf2996, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  speed: 6
+  walkSpeed: 2
+  runSpeed: 10
+  speedChangeRate: 10
   player: {fileID: 0}
   stoppingDistance: 3
   radius: 40
   autoBreaking: 1
   angleMax: 45
   distanceToStopFromFire: 15
-  speed: 6
-  speedChangeRate: 10
   Goal: {fileID: 0}
   fireGoal: {fileID: 0}
+  debugDest: 0
+  dest: {x: 0, y: 0, z: 0}
+  minDistanceToFire: 20
   initPerceantege: 100
   costToExtinguishFire: 1
   _shooter: {fileID: 7792504109510795146}
   minDistanceFromPlayer: 15
   maxDistanceFromPlayer: 30
+  prioritizePlayer: 0
   timeToGo:
     duration: 1
   shootDuration:
@@ -360,6 +366,8 @@ MonoBehaviour:
       name: Walking
     fallingParameter:
       name: FreeFall
+    dropDead:
+      name: Drop Dead
     analogSpeedParameter:
       name: Speed
     motionSpeedParameter:

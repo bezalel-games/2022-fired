@@ -2,6 +2,8 @@ using UnityEngine;
 using Avrahamy;
 using Logger = Nemesh.Logger;
 using Gilad;
+using GreatArcStudios;
+using UnityEngine.AI;
 
 
 public class Civilian : CharacterAI
@@ -9,13 +11,15 @@ public class Civilian : CharacterAI
     // min distance from player, if farther then  civilian go back. 
     [SerializeField]
     private float maxDistanceFromPlayer = 20.0f;
+
     [SerializeField]
     private float minDistanceFromPlayer = 5.0f;
+
     [SerializeField]
     private Flammable m_Flammable;
 
-    
-    [SerializeField]private PassiveTimer timeToGo;
+    [SerializeField]
+    private PassiveTimer timeToGo;
 
     // Start is called before the first frame update
     protected override void Start()
@@ -23,6 +27,7 @@ public class Civilian : CharacterAI
         base.Start();
         Goal = player;
         Agent.SetDestination(RandomNavmeshLocation());
+        Agent.speed = walkSpeed;
     }
 
 
@@ -30,22 +35,24 @@ public class Civilian : CharacterAI
     protected override void Update()
     {
         base.Update();
-        if(timeToInit.IsSet && timeToInit.IsActive)
+        if (timeToInit.IsSet && timeToInit.IsActive || PauseManager.Paused)
         {
             return;
         }
-        
-        
-        if(!m_Flammable.IsOnFire())
+
+
+        if (!m_Flammable.IsOnFire())
         {
-            // Agent.isStopped= true;
             MoveCharacter();
         }
-        else
+        else // TODO: keep moving when on fire!
         {
-            // Agent.isStopped= true;
-            if(m_Flammable.IsDoneBurning())
+            Agent.speed = runSpeed;
+            if (m_Flammable.IsDoneBurning())
+            {
+                MyAnimationController.DropDead = true;
                 Agent.enabled = false;
+            }
         }
     }
 
@@ -54,52 +61,33 @@ public class Civilian : CharacterAI
     {
         if (timeToGo.IsSet)
         {
-            if (timeToGo.IsActive)
-            {
-                if (Agent.remainingDistance < stoppingDistance)
-                {
-                    Agent.SetDestination(RandomNavmeshLocation());
-                }
-            }
-            else
+            if (!timeToGo.IsActive)
             {
                 Goal = FindFire(transform);
-                if (Goal != null )
+                if (Goal != null)
                 {
                     RunAway(Goal);
                     timeToGo.Clear();
                 }
-                else
+                else if (Agent.pathStatus != NavMeshPathStatus.PathComplete ||
+                         !Agent.hasPath ||
+                         (Agent.remainingDistance < stoppingDistance && !Agent.pathPending))
                 {
+
                     Agent.SetDestination(RandomNavmeshLocation());
+                    // Agent.speed = walkSpeed;  # TODO: do we want to return to walking after running?
                     timeToGo.Clear();
                 }
             }
+
         }
         else
         {
-            timeToGo.Start();
+            if (!Agent.pathPending) // TODO: pathPending check for all agents!
+            {
+                timeToGo.Start();
+            }
         }
-        // Goal = radiusWithCol.FindFire(transform);  // TODO: use the API instead!
-        // if (Goal != null && Distance(transform, Goal) < minDistanceFromPlayer)
-        // {
-        //     timeToGo.Clear();
-        //     RunAway(Goal);
-        // }
-        // // else if (Distance(transform, player) < minDistanceFromPlayer)
-        // // {
-        // //     RunAway(player);
-        // // }
-        // else if (Agent.remainingDistance < stoppingDistance)
-        // {
-        //     Agent.destination = RandomNavmeshLocation();
-        // }
-        // else if (Distance(transform, player) > maxDistanceFromPlayer)
-        // {
-        //     Agent.destination = RandomNavmeshLocation();
-        //     // Seek(player);
-        // }
-
     }
-    
+
 }

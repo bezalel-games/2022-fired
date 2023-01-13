@@ -1,3 +1,4 @@
+using BitStrap;
 using StarterAssets;
 using UnityEngine;
 
@@ -13,6 +14,8 @@ public class MovementAnimationControl : MonoBehaviour
     private Animator _animator;
     private bool _hasAnimator;
     private Vector3 _targetDirection;
+    
+    public bool DropDead { get; set; }
 
     public bool Walk { get; set; }
 
@@ -42,6 +45,7 @@ public class MovementAnimationControl : MonoBehaviour
 
         var r = RotationVelocity;
         r = ClampAngle(RotationVelocity * rotationSmoothTime, -180, 180);
+        playerAnimatorParameters.dropDead.Set(_animator, DropDead);
         playerAnimatorParameters.directionXParameter.Set(_animator, TargetDirection.x);
         playerAnimatorParameters.directionZParameter.Set(_animator, TargetDirection.z);
         playerAnimatorParameters.rotationParameter.Set(_animator, r);

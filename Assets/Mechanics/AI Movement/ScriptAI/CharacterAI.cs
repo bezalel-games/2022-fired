@@ -6,9 +6,27 @@ using Gilad;
 using System.Linq;
 using Avrahamy;
 using Avrahamy.EditorGadgets;
+using GreatArcStudios;
+using Logger = Nemesh.Logger;
 
-public abstract class CharacterAI : MonoBehaviour
+[SelectionBase]
+public abstract class CharacterAI : OptimizedBehaviour
 {
+    [Space]
+    [Header("Movement Animation Parameters")]
+    [SerializeField]
+    [ReadOnly]
+    protected float speed;
+
+    [SerializeField]
+    protected float walkSpeed = 2f;
+
+    [SerializeField]
+    protected float runSpeed = 10f;
+
+    [SerializeField]
+    private float speedChangeRate = 10f;
+    
     [Header("CharacterAI Base")]
     // the player
     [SerializeField]
@@ -16,7 +34,7 @@ public abstract class CharacterAI : MonoBehaviour
 
     // the distance from which the 
     [SerializeField]
-    protected float stoppingDistance = 5f;
+    protected float stoppingDistance = 0.5f;
 
     // the radius of said character 
     [SerializeField]
@@ -25,10 +43,10 @@ public abstract class CharacterAI : MonoBehaviour
     // to auto brake
     [SerializeField]
     protected bool autoBreaking;
-    
+
     [SerializeField]
     protected float angleMax = 45;
-    
+
     protected PassiveTimer timeToInit;
 
     // radius that gives us the fire object (more about that in CharacterRadius)
@@ -36,21 +54,8 @@ public abstract class CharacterAI : MonoBehaviour
     // protected CharacterRadius radiusWithCol;
 
     [SerializeField]
-    [HideInInspector]
     protected float distanceToStopFromFire = 2f;
 
-    [Space]
-    [Header("Movement Animation Parameters")]
-    [SerializeField]
-    protected float speed;
-
-    [SerializeField]
-    private float speedChangeRate = 10f;
-
-    // the agent (the character)
-    protected NavMeshAgent Agent;
-
-    
     [SerializeField]
     [ReadOnly]
     // the goal of said character
@@ -62,7 +67,22 @@ public abstract class CharacterAI : MonoBehaviour
 
     protected MovementAnimationControl MyAnimationController;
 
+    [SerializeField]
+    private bool debugDest;
+
+    [SerializeField]
+    [ReadOnly]
+    private Vector3 dest;
+
+    [SerializeField]
+    private double minDistanceToFire = 20f;
+    
     protected bool HasAnimator;
+
+    protected int Attempts = 2;
+
+    // the agent (the character)
+    protected NavMeshAgent Agent;
 
     //the function from which we decide how the character would move
     protected abstract void MoveCharacter();
@@ -73,6 +93,8 @@ public abstract class CharacterAI : MonoBehaviour
         HasAnimator = TryGetComponent(out MyAnimationController);
         TryGetComponent(out Agent);
         Agent.autoBraking = autoBreaking;
+        Agent.stoppingDistance = stoppingDistance;
+        Agent.speed = runSpeed;
         timeToInit = new PassiveTimer(Random.Range(0f, 1f));
         timeToInit.Start();
     }
@@ -80,11 +102,17 @@ public abstract class CharacterAI : MonoBehaviour
     // Update is called once per frame
     protected virtual void Update()
     {
-        if (!HasAnimator)
+        if (debugDest)
+        {
+            dest = Agent.destination;
+            Debug.DrawRay(dest, Vector3.up, Color.blue, 1.0f);
+        }
+
+        if (!HasAnimator || PauseManager.Paused)
         {
             return;
         }
-
+        
         var velocity = Agent.velocity;
         var currentHorizontal = new Vector3(velocity.x, 0.0f, velocity.z);
         float inputMagnitude = currentHorizontal.magnitude;
@@ -104,10 +132,10 @@ public abstract class CharacterAI : MonoBehaviour
             speed = speed * inputMagnitude;
         }
 
-        MyAnimationController.TargetDirection = velocity;
+        MyAnimationController.TargetDirection = transform.InverseTransformDirection(currentHorizontal);
         var motionSpeed = speed;
         MyAnimationController.Speed = motionSpeed;
-        
+        MyAnimationController.Walk = inputMagnitude <= walkSpeed + 0.1f;
         // TODO: add rotation parameter like in ThirdPersonController
     }
 
@@ -115,24 +143,16 @@ public abstract class CharacterAI : MonoBehaviour
     protected Vector3 RandomNavmeshLocation()
     {
         Vector3 center = transform.position;
-        for (int i = 0; i < radius; i++)
+
+        if (!RandomPoint(center, radius, out var res))
         {
-            Vector3 res;
-            if (RandomPoint(center, 10f, out res))
+            if (debugDest)
             {
-                center = res;
+                Logger.Log(Attempts, this);
             }
-            
         }
-        return center;
-        // for (int i = 0; i < 30; i++)
-        // {
-        //     if (NavMesh.SamplePosition(randomDirection, out hit, radius, NavMesh.AllAreas))
-        //     {
-        //        return hit.position;
-        //     }
-        // }
-        
+
+        return res;
     }
 
     //makes character run from goal
@@ -140,8 +160,9 @@ public abstract class CharacterAI : MonoBehaviour
     {
         var position = transform.position;
         Vector3 dirToFire = position - runFrom.position;
-        Vector3 newPos = position + dirToFire;
+        Vector3 newPos = position + dirToFire; // TODO: NavMesh.SamplePosition
         Agent.SetDestination(newPos);
+        Agent.speed = runSpeed;
     }
 
     protected virtual void Seek(Transform other)
@@ -170,7 +191,10 @@ public abstract class CharacterAI : MonoBehaviour
         }
 
         var max = listOfFlames.First(t => t != null); // TODO: use some sort of API
-        if (max == null) return null;
+        if (max == null)
+        {
+            return null;
+        }
         var curMax = Distance(max.transform, trans);
         foreach (var curFire in Flammable.AllFlammables)
         {
@@ -182,27 +206,42 @@ public abstract class CharacterAI : MonoBehaviour
             }
 
         }
-        fireGoal = max;
-        return max.gameObject.transform;
+
+        if (curMax < minDistanceToFire)
+        {
+            fireGoal = max;
+            return max.gameObject.transform;
+        }
+
+        return null;
     }
-    
+
     protected bool IsFacing()
     {
         float angleToPlayer = Vector3.Angle(transform.forward, (Goal.position - transform.position).normalized);
         return Mathf.Abs(angleToPlayer) < angleMax;
     }
-    
+
     // public float range = 10.0f;
-    bool RandomPoint(Vector3 center, float range, out Vector3 result) {
-        for (int i = 0; i < 30; i++) {
-            Vector3 randomPoint = center + Random.insideUnitSphere * range;
-            NavMeshHit hit;
-            if (NavMesh.SamplePosition(randomPoint, out hit, Agent.height * 2f, NavMesh.AllAreas)) {
+    bool RandomPoint(Vector3 center, float range, out Vector3 result)
+    {
+        for (int i = 0; i < Attempts; i++)
+        {
+            var randomPoint = center + new Vector3(
+                x: Random.Range(0.5f, range),
+                y: 0f,
+                z: Random.Range(0.5f, range)
+            );
+            if (NavMesh.SamplePosition(randomPoint, out var hit, Agent.height * 2f, NavMesh.AllAreas))
+            {
                 result = hit.position;
+                Attempts = 2;
                 return true;
             }
         }
-        result = Vector3.zero;
+
+        Attempts *= 2;
+        result = center;
         return false;
     }
 

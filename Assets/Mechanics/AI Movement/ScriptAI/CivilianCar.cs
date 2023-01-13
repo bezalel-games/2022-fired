@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using Avrahamy;
 using Gilad;
+using GreatArcStudios;
 
 public class CivilianCar : CharacterAI
 {
@@ -30,7 +31,7 @@ public class CivilianCar : CharacterAI
     protected override void Update()
     {
         base.Update();
-        if(timeToInit.IsSet && timeToInit.IsActive)
+        if(timeToInit.IsSet && timeToInit.IsActive || PauseManager.Paused)
         {
             return;
         }
