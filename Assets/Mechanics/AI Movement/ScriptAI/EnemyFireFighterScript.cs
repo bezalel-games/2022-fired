@@ -26,6 +26,8 @@ public class EnemyFireFighterScript : CharacterAI
     [SerializeField]
     private float maxDistanceFromPlayer = 15.0f;
 
+
+    [SerializeField] private bool prioritizePlayer;
     [SerializeField]
     private PassiveTimer timeToGo;
 
@@ -40,6 +42,7 @@ public class EnemyFireFighterScript : CharacterAI
     private float percentage;
 
     private bool wentRandom;
+    
     
     
     // Start is called before the first frame update
@@ -71,9 +74,16 @@ public class EnemyFireFighterScript : CharacterAI
         }
         if (!timeToGo.IsActive)
         {
-            Goal = Distance(player, transform) < minDistanceFromPlayer
-                ? player
-                : FindFire(transform);
+            if(prioritizePlayer)
+            {
+                Goal = Distance(player, transform) < minDistanceFromPlayer
+                    ? player
+                    : FindFire(transform);
+            }
+            else
+            {
+                Goal = FindFire(transform);
+            }
             timeToGo.Clear();
             wentRandom = false;
         }
