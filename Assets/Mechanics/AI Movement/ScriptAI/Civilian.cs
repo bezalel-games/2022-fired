@@ -63,7 +63,9 @@ public class Civilian : CharacterAI
         {
             if (!timeToGo.IsActive)
             {
-                Goal = FindFire(transform);
+                Goal = Distance(player, transform) < minDistanceFromPlayer
+                    ? player
+                    : FindFire(transform);
                 if (Goal != null)
                 {
                     RunAway(Goal);
