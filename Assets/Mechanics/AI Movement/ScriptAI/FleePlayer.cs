@@ -1,3 +1,4 @@
+using GreatArcStudios;
 using UnityEngine;
 
 public class FleePlayer : CharacterAI
@@ -19,6 +20,10 @@ public class FleePlayer : CharacterAI
     protected override void Update()
     {
         base.Update();
+        if (PauseManager.Paused)
+        {
+            return;
+        }
         MoveCharacter();
     }
 

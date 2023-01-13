@@ -42,7 +42,7 @@ NavMeshAgent:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 983896444804439074}
   m_Enabled: 1
-  m_AgentTypeID: -334000983
+  m_AgentTypeID: 0
   m_Radius: 2.5
   m_Speed: 5
   m_Acceleration: 8
@@ -53,8 +53,8 @@ NavMeshAgent:
   m_AutoBraking: 1
   m_AutoRepath: 1
   m_Height: 2
-  m_BaseOffset: 1.6
-  m_WalkableMask: 4294967295
+  m_BaseOffset: 1.3
+  m_WalkableMask: 8
   m_ObstacleAvoidanceType: 4
 --- !u!114 &983896444804439076
 MonoBehaviour:
@@ -68,16 +68,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 85584187f787b5a45ae906b748c2b7db, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  speed: 10
+  walkSpeed: 2
+  runSpeed: 10
+  speedChangeRate: 10
   player: {fileID: 0}
   stoppingDistance: 2
   radius: 2
   autoBreaking: 0
   angleMax: 45
   distanceToStopFromFire: 15
-  speed: 10
-  speedChangeRate: 10
   Goal: {fileID: 0}
   fireGoal: {fileID: 0}
+  debugDest: 0
+  dest: {x: 0, y: 0, z: 0}
+  minDistanceToFire: 20
   timeToGo:
     duration: 1
   DistanceFromFireToPanic: 5
@@ -119,12 +124,12 @@ PrefabInstance:
     - target: {fileID: 5427087864028495222, guid: 6aae368c7f2688341858670c0c79c795,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5427087864028495222, guid: 6aae368c7f2688341858670c0c79c795,
         type: 3}
       propertyPath: m_LocalRotation.w
-      value: 1
+      value: -0.00000004371139
       objectReference: {fileID: 0}
     - target: {fileID: 5427087864028495222, guid: 6aae368c7f2688341858670c0c79c795,
         type: 3}
@@ -134,7 +139,7 @@ PrefabInstance:
     - target: {fileID: 5427087864028495222, guid: 6aae368c7f2688341858670c0c79c795,
         type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5427087864028495222, guid: 6aae368c7f2688341858670c0c79c795,
         type: 3}

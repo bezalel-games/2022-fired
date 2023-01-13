@@ -1795,6 +1795,8 @@ MonoBehaviour:
       name: Jump
     fallingParameter:
       name: FreeFall
+    dropDead:
+      name: Drop Dead
     analogSpeedParameter:
       name: Speed
     motionSpeedParameter:

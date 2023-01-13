@@ -1,5 +1,6 @@
 using Avrahamy;
 using Gilad;
+using GreatArcStudios;
 using UnityEngine;
 
 public class FireFighterScript : CharacterAI
@@ -38,7 +39,7 @@ public class FireFighterScript : CharacterAI
     protected override void Update()
     {
         base.Update();
-        if(timeToInit.IsSet && !timeToInit.IsActive)
+        if(timeToInit.IsSet && !timeToInit.IsActive || PauseManager.Paused)
         {
             return;
         }
