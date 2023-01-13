@@ -8,8 +8,7 @@ ModelImporter:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
       name: BUILDINGS UV
-    second: {fileID: -5581142277488261122, guid: eb66bc23b19e2d84db717a3946865b2e,
-      type: 3}
+    second: {fileID: 2100000, guid: d8745040bbf1ee54faadc0c510696532, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0
@@ -48,8 +47,8 @@ ModelImporter:
     sortHierarchyByName: 1
     importVisibility: 1
     importBlendShapes: 1
-    importCameras: 1
-    importLights: 1
+    importCameras: 0
+    importLights: 0
     nodeNameCollisionStrategy: 1
     fileIdsGeneration: 2
     swapUVChannels: 0

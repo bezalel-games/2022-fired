@@ -16,6 +16,10 @@ namespace Nemesh
         private Color color = Color.grey;
 
         [SerializeField]
+        [Min(0)]
+        private int matNumber = 0;
+
+        [SerializeField]
         [MinMaxRange(0f, 1f)]
         private FloatRange hueRange = new FloatRange(0f, 0.1f);
 
@@ -34,7 +38,15 @@ namespace Nemesh
             var hasRenderer = TryGetComponent(out Renderer myRenderer);
             if (hasRenderer)
             {
-                _myMaterial = myRenderer.material;
+                if (matNumber == 0)
+                {
+                    _myMaterial = myRenderer.material;
+                }
+                else
+                {
+                    var materials = myRenderer.materials;
+                    _myMaterial = materials.Length > matNumber ? materials[matNumber] : myRenderer.material;
+                }
             }
 
             ResetSeed();

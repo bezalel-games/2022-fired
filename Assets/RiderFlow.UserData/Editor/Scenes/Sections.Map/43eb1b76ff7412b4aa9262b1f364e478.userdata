@@ -7,6 +7,6 @@
     "SectionAltColorRed": 0.77,
     "SectionAltColorGreen": 0.0,
     "SectionAltColorBlue": 0.77,
-    "RemoveSectionDuringBuild": false
+    "RemoveSectionDuringBuild": true
   }
 }
