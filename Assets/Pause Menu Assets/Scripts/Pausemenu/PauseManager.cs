@@ -503,6 +503,8 @@ namespace GreatArcStudios
         /// </summary>
         public void returnToMenu()
         {
+            Paused = false;
+            Time.timeScale = timeScale;
             SceneManager.LoadScene(mainMenu);
             // Application.LoadLevel(mainMenu);
             uiEventSystem.SetSelectedGameObject(defualtSelectedMain);
