@@ -138,7 +138,7 @@ MonoBehaviour:
   dest: {x: 0, y: 0, z: 0}
   minDistanceToFire: 20
   maxDistanceFromPlayer: 10
-  minDistanceFromPlayer: 5
+  minDistanceFromPlayer: 2
   m_Flammable: {fileID: 3430778719035982769}
   timeToGo:
     duration: 1
