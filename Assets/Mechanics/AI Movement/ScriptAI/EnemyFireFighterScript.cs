@@ -74,6 +74,11 @@ public class EnemyFireFighterScript : CharacterAI
         }
         if (!timeToGo.IsActive)
         {
+            if (stayNearInitPos && Vector3.Distance(initPos, transform.position)< theAreaToCover)
+            {
+                Agent.SetDestination(initPos);
+                return;
+            }
             if(prioritizePlayer)
             {
                 Goal = Distance(player, transform) < minDistanceFromPlayer

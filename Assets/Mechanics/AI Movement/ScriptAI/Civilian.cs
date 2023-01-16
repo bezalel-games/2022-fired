@@ -63,6 +63,11 @@ public class Civilian : CharacterAI
         {
             if (!timeToGo.IsActive)
             {
+                if (stayNearInitPos && Vector3.Distance(initPos, transform.position)< theAreaToCover)
+                {
+                    Agent.SetDestination(initPos);
+                    return;
+                }
                 Goal = Distance(player, transform) < minDistanceFromPlayer
                     ? player
                     : FindFire(transform);
