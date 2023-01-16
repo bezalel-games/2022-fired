@@ -46,8 +46,11 @@ public abstract class CharacterAI : OptimizedBehaviour
 
     [SerializeField]
     protected float angleMax = 45;
-
+    [SerializeField] protected bool stayNearInitPos;
     protected PassiveTimer timeToInit;
+    protected Vector3 initPos;
+    [SerializeField]
+    protected float theAreaToCover = 45f;
 
     // radius that gives us the fire object (more about that in CharacterRadius)
     // [SerializeField]
@@ -97,6 +100,7 @@ public abstract class CharacterAI : OptimizedBehaviour
         Agent.speed = runSpeed;
         timeToInit = new PassiveTimer(Random.Range(0f, 1f));
         timeToInit.Start();
+        initPos = transform.position;
     }
 
     // Update is called once per frame
