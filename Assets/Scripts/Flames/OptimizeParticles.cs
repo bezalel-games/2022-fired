@@ -25,6 +25,24 @@ public class OptimizeParticles : MonoBehaviour
 
     }
 
+    private void OnBecameInvisible()
+    {
+        if (!_hasController)
+        {
+            return;
+        }
+        particleController.Stop();
+    }
+
+    private void OnBecameVisible()
+    {
+        if (!_hasController)
+        {
+            return;
+        }
+        particleController.Play();
+    }
+
     private void OnEnable()
     {
         if (!_hasController)
