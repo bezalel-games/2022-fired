@@ -64,6 +64,9 @@ Notice you must enter the scene! Once loading started, changing this value is un
         [SerializeField]
         public UnityEvent onLoadComplete;
 
+        [SerializeField]
+        private bool loadStarted;
+
         #endregion
 
         #region MonoBehaviour
@@ -82,7 +85,7 @@ Notice you must enter the scene! Once loading started, changing this value is un
 
         public void StartLoadScene()
         {
-            if (sceneToLoad.IsSafeToUse)
+            if (!loadStarted || sceneToLoad.IsSafeToUse)
             {
                 StartCoroutine(LoadScene(sceneToLoad));
             }
@@ -100,6 +103,7 @@ Notice you must enter the scene! Once loading started, changing this value is un
 
         private IEnumerator LoadScene(SceneReference scene)
         {
+            loadStarted = true;
             yield return null;
 
             AsyncOperation asyncOperation = SceneManager.LoadSceneAsync(scene.BuildIndex, LoadSceneMode.Single);
