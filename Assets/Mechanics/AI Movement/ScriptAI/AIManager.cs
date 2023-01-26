@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using Avrahamy;
 
-public class PoliceManager : MonoBehaviour
+public class AIManager : MonoBehaviour
 {
     [Header("Police Car manager")]
     [SerializeField]
@@ -18,6 +18,9 @@ public class PoliceManager : MonoBehaviour
 
     [SerializeField]
     private bool turnPoliceOn = false;
+    [SerializeField]
+    private PassiveTimer timeToAppear;
+    [SerializeField] private GameObject chopper;
     // Start is called before the first frame update
     void Start()
     {
@@ -30,6 +33,7 @@ public class PoliceManager : MonoBehaviour
         {
             ActivatePoliceCar();
         }
+        timeToAppear.Start();
     }
 
     // Update is called once per frame
@@ -38,6 +42,17 @@ public class PoliceManager : MonoBehaviour
         if(ByTime)
         {
             policeCarSetIfTime();
+        }
+        
+        if (timeToAppear.IsSet )
+        {
+            if (!timeToAppear.IsActive)
+            {
+                timeToAppear.Clear();
+                chopper.SetActive(true);
+                
+            }
+            return;
         }
         
     }
