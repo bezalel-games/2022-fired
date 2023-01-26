@@ -72,7 +72,7 @@ namespace Gilad
             int allSec = (int) Math.Ceiling(overAllTime);
             int sec = allSec % 60;
             int min = allSec / 60;
-            return min + ":" + sec;
+            return $"{min:00}:{sec:00}";
         }
     }
 }
