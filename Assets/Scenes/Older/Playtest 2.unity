@@ -1958,7 +1958,7 @@ MonoBehaviour:
   m_OverrideTileSize: 0
   m_TileSize: 256
   m_OverrideVoxelSize: 0
-  m_VoxelSize: 0.5
+  m_VoxelSize: 0.6666667
   m_MinRegionArea: 2
   m_NavMeshData: {fileID: 0}
   m_BuildHeightMesh: 0
@@ -2047,7 +2047,7 @@ PrefabInstance:
     - target: {fileID: 7438494788967298231, guid: b79d0b13355dc8f44b7956db61a82656,
         type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b79d0b13355dc8f44b7956db61a82656, type: 3}
@@ -5352,6 +5352,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   onShotEndObject: {fileID: 2421302679148124712, guid: e2ce76fca980fc342b3977b243d4488c,
     type: 3}
+  initialPoolSize: 10
 --- !u!4 &328950213
 Transform:
   m_ObjectHideFlags: 0
@@ -14628,14 +14629,23 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1a0fb85603dc4f64f826ea1a7f1bfec4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  speed: 10
+  walkSpeed: 2
+  runSpeed: 10
+  speedChangeRate: 10
   player: {fileID: 673920046}
   stoppingDistance: 2
   radius: 40
   autoBreaking: 0
   angleMax: 45
+  stayNearInitPos: 0
+  theAreaToCover: 45
   distanceToStopFromFire: 15
-  speed: 10
-  speedChangeRate: 10
+  Goal: {fileID: 0}
+  fireGoal: {fileID: 0}
+  debugDest: 0
+  dest: {x: 0, y: 0, z: 0}
+  minDistanceToFire: 20
   initPerceantege: 38
   costToExtinguishFire: 0
   timeToExtinguish: 0
@@ -14649,6 +14659,9 @@ MonoBehaviour:
   timeBetweenShots:
     duration: 0.25
   percentage: 0
+  timeToAppear:
+    duration: 0
+  prioritizePlayer: 1
 --- !u!4 &2027282940 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7423567203501390115, guid: b79d0b13355dc8f44b7956db61a82656,
