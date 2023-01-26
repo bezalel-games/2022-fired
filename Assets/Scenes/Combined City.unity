@@ -1201,6 +1201,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: tank rando (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 4574247696640101207, guid: 10313ce63d83e5e4eb2586a69bb663a7,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 3727740081874247756, guid: 10313ce63d83e5e4eb2586a69bb663a7, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 10313ce63d83e5e4eb2586a69bb663a7, type: 3}
@@ -8846,9 +8851,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 592038076}
-        m_TargetAssemblyTypeName: Gilad.EndGame, Assembly-CSharp
-        m_MethodName: Restart
+      - m_Target: {fileID: 592038077}
+        m_TargetAssemblyTypeName: Managers.LoadSceneManager, Assembly-CSharp
+        m_MethodName: GoToNext
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -10130,6 +10135,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Civilian 1 (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 4574247696640101207, guid: 1f03a516516a7254486fd029f9e3555d,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1f03a516516a7254486fd029f9e3555d, type: 3}
 --- !u!4 &515515364 stripped
@@ -11057,6 +11067,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: civilian2
       objectReference: {fileID: 0}
+    - target: {fileID: 180024261715337054, guid: 364c271b3b06beb4e8acb36dea69ae3c,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 180024261715337055, guid: 364c271b3b06beb4e8acb36dea69ae3c,
         type: 3}
       propertyPath: m_RootOrder
@@ -11728,6 +11743,7 @@ GameObject:
   m_Component:
   - component: {fileID: 592038075}
   - component: {fileID: 592038076}
+  - component: {fileID: 592038077}
   m_Layer: 5
   m_Name: GameEnd
   m_TagString: Untagged
@@ -11799,6 +11815,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 1
         m_CallState: 2
+      - m_Target: {fileID: 592038077}
+        m_TargetAssemblyTypeName: Managers.LoadSceneManager, Assembly-CSharp
+        m_MethodName: StartLoadScene
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
   onLeave:
     m_PersistentCalls:
       m_Calls:
@@ -11826,6 +11854,40 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+--- !u!114 &592038077
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 592038074}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6fef84d4e05f9574b91d356c84c875f4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sceneToLoad:
+    sceneAsset: {fileID: 102900000, guid: a08cc9b25caa4d443be088c0b5d2c173, type: 3}
+    sceneAssetGuidHex: a08cc9b25caa4d443be088c0b5d2c173
+  loadMode: 0
+  unloadIfAdditive: 1
+  loadOnStart: 0
+  loadNext: 0
+  currentLoadingProgress: 0
+  sentReadyMassage: 0
+  onProgressBarUpdate:
+    m_PersistentCalls:
+      m_Calls: []
+  onReadyState:
+    m_PersistentCalls:
+      m_Calls: []
+  onStartSwitch:
+    m_PersistentCalls:
+      m_Calls: []
+  onLoadComplete:
+    m_PersistentCalls:
+      m_Calls: []
+  loadStarted: 0
 --- !u!1 &593404405
 GameObject:
   m_ObjectHideFlags: 0
@@ -32497,7 +32559,7 @@ PrefabInstance:
     - target: {fileID: 2340598950938738772, guid: f575e9d618c3edd4fa94251c479ad992,
         type: 3}
       propertyPath: gameTime
-      value: 300
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 2340598950938738772, guid: f575e9d618c3edd4fa94251c479ad992,
         type: 3}
@@ -35472,6 +35534,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: tank rando (4)
       objectReference: {fileID: 0}
+    - target: {fileID: 4574247696640101207, guid: 10313ce63d83e5e4eb2586a69bb663a7,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 3727740081874247756, guid: 10313ce63d83e5e4eb2586a69bb663a7, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 10313ce63d83e5e4eb2586a69bb663a7, type: 3}
@@ -37328,6 +37395,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Civilian 3
       objectReference: {fileID: 0}
+    - target: {fileID: 4574247696640101207, guid: 967f550c3fcdbeb4ab13d8d7e69f8392,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 967f550c3fcdbeb4ab13d8d7e69f8392, type: 3}
 --- !u!1001 &2084740505
@@ -37590,6 +37662,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Civilian (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 4574247696640101207, guid: 10313ce63d83e5e4eb2586a69bb663a7,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 10313ce63d83e5e4eb2586a69bb663a7, type: 3}
