@@ -1201,6 +1201,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: tank rando (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 4574247696640101207, guid: 10313ce63d83e5e4eb2586a69bb663a7,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 3727740081874247756, guid: 10313ce63d83e5e4eb2586a69bb663a7, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 10313ce63d83e5e4eb2586a69bb663a7, type: 3}
@@ -6148,7 +6153,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 2147483647
+  m_StaticEditorFlags: 119
   m_IsActive: 1
 --- !u!4 &267370626
 Transform:
@@ -6540,6 +6545,16 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1433648594}
     m_Modifications:
+    - target: {fileID: 89242025104191959, guid: f607831504381d640bf2516e0490f029,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 89242025764150261, guid: f607831504381d640bf2516e0490f029,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 484053789036486715, guid: f607831504381d640bf2516e0490f029,
         type: 3}
       propertyPath: m_RootOrder
@@ -6599,6 +6614,36 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: BASE BUILDINGS (19)
+      objectReference: {fileID: 0}
+    - target: {fileID: 2445809186052584297, guid: f607831504381d640bf2516e0490f029,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2986412061481510673, guid: f607831504381d640bf2516e0490f029,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5284137012597086022, guid: f607831504381d640bf2516e0490f029,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5284137013134377988, guid: f607831504381d640bf2516e0490f029,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7988045968130216456, guid: f607831504381d640bf2516e0490f029,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8027611244516501046, guid: f607831504381d640bf2516e0490f029,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f607831504381d640bf2516e0490f029, type: 3}
@@ -8806,9 +8851,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 592038076}
-        m_TargetAssemblyTypeName: Gilad.EndGame, Assembly-CSharp
-        m_MethodName: Restart
+      - m_Target: {fileID: 592038077}
+        m_TargetAssemblyTypeName: Managers.LoadSceneManager, Assembly-CSharp
+        m_MethodName: GoToNext
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -10090,6 +10135,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Civilian 1 (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 4574247696640101207, guid: 1f03a516516a7254486fd029f9e3555d,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1f03a516516a7254486fd029f9e3555d, type: 3}
 --- !u!4 &515515364 stripped
@@ -11017,6 +11067,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: civilian2
       objectReference: {fileID: 0}
+    - target: {fileID: 180024261715337054, guid: 364c271b3b06beb4e8acb36dea69ae3c,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 180024261715337055, guid: 364c271b3b06beb4e8acb36dea69ae3c,
         type: 3}
       propertyPath: m_RootOrder
@@ -11339,6 +11394,120 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 566511124}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &573302108
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 573302112}
+  - component: {fileID: 573302111}
+  - component: {fileID: 573302110}
+  - component: {fileID: 573302109}
+  - component: {fileID: 573302113}
+  m_Layer: 0
+  m_Name: Inner City Blocker
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!65 &573302109
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 573302108}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!23 &573302110
+MeshRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 573302108}
+  m_Enabled: 0
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 2
+  m_RayTraceProcedural: 0
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 2100000, guid: 31321ba15b8f8eb4c954353edc038b1d, type: 2}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 3
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+  m_AdditionalVertexStreams: {fileID: 0}
+--- !u!33 &573302111
+MeshFilter:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 573302108}
+  m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!4 &573302112
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 573302108}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 246.6002, y: 10, z: 56.7434}
+  m_LocalScale: {x: 478.1852, y: 21.82, z: 107.36915}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 13
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!208 &573302113
+NavMeshObstacle:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 573302108}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Shape: 1
+  m_Extents: {x: 0.5, y: 0.5, z: 0.5}
+  m_MoveThreshold: 0.1
+  m_Carve: 1
+  m_CarveOnlyStationary: 1
+  m_Center: {x: 0, y: 0, z: 0}
+  m_TimeToStationary: 0.5
 --- !u!1001 &585823257
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -11574,6 +11743,7 @@ GameObject:
   m_Component:
   - component: {fileID: 592038075}
   - component: {fileID: 592038076}
+  - component: {fileID: 592038077}
   m_Layer: 5
   m_Name: GameEnd
   m_TagString: Untagged
@@ -11645,6 +11815,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 1
         m_CallState: 2
+      - m_Target: {fileID: 592038077}
+        m_TargetAssemblyTypeName: Managers.LoadSceneManager, Assembly-CSharp
+        m_MethodName: StartLoadScene
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
   onLeave:
     m_PersistentCalls:
       m_Calls:
@@ -11672,6 +11854,40 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+--- !u!114 &592038077
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 592038074}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6fef84d4e05f9574b91d356c84c875f4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sceneToLoad:
+    sceneAsset: {fileID: 102900000, guid: a08cc9b25caa4d443be088c0b5d2c173, type: 3}
+    sceneAssetGuidHex: a08cc9b25caa4d443be088c0b5d2c173
+  loadMode: 0
+  unloadIfAdditive: 1
+  loadOnStart: 0
+  loadNext: 0
+  currentLoadingProgress: 0
+  sentReadyMassage: 0
+  onProgressBarUpdate:
+    m_PersistentCalls:
+      m_Calls: []
+  onReadyState:
+    m_PersistentCalls:
+      m_Calls: []
+  onStartSwitch:
+    m_PersistentCalls:
+      m_Calls: []
+  onLoadComplete:
+    m_PersistentCalls:
+      m_Calls: []
+  loadStarted: 0
 --- !u!1 &593404405
 GameObject:
   m_ObjectHideFlags: 0
@@ -35318,6 +35534,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: tank rando (4)
       objectReference: {fileID: 0}
+    - target: {fileID: 4574247696640101207, guid: 10313ce63d83e5e4eb2586a69bb663a7,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 3727740081874247756, guid: 10313ce63d83e5e4eb2586a69bb663a7, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 10313ce63d83e5e4eb2586a69bb663a7, type: 3}
@@ -37174,6 +37395,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Civilian 3
       objectReference: {fileID: 0}
+    - target: {fileID: 4574247696640101207, guid: 967f550c3fcdbeb4ab13d8d7e69f8392,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 967f550c3fcdbeb4ab13d8d7e69f8392, type: 3}
 --- !u!1001 &2084740505
@@ -37436,6 +37662,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Civilian (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 4574247696640101207, guid: 10313ce63d83e5e4eb2586a69bb663a7,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 10313ce63d83e5e4eb2586a69bb663a7, type: 3}

@@ -2,8 +2,6 @@ using System;
 using System.Collections.Generic;
 using Flames;
 using UnityEngine;
-using Logger = Nemesh.Logger;
-
 namespace Gilad
 {
     public class Flammable : MonoBehaviour
@@ -72,6 +70,7 @@ namespace Gilad
         // Start is called before the first frame update
         void Start()
         {
+            if (!gameObject.activeSelf) return;
             allFlammables.Add(this);
             if (numOfHits <= 0)
             {
