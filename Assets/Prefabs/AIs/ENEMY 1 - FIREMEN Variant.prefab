@@ -296,21 +296,23 @@ MonoBehaviour:
   speedChangeRate: 10
   player: {fileID: 0}
   stoppingDistance: 3
-  radius: 40
+  radius: 45
   autoBreaking: 1
   angleMax: 45
+  stayNearInitPos: 0
+  theAreaToCover: 45
   distanceToStopFromFire: 15
   Goal: {fileID: 0}
   fireGoal: {fileID: 0}
   debugDest: 0
   dest: {x: 0, y: 0, z: 0}
-  minDistanceToFire: 20
+  minDistanceToFire: 15
   initPerceantege: 100
   costToExtinguishFire: 1
   _shooter: {fileID: 7792504109510795146}
   minDistanceFromPlayer: 15
-  maxDistanceFromPlayer: 30
-  prioritizePlayer: 0
+  maxDistanceFromPlayer: 45
+  prioritizePlayer: 1
   timeToGo:
     duration: 1
   shootDuration:
