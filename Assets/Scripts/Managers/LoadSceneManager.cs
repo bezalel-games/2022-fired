@@ -50,7 +50,12 @@ Notice you must enter the scene! Once loading started, changing this value is un
         [Header("Events for loading sequence")]
         [Space]
         [SerializeField]
+        [Tooltip("Progress for scene load")]
         public UnityEvent<float> onProgressBarUpdate;
+        
+        [SerializeField]
+        [Tooltip("Progress for scene load normalized (full when ready to load)")]
+        private UnityEvent<float> onProgressBarUpdateNormalized;
 
         [SerializeField]
         public UnityEvent onReadyState;
@@ -66,6 +71,7 @@ Notice you must enter the scene! Once loading started, changing this value is un
 
         [SerializeField]
         private bool loadStarted;
+
 
         #endregion
 
@@ -113,6 +119,7 @@ Notice you must enter the scene! Once loading started, changing this value is un
             while (!asyncOperation.isDone)
             {
                 onProgressBarUpdate.Invoke(asyncOperation.progress);
+                onProgressBarUpdateNormalized.Invoke(asyncOperation.progress / 0.9f);
                 currentLoadingProgress = asyncOperation.progress;
                 // Check if the load has finished
                 if (asyncOperation.progress >= 0.9f)
