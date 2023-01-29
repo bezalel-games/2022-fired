@@ -431,6 +431,22 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: 5349653739896294201, guid: 33b957cee3165f04cb539583604d3d18, type: 3}
+--- !u!208 &7674348790013423064
+NavMeshObstacle:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5103456784700475889}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Shape: 1
+  m_Extents: {x: 1.3950001, y: 1.192, z: 2.177}
+  m_MoveThreshold: 0.1
+  m_Carve: 1
+  m_CarveOnlyStationary: 1
+  m_Center: {x: 0.284, y: 0.31500003, z: -0.27800003}
+  m_TimeToStationary: 0.5
 --- !u!114 &1845796121392335389
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -452,22 +468,6 @@ MonoBehaviour:
   myAnimator: {fileID: 0}
   changeMaterialColor: 1
   changeToColor: {r: 0, g: 0, b: 0, a: 0}
---- !u!208 &7674348790013423064
-NavMeshObstacle:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5103456784700475889}
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Shape: 1
-  m_Extents: {x: 1.3950001, y: 1.192, z: 2.177}
-  m_MoveThreshold: 0.1
-  m_Carve: 0
-  m_CarveOnlyStationary: 1
-  m_Center: {x: 0.284, y: 0.31500003, z: -0.27800003}
-  m_TimeToStationary: 0.5
 --- !u!1001 &3083422596023784762
 PrefabInstance:
   m_ObjectHideFlags: 0
