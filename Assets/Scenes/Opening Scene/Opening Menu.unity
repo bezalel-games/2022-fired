@@ -886,8 +886,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   sceneToLoad:
-    sceneAsset: {fileID: 102900000, guid: a08cc9b25caa4d443be088c0b5d2c173, type: 3}
-    sceneAssetGuidHex: a08cc9b25caa4d443be088c0b5d2c173
+    sceneAsset: {fileID: 102900000, guid: 7223aa301c48b90408ffef799d45d332, type: 3}
+    sceneAssetGuidHex: 7223aa301c48b90408ffef799d45d332
   loadMode: 0
   unloadIfAdditive: 1
   loadOnStart: 1
@@ -918,6 +918,7 @@ MonoBehaviour:
   onLoadComplete:
     m_PersistentCalls:
       m_Calls: []
+  loadStarted: 0
 --- !u!4 &1784763328
 Transform:
   m_ObjectHideFlags: 0
