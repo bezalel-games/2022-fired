@@ -1139,9 +1139,11 @@ MonoBehaviour:
   speedChangeRate: 5
   player: {fileID: 0}
   stoppingDistance: 0.5
-  radius: 8
+  radius: 15
   autoBreaking: 0
   angleMax: 45
+  stayNearInitPos: 0
+  theAreaToCover: 45
   distanceToStopFromFire: 15
   Goal: {fileID: 0}
   fireGoal: {fileID: 0}

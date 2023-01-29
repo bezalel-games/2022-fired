@@ -77,7 +77,7 @@ public class Civilian : CharacterAI
                     timeToGo.Clear();
                 }
                 else if (Agent.pathStatus != NavMeshPathStatus.PathComplete ||
-                         !Agent.hasPath ||
+                         // !Agent.hasPath ||
                          (Agent.remainingDistance < stoppingDistance && !Agent.pathPending))
                 {
 

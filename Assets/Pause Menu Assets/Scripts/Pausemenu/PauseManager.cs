@@ -376,14 +376,14 @@ namespace GreatArcStudios
             blurEffect.blurShader = blurEffectShader;
             blurEffect.enabled = false;  */
             
-            if (mainPanel.activeSelf)
-            {
-                Resume();
-            }
-            else
-            {
-                EnterMenu();
-            }
+            // if (mainPanel.activeSelf)
+            // {
+            //     Resume();
+            // }
+            // else
+            // {
+            //     EnterMenu();
+            // }
         }
 
         private void OnEnable()

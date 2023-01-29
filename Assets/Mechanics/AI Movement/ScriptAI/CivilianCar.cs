@@ -4,22 +4,29 @@ using UnityEngine;
 using Avrahamy;
 using Gilad;
 using GreatArcStudios;
+using UnityEngine.AI;
 
 public class CivilianCar : CharacterAI
 {
     private bool toMove;
+
     [Space(2)]
     [Header("Civilian Car")]
-    [SerializeField]private PassiveTimer timeToGo;
+    [SerializeField]
+    private PassiveTimer timeToGo;
 
-    
 
-    [SerializeField] private float DistanceFromFireToPanic = 10f;
+    [SerializeField]
+    private float DistanceFromFireToPanic = 10f;
+
     [SerializeField]
     private Flammable m_Flammable;
-    
-    [SerializeField] private Transform[] points;
+
+    [SerializeField]
+    private Transform[] points;
+
     private int destPoint = 0;
+
     // Start is called before the first frame update
     protected override void Start()
     {
@@ -31,11 +38,12 @@ public class CivilianCar : CharacterAI
     protected override void Update()
     {
         base.Update();
-        if(timeToInit.IsSet && timeToInit.IsActive || PauseManager.Paused)
+        if (timeToInit.IsSet && timeToInit.IsActive || PauseManager.Paused)
         {
             return;
         }
-        if(!m_Flammable.IsOnFire())
+
+        if (!m_Flammable.IsOnFire())
         {
             toMove = true;
             Agent.enabled = true;
@@ -48,24 +56,32 @@ public class CivilianCar : CharacterAI
             Agent.enabled = false;
         }
     }
-    
+
     protected override void MoveCharacter()
     {
         if (m_Flammable.IsDoneBurning())
         {
             toMove = false;
-            Agent.isStopped= true;
+            Agent.isStopped = true;
             Agent.enabled = false;
             return;
         }
-        if(!toMove){return;}
-            
+
+        if (!toMove)
+        {
+            return;
+        }
+
         if (timeToGo.IsSet)
         {
             if (timeToGo.IsActive)
             {
-                if (!Agent.pathPending && Agent.remainingDistance < stoppingDistance)
+                if (!Agent.pathPending && (
+                        Agent.remainingDistance < stoppingDistance ||
+                        Agent.pathStatus == NavMeshPathStatus.PathInvalid))
+                {
                     GotoNextPoint();
+                }
             }
             else
             {
@@ -77,8 +93,13 @@ public class CivilianCar : CharacterAI
                 }
                 else
                 {
-                    if (!Agent.pathPending && Agent.remainingDistance < stoppingDistance)
+                    if (!Agent.pathPending && (
+                            Agent.remainingDistance < stoppingDistance ||
+                            Agent.pathStatus == NavMeshPathStatus.PathInvalid))
+                    {
                         GotoNextPoint();
+                    }
+
                     timeToGo.Clear();
                 }
             }
@@ -88,8 +109,9 @@ public class CivilianCar : CharacterAI
             timeToGo.Start();
         }
     }
-    
-    void GotoNextPoint() {
+
+    void GotoNextPoint()
+    {
         // Returns if no points have been set up
         if (points.Length == 0)
             return;

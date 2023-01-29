@@ -232,9 +232,9 @@ public abstract class CharacterAI : OptimizedBehaviour
         for (int i = 0; i < Attempts; i++)
         {
             var randomPoint = center + new Vector3(
-                x: Random.Range(0.5f, range),
+                x: Random.Range(-range, range),
                 y: 0f,
-                z: Random.Range(0.5f, range)
+                z: Random.Range(-range, range)
             );
             if (NavMesh.SamplePosition(randomPoint, out var hit, Agent.height * 2f, NavMesh.AllAreas))
             {
