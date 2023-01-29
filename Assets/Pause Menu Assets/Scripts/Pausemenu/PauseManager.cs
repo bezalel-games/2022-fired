@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
 using System.IO;
+using Managers;
 using UnityEngine.Events;
 using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
@@ -19,60 +20,86 @@ namespace GreatArcStudios
     /// </summary>
     public class PauseManager : MonoBehaviour
     {
-        public static bool Paused { get; set; } = false;
-        
+        public static bool Paused
+        {
+            get => _paused;
+            set
+            {
+                Time.timeScale = value ? 0 : StaticTimeScale;
+                // TODO: add events here!
+                _paused = value;
+            }
+        }
+
+        public static float StaticTimeScale
+        {
+            get => _staticTimeScale;
+            set => _staticTimeScale = value;
+        }
+
         [SerializeField]
         private InputAction menuInputAction;
-        
+
         [Header("Events")]
         [SerializeField]
         public UnityEvent onMenuEnter;
-        
+
         [SerializeField]
         public UnityEvent onMenuExit;
-        
+
+        [Header("Scene Loaders")]
+        [SerializeField]
+        private LoadSceneManager restart;
+
+        [SerializeField]
+        private LoadSceneManager mainMenu;
+
         /// <summary>
         /// This is the main panel holder, which holds the main panel and should be called "main panel"
         /// </summary>
         [Space(2)]
         public GameObject mainPanel;
+
         /// <summary>
         /// This is the video panel holder, which holds all of the controls for the video panel and should be called "vid panel"
         /// </summary>
         public GameObject vidPanel;
+
         /// <summary>
         /// This is the audio panel holder, which holds all of the silders for the audio panel and should be called "audio panel"
         /// </summary>
         public GameObject audioPanel;
+
         /// <summary>
         /// These are the game objects with the title texts like "Pause menu" and "Game Title" 
         /// </summary>
         public GameObject TitleTexts;
+
         /// <summary>
         /// The mask that makes the scene darker  
         /// </summary>
         public GameObject mask;
+
         /// <summary>
         /// Audio Panel animator
         /// </summary>
         public Animator audioPanelAnimator;
+
         /// <summary>
         /// Video Panel animator  
         /// </summary>
         public Animator vidPanelAnimator;
+
         /// <summary>
         /// Quit Panel animator  
         /// </summary>
         public Animator quitPanelAnimator;
+
         /// <summary>
         /// Pause menu text 
         /// </summary>
         public Text pauseMenu;
 
-        /// <summary>
-        /// Main menu level string used for loading the main menu. This means you'll need to type in the editor text box, the name of the main menu level, ie: "mainmenu";
-        /// </summary>
-        public String mainMenu;
         //DOF script name
         /// <summary>
         /// The Depth of Field script name, ie: "DepthOfField". You can leave this blank in the editor, but will throw a null refrence exception, which is harmless.
@@ -83,11 +110,14 @@ namespace GreatArcStudios
         /// The Ambient Occlusion script name, ie: "AmbientOcclusion". You can leave this blank in the editor, but will throw a null refrence exception, which is harmless.
         /// </summary>
         public String AOScriptName;
+
         /// <summary>
         /// The main camera, assign this through the editor. 
         /// </summary>        
         public Camera mainCam;
+
         internal static Camera mainCamShared;
+
         /// <summary>
         /// The main camera game object, assign this through the editor. 
         /// </summary> 
@@ -96,48 +126,58 @@ namespace GreatArcStudios
         /// <summary>
         /// The terrain detail density float. It's only public because you may want to adjust it in editor
         /// </summary> 
-        public  float detailDensity;
+        public float detailDensity;
 
         /// <summary>
         /// Timescale value. The defualt is 1 for most games. You may want to change it if you are pausing the game in a slow motion situation 
         /// </summary> 
         public float timeScale = 1f;
+
         /// <summary>
         /// One terrain variable used if you have a terrain plugin like rtp. 
         /// </summary>
-        public  Terrain terrain;
+        public Terrain terrain;
+
         /// <summary>
         /// Other terrain variable used if you want to have an option to target low end harware.
         /// </summary>
-        public  Terrain simpleTerrain;
+        public Terrain simpleTerrain;
+
         /// <summary>
         /// Inital shadow distance 
         /// </summary>
         internal static float shadowDistINI;
+
         /// <summary>
         /// Inital render distance 
         /// </summary>
         internal static float renderDistINI;
+
         /// <summary>
         /// Inital AA quality 2, 4, or 8
         /// </summary>
         internal static float aaQualINI;
+
         /// <summary>
         /// Inital terrain detail density
         /// </summary>
         internal static float densityINI;
+
         /// <summary>
         /// Amount of trees that are acutal meshes
         /// </summary>
         internal static float treeMeshAmtINI;
+
         /// <summary>
         /// Inital fov 
         /// </summary>
         internal static float fovINI;
+
         /// <summary>
         /// Inital msaa amount 
         /// </summary>
         internal static int msaaINI;
+
         /// <summary>
         /// Inital vsync count, the Unity docs say,
         /// <code> 
@@ -150,10 +190,12 @@ namespace GreatArcStudios
         /// </code>
         /// </summary>
         internal static int vsyncINI;
+
         /// <summary>
         /// AA drop down menu.
         /// </summary>
         public Dropdown aaCombo;
+
         /// <summary>
         /// Aniso drop down menu.
         /// </summary>
@@ -175,92 +217,119 @@ namespace GreatArcStudios
         public Toggle aoToggle;
         public Toggle dofToggle;
         public Toggle fullscreenToggle;
+
         /// <summary>
         /// The preset text label.
         /// </summary>
         public Text presetLabel;
+
         /// <summary>
         /// Resolution text label.
         /// </summary>
         public Text resolutionLabel;
+
         /// <summary>
         /// Lod bias float array. You should manually assign these based on the quality level.
         /// </summary>
-        public  float[] LODBias;
+        public float[] LODBias;
+
         /// <summary>
         /// Shadow distance array. You should manually assign these based on the quality level.
         /// </summary>
-        public  float[] shadowDist;
+        public float[] shadowDist;
+
         /// <summary>
         /// An array of music audio sources
         /// </summary>
-        public  AudioSource[] music;
+        public AudioSource[] music;
+
         /// <summary>
         /// An array of sound effect audio sources
         /// </summary>
-        public  AudioSource[] effects;
+        public AudioSource[] effects;
+
         /// <summary>
         /// An array of the other UI elements, which is used for disabling the other elements when the game is paused.
         /// </summary>
         public GameObject[] otherUIElements;
+
         /// <summary>
         /// Editor boolean for hardcoding certain video settings. It will allow you to use the values defined in LOD Bias and Shadow Distance
         /// </summary>
         public Boolean hardCodeSomeVideoSettings;
+
         /// <summary>
         /// Boolean for turning on simple terrain
         /// </summary>
-        public  Boolean useSimpleTerrain;
+        public Boolean useSimpleTerrain;
+
         public static Boolean readUseSimpleTerrain;
+
         /// <summary>
         /// Event system
         /// </summary>
         public EventSystem uiEventSystem;
+
         /// <summary>
         /// Defualt selected on the video panel
         /// </summary>
         public GameObject defualtSelectedVideo;
+
         /// <summary>
         /// Defualt selected on the video panel
         /// </summary>
         public GameObject defualtSelectedAudio;
+
         /// <summary>
         /// Defualt selected on the video panel
         /// </summary>
         public GameObject defualtSelectedMain;
+
         //last music multiplier; this should be a value between 0-1
         internal static float lastMusicMult;
+
         //last audio multiplier; this should be a value between 0-1
         internal static float lastAudioMult;
+
         //Initial master volume
         internal static float beforeMaster;
+
         //last texture limit 
         internal static int lastTexLimit;
+
         //int for amount of effects
         private int _audioEffectAmt = 0;
+
         //Inital audio effect volumes
         private float[] _beforeEffectVol;
 
         //Initial music volume
         private float _beforeMusic;
+
         //Preset level
         private int _currentLevel;
+
         //Resoutions
         private Resolution[] allRes;
+
         //Camera dof script
         private MonoBehaviour tempScript;
+
         //Presets 
         private String[] presets;
+
         //Fullscreen Boolean
         private Boolean isFullscreen;
+
         //current resoultion
         internal static Resolution currentRes;
+
         //Last resoultion 
         private Resolution beforeRes;
 
         //last shadow cascade value
         internal static int lastShadowCascade;
-       
+
         public static Boolean aoBool;
         public static Boolean dofBool;
         private Boolean lastAOBool;
@@ -268,7 +337,11 @@ namespace GreatArcStudios
         public static Terrain readTerrain;
         public static Terrain readSimpleTerrain;
 
+        private static bool _paused = false;
+        private static float _staticTimeScale;
+
         private SaveSettings saveSettings = new SaveSettings();
+
         /*
         //Color fade duration value
         //public float crossFadeDuration;
@@ -291,12 +364,18 @@ namespace GreatArcStudios
         //Boolean for if the blur effect was originally enabled
         //public Boolean blurBool;
 
+
+        private void OnValidate()
+        {
+            StaticTimeScale = timeScale;
+        }
+
         /// <summary>
         /// The start method; you will need to place all of your inital value getting/setting here. 
         /// </summary>
         public void Start()
         {
-           
+            StaticTimeScale = timeScale;
             readUseSimpleTerrain = useSimpleTerrain;
             if (useSimpleTerrain)
             {
@@ -306,7 +385,7 @@ namespace GreatArcStudios
             {
                 readTerrain = terrain;
             }
-           
+
             mainCamShared = mainCam;
             //Set the lastmusicmult and last audiomult
             lastMusicMult = audioMusicSlider.value;
@@ -321,7 +400,8 @@ namespace GreatArcStudios
             allRes = Screen.resolutions;
             currentRes = Screen.currentResolution;
             //Debug.Log("ini res" + currentRes);
-            resolutionLabel.text = Screen.currentResolution.width.ToString() + " x " + Screen.currentResolution.height.ToString();
+            resolutionLabel.text = Screen.currentResolution.width.ToString() + " x " +
+                                   Screen.currentResolution.height.ToString();
             isFullscreen = Screen.fullScreen;
             //get initial screen effect bools
             lastAOBool = aoToggle.isOn;
@@ -352,10 +432,13 @@ namespace GreatArcStudios
             lastShadowCascade = QualitySettings.shadowCascades;
             try
             {
-                saveSettings.LoadGameSettings(File.ReadAllText(Application.persistentDataPath + "/" + saveSettings.fileName));
+                saveSettings.LoadGameSettings(
+                    File.ReadAllText(Application.persistentDataPath + "/" + saveSettings.fileName));
             }
             catch
-            {}
+            {
+            }
+
             try
             {
                 densityINI = Terrain.activeTerrain.detailObjectDensity;
@@ -375,15 +458,8 @@ namespace GreatArcStudios
             blurEffect = (Blur)mainCamObj.GetComponent(typeof(Blur));
             blurEffect.blurShader = blurEffectShader;
             blurEffect.enabled = false;  */
-            
-            // if (mainPanel.activeSelf)
-            // {
-            //     Resume();
-            // }
-            // else
-            // {
-            //     EnterMenu();
-            // }
+
+            Resume();
         }
 
         private void OnEnable()
@@ -396,10 +472,10 @@ namespace GreatArcStudios
         private void OnDisable()
         {
             menuInputAction.started -= HandleInput;
-            
+
             menuInputAction.Disable();
         }
-        
+
         public void HandleInput(InputAction.CallbackContext context)
         {
             if (mainPanel.activeSelf)
@@ -420,12 +496,12 @@ namespace GreatArcStudios
             audioPanel.SetActive(false);
             TitleTexts.SetActive(true);
             mask.SetActive(true);
-            Time.timeScale = 0;
             Paused = true;
             for (int i = 0; i < otherUIElements.Length; i++)
             {
                 otherUIElements[i].gameObject.SetActive(false);
             }
+
             /* if (blurBool == false)
               {
                  blurEffect.enabled = true;
@@ -438,16 +514,16 @@ namespace GreatArcStudios
         /// </summary>
         public void Restart()
         {
-            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
-            // Application.LoadLevel(Application.loadedLevel);
-            uiEventSystem.firstSelectedGameObject = defualtSelectedMain;
+            uiEventSystem.SetSelectedGameObject(defualtSelectedMain);
+            restart.StartLoadScene();
+            restart.GoToNext();
         }
+
         /// <summary>
         /// Method to resume the game, so disable the pause menu and re-enable all other ui elements
         /// </summary>
         public void Resume()
         {
-            Time.timeScale = timeScale;
             Paused = false;
 
             mainPanel.SetActive(false);
@@ -459,6 +535,7 @@ namespace GreatArcStudios
             {
                 otherUIElements[i].gameObject.SetActive(true);
             }
+
             /* if (blurBool == false)
              {
                  blurEffect.enabled = false;
@@ -470,6 +547,7 @@ namespace GreatArcStudios
              } */
             onMenuExit.Invoke();
         }
+
         /// <summary>
         /// All the methods relating to qutting should be called here.
         /// </summary>
@@ -481,6 +559,7 @@ namespace GreatArcStudios
             quitPanelAnimator.Play("QuitPanelIn");
 
         }
+
         /// <summary>
         /// Method to quit the game. Call methods such as auto saving before qutting here.
         /// </summary>
@@ -491,6 +570,7 @@ namespace GreatArcStudios
             UnityEditor.EditorApplication.isPlaying = false;
 #endif
         }
+
         /// <summary>
         /// Cancels quittting by playing an animation.
         /// </summary>
@@ -498,16 +578,16 @@ namespace GreatArcStudios
         {
             quitPanelAnimator.Play("QuitPanelOut");
         }
+
         /// <summary>
         ///Loads the main menu scene.
         /// </summary>
         public void returnToMenu()
         {
             Paused = false;
-            Time.timeScale = timeScale;
-            SceneManager.LoadScene(mainMenu);
-            // Application.LoadLevel(mainMenu);
             uiEventSystem.SetSelectedGameObject(defualtSelectedMain);
+            mainMenu.StartLoadScene();
+            mainMenu.GoToNext();
         }
 
         // Update is called once per frame
@@ -567,7 +647,6 @@ namespace GreatArcStudios
             // }
 
 
-
         }
         /*
         void colorCrossfade()
@@ -596,6 +675,7 @@ namespace GreatArcStudios
             audioIn();
             pauseMenu.text = "Audio Menu";
         }
+
         /// <summary>
         /// Play the "audio panel in" animation.
         /// </summary>
@@ -605,7 +685,9 @@ namespace GreatArcStudios
             audioPanelAnimator.Play("Audio Panel In");
             audioMasterSlider.value = AudioListener.volume;
             //Perform modulo to find factor f to allow for non uniform music volumes
-            float a; float b; float f;
+            float a;
+            float b;
+            float f;
             try
             {
                 a = music[0].volume;
@@ -618,6 +700,7 @@ namespace GreatArcStudios
                 Debug.Log("You do not have multiple audio sources");
                 audioMusicSlider.value = lastMusicMult;
             }
+
             //Do this with the effects
             try
             {
@@ -633,6 +716,7 @@ namespace GreatArcStudios
             }
 
         }
+
         /// <summary>
         /// Audio Option Methods
         /// </summary>
@@ -643,6 +727,7 @@ namespace GreatArcStudios
             //Controls volume of all audio listeners 
             AudioListener.volume = f;
         }
+
         /// <summary>
         /// Update music effects volume
         /// </summary>
@@ -662,6 +747,7 @@ namespace GreatArcStudios
             }
             //_beforeMusic = music.volume;
         }
+
         /// <summary>
         /// Update the audio effects volume
         /// </summary>
@@ -685,6 +771,7 @@ namespace GreatArcStudios
             }
 
         }
+
         /// <summary> 
         /// The method for changing the applying new audio settings
         /// </summary>
@@ -692,8 +779,9 @@ namespace GreatArcStudios
         {
             StartCoroutine(applyAudioMain());
             uiEventSystem.SetSelectedGameObject(defualtSelectedMain);
-           
+
         }
+
         /// <summary>
         /// Use an IEnumerator to first play the animation and then change the audio settings
         /// </summary>
@@ -701,7 +789,8 @@ namespace GreatArcStudios
         internal IEnumerator applyAudioMain()
         {
             audioPanelAnimator.Play("Audio Panel Out");
-            yield return StartCoroutine(CoroutineUtilities.WaitForRealTime((float)audioPanelAnimator.GetCurrentAnimatorClipInfo(0).Length));
+            yield return StartCoroutine(
+                CoroutineUtilities.WaitForRealTime((float) audioPanelAnimator.GetCurrentAnimatorClipInfo(0).Length));
             mainPanel.SetActive(true);
             vidPanel.SetActive(false);
             audioPanel.SetActive(false);
@@ -710,6 +799,7 @@ namespace GreatArcStudios
             lastAudioMult = audioEffectsSlider.value;
             saveSettings.SaveGameSettings();
         }
+
         /// <summary>
         /// Cancel the audio setting changes
         /// </summary>
@@ -718,6 +808,7 @@ namespace GreatArcStudios
             uiEventSystem.SetSelectedGameObject(defualtSelectedMain);
             StartCoroutine(cancelAudioMain());
         }
+
         /// <summary>
         /// Use an IEnumerator to first play the animation and then change the audio settings
         /// </summary>
@@ -726,7 +817,8 @@ namespace GreatArcStudios
         {
             audioPanelAnimator.Play("Audio Panel Out");
             // Debug.Log(audioPanelAnimator.GetCurrentAnimatorClipInfo(0).Length);
-            yield return StartCoroutine(CoroutineUtilities.WaitForRealTime((float)audioPanelAnimator.GetCurrentAnimatorClipInfo(0).Length));
+            yield return StartCoroutine(
+                CoroutineUtilities.WaitForRealTime((float) audioPanelAnimator.GetCurrentAnimatorClipInfo(0).Length));
             mainPanel.SetActive(true);
             vidPanel.SetActive(false);
             audioPanel.SetActive(false);
@@ -741,6 +833,7 @@ namespace GreatArcStudios
                     //get the values for all effects before the change
                     effects[_audioEffectAmt].volume = _beforeEffectVol[_audioEffectAmt];
                 }
+
                 for (int _musicAmt = 0; _musicAmt < music.Length; _musicAmt++)
                 {
                     music[_musicAmt].volume = _beforeMusic;
@@ -751,6 +844,7 @@ namespace GreatArcStudios
                 Debug.Log("please assign the audio sources in the manager");
             }
         }
+
         /////Video Options
         /// <summary>
         /// Show video
@@ -766,6 +860,7 @@ namespace GreatArcStudios
             pauseMenu.text = "Video Menu";
 
         }
+
         /// <summary>
         /// Play the "video panel in" animation
         /// </summary>
@@ -790,6 +885,7 @@ namespace GreatArcStudios
             {
                 aaCombo.value = 3;
             }
+
             if (QualitySettings.anisotropicFiltering == AnisotropicFiltering.ForceEnable)
             {
                 afCombo.value = 1;
@@ -802,6 +898,7 @@ namespace GreatArcStudios
             {
                 afCombo.value = 2;
             }
+
             presetLabel.text = presets[QualitySettings.GetQualityLevel()].ToString();
             fovSlider.value = mainCam.fieldOfView;
             modelQualSlider.value = QualitySettings.lodBias;
@@ -820,6 +917,7 @@ namespace GreatArcStudios
             {
                 vSyncToggle.isOn = true;
             }
+
             try
             {
                 if (useSimpleTerrain == true)
@@ -850,6 +948,7 @@ namespace GreatArcStudios
             uiEventSystem.SetSelectedGameObject(defualtSelectedMain);
             StartCoroutine(cancelVideoMain());
         }
+
         /// <summary>
         /// Use an IEnumerator to first play the animation and then changethe video settings
         /// </summary>
@@ -858,7 +957,8 @@ namespace GreatArcStudios
         {
             vidPanelAnimator.Play("Video Panel Out");
 
-            yield return StartCoroutine(CoroutineUtilities.WaitForRealTime((float)vidPanelAnimator.GetCurrentAnimatorClipInfo(0).Length));
+            yield return StartCoroutine(
+                CoroutineUtilities.WaitForRealTime((float) vidPanelAnimator.GetCurrentAnimatorClipInfo(0).Length));
             try
             {
                 mainCam.farClipPlane = renderDistINI;
@@ -871,7 +971,7 @@ namespace GreatArcStudios
                 dofBool = lastDOFBool;
                 Screen.SetResolution(beforeRes.width, beforeRes.height, Screen.fullScreen);
                 QualitySettings.shadowDistance = shadowDistINI;
-                QualitySettings.antiAliasing = (int)aaQualINI;
+                QualitySettings.antiAliasing = (int) aaQualINI;
                 QualitySettings.antiAliasing = msaaINI;
                 QualitySettings.vSyncCount = vsyncINI;
                 QualitySettings.masterTextureLimit = lastTexLimit;
@@ -891,7 +991,7 @@ namespace GreatArcStudios
                 dofBool = lastDOFBool;
                 QualitySettings.shadowDistance = shadowDistINI;
                 Screen.SetResolution(beforeRes.width, beforeRes.height, Screen.fullScreen);
-                QualitySettings.antiAliasing = (int)aaQualINI;
+                QualitySettings.antiAliasing = (int) aaQualINI;
                 QualitySettings.antiAliasing = msaaINI;
                 QualitySettings.vSyncCount = vsyncINI;
                 QualitySettings.masterTextureLimit = lastTexLimit;
@@ -901,6 +1001,7 @@ namespace GreatArcStudios
             }
 
         }
+
         //Apply the video prefs
         /// <summary>
         /// Apply the video settings
@@ -909,8 +1010,9 @@ namespace GreatArcStudios
         {
             StartCoroutine(applyVideo());
             uiEventSystem.SetSelectedGameObject(defualtSelectedMain);
-  
+
         }
+
         /// <summary>
         /// Use an IEnumerator to first play the animation and then change the video settings.
         /// </summary>
@@ -918,7 +1020,8 @@ namespace GreatArcStudios
         internal IEnumerator applyVideo()
         {
             vidPanelAnimator.Play("Video Panel Out");
-            yield return StartCoroutine(CoroutineUtilities.WaitForRealTime((float)vidPanelAnimator.GetCurrentAnimatorClipInfo(0).Length));
+            yield return StartCoroutine(
+                CoroutineUtilities.WaitForRealTime((float) vidPanelAnimator.GetCurrentAnimatorClipInfo(0).Length));
             mainPanel.SetActive(true);
             vidPanel.SetActive(false);
             audioPanel.SetActive(false);
@@ -948,10 +1051,15 @@ namespace GreatArcStudios
                     treeMeshAmtINI = simpleTerrain.treeMaximumFullLODCount;
                 }
             }
-            catch { Debug.Log("Please assign a terrain"); }
+            catch
+            {
+                Debug.Log("Please assign a terrain");
+            }
+
             saveSettings.SaveGameSettings();
 
         }
+
         /// <summary>
         /// Video Options
         /// </summary>
@@ -969,6 +1077,7 @@ namespace GreatArcStudios
             }
 
         }
+
         /// <summary>
         /// Update full high quality tree mesh amount.
         /// </summary>
@@ -978,14 +1087,15 @@ namespace GreatArcStudios
 
             if (useSimpleTerrain == true)
             {
-                simpleTerrain.treeMaximumFullLODCount = (int)f;
+                simpleTerrain.treeMaximumFullLODCount = (int) f;
             }
             else
             {
-                terrain.treeMaximumFullLODCount = (int)f;
+                terrain.treeMaximumFullLODCount = (int) f;
             }
 
         }
+
         /// <summary>
         /// Change the lod bias using
         /// <c>
@@ -998,6 +1108,7 @@ namespace GreatArcStudios
         {
             QualitySettings.lodBias = LoDBias / 2.15f;
         }
+
         /// <summary>
         /// Update the render distance using 
         /// <c>
@@ -1021,6 +1132,7 @@ namespace GreatArcStudios
             }
 
         }
+
         /// <summary>
         /// Update the texture quality using  
         /// <c>QualitySettings.masterTextureLimit </c>
@@ -1032,6 +1144,7 @@ namespace GreatArcStudios
             int f = Mathf.RoundToInt(qual);
             QualitySettings.masterTextureLimit = f;
         }
+
         /// <summary>
         /// Update the shadow distance using 
         /// <c>
@@ -1044,6 +1157,7 @@ namespace GreatArcStudios
             QualitySettings.shadowDistance = dist;
 
         }
+
         /// <summary>
         /// Change the max amount of high quality trees using 
         /// <c>
@@ -1055,14 +1169,15 @@ namespace GreatArcStudios
         {
             if (useSimpleTerrain == true)
             {
-                simpleTerrain.treeMaximumFullLODCount = (int)qual;
+                simpleTerrain.treeMaximumFullLODCount = (int) qual;
             }
             else
             {
-                terrain.treeMaximumFullLODCount = (int)qual;
+                terrain.treeMaximumFullLODCount = (int) qual;
             }
 
         }
+
         /// <summary>
         /// Change the height map max LOD using 
         /// <c>
@@ -1076,6 +1191,7 @@ namespace GreatArcStudios
             // catch { Debug.Log("Terrain not assigned"); return; }
 
         }
+
         /// <summary>
         /// Change the fov using a float. The defualt should be 60.
         /// </summary>
@@ -1084,6 +1200,7 @@ namespace GreatArcStudios
         {
             mainCam.fieldOfView = fov;
         }
+
         /// <summary>
         /// Toggle on or off Depth of Field. This is meant to be used with a checkbox.
         /// </summary>
@@ -1112,13 +1229,13 @@ namespace GreatArcStudios
             // }
 
 
-
         }
+
         /// <summary>
         /// Toggle on or off Ambient Occulusion. This is meant to be used with a checkbox.
         /// </summary>
         /// <param name="b"></param>
-        public void toggleAO(Boolean b)  // TODO: fix this
+        public void toggleAO(Boolean b) // TODO: fix this
         {
             // try
             // {
@@ -1142,13 +1259,14 @@ namespace GreatArcStudios
             //     return;
             // }
         }
+
         /// <summary>
         /// Set the game to windowed or full screen. This is meant to be used with a checkbox
         /// </summary>
         /// <param name="b"></param>
         public void setFullScreen(Boolean b)
         {
-           
+
 
             if (b == true)
             {
@@ -1159,6 +1277,7 @@ namespace GreatArcStudios
                 Screen.SetResolution(Screen.currentResolution.width, Screen.currentResolution.height, false);
             }
         }
+
         /// <summary>
         /// Method for moving to the next resoution in the allRes array. WARNING: This is not finished/buggy.  
         /// </summary>
@@ -1174,15 +1293,29 @@ namespace GreatArcStudios
                 {
                     //Debug.Log("found " + i);
                     //If the user is playing fullscreen. Then set the resoution to one element higher in the array, set the full screen boolean to true, reset the current resolution, and then update the resolution label.
-                    if (isFullscreen == true) { Screen.SetResolution(allRes[i + 1].width, allRes[i + 1].height, true); isFullscreen = true; currentRes = Screen.resolutions[i + 1]; resolutionLabel.text = currentRes.width.ToString() + " x " + currentRes.height.ToString(); }
+                    if (isFullscreen == true)
+                    {
+                        Screen.SetResolution(allRes[i + 1].width, allRes[i + 1].height, true);
+                        isFullscreen = true;
+                        currentRes = Screen.resolutions[i + 1];
+                        resolutionLabel.text = currentRes.width.ToString() + " x " + currentRes.height.ToString();
+                    }
+
                     //If the user is playing in a window. Then set the resoution to one element higher in the array, set the full screen boolean to false, reset the current resolution, and then update the resolution label.
-                    if (isFullscreen == false) { Screen.SetResolution(allRes[i + 1].width, allRes[i + 1].height, false); isFullscreen = false; currentRes = Screen.resolutions[i + 1]; resolutionLabel.text = currentRes.width.ToString() + " x " + currentRes.height.ToString(); }
+                    if (isFullscreen == false)
+                    {
+                        Screen.SetResolution(allRes[i + 1].width, allRes[i + 1].height, false);
+                        isFullscreen = false;
+                        currentRes = Screen.resolutions[i + 1];
+                        resolutionLabel.text = currentRes.width.ToString() + " x " + currentRes.height.ToString();
+                    }
 
                     //Debug.Log("Res after: " + currentRes);
                 }
             }
 
         }
+
         /// <summary>
         /// Method for moving to the last resoution in the allRes array. WARNING: This is not finished/buggy.  
         /// </summary>
@@ -1198,19 +1331,34 @@ namespace GreatArcStudios
 
                     //Debug.Log("found " + i);
                     //If the user is playing fullscreen. Then set the resoution to one element lower in the array, set the full screen boolean to true, reset the current resolution, and then update the resolution label.
-                    if (isFullscreen == true) { Screen.SetResolution(allRes[i - 1].width, allRes[i - 1].height, true); isFullscreen = true; currentRes = Screen.resolutions[i - 1]; resolutionLabel.text = currentRes.width.ToString() + " x " + currentRes.height.ToString(); }
+                    if (isFullscreen == true)
+                    {
+                        Screen.SetResolution(allRes[i - 1].width, allRes[i - 1].height, true);
+                        isFullscreen = true;
+                        currentRes = Screen.resolutions[i - 1];
+                        resolutionLabel.text = currentRes.width.ToString() + " x " + currentRes.height.ToString();
+                    }
+
                     //If the user is playing in a window. Then set the resoution to one element lower in the array, set the full screen boolean to false, reset the current resolution, and then update the resolution label.
-                    if (isFullscreen == false) { Screen.SetResolution(allRes[i - 1].width, allRes[i - 1].height, false); isFullscreen = false; currentRes = Screen.resolutions[i - 1]; resolutionLabel.text = currentRes.width.ToString() + " x " + currentRes.height.ToString(); }
+                    if (isFullscreen == false)
+                    {
+                        Screen.SetResolution(allRes[i - 1].width, allRes[i - 1].height, false);
+                        isFullscreen = false;
+                        currentRes = Screen.resolutions[i - 1];
+                        resolutionLabel.text = currentRes.width.ToString() + " x " + currentRes.height.ToString();
+                    }
 
                     //Debug.Log("Res after: " + currentRes);
                 }
             }
 
         }
+
         public void enableSimpleTerrain(Boolean b)
         {
             useSimpleTerrain = b;
         }
+
         /// <summary>
         /// Force aniso on using quality settings
         /// </summary>
@@ -1219,6 +1367,7 @@ namespace GreatArcStudios
         {
             QualitySettings.anisotropicFiltering = AnisotropicFiltering.ForceEnable;
         }
+
         /// <summary>
         /// Per texture aniso using quality settings
         /// </summary>
@@ -1227,6 +1376,7 @@ namespace GreatArcStudios
         {
             QualitySettings.anisotropicFiltering = AnisotropicFiltering.Enable;
         }
+
         /// <summary>
         /// Disable aniso using quality setttings
         /// </summary>
@@ -1235,6 +1385,7 @@ namespace GreatArcStudios
         {
             QualitySettings.anisotropicFiltering = AnisotropicFiltering.Disable;
         }
+
         /// <summary>
         /// The method for changing aniso settings
         /// </summary>
@@ -1271,8 +1422,10 @@ namespace GreatArcStudios
             {
                 c = 2;
             }
+
             QualitySettings.shadowCascades = c;
         }
+
         /// <summary>
         /// Update terrain density
         /// </summary>
@@ -1290,6 +1443,7 @@ namespace GreatArcStudios
             }
 
         }
+
         /// <summary>
         /// Update MSAA quality using quality settings
         /// </summary>
@@ -1314,6 +1468,7 @@ namespace GreatArcStudios
             }
 
         }
+
         /// <summary>
         /// Set MSAA to 0x (disabling it) using quality settings
         /// </summary>
@@ -1323,6 +1478,7 @@ namespace GreatArcStudios
             QualitySettings.antiAliasing = 0;
             // aaOption.text = "MSAA: " + QualitySettings.antiAliasing.ToString();
         }
+
         /// <summary>
         /// Set MSAA to 2x using quality settings
         /// </summary>
@@ -1332,6 +1488,7 @@ namespace GreatArcStudios
             QualitySettings.antiAliasing = 2;
             // aaOption.text = "MSAA: " + QualitySettings.antiAliasing.ToString();
         }
+
         /// <summary>
         /// Set MSAA to 4x using quality settings
         /// </summary>
@@ -1342,6 +1499,7 @@ namespace GreatArcStudios
 
             // aaOption.text = "MSAA: " + QualitySettings.antiAliasing.ToString();
         }
+
         /// <summary>
         /// Set MSAA to 8x using quality settings
         /// </summary>
@@ -1351,6 +1509,7 @@ namespace GreatArcStudios
             QualitySettings.antiAliasing = 8;
             // aaOption.text = "MSAA: " + QualitySettings.antiAliasing.ToString();
         }
+
         /// <summary>
         /// Set the quality level one level higher. This is done by getting the current quality level, then using 
         /// <c> 
@@ -1370,6 +1529,7 @@ namespace GreatArcStudios
                 QualitySettings.lodBias = LODBias[_currentLevel];
             }
         }
+
         /// <summary>
         /// Set the quality level one level lower. This is done by getting the current quality level, then using 
         /// <c> 
@@ -1390,6 +1550,7 @@ namespace GreatArcStudios
             }
 
         }
+
         /// <summary>
         /// Hard code the minimal settings
         /// </summary>
@@ -1401,6 +1562,7 @@ namespace GreatArcStudios
             //QualitySettings.lodBias = 0.3f;
             QualitySettings.lodBias = LODBias[0];
         }
+
         /// <summary>
         /// Hard code the very low settings
         /// </summary>
@@ -1412,6 +1574,7 @@ namespace GreatArcStudios
             //QualitySettings.lodBias = 0.55f;
             QualitySettings.lodBias = LODBias[1];
         }
+
         /// <summary>
         /// Hard code the low settings
         /// </summary>
@@ -1423,6 +1586,7 @@ namespace GreatArcStudios
             QualitySettings.lodBias = LODBias[2];
             QualitySettings.shadowDistance = shadowDist[2];
         }
+
         /// <summary>
         /// Hard code the normal settings
         /// </summary>
@@ -1434,6 +1598,7 @@ namespace GreatArcStudios
             QualitySettings.shadowDistance = shadowDist[3];
             QualitySettings.lodBias = LODBias[3];
         }
+
         /// <summary>
         /// Hard code the very high settings
         /// </summary>
@@ -1445,6 +1610,7 @@ namespace GreatArcStudios
             QualitySettings.shadowDistance = shadowDist[4];
             QualitySettings.lodBias = LODBias[4];
         }
+
         /// <summary>
         /// Hard code the ultra settings
         /// </summary>
@@ -1456,6 +1622,7 @@ namespace GreatArcStudios
             QualitySettings.shadowDistance = shadowDist[5];
             QualitySettings.lodBias = LODBias[5];
         }
+
         /// <summary>
         /// Hard code the extreme settings
         /// </summary>

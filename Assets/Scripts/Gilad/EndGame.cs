@@ -16,8 +16,8 @@ namespace Gilad
 
         public void Restart()
         {
+            PauseManager.Paused = false; // TODO: move this to the scene activations onReady state
             onLeave.Invoke();
-            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
         }
 
 
@@ -29,8 +29,6 @@ namespace Gilad
             {
                 pauseGameObject.SetActive(false);
             }
-            Time.timeScale = 0;
-
         }
     }
 }
