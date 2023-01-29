@@ -45,13 +45,30 @@ public class Civilian : CharacterAI
         {
             MoveCharacter();
         }
-        else // TODO: keep moving when on fire!
+        else
         {
             Agent.speed = runSpeed;
             if (m_Flammable.IsDoneBurning())
             {
                 MyAnimationController.DropDead = true;
                 Agent.enabled = false;
+                timeToInit.Clear();
+            }
+            else if (timeToGo.IsSet && !timeToGo.IsActive) // TODO: this is duplicated by MoveCharacter
+            {
+                Goal = Distance(player, transform) < minDistanceFromPlayer
+                    ? player
+                    : FindFire(transform);
+                if (Goal != null)
+                {
+                    RunAway(Goal);
+                }
+                else if (Agent.pathStatus != NavMeshPathStatus.PathComplete ||
+                         (Agent.remainingDistance < stoppingDistance && !Agent.pathPending))
+                {
+                    Agent.SetDestination(RandomNavmeshLocation());
+                }
+                timeToGo.Start();
             }
         }
     }

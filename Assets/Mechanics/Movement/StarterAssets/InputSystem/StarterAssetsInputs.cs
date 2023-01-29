@@ -65,6 +65,7 @@ namespace StarterAssets
         private bool continuousFire;
 
         private StarterAssetsActions _myControls;
+        private CursorLockMode _cursorTempState;
 
         private void OnValidate()
         {
@@ -85,6 +86,11 @@ namespace StarterAssets
                     }
                 );
             }
+        }
+
+        private void Awake()
+        {
+            SetCursorState(cursorLocked);
         }
 
         private void OnEnable()
@@ -220,12 +226,20 @@ namespace StarterAssets
 
         private void OnApplicationFocus(bool hasFocus)
         {
-            SetCursorState(cursorLocked);
+            if (!hasFocus)
+            {
+                _cursorTempState = Cursor.lockState;
+            }
+            else
+            {
+                Cursor.lockState = _cursorTempState;
+            }
         }
 
         private void SetCursorState(bool newState)
         {
             Cursor.lockState = newState ? CursorLockMode.Locked : CursorLockMode.None;
+            _cursorTempState = Cursor.lockState;
         }
 
         private void FireInput(bool newState)
