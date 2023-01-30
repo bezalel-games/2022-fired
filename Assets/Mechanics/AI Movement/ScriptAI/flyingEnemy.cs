@@ -203,30 +203,32 @@ public class flyingEnemy : CharacterAI
             _shooter.StopShooting();
             return false;
         }
+        bool toSeek = true;
         if (Agent.remainingDistance < distanceToStopFromFire )
         {
             print("somthing");
             transform.LookAt(new Vector3(Goal.position.x, transform.position.y, Goal.position.z));  // TODO: use slerp/lerp to rotate gradually
             Agent.updateRotation = false;
+            
             if (IsFacing())
             {
                 if (!(timeBetweenShots.IsSet && timeBetweenShots.IsActive))  // TODO patch
                 {
                     ExtinguishFire();
+                    toSeek = false;
                 }
-                else
-                {
-                    Seek(Goal);
-                }
+                
             }
-            else
-            {
-                Seek(Goal);
-            }
+            
         }
         else
         {
             Agent.updateRotation = true;
+            
+        }
+
+        if (toSeek)
+        {
             Seek(Goal);
         }
         if (shootDuration.IsSet && !shootDuration.IsActive)
