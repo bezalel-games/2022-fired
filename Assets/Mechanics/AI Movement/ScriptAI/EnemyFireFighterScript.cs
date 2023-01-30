@@ -84,18 +84,14 @@ public class EnemyFireFighterScript : CharacterAI
                 Goal = Distance(player, transform) < minDistanceFromPlayer
                     ? player
                     : FindFire(transform);
-                if(Goal != null)
-                {
-                    Goal = Distance(player, transform) < Distance(Goal, transform) ? player : Goal;
-                }
             }
             else
             {
                 Goal = FindFire(transform);
-                if(Goal != null)
-                {
-                    Goal = Distance(player, transform) < Distance(Goal, transform) ? player : Goal;
-                } 
+            }
+            if(Goal != null)
+            {
+                Goal = Distance(player, transform) < Distance(Goal, transform) ? player : Goal;
             }
             timeToGo.Clear();
             wentRandom = false;
