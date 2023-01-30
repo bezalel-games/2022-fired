@@ -143,7 +143,7 @@ public class flyingEnemy : CharacterAI
 
         if (!timeToGo.IsActive)
         {
-            if (stayNearInitPos && Vector3.Distance(initPos, transform.position) < theAreaToCover)
+            if (Vector3.Distance(initPos, transform.position) < theAreaToCover)
             {
                 Agent.SetDestination(initPos);
                 return;

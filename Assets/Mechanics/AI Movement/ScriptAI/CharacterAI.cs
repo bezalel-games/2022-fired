@@ -216,7 +216,8 @@ public abstract class CharacterAI : OptimizedBehaviour
             fireGoal = max;
             return max.gameObject.transform;
         }
-
+        
+        fireGoal = null;
         return null;
     }
 
