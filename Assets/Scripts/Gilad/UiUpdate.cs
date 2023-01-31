@@ -78,7 +78,7 @@ namespace Gilad
                 // fireImage.gameObject.SetActive(false);
                 // burnedTxt.gameObject.SetActive(false);
                 // fireSlider.gameObject.SetActive(false);
-                // timeText.gameObject.SetActive(false);
+                timeText.gameObject.SetActive(false);
                 endGameObject.SetActive(true);
                 if (_hasAnimator)
                 {
