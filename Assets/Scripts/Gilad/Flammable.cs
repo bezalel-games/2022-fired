@@ -11,7 +11,9 @@ namespace Gilad
 
         private static readonly List<Flammable> allFlammables = new List<Flammable>();
 
-        public static HashSet<Flammable> AllBurning = new HashSet<Flammable>();
+        public static readonly HashSet<Flammable> AllBurning = new HashSet<Flammable>();
+        
+        public static readonly HashSet<Flammable> AllBurned = new HashSet<Flammable>();
 
         public static int NumBurned = 0;
 
@@ -42,11 +44,20 @@ namespace Gilad
         [SerializeField]
         [Tooltip("After this time the object is considered burned")]
         private float lifeTime = 20f;
-
-        private bool _startedBurning = false;
-
+        
         [SerializeField]
         private BurnedEvent onBurnedEvent;
+        
+        [SerializeField]
+        private bool removeFlamesOnBurned;
+
+        [SerializeField]
+        [Tooltip("how much of the timeOnFire to keep after extinguishing. " +
+                 "0 means reset completely, 1 means keep as was before extinguished")]
+        private float timeOnFireExtinguishRatio = 1f;
+
+        [SerializeField]
+        private bool useRatioOnPowerLevel;
 
         private float _timeOnFire = 0f;
 
@@ -56,6 +67,7 @@ namespace Gilad
 
         private float _timeCount = 0f;
         private bool _onBurnedEventExists;
+        private bool _startedBurning = false;
 
         private void Awake()
         {
@@ -109,10 +121,15 @@ namespace Gilad
                 onBurnedEvent.ObjectBurned();
             }
 
-            // GrowFire(-numOfHits);
-            enabled = false;
+            if (removeFlamesOnBurned)
+            {
+                GrowFire(-numOfHits);
+            }
+
             NumBurned++;
             AllBurning.Remove(this);
+            AllBurned.Add(this);
+            enabled = false;
         }
 
         private void CheckTime()
@@ -182,7 +199,11 @@ namespace Gilad
         private void StartBurning()
         {
             _startedBurning = true;
-            // todo add started method
+            _timeOnFire = timeOnFireExtinguishRatio * _timeOnFire;
+            if (useRatioOnPowerLevel)
+            {
+                _powerLevel = (int) (numOfHits * (_timeOnFire / lifeTime));
+            }
         }
 
         public bool IsOnFire()
