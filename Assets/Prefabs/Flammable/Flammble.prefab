@@ -242,12 +242,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   flames: []
-  numOfHits: 10
+  numOfHits: 20
   hitDuration: 1
   firePower: 1
   waterPower: 1
   timePower: 1
-  lifeTime: 10
+  lifeTime: 20
   onBurnedEvent: {fileID: 0}
 --- !u!1 &5971865934872528315
 GameObject:

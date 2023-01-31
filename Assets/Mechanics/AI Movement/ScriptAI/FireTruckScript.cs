@@ -1,13 +1,14 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+using Gilad;
 using Avrahamy;
 using BitStrap;
-using Gilad;
-using UnityEngine;
-using Logger = Nemesh.Logger;
-
-public class EnemyFireFighterScript : CharacterAI
+using UnityEngine.AI;
+public class FireTruckScript : CharacterAI
 {
     [Space(2)]
-    [Header("FireFighter")]
+    [Header("FireTruck")]
     [SerializeField]
     [Range(0, 100)]
     private float initPerceantege;
@@ -37,11 +38,14 @@ public class EnemyFireFighterScript : CharacterAI
     [SerializeField]
     private PassiveTimer timeBetweenShots;
 
+    [SerializeField] private GameObject cannonHolder;
     [SerializeField]
     [ReadOnly]
     private float percentage;
-
+    [SerializeField]
+    private Transform[] points;
     private bool wentRandom;
+    private int destPoint = 0;
     
     
     
@@ -49,7 +53,7 @@ public class EnemyFireFighterScript : CharacterAI
     protected override void Start()
     {
         base.Start();
-        Goal = null;
+        Goal = player;
         Agent.SetDestination(RandomNavmeshLocation());
         percentage = initPerceantege;
     }
@@ -72,56 +76,62 @@ public class EnemyFireFighterScript : CharacterAI
         {
             timeToGo.Start();
         }
+
         if (!timeToGo.IsActive)
         {
-            if (stayNearInitPos && Vector3.Distance(initPos, transform.position) > theAreaToCover)
+            // if (!Agent.pathPending && (
+            //         Agent.remainingDistance < stoppingDistance ||
+            //         Agent.pathStatus == NavMeshPathStatus.PathInvalid))
+            // {
+            //     GotoNextPoint();
+            // }
+            // else
             {
-                Agent.SetDestination(initPos);
-                return;
-            }
-            var oldGoal = Goal;
-            if(prioritizePlayer)
-            {
-                Goal = Distance(player, transform) < minDistanceFromPlayer
-                    ? player
-                    : FindFire(transform);
-            }
-            if(Goal != null)
-            {
-                Goal = Distance(player, transform) < Distance(Goal, transform) ? player : Goal;
-            }
-            else
-            {
-                Goal = Distance(player, transform) < minDistanceFromPlayer
-                    ? player
-                    : null;
-            }
-            timeToGo.Clear();
-            wentRandom = false;
-        }
-        if (Goal != null)
-        {
-            Seek(Goal);
-        }
-        if (Goal != null && (GoalOnfire() || Goal == player)) // TODO: use an API
-        {
-            
-            if (HandleFire())
-            {
-            }
-            else
-            {
+                var oldGoal = Goal;
+                if(prioritizePlayer)
+                {
+                    Goal = Distance(player, transform) < minDistanceFromPlayer
+                        ? player
+                        : FindFire(transform);
+                }
+                if(Goal != null)
+                {
+                    Goal = Distance(player, transform) < Distance(Goal, transform) ? player : Goal;
+                }
+                else
+                {
+                    Goal = Distance(player, transform) < minDistanceFromPlayer
+                        ? player
+                        : null;
+                }
+                timeToGo.Clear();
                 wentRandom = false;
-                RunAway(Goal);
             }
-
-        }
-        else
-        {
-            _shooter.StopShooting();
-            if (!Agent.pathPending &&  (Agent.remainingDistance < stoppingDistance || !wentRandom))
+            if (Goal != null)
             {
-                var t = Agent.SetDestination(RandomNavmeshLocation());
+                Seek(Goal);
+            }
+            if (Goal != null && (GoalOnfire() || Goal == player)) // TODO: use an API
+            {
+            
+                if (HandleFire())
+                {
+                }
+                else
+                {
+                    wentRandom = false;
+                    RunAway(Goal);
+                }
+
+            }
+        else
+        
+            _shooter.StopShooting();
+            if (!Agent.pathPending && (
+                    Agent.remainingDistance < stoppingDistance ||
+                    Agent.pathStatus == NavMeshPathStatus.PathInvalid))
+            {
+                GotoNextPoint();
                 timeToGo.Clear();
                 wentRandom = true;
             }
@@ -140,15 +150,14 @@ public class EnemyFireFighterScript : CharacterAI
         // bool toSeek = true;
         if (!Agent.pathPending && Agent.remainingDistance < distanceToStopFromFire + 1f)
         {
-            transform.LookAt(Goal.position);  // TODO: use slerp/lerp to rotate gradually
-            Agent.updateRotation = false;
-
+            
+            
             if (IsFacing())
             {
+                cannonHolder.transform.LookAt(new Vector3(Goal.position.x,cannonHolder.transform.position.y,  Goal.position.z));
                 if (!(timeBetweenShots.IsSet && timeBetweenShots.IsActive))  // TODO patch
                 {
                     ExtinguishFire();
-                    // toSeek = false;
                 }
                 
             }
@@ -191,12 +200,6 @@ public class EnemyFireFighterScript : CharacterAI
                 Seek(Goal);
                 _shooter.StartShooting();
             }
-            else
-            {
-                // _shooter.StopShooting();
-                // shootDuration.Clear();
-                // timeBetweenShots.Start();
-            }
         }
         else
         {
@@ -206,5 +209,26 @@ public class EnemyFireFighterScript : CharacterAI
         // here we need to call a function that put the fire of
     }
     
+    void GotoNextPoint()
+    {
+        // Returns if no points have been set up
+        if (points.Length == 0)
+            return;
+        // Set the agent to go to the currently selected destination.
+        Agent.SetDestination(points[destPoint].position);
 
+        // Choose the next point in the array as the destination,
+        // cycling to the start if necessary.
+        destPoint = (destPoint + 1) % points.Length;
+    }
+
+    protected override bool IsFacing()
+    {
+        var forw = new Vector3(cannonHolder.transform.forward.x, 0, cannonHolder.transform.forward.z);
+        var goalPos = new Vector3(Goal.position.x, 0, Goal.position.z);
+        var transPos = new Vector3(cannonHolder.transform.position.x, 0, cannonHolder.transform.position.z);
+        float angleToPlayer = Vector3.Angle(forw, (goalPos - transPos).normalized);
+        return Mathf.Abs(angleToPlayer) < angleMax;
+        // return base.IsFacing();
+    }
 }

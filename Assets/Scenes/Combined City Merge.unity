@@ -213,6 +213,18 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 673920046}
     - target: {fileID: 1663577628, guid: eb585f4a557eb064781ba03a11412ec3, type: 3}
+      propertyPath: radius
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 1663577628, guid: eb585f4a557eb064781ba03a11412ec3, type: 3}
+      propertyPath: prioritizePlayer
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1663577628, guid: eb585f4a557eb064781ba03a11412ec3, type: 3}
+      propertyPath: minDistanceToFire
+      value: 25
+      objectReference: {fileID: 0}
+    - target: {fileID: 1663577628, guid: eb585f4a557eb064781ba03a11412ec3, type: 3}
       propertyPath: timeToGo.duration
       value: 1
       objectReference: {fileID: 0}
@@ -226,7 +238,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1663577628, guid: eb585f4a557eb064781ba03a11412ec3, type: 3}
       propertyPath: distanceToStopFromFire
-      value: 10
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 1663577632, guid: eb585f4a557eb064781ba03a11412ec3, type: 3}
       propertyPath: m_Constraints
@@ -1316,6 +1328,18 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 673920046}
     - target: {fileID: 1663577628, guid: eb585f4a557eb064781ba03a11412ec3, type: 3}
+      propertyPath: radius
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 1663577628, guid: eb585f4a557eb064781ba03a11412ec3, type: 3}
+      propertyPath: prioritizePlayer
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1663577628, guid: eb585f4a557eb064781ba03a11412ec3, type: 3}
+      propertyPath: minDistanceToFire
+      value: 25
+      objectReference: {fileID: 0}
+    - target: {fileID: 1663577628, guid: eb585f4a557eb064781ba03a11412ec3, type: 3}
       propertyPath: timeToGo.duration
       value: 1
       objectReference: {fileID: 0}
@@ -1329,7 +1353,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1663577628, guid: eb585f4a557eb064781ba03a11412ec3, type: 3}
       propertyPath: distanceToStopFromFire
-      value: 10
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 1663577632, guid: eb585f4a557eb064781ba03a11412ec3, type: 3}
       propertyPath: m_Constraints
@@ -7043,6 +7067,18 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 673920046}
     - target: {fileID: 1663577628, guid: eb585f4a557eb064781ba03a11412ec3, type: 3}
+      propertyPath: radius
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 1663577628, guid: eb585f4a557eb064781ba03a11412ec3, type: 3}
+      propertyPath: prioritizePlayer
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1663577628, guid: eb585f4a557eb064781ba03a11412ec3, type: 3}
+      propertyPath: minDistanceToFire
+      value: 25
+      objectReference: {fileID: 0}
+    - target: {fileID: 1663577628, guid: eb585f4a557eb064781ba03a11412ec3, type: 3}
       propertyPath: timeToGo.duration
       value: 1
       objectReference: {fileID: 0}
@@ -7056,7 +7092,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1663577628, guid: eb585f4a557eb064781ba03a11412ec3, type: 3}
       propertyPath: distanceToStopFromFire
-      value: 10
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 1663577632, guid: eb585f4a557eb064781ba03a11412ec3, type: 3}
       propertyPath: m_Constraints
@@ -8266,6 +8302,18 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 673920046}
     - target: {fileID: 1663577628, guid: eb585f4a557eb064781ba03a11412ec3, type: 3}
+      propertyPath: radius
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 1663577628, guid: eb585f4a557eb064781ba03a11412ec3, type: 3}
+      propertyPath: prioritizePlayer
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1663577628, guid: eb585f4a557eb064781ba03a11412ec3, type: 3}
+      propertyPath: minDistanceToFire
+      value: 25
+      objectReference: {fileID: 0}
+    - target: {fileID: 1663577628, guid: eb585f4a557eb064781ba03a11412ec3, type: 3}
       propertyPath: timeToGo.duration
       value: 1
       objectReference: {fileID: 0}
@@ -8279,7 +8327,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1663577628, guid: eb585f4a557eb064781ba03a11412ec3, type: 3}
       propertyPath: distanceToStopFromFire
-      value: 10
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 1663577632, guid: eb585f4a557eb064781ba03a11412ec3, type: 3}
       propertyPath: m_Constraints
@@ -10836,6 +10884,18 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 673920046}
     - target: {fileID: 1663577628, guid: eb585f4a557eb064781ba03a11412ec3, type: 3}
+      propertyPath: radius
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 1663577628, guid: eb585f4a557eb064781ba03a11412ec3, type: 3}
+      propertyPath: prioritizePlayer
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1663577628, guid: eb585f4a557eb064781ba03a11412ec3, type: 3}
+      propertyPath: minDistanceToFire
+      value: 25
+      objectReference: {fileID: 0}
+    - target: {fileID: 1663577628, guid: eb585f4a557eb064781ba03a11412ec3, type: 3}
       propertyPath: timeToGo.duration
       value: 1
       objectReference: {fileID: 0}
@@ -10849,7 +10909,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1663577628, guid: eb585f4a557eb064781ba03a11412ec3, type: 3}
       propertyPath: distanceToStopFromFire
-      value: 10
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 1663577632, guid: eb585f4a557eb064781ba03a11412ec3, type: 3}
       propertyPath: m_Constraints
@@ -20105,6 +20165,18 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 673920046}
     - target: {fileID: 1663577628, guid: eb585f4a557eb064781ba03a11412ec3, type: 3}
+      propertyPath: radius
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 1663577628, guid: eb585f4a557eb064781ba03a11412ec3, type: 3}
+      propertyPath: prioritizePlayer
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1663577628, guid: eb585f4a557eb064781ba03a11412ec3, type: 3}
+      propertyPath: minDistanceToFire
+      value: 25
+      objectReference: {fileID: 0}
+    - target: {fileID: 1663577628, guid: eb585f4a557eb064781ba03a11412ec3, type: 3}
       propertyPath: timeToGo.duration
       value: 1
       objectReference: {fileID: 0}
@@ -20118,7 +20190,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1663577628, guid: eb585f4a557eb064781ba03a11412ec3, type: 3}
       propertyPath: distanceToStopFromFire
-      value: 10
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 1663577632, guid: eb585f4a557eb064781ba03a11412ec3, type: 3}
       propertyPath: m_Constraints
@@ -20784,7 +20856,7 @@ PrefabInstance:
     - target: {fileID: 218573964702746756, guid: 25b56c9d7fad2fb42b59644ee0ccd978,
         type: 3}
       propertyPath: m_AgentTypeID
-      value: 0
+      value: -334000983
       objectReference: {fileID: 0}
     - target: {fileID: 218573964702746756, guid: 25b56c9d7fad2fb42b59644ee0ccd978,
         type: 3}
@@ -20799,7 +20871,7 @@ PrefabInstance:
     - target: {fileID: 324890988264155086, guid: 25b56c9d7fad2fb42b59644ee0ccd978,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -11.32
+      value: -9.24
       objectReference: {fileID: 0}
     - target: {fileID: 324890988264155086, guid: 25b56c9d7fad2fb42b59644ee0ccd978,
         type: 3}
@@ -20809,7 +20881,7 @@ PrefabInstance:
     - target: {fileID: 324890988264155086, guid: 25b56c9d7fad2fb42b59644ee0ccd978,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: -15.56
+      value: -13.1
       objectReference: {fileID: 0}
     - target: {fileID: 324890988264155086, guid: 25b56c9d7fad2fb42b59644ee0ccd978,
         type: 3}
@@ -20874,13 +20946,18 @@ PrefabInstance:
     - target: {fileID: 1137702122377559412, guid: 25b56c9d7fad2fb42b59644ee0ccd978,
         type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2209395147975802918, guid: 25b56c9d7fad2fb42b59644ee0ccd978,
         type: 3}
       propertyPath: player
       value: 
       objectReference: {fileID: 673920046}
+    - target: {fileID: 2209395147975802918, guid: 25b56c9d7fad2fb42b59644ee0ccd978,
+        type: 3}
+      propertyPath: angleMax
+      value: 90
+      objectReference: {fileID: 0}
     - target: {fileID: 2209395147975802918, guid: 25b56c9d7fad2fb42b59644ee0ccd978,
         type: 3}
       propertyPath: initPerceantege
@@ -20932,6 +21009,46 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8578681250929491389, guid: 25b56c9d7fad2fb42b59644ee0ccd978,
+        type: 3}
+      propertyPath: player
+      value: 
+      objectReference: {fileID: 673920046}
+    - target: {fileID: 8578681250929491389, guid: 25b56c9d7fad2fb42b59644ee0ccd978,
+        type: 3}
+      propertyPath: points.Array.size
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 8578681250929491389, guid: 25b56c9d7fad2fb42b59644ee0ccd978,
+        type: 3}
+      propertyPath: points.Array.data[0]
+      value: 
+      objectReference: {fileID: 1036309583}
+    - target: {fileID: 8578681250929491389, guid: 25b56c9d7fad2fb42b59644ee0ccd978,
+        type: 3}
+      propertyPath: points.Array.data[1]
+      value: 
+      objectReference: {fileID: 1086601433}
+    - target: {fileID: 8578681250929491389, guid: 25b56c9d7fad2fb42b59644ee0ccd978,
+        type: 3}
+      propertyPath: points.Array.data[2]
+      value: 
+      objectReference: {fileID: 1166671899}
+    - target: {fileID: 8578681250929491389, guid: 25b56c9d7fad2fb42b59644ee0ccd978,
+        type: 3}
+      propertyPath: points.Array.data[3]
+      value: 
+      objectReference: {fileID: 258094764}
+    - target: {fileID: 8578681250929491389, guid: 25b56c9d7fad2fb42b59644ee0ccd978,
+        type: 3}
+      propertyPath: points.Array.data[4]
+      value: 
+      objectReference: {fileID: 1953575304}
+    - target: {fileID: 8578681250929491389, guid: 25b56c9d7fad2fb42b59644ee0ccd978,
+        type: 3}
+      propertyPath: points.Array.data[5]
+      value: 
+      objectReference: {fileID: 403942169}
     m_RemovedComponents:
     - {fileID: 218573964702746759, guid: 25b56c9d7fad2fb42b59644ee0ccd978, type: 3}
     - {fileID: 218573964702746778, guid: 25b56c9d7fad2fb42b59644ee0ccd978, type: 3}
@@ -22120,6 +22237,18 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 673920046}
     - target: {fileID: 1663577628, guid: eb585f4a557eb064781ba03a11412ec3, type: 3}
+      propertyPath: radius
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 1663577628, guid: eb585f4a557eb064781ba03a11412ec3, type: 3}
+      propertyPath: prioritizePlayer
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1663577628, guid: eb585f4a557eb064781ba03a11412ec3, type: 3}
+      propertyPath: minDistanceToFire
+      value: 25
+      objectReference: {fileID: 0}
+    - target: {fileID: 1663577628, guid: eb585f4a557eb064781ba03a11412ec3, type: 3}
       propertyPath: timeToGo.duration
       value: 1
       objectReference: {fileID: 0}
@@ -22133,7 +22262,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1663577628, guid: eb585f4a557eb064781ba03a11412ec3, type: 3}
       propertyPath: distanceToStopFromFire
-      value: 10
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 1663577630, guid: eb585f4a557eb064781ba03a11412ec3, type: 3}
       propertyPath: m_AgentTypeID
@@ -23505,7 +23634,7 @@ PrefabInstance:
     - target: {fileID: 8944336655422409496, guid: f6d148d888ffbf54b9afe9936dfaec1f,
         type: 3}
       propertyPath: field of view
-      value: 31.332533
+      value: 60
       objectReference: {fileID: 0}
     - target: {fileID: 8944336655422409496, guid: f6d148d888ffbf54b9afe9936dfaec1f,
         type: 3}
@@ -23515,7 +23644,7 @@ PrefabInstance:
     - target: {fileID: 8944336655422409496, guid: f6d148d888ffbf54b9afe9936dfaec1f,
         type: 3}
       propertyPath: far clip plane
-      value: 200
+      value: 1000
       objectReference: {fileID: 0}
     - target: {fileID: 8944336655422409496, guid: f6d148d888ffbf54b9afe9936dfaec1f,
         type: 3}
@@ -25000,6 +25129,18 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 673920046}
     - target: {fileID: 1663577628, guid: eb585f4a557eb064781ba03a11412ec3, type: 3}
+      propertyPath: radius
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 1663577628, guid: eb585f4a557eb064781ba03a11412ec3, type: 3}
+      propertyPath: prioritizePlayer
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1663577628, guid: eb585f4a557eb064781ba03a11412ec3, type: 3}
+      propertyPath: minDistanceToFire
+      value: 25
+      objectReference: {fileID: 0}
+    - target: {fileID: 1663577628, guid: eb585f4a557eb064781ba03a11412ec3, type: 3}
       propertyPath: timeToGo.duration
       value: 1
       objectReference: {fileID: 0}
@@ -25013,7 +25154,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1663577628, guid: eb585f4a557eb064781ba03a11412ec3, type: 3}
       propertyPath: distanceToStopFromFire
-      value: 10
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 1663577630, guid: eb585f4a557eb064781ba03a11412ec3, type: 3}
       propertyPath: m_AgentTypeID
@@ -25668,6 +25809,18 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 673920046}
     - target: {fileID: 1663577628, guid: eb585f4a557eb064781ba03a11412ec3, type: 3}
+      propertyPath: radius
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 1663577628, guid: eb585f4a557eb064781ba03a11412ec3, type: 3}
+      propertyPath: prioritizePlayer
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1663577628, guid: eb585f4a557eb064781ba03a11412ec3, type: 3}
+      propertyPath: minDistanceToFire
+      value: 25
+      objectReference: {fileID: 0}
+    - target: {fileID: 1663577628, guid: eb585f4a557eb064781ba03a11412ec3, type: 3}
       propertyPath: timeToGo.duration
       value: 1
       objectReference: {fileID: 0}
@@ -25681,7 +25834,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1663577628, guid: eb585f4a557eb064781ba03a11412ec3, type: 3}
       propertyPath: distanceToStopFromFire
-      value: 10
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 1663577632, guid: eb585f4a557eb064781ba03a11412ec3, type: 3}
       propertyPath: m_Constraints
@@ -26266,6 +26419,18 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 673920046}
     - target: {fileID: 1663577628, guid: eb585f4a557eb064781ba03a11412ec3, type: 3}
+      propertyPath: radius
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 1663577628, guid: eb585f4a557eb064781ba03a11412ec3, type: 3}
+      propertyPath: prioritizePlayer
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1663577628, guid: eb585f4a557eb064781ba03a11412ec3, type: 3}
+      propertyPath: minDistanceToFire
+      value: 25
+      objectReference: {fileID: 0}
+    - target: {fileID: 1663577628, guid: eb585f4a557eb064781ba03a11412ec3, type: 3}
       propertyPath: timeToGo.duration
       value: 1
       objectReference: {fileID: 0}
@@ -26279,7 +26444,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1663577628, guid: eb585f4a557eb064781ba03a11412ec3, type: 3}
       propertyPath: distanceToStopFromFire
-      value: 10
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 1663577630, guid: eb585f4a557eb064781ba03a11412ec3, type: 3}
       propertyPath: m_AgentTypeID
@@ -26969,6 +27134,14 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 673920046}
     - target: {fileID: 1663577628, guid: eb585f4a557eb064781ba03a11412ec3, type: 3}
+      propertyPath: prioritizePlayer
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1663577628, guid: eb585f4a557eb064781ba03a11412ec3, type: 3}
+      propertyPath: minDistanceToFire
+      value: 25
+      objectReference: {fileID: 0}
+    - target: {fileID: 1663577628, guid: eb585f4a557eb064781ba03a11412ec3, type: 3}
       propertyPath: timeToGo.duration
       value: 1
       objectReference: {fileID: 0}
@@ -26982,7 +27155,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1663577628, guid: eb585f4a557eb064781ba03a11412ec3, type: 3}
       propertyPath: distanceToStopFromFire
-      value: 10
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 1663577632, guid: eb585f4a557eb064781ba03a11412ec3, type: 3}
       propertyPath: m_Constraints
@@ -27336,6 +27509,18 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 673920046}
     - target: {fileID: 1663577628, guid: eb585f4a557eb064781ba03a11412ec3, type: 3}
+      propertyPath: radius
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 1663577628, guid: eb585f4a557eb064781ba03a11412ec3, type: 3}
+      propertyPath: prioritizePlayer
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1663577628, guid: eb585f4a557eb064781ba03a11412ec3, type: 3}
+      propertyPath: minDistanceToFire
+      value: 25
+      objectReference: {fileID: 0}
+    - target: {fileID: 1663577628, guid: eb585f4a557eb064781ba03a11412ec3, type: 3}
       propertyPath: timeToGo.duration
       value: 1
       objectReference: {fileID: 0}
@@ -27349,7 +27534,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1663577628, guid: eb585f4a557eb064781ba03a11412ec3, type: 3}
       propertyPath: distanceToStopFromFire
-      value: 10
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 1663577632, guid: eb585f4a557eb064781ba03a11412ec3, type: 3}
       propertyPath: m_Constraints
@@ -28562,6 +28747,18 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 673920046}
     - target: {fileID: 1663577628, guid: eb585f4a557eb064781ba03a11412ec3, type: 3}
+      propertyPath: radius
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 1663577628, guid: eb585f4a557eb064781ba03a11412ec3, type: 3}
+      propertyPath: prioritizePlayer
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1663577628, guid: eb585f4a557eb064781ba03a11412ec3, type: 3}
+      propertyPath: minDistanceToFire
+      value: 25
+      objectReference: {fileID: 0}
+    - target: {fileID: 1663577628, guid: eb585f4a557eb064781ba03a11412ec3, type: 3}
       propertyPath: timeToGo.duration
       value: 1
       objectReference: {fileID: 0}
@@ -28575,7 +28772,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1663577628, guid: eb585f4a557eb064781ba03a11412ec3, type: 3}
       propertyPath: distanceToStopFromFire
-      value: 10
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 1663577630, guid: eb585f4a557eb064781ba03a11412ec3, type: 3}
       propertyPath: m_AgentTypeID
@@ -31469,6 +31666,18 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 673920046}
     - target: {fileID: 1663577628, guid: eb585f4a557eb064781ba03a11412ec3, type: 3}
+      propertyPath: radius
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 1663577628, guid: eb585f4a557eb064781ba03a11412ec3, type: 3}
+      propertyPath: prioritizePlayer
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1663577628, guid: eb585f4a557eb064781ba03a11412ec3, type: 3}
+      propertyPath: minDistanceToFire
+      value: 25
+      objectReference: {fileID: 0}
+    - target: {fileID: 1663577628, guid: eb585f4a557eb064781ba03a11412ec3, type: 3}
       propertyPath: timeToGo.duration
       value: 1
       objectReference: {fileID: 0}
@@ -31482,7 +31691,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1663577628, guid: eb585f4a557eb064781ba03a11412ec3, type: 3}
       propertyPath: distanceToStopFromFire
-      value: 10
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 1663577630, guid: eb585f4a557eb064781ba03a11412ec3, type: 3}
       propertyPath: m_AgentTypeID
@@ -32044,6 +32253,18 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 673920046}
     - target: {fileID: 1663577628, guid: eb585f4a557eb064781ba03a11412ec3, type: 3}
+      propertyPath: radius
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 1663577628, guid: eb585f4a557eb064781ba03a11412ec3, type: 3}
+      propertyPath: prioritizePlayer
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1663577628, guid: eb585f4a557eb064781ba03a11412ec3, type: 3}
+      propertyPath: minDistanceToFire
+      value: 25
+      objectReference: {fileID: 0}
+    - target: {fileID: 1663577628, guid: eb585f4a557eb064781ba03a11412ec3, type: 3}
       propertyPath: timeToGo.duration
       value: 1
       objectReference: {fileID: 0}
@@ -32057,7 +32278,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1663577628, guid: eb585f4a557eb064781ba03a11412ec3, type: 3}
       propertyPath: distanceToStopFromFire
-      value: 10
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 1663577630, guid: eb585f4a557eb064781ba03a11412ec3, type: 3}
       propertyPath: m_AgentTypeID
@@ -32234,6 +32455,18 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 673920046}
     - target: {fileID: 1663577628, guid: eb585f4a557eb064781ba03a11412ec3, type: 3}
+      propertyPath: radius
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 1663577628, guid: eb585f4a557eb064781ba03a11412ec3, type: 3}
+      propertyPath: prioritizePlayer
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1663577628, guid: eb585f4a557eb064781ba03a11412ec3, type: 3}
+      propertyPath: minDistanceToFire
+      value: 25
+      objectReference: {fileID: 0}
+    - target: {fileID: 1663577628, guid: eb585f4a557eb064781ba03a11412ec3, type: 3}
       propertyPath: timeToGo.duration
       value: 1
       objectReference: {fileID: 0}
@@ -32247,7 +32480,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1663577628, guid: eb585f4a557eb064781ba03a11412ec3, type: 3}
       propertyPath: distanceToStopFromFire
-      value: 10
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 1663577632, guid: eb585f4a557eb064781ba03a11412ec3, type: 3}
       propertyPath: m_Constraints
@@ -33743,6 +33976,18 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 673920046}
     - target: {fileID: 1663577628, guid: eb585f4a557eb064781ba03a11412ec3, type: 3}
+      propertyPath: radius
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 1663577628, guid: eb585f4a557eb064781ba03a11412ec3, type: 3}
+      propertyPath: prioritizePlayer
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1663577628, guid: eb585f4a557eb064781ba03a11412ec3, type: 3}
+      propertyPath: minDistanceToFire
+      value: 25
+      objectReference: {fileID: 0}
+    - target: {fileID: 1663577628, guid: eb585f4a557eb064781ba03a11412ec3, type: 3}
       propertyPath: timeToGo.duration
       value: 1
       objectReference: {fileID: 0}
@@ -33756,7 +34001,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1663577628, guid: eb585f4a557eb064781ba03a11412ec3, type: 3}
       propertyPath: distanceToStopFromFire
-      value: 10
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 1663577630, guid: eb585f4a557eb064781ba03a11412ec3, type: 3}
       propertyPath: m_AgentTypeID
@@ -34839,6 +35084,18 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 673920046}
     - target: {fileID: 1663577628, guid: eb585f4a557eb064781ba03a11412ec3, type: 3}
+      propertyPath: radius
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 1663577628, guid: eb585f4a557eb064781ba03a11412ec3, type: 3}
+      propertyPath: prioritizePlayer
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1663577628, guid: eb585f4a557eb064781ba03a11412ec3, type: 3}
+      propertyPath: minDistanceToFire
+      value: 25
+      objectReference: {fileID: 0}
+    - target: {fileID: 1663577628, guid: eb585f4a557eb064781ba03a11412ec3, type: 3}
       propertyPath: timeToGo.duration
       value: 1
       objectReference: {fileID: 0}
@@ -34852,7 +35109,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1663577628, guid: eb585f4a557eb064781ba03a11412ec3, type: 3}
       propertyPath: distanceToStopFromFire
-      value: 10
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 1663577632, guid: eb585f4a557eb064781ba03a11412ec3, type: 3}
       propertyPath: m_Constraints
@@ -39771,6 +40028,18 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 673920046}
     - target: {fileID: 1663577628, guid: eb585f4a557eb064781ba03a11412ec3, type: 3}
+      propertyPath: radius
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 1663577628, guid: eb585f4a557eb064781ba03a11412ec3, type: 3}
+      propertyPath: prioritizePlayer
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1663577628, guid: eb585f4a557eb064781ba03a11412ec3, type: 3}
+      propertyPath: minDistanceToFire
+      value: 25
+      objectReference: {fileID: 0}
+    - target: {fileID: 1663577628, guid: eb585f4a557eb064781ba03a11412ec3, type: 3}
       propertyPath: timeToGo.duration
       value: 1
       objectReference: {fileID: 0}
@@ -39784,7 +40053,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1663577628, guid: eb585f4a557eb064781ba03a11412ec3, type: 3}
       propertyPath: distanceToStopFromFire
-      value: 10
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 1663577630, guid: eb585f4a557eb064781ba03a11412ec3, type: 3}
       propertyPath: m_AgentTypeID
@@ -39967,6 +40236,18 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 673920046}
     - target: {fileID: 1663577628, guid: eb585f4a557eb064781ba03a11412ec3, type: 3}
+      propertyPath: radius
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 1663577628, guid: eb585f4a557eb064781ba03a11412ec3, type: 3}
+      propertyPath: prioritizePlayer
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1663577628, guid: eb585f4a557eb064781ba03a11412ec3, type: 3}
+      propertyPath: minDistanceToFire
+      value: 25
+      objectReference: {fileID: 0}
+    - target: {fileID: 1663577628, guid: eb585f4a557eb064781ba03a11412ec3, type: 3}
       propertyPath: timeToGo.duration
       value: 1
       objectReference: {fileID: 0}
@@ -39980,7 +40261,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1663577628, guid: eb585f4a557eb064781ba03a11412ec3, type: 3}
       propertyPath: distanceToStopFromFire
-      value: 10
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 1663577632, guid: eb585f4a557eb064781ba03a11412ec3, type: 3}
       propertyPath: m_Constraints
@@ -40078,6 +40359,18 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 673920046}
     - target: {fileID: 1663577628, guid: eb585f4a557eb064781ba03a11412ec3, type: 3}
+      propertyPath: radius
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 1663577628, guid: eb585f4a557eb064781ba03a11412ec3, type: 3}
+      propertyPath: prioritizePlayer
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1663577628, guid: eb585f4a557eb064781ba03a11412ec3, type: 3}
+      propertyPath: minDistanceToFire
+      value: 25
+      objectReference: {fileID: 0}
+    - target: {fileID: 1663577628, guid: eb585f4a557eb064781ba03a11412ec3, type: 3}
       propertyPath: timeToGo.duration
       value: 1
       objectReference: {fileID: 0}
@@ -40091,7 +40384,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1663577628, guid: eb585f4a557eb064781ba03a11412ec3, type: 3}
       propertyPath: distanceToStopFromFire
-      value: 10
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 1663577630, guid: eb585f4a557eb064781ba03a11412ec3, type: 3}
       propertyPath: m_AgentTypeID
@@ -40695,6 +40988,18 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 673920046}
     - target: {fileID: 1663577628, guid: eb585f4a557eb064781ba03a11412ec3, type: 3}
+      propertyPath: radius
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 1663577628, guid: eb585f4a557eb064781ba03a11412ec3, type: 3}
+      propertyPath: prioritizePlayer
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1663577628, guid: eb585f4a557eb064781ba03a11412ec3, type: 3}
+      propertyPath: minDistanceToFire
+      value: 25
+      objectReference: {fileID: 0}
+    - target: {fileID: 1663577628, guid: eb585f4a557eb064781ba03a11412ec3, type: 3}
       propertyPath: timeToGo.duration
       value: 1
       objectReference: {fileID: 0}
@@ -40708,7 +41013,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1663577628, guid: eb585f4a557eb064781ba03a11412ec3, type: 3}
       propertyPath: distanceToStopFromFire
-      value: 10
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 1663577630, guid: eb585f4a557eb064781ba03a11412ec3, type: 3}
       propertyPath: m_AgentTypeID
@@ -43204,6 +43509,18 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 673920046}
     - target: {fileID: 1663577628, guid: eb585f4a557eb064781ba03a11412ec3, type: 3}
+      propertyPath: radius
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 1663577628, guid: eb585f4a557eb064781ba03a11412ec3, type: 3}
+      propertyPath: prioritizePlayer
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1663577628, guid: eb585f4a557eb064781ba03a11412ec3, type: 3}
+      propertyPath: minDistanceToFire
+      value: 25
+      objectReference: {fileID: 0}
+    - target: {fileID: 1663577628, guid: eb585f4a557eb064781ba03a11412ec3, type: 3}
       propertyPath: timeToGo.duration
       value: 1
       objectReference: {fileID: 0}
@@ -43217,7 +43534,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1663577628, guid: eb585f4a557eb064781ba03a11412ec3, type: 3}
       propertyPath: distanceToStopFromFire
-      value: 10
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 1663577632, guid: eb585f4a557eb064781ba03a11412ec3, type: 3}
       propertyPath: m_Constraints
@@ -44101,6 +44418,18 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 673920046}
     - target: {fileID: 1663577628, guid: eb585f4a557eb064781ba03a11412ec3, type: 3}
+      propertyPath: radius
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 1663577628, guid: eb585f4a557eb064781ba03a11412ec3, type: 3}
+      propertyPath: prioritizePlayer
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1663577628, guid: eb585f4a557eb064781ba03a11412ec3, type: 3}
+      propertyPath: minDistanceToFire
+      value: 25
+      objectReference: {fileID: 0}
+    - target: {fileID: 1663577628, guid: eb585f4a557eb064781ba03a11412ec3, type: 3}
       propertyPath: timeToGo.duration
       value: 1
       objectReference: {fileID: 0}
@@ -44114,7 +44443,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1663577628, guid: eb585f4a557eb064781ba03a11412ec3, type: 3}
       propertyPath: distanceToStopFromFire
-      value: 10
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 1663577632, guid: eb585f4a557eb064781ba03a11412ec3, type: 3}
       propertyPath: m_Constraints
@@ -47288,6 +47617,18 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 673920046}
     - target: {fileID: 1663577628, guid: eb585f4a557eb064781ba03a11412ec3, type: 3}
+      propertyPath: radius
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 1663577628, guid: eb585f4a557eb064781ba03a11412ec3, type: 3}
+      propertyPath: prioritizePlayer
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1663577628, guid: eb585f4a557eb064781ba03a11412ec3, type: 3}
+      propertyPath: minDistanceToFire
+      value: 25
+      objectReference: {fileID: 0}
+    - target: {fileID: 1663577628, guid: eb585f4a557eb064781ba03a11412ec3, type: 3}
       propertyPath: timeToGo.duration
       value: 1
       objectReference: {fileID: 0}
@@ -47301,7 +47642,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1663577628, guid: eb585f4a557eb064781ba03a11412ec3, type: 3}
       propertyPath: distanceToStopFromFire
-      value: 10
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 1663577630, guid: eb585f4a557eb064781ba03a11412ec3, type: 3}
       propertyPath: m_AgentTypeID

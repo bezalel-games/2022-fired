@@ -296,7 +296,7 @@ MonoBehaviour:
   speedChangeRate: 10
   player: {fileID: 0}
   stoppingDistance: 3
-  radius: 45
+  radius: 25
   autoBreaking: 1
   angleMax: 45
   stayNearInitPos: 0

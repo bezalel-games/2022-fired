@@ -5,6 +5,7 @@ using Gilad;
 using Logger = Nemesh.Logger;
 using Avrahamy;
 using BitStrap;
+using UnityEngine.AI;
 
 public class flyingEnemy : CharacterAI
 {
@@ -52,9 +53,9 @@ public class flyingEnemy : CharacterAI
     protected override void Start()
     {
         base.Start();
-        Goal = player;
-        // var goal = ToXZ(RandomNavmeshLocation());
-        Agent.SetDestination(player.position);
+        Goal = null;
+        var goal = ToXZ(RandomNavmeshLocation());
+        Agent.SetDestination(goal);
         percentage = initPerceantege;
        
     }
@@ -77,63 +78,6 @@ public class flyingEnemy : CharacterAI
         MoveCharacter();
     }
 
-    
-    // protected override void MoveCharacter()
-    // {
-    //     if (!timeToGo.IsSet)
-    //     {
-    //         timeToGo.Start();
-    //     }
-    //     if (timeToGo.IsActive)
-    //     {
-    //         return;
-    //     }
-    //
-    //     // Goal = Distance(player, transform) < minDistanceFromPlayer ||
-    //     //        Distance(player, transform) > maxDistanceFromPlayer
-    //     //     ? player
-    //     //     : radiusWithCol.FindFire(transform);
-    //     Goal = Distance(player, transform) < minDistanceFromPlayer
-    //         ? player
-    //         : FindFire(transform);
-    //     if (Goal != null) // TODO: use an API
-    //     {
-    //
-    //         if (percentage > 0)
-    //         {
-    //             HandleFire();
-    //         }
-    //         else
-    //         {
-    //             _shooter.StopShooting();
-    //             if (timeToGo.IsSet)
-    //             {
-    //                 if (timeToGo.IsActive)
-    //                 {
-    //                 }
-    //                 else
-    //                 {
-    //                     timeToGo.Clear();
-    //                     RunAway(Goal);
-    //                 }
-    //             }
-    //             else
-    //             {
-    //                 timeToGo.Start();
-    //             }
-    //         }
-    //
-    //     }
-    //     else if (Agent.remainingDistance < stoppingDistance)
-    //     {
-    //         _shooter.StopShooting();
-    //         var t = Agent.SetDestination(ToXZ(RandomNavmeshLocation()));
-    //         Logger.Log($"{Agent.destination} : {t}", this);
-    //
-    //     }
-    //     timeToGo.Start();
-    // }
-    
     //the function from which the character moves
     protected override void MoveCharacter()
     {
@@ -144,29 +88,38 @@ public class flyingEnemy : CharacterAI
 
         if (!timeToGo.IsActive)
         {
-            if (Vector3.Distance(initPos, transform.position) > theAreaToCover && stayNearInitPos)
+            if (stayNearInitPos && Vector3.Distance(initPos, transform.position) > theAreaToCover)
             {
                 Agent.SetDestination(ToXZ(initPos));
                 return;
             }
 
+            var oldGoal = Goal;
             if (prioritizePlayer)
             {
-                Goal = Vector3.Distance(ToXZ(player.position), ToXZ(transform.position)) < minDistanceFromPlayer
+                Goal = Distance(player, transform) < minDistanceFromPlayer
                     ? player
                     : FindFire(transform);
             }
+
+            if (Goal != null)
+            {
+                Goal = Distance(player, transform) < Distance(Goal, transform) ? player : Goal;
+            }
             else
             {
-                Goal = FindFire(transform);
+                Goal = Distance(player, transform) < minDistanceFromPlayer
+                    ? player
+                    : null;
             }
-            Goal = Goal == null || Vector3.Distance(ToXZ(player.position), ToXZ(transform.position)) <
-                   Vector3.Distance(ToXZ(Goal.position), ToXZ(transform.position))
-                ? player
-                : Goal;
-        
+
             timeToGo.Clear();
             wentRandom = false;
+        }
+
+        if (Goal != null)
+        {
+            Seek(Goal);
         }
 
         if (Goal != null && (GoalOnfire() || Goal == player)) // TODO: use an API
@@ -178,7 +131,6 @@ public class flyingEnemy : CharacterAI
             else
             {
                 wentRandom = false;
-                _shooter.StopShooting();
                 RunAway(Goal);
             }
 
@@ -186,7 +138,7 @@ public class flyingEnemy : CharacterAI
         else
         {
             _shooter.StopShooting();
-            if (!Agent.pathPending && Agent.remainingDistance < stoppingDistance || !wentRandom)
+            if (!Agent.pathPending && (Agent.remainingDistance < stoppingDistance || !wentRandom))
             {
                 var t = Agent.SetDestination(ToXZ(RandomNavmeshLocation()));
                 timeToGo.Clear();
@@ -194,6 +146,67 @@ public class flyingEnemy : CharacterAI
             }
         }
     }
+
+    
+    // protected override void MoveCharacter()
+    // {
+    //     if (!timeToGo.IsSet)
+    //     {
+    //         timeToGo.Start();
+    //     }
+    //
+    //     if (!timeToGo.IsActive)
+    //     {
+    //         if (Vector3.Distance(initPos, transform.position) > theAreaToCover && stayNearInitPos)
+    //         {
+    //             Agent.SetDestination(ToXZ(initPos));
+    //             return;
+    //         }
+    //
+    //         if (prioritizePlayer)
+    //         {
+    //             Goal = Vector3.Distance(ToXZ(player.position), ToXZ(transform.position)) < minDistanceFromPlayer
+    //                 ? player
+    //                 : FindFire(transform);
+    //         }
+    //         else
+    //         {
+    //             Goal = FindFire(transform);
+    //         }
+    //         Goal = Goal == null || Vector3.Distance(ToXZ(player.position), ToXZ(transform.position)) <
+    //                Vector3.Distance(ToXZ(Goal.position), ToXZ(transform.position))
+    //             ? player
+    //             : Goal;
+    //     
+    //         timeToGo.Clear();
+    //         wentRandom = false;
+    //     }
+    //
+    //     if (Goal != null && (GoalOnfire() || Goal == player)) // TODO: use an API
+    //     {
+    //
+    //         if (HandleFire())
+    //         {
+    //         }
+    //         else
+    //         {
+    //             wentRandom = false;
+    //             _shooter.StopShooting();
+    //             RunAway(Goal);
+    //         }
+    //
+    //     }
+    //     else
+    //     {
+    //         _shooter.StopShooting();
+    //         if (!Agent.pathPending && Agent.remainingDistance < stoppingDistance || !wentRandom)
+    //         {
+    //             var t = Agent.SetDestination(ToXZ(RandomNavmeshLocation()));
+    //             timeToGo.Clear();
+    //             wentRandom = true;
+    //         }
+    //     }
+    // }
 
     //return true if go after the fire
     private bool HandleFire()
@@ -203,34 +216,31 @@ public class flyingEnemy : CharacterAI
             _shooter.StopShooting();
             return false;
         }
-        bool toSeek = true;
-        if (Agent.remainingDistance < distanceToStopFromFire )
+        // bool toSeek = true;
+        if (!Agent.pathPending && Agent.remainingDistance < distanceToStopFromFire + 1f)
         {
-            print("somthing");
             transform.LookAt(new Vector3(Goal.position.x, transform.position.y, Goal.position.z));  // TODO: use slerp/lerp to rotate gradually
             Agent.updateRotation = false;
-            
+
             if (IsFacing())
             {
                 if (!(timeBetweenShots.IsSet && timeBetweenShots.IsActive))  // TODO patch
                 {
                     ExtinguishFire();
-                    toSeek = false;
+                    // toSeek = false;
                 }
                 
             }
-            
         }
         else
         {
             Agent.updateRotation = true;
-            
         }
 
-        if (toSeek)
-        {
-            Seek(Goal);
-        }
+        // if (toSeek)
+        // {
+        //     Seek(Goal);
+        // }
         if (shootDuration.IsSet && !shootDuration.IsActive)
         {
             percentage -= costToExtinguishFire;
@@ -246,6 +256,7 @@ public class flyingEnemy : CharacterAI
 
         return true;
     }
+    
     
     private bool GoalOnfire()
     {
@@ -271,18 +282,28 @@ public class flyingEnemy : CharacterAI
         // here we need to call a function that put the fire of
     }
 
-    protected override void Seek(Transform other)
+    protected virtual void Seek(Transform other)
     {
-        Agent.SetDestination(ToXZ(other.position));
+        if (NavMesh.SamplePosition(other.position, out var hit, Agent.height * 2f, Agent.areaMask))
+        {
+            Agent.SetDestination(hit.position);
+        }
+        // Agent.SetDestination(ToXZ(other.position));
     }
 
     protected override void RunAway(Transform runFrom)
     {
+        
+        // Agent.SetDestination(ToXZ(newPos));
+        
         var position = transform.position;
         Vector3 dirToFire = position - runFrom.position;
-        // transform.rotation = Quaternion.LookRotation(dirToFire);
-        Vector3 newPos = position + dirToFire;
-        Agent.SetDestination(ToXZ(newPos));
+        Vector3 newPos = position + dirToFire; // TODO: NavMesh.SamplePosition
+        if (NavMesh.SamplePosition(newPos, out var hit, Agent.height * 2f, Agent.areaMask))
+        {
+            Agent.SetDestination(hit.position);
+        }
+        Agent.speed = runSpeed;
     }
 
     protected override bool IsFacing()
