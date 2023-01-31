@@ -89,10 +89,13 @@ public class EnemyFireFighterScript : CharacterAI
             {
                 Goal = FindFire(transform);
             }
+            if(Goal != null)
+            {
+                Goal = Distance(player, transform) < Distance(Goal, transform) ? player : Goal;
+            }
             timeToGo.Clear();
             wentRandom = false;
         }
-
         // Goal = Distance(player, transform) < minDistanceFromPlayer ||
         //        Distance(player, transform) > maxDistanceFromPlayer
         //     ? player
@@ -100,7 +103,7 @@ public class EnemyFireFighterScript : CharacterAI
         // Goal = Distance(player, transform) < minDistanceFromPlayer
         //     ? player
         //     : FindFire(transform);
-        if (Goal != null && GoalOnfire()) // TODO: use an API
+        if (Goal != null && (GoalOnfire() || Goal == player)) // TODO: use an API
         {
             
             if (HandleFire())
@@ -125,8 +128,6 @@ public class EnemyFireFighterScript : CharacterAI
         }
         
         // timeToGo.Start();
-        
-        
     }
 
     //return true if go after the fire
@@ -137,6 +138,7 @@ public class EnemyFireFighterScript : CharacterAI
             _shooter.StopShooting();
             return false;
         }
+        bool toSeek = true;
         if (Agent.remainingDistance < distanceToStopFromFire + 1f)
         {
             transform.LookAt(Goal.position);  // TODO: use slerp/lerp to rotate gradually
@@ -147,20 +149,18 @@ public class EnemyFireFighterScript : CharacterAI
                 if (!(timeBetweenShots.IsSet && timeBetweenShots.IsActive))  // TODO patch
                 {
                     ExtinguishFire();
+                    toSeek = false;
                 }
-                else
-                {
-                    Seek(Goal);
-                }
-            }
-            else
-            {
-                Seek(Goal);
+                
             }
         }
         else
         {
             Agent.updateRotation = true;
+        }
+
+        if (toSeek)
+        {
             Seek(Goal);
         }
         if (shootDuration.IsSet && !shootDuration.IsActive)

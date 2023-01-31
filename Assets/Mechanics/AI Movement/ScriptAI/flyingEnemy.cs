@@ -53,15 +53,16 @@ public class flyingEnemy : CharacterAI
     {
         base.Start();
         Goal = player;
-        var goal = ToXZ(RandomNavmeshLocation());
-        Agent.SetDestination(goal);
+        // var goal = ToXZ(RandomNavmeshLocation());
+        Agent.SetDestination(player.position);
         percentage = initPerceantege;
        
     }
 
     protected Vector3 ToXZ(Vector3 vector)
     {
-        return new Vector3(vector.x, transform.position.y, vector.y);
+        // return new Vector3(vector.x, transform.position.y, vector.z);
+        return new Vector3(vector.x, 0, vector.z);
     }
 
     // Update is called once per frame
@@ -143,15 +144,15 @@ public class flyingEnemy : CharacterAI
 
         if (!timeToGo.IsActive)
         {
-            if (stayNearInitPos && Vector3.Distance(initPos, transform.position) < theAreaToCover)
+            if (Vector3.Distance(initPos, transform.position) > theAreaToCover && stayNearInitPos)
             {
-                Agent.SetDestination(initPos);
+                Agent.SetDestination(ToXZ(initPos));
                 return;
             }
 
             if (prioritizePlayer)
             {
-                Goal = Distance(player, transform) < minDistanceFromPlayer
+                Goal = Vector3.Distance(ToXZ(player.position), ToXZ(transform.position)) < minDistanceFromPlayer
                     ? player
                     : FindFire(transform);
             }
@@ -159,12 +160,16 @@ public class flyingEnemy : CharacterAI
             {
                 Goal = FindFire(transform);
             }
-
+            Goal = Goal == null || Vector3.Distance(ToXZ(player.position), ToXZ(transform.position)) <
+                   Vector3.Distance(ToXZ(Goal.position), ToXZ(transform.position))
+                ? player
+                : Goal;
+        
             timeToGo.Clear();
             wentRandom = false;
         }
 
-        if (Goal != null && GoalOnfire()) // TODO: use an API
+        if (Goal != null && (GoalOnfire() || Goal == player)) // TODO: use an API
         {
 
             if (HandleFire())
@@ -173,6 +178,7 @@ public class flyingEnemy : CharacterAI
             else
             {
                 wentRandom = false;
+                _shooter.StopShooting();
                 RunAway(Goal);
             }
 
@@ -197,30 +203,32 @@ public class flyingEnemy : CharacterAI
             _shooter.StopShooting();
             return false;
         }
-        if (Agent.remainingDistance < distanceToStopFromFire + 1f)
+        bool toSeek = true;
+        if (Agent.remainingDistance < distanceToStopFromFire )
         {
-            transform.LookAt(Goal.position);  // TODO: use slerp/lerp to rotate gradually
+            print("somthing");
+            transform.LookAt(new Vector3(Goal.position.x, transform.position.y, Goal.position.z));  // TODO: use slerp/lerp to rotate gradually
             Agent.updateRotation = false;
-
+            
             if (IsFacing())
             {
                 if (!(timeBetweenShots.IsSet && timeBetweenShots.IsActive))  // TODO patch
                 {
                     ExtinguishFire();
+                    toSeek = false;
                 }
-                else
-                {
-                    Seek(Goal);
-                }
+                
             }
-            else
-            {
-                Seek(Goal);
-            }
+            
         }
         else
         {
             Agent.updateRotation = true;
+            
+        }
+
+        if (toSeek)
+        {
             Seek(Goal);
         }
         if (shootDuration.IsSet && !shootDuration.IsActive)
@@ -275,5 +283,11 @@ public class flyingEnemy : CharacterAI
         // transform.rotation = Quaternion.LookRotation(dirToFire);
         Vector3 newPos = position + dirToFire;
         Agent.SetDestination(ToXZ(newPos));
+    }
+
+    protected override bool IsFacing()
+    {
+        float angleToPlayer = Vector3.Angle(ToXZ(transform.forward), (ToXZ(Goal.position) - ToXZ(transform.position)).normalized);
+        return Mathf.Abs(angleToPlayer) < 60f;
     }
 }

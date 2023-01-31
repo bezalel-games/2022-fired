@@ -216,11 +216,12 @@ public abstract class CharacterAI : OptimizedBehaviour
             fireGoal = max;
             return max.gameObject.transform;
         }
-
+        
+        fireGoal = null;
         return null;
     }
 
-    protected bool IsFacing()
+    protected virtual bool IsFacing()
     {
         float angleToPlayer = Vector3.Angle(transform.forward, (Goal.position - transform.position).normalized);
         return Mathf.Abs(angleToPlayer) < angleMax;
