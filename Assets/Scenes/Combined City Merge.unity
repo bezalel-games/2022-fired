@@ -57060,11 +57060,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 2340598950938738772, guid: f575e9d618c3edd4fa94251c479ad992,
-        type: 3}
-      propertyPath: gameTime
-      value: 20
-      objectReference: {fileID: 0}
     - target: {fileID: 2340598951658822901, guid: f575e9d618c3edd4fa94251c479ad992,
         type: 3}
       propertyPath: m_Enabled
