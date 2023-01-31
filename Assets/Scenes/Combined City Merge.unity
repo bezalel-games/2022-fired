@@ -217,6 +217,10 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1663577628, guid: eb585f4a557eb064781ba03a11412ec3, type: 3}
+      propertyPath: costToExtinguishFire
+      value: 0.001
+      objectReference: {fileID: 0}
+    - target: {fileID: 1663577628, guid: eb585f4a557eb064781ba03a11412ec3, type: 3}
       propertyPath: minDistanceFromPlayer
       value: 10
       objectReference: {fileID: 0}
@@ -496,7 +500,7 @@ Transform:
   - {fileID: 993194961}
   - {fileID: 857171893}
   m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &26325999
 PrefabInstance:
@@ -1314,6 +1318,10 @@ PrefabInstance:
     - target: {fileID: 1663577628, guid: eb585f4a557eb064781ba03a11412ec3, type: 3}
       propertyPath: timeToGo.duration
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1663577628, guid: eb585f4a557eb064781ba03a11412ec3, type: 3}
+      propertyPath: costToExtinguishFire
+      value: 0.001
       objectReference: {fileID: 0}
     - target: {fileID: 1663577628, guid: eb585f4a557eb064781ba03a11412ec3, type: 3}
       propertyPath: minDistanceFromPlayer
@@ -4962,105 +4970,6 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 168948979}
   m_PrefabAsset: {fileID: 0}
---- !u!1001 &174711107
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 3654659332792845900, guid: c1f4b9f741cd76c4abf7d7fb2ef298fd,
-        type: 3}
-      propertyPath: m_Name
-      value: flying 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 3654659332792845900, guid: c1f4b9f741cd76c4abf7d7fb2ef298fd,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7205869608834288387, guid: c1f4b9f741cd76c4abf7d7fb2ef298fd,
-        type: 3}
-      propertyPath: player
-      value: 
-      objectReference: {fileID: 673920046}
-    - target: {fileID: 7205869608834288387, guid: c1f4b9f741cd76c4abf7d7fb2ef298fd,
-        type: 3}
-      propertyPath: radius
-      value: 9
-      objectReference: {fileID: 0}
-    - target: {fileID: 7205869608834288387, guid: c1f4b9f741cd76c4abf7d7fb2ef298fd,
-        type: 3}
-      propertyPath: angleMax
-      value: 60
-      objectReference: {fileID: 0}
-    - target: {fileID: 7205869608834288387, guid: c1f4b9f741cd76c4abf7d7fb2ef298fd,
-        type: 3}
-      propertyPath: theAreaToCover
-      value: 70
-      objectReference: {fileID: 0}
-    - target: {fileID: 7205869608834288387, guid: c1f4b9f741cd76c4abf7d7fb2ef298fd,
-        type: 3}
-      propertyPath: minDistanceToFire
-      value: 50
-      objectReference: {fileID: 0}
-    - target: {fileID: 7436956127292752600, guid: c1f4b9f741cd76c4abf7d7fb2ef298fd,
-        type: 3}
-      propertyPath: m_RootOrder
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 7436956127292752600, guid: c1f4b9f741cd76c4abf7d7fb2ef298fd,
-        type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 471.89572
-      objectReference: {fileID: 0}
-    - target: {fileID: 7436956127292752600, guid: c1f4b9f741cd76c4abf7d7fb2ef298fd,
-        type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 7
-      objectReference: {fileID: 0}
-    - target: {fileID: 7436956127292752600, guid: c1f4b9f741cd76c4abf7d7fb2ef298fd,
-        type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 141.94
-      objectReference: {fileID: 0}
-    - target: {fileID: 7436956127292752600, guid: c1f4b9f741cd76c4abf7d7fb2ef298fd,
-        type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 7436956127292752600, guid: c1f4b9f741cd76c4abf7d7fb2ef298fd,
-        type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7436956127292752600, guid: c1f4b9f741cd76c4abf7d7fb2ef298fd,
-        type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7436956127292752600, guid: c1f4b9f741cd76c4abf7d7fb2ef298fd,
-        type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7436956127292752600, guid: c1f4b9f741cd76c4abf7d7fb2ef298fd,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7436956127292752600, guid: c1f4b9f741cd76c4abf7d7fb2ef298fd,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7436956127292752600, guid: c1f4b9f741cd76c4abf7d7fb2ef298fd,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: c1f4b9f741cd76c4abf7d7fb2ef298fd, type: 3}
 --- !u!1 &174744165
 GameObject:
   m_ObjectHideFlags: 0
@@ -7138,6 +7047,10 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1663577628, guid: eb585f4a557eb064781ba03a11412ec3, type: 3}
+      propertyPath: costToExtinguishFire
+      value: 0.001
+      objectReference: {fileID: 0}
+    - target: {fileID: 1663577628, guid: eb585f4a557eb064781ba03a11412ec3, type: 3}
       propertyPath: minDistanceFromPlayer
       value: 10
       objectReference: {fileID: 0}
@@ -8355,6 +8268,10 @@ PrefabInstance:
     - target: {fileID: 1663577628, guid: eb585f4a557eb064781ba03a11412ec3, type: 3}
       propertyPath: timeToGo.duration
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1663577628, guid: eb585f4a557eb064781ba03a11412ec3, type: 3}
+      propertyPath: costToExtinguishFire
+      value: 0.001
       objectReference: {fileID: 0}
     - target: {fileID: 1663577628, guid: eb585f4a557eb064781ba03a11412ec3, type: 3}
       propertyPath: minDistanceFromPlayer
@@ -10923,6 +10840,10 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1663577628, guid: eb585f4a557eb064781ba03a11412ec3, type: 3}
+      propertyPath: costToExtinguishFire
+      value: 0.001
+      objectReference: {fileID: 0}
+    - target: {fileID: 1663577628, guid: eb585f4a557eb064781ba03a11412ec3, type: 3}
       propertyPath: minDistanceFromPlayer
       value: 10
       objectReference: {fileID: 0}
@@ -11774,7 +11695,7 @@ Transform:
   - {fileID: 1831728927}
   - {fileID: 79703252}
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &558573330
 PrefabInstance:
@@ -15243,7 +15164,7 @@ Transform:
   - {fileID: 267541108}
   - {fileID: 126671822}
   m_Father: {fileID: 0}
-  m_RootOrder: 8
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &698599161 stripped
 Transform:
@@ -16220,7 +16141,7 @@ Transform:
   - {fileID: 103321169}
   - {fileID: 1673617654}
   m_Father: {fileID: 0}
-  m_RootOrder: 6
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &764648210
 PrefabInstance:
@@ -17546,7 +17467,7 @@ Transform:
   m_Children:
   - {fileID: 1637174022}
   m_Father: {fileID: 0}
-  m_RootOrder: 9
+  m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &828224450
 PrefabInstance:
@@ -19063,7 +18984,7 @@ Transform:
   m_Children:
   - {fileID: 673920046}
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &918570529
 PrefabInstance:
@@ -20188,6 +20109,10 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1663577628, guid: eb585f4a557eb064781ba03a11412ec3, type: 3}
+      propertyPath: costToExtinguishFire
+      value: 0.001
+      objectReference: {fileID: 0}
+    - target: {fileID: 1663577628, guid: eb585f4a557eb064781ba03a11412ec3, type: 3}
       propertyPath: minDistanceFromPlayer
       value: 10
       objectReference: {fileID: 0}
@@ -20874,7 +20799,7 @@ PrefabInstance:
     - target: {fileID: 324890988264155086, guid: 25b56c9d7fad2fb42b59644ee0ccd978,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 80.6
+      value: -11.32
       objectReference: {fileID: 0}
     - target: {fileID: 324890988264155086, guid: 25b56c9d7fad2fb42b59644ee0ccd978,
         type: 3}
@@ -20884,7 +20809,7 @@ PrefabInstance:
     - target: {fileID: 324890988264155086, guid: 25b56c9d7fad2fb42b59644ee0ccd978,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 5.8
+      value: -15.56
       objectReference: {fileID: 0}
     - target: {fileID: 324890988264155086, guid: 25b56c9d7fad2fb42b59644ee0ccd978,
         type: 3}
@@ -20959,7 +20884,7 @@ PrefabInstance:
     - target: {fileID: 2209395147975802918, guid: 25b56c9d7fad2fb42b59644ee0ccd978,
         type: 3}
       propertyPath: initPerceantege
-      value: 38.1
+      value: 100
       objectReference: {fileID: 0}
     - target: {fileID: 2209395147975802918, guid: 25b56c9d7fad2fb42b59644ee0ccd978,
         type: 3}
@@ -21956,7 +21881,7 @@ Transform:
   - {fileID: 1541271590}
   - {fileID: 1158248687}
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1070287231
 PrefabInstance:
@@ -22197,6 +22122,10 @@ PrefabInstance:
     - target: {fileID: 1663577628, guid: eb585f4a557eb064781ba03a11412ec3, type: 3}
       propertyPath: timeToGo.duration
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1663577628, guid: eb585f4a557eb064781ba03a11412ec3, type: 3}
+      propertyPath: costToExtinguishFire
+      value: 0.001
       objectReference: {fileID: 0}
     - target: {fileID: 1663577628, guid: eb585f4a557eb064781ba03a11412ec3, type: 3}
       propertyPath: minDistanceFromPlayer
@@ -25075,6 +25004,10 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1663577628, guid: eb585f4a557eb064781ba03a11412ec3, type: 3}
+      propertyPath: costToExtinguishFire
+      value: 0.001
+      objectReference: {fileID: 0}
+    - target: {fileID: 1663577628, guid: eb585f4a557eb064781ba03a11412ec3, type: 3}
       propertyPath: minDistanceFromPlayer
       value: 10
       objectReference: {fileID: 0}
@@ -25413,7 +25346,7 @@ Transform:
   - {fileID: 1420637087}
   - {fileID: 794248382}
   m_Father: {fileID: 0}
-  m_RootOrder: 10
+  m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1181028823
 PrefabInstance:
@@ -25737,6 +25670,10 @@ PrefabInstance:
     - target: {fileID: 1663577628, guid: eb585f4a557eb064781ba03a11412ec3, type: 3}
       propertyPath: timeToGo.duration
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1663577628, guid: eb585f4a557eb064781ba03a11412ec3, type: 3}
+      propertyPath: costToExtinguishFire
+      value: 0.001
       objectReference: {fileID: 0}
     - target: {fileID: 1663577628, guid: eb585f4a557eb064781ba03a11412ec3, type: 3}
       propertyPath: minDistanceFromPlayer
@@ -26331,6 +26268,10 @@ PrefabInstance:
     - target: {fileID: 1663577628, guid: eb585f4a557eb064781ba03a11412ec3, type: 3}
       propertyPath: timeToGo.duration
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1663577628, guid: eb585f4a557eb064781ba03a11412ec3, type: 3}
+      propertyPath: costToExtinguishFire
+      value: 0.001
       objectReference: {fileID: 0}
     - target: {fileID: 1663577628, guid: eb585f4a557eb064781ba03a11412ec3, type: 3}
       propertyPath: minDistanceFromPlayer
@@ -27032,6 +26973,10 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1663577628, guid: eb585f4a557eb064781ba03a11412ec3, type: 3}
+      propertyPath: costToExtinguishFire
+      value: 0.001
+      objectReference: {fileID: 0}
+    - target: {fileID: 1663577628, guid: eb585f4a557eb064781ba03a11412ec3, type: 3}
       propertyPath: minDistanceFromPlayer
       value: 10
       objectReference: {fileID: 0}
@@ -27393,6 +27338,10 @@ PrefabInstance:
     - target: {fileID: 1663577628, guid: eb585f4a557eb064781ba03a11412ec3, type: 3}
       propertyPath: timeToGo.duration
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1663577628, guid: eb585f4a557eb064781ba03a11412ec3, type: 3}
+      propertyPath: costToExtinguishFire
+      value: 0.001
       objectReference: {fileID: 0}
     - target: {fileID: 1663577628, guid: eb585f4a557eb064781ba03a11412ec3, type: 3}
       propertyPath: minDistanceFromPlayer
@@ -28615,6 +28564,10 @@ PrefabInstance:
     - target: {fileID: 1663577628, guid: eb585f4a557eb064781ba03a11412ec3, type: 3}
       propertyPath: timeToGo.duration
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1663577628, guid: eb585f4a557eb064781ba03a11412ec3, type: 3}
+      propertyPath: costToExtinguishFire
+      value: 0.001
       objectReference: {fileID: 0}
     - target: {fileID: 1663577628, guid: eb585f4a557eb064781ba03a11412ec3, type: 3}
       propertyPath: minDistanceFromPlayer
@@ -31502,7 +31455,7 @@ Transform:
   - {fileID: 1910923878}
   - {fileID: 1419915969}
   m_Father: {fileID: 0}
-  m_RootOrder: 7
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1487582194
 PrefabInstance:
@@ -31518,6 +31471,10 @@ PrefabInstance:
     - target: {fileID: 1663577628, guid: eb585f4a557eb064781ba03a11412ec3, type: 3}
       propertyPath: timeToGo.duration
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1663577628, guid: eb585f4a557eb064781ba03a11412ec3, type: 3}
+      propertyPath: costToExtinguishFire
+      value: 0.001
       objectReference: {fileID: 0}
     - target: {fileID: 1663577628, guid: eb585f4a557eb064781ba03a11412ec3, type: 3}
       propertyPath: minDistanceFromPlayer
@@ -32091,6 +32048,10 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1663577628, guid: eb585f4a557eb064781ba03a11412ec3, type: 3}
+      propertyPath: costToExtinguishFire
+      value: 0.001
+      objectReference: {fileID: 0}
+    - target: {fileID: 1663577628, guid: eb585f4a557eb064781ba03a11412ec3, type: 3}
       propertyPath: minDistanceFromPlayer
       value: 10
       objectReference: {fileID: 0}
@@ -32275,6 +32236,10 @@ PrefabInstance:
     - target: {fileID: 1663577628, guid: eb585f4a557eb064781ba03a11412ec3, type: 3}
       propertyPath: timeToGo.duration
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1663577628, guid: eb585f4a557eb064781ba03a11412ec3, type: 3}
+      propertyPath: costToExtinguishFire
+      value: 0.001
       objectReference: {fileID: 0}
     - target: {fileID: 1663577628, guid: eb585f4a557eb064781ba03a11412ec3, type: 3}
       propertyPath: minDistanceFromPlayer
@@ -33782,6 +33747,10 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1663577628, guid: eb585f4a557eb064781ba03a11412ec3, type: 3}
+      propertyPath: costToExtinguishFire
+      value: 0.001
+      objectReference: {fileID: 0}
+    - target: {fileID: 1663577628, guid: eb585f4a557eb064781ba03a11412ec3, type: 3}
       propertyPath: minDistanceFromPlayer
       value: 10
       objectReference: {fileID: 0}
@@ -33912,6 +33881,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3146810903617092915, guid: 594470e3c7d5d4244a0d7c42fdc9cb27,
         type: 3}
+      propertyPath: prioritizePlayer
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3146810903617092915, guid: 594470e3c7d5d4244a0d7c42fdc9cb27,
+        type: 3}
       propertyPath: minDistanceToFire
       value: 30
       objectReference: {fileID: 0}
@@ -33933,7 +33907,7 @@ PrefabInstance:
     - target: {fileID: 3146810903617092915, guid: 594470e3c7d5d4244a0d7c42fdc9cb27,
         type: 3}
       propertyPath: distanceToStopFromFire
-      value: 2
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 3654659332792845900, guid: 594470e3c7d5d4244a0d7c42fdc9cb27,
         type: 3}
@@ -34867,6 +34841,10 @@ PrefabInstance:
     - target: {fileID: 1663577628, guid: eb585f4a557eb064781ba03a11412ec3, type: 3}
       propertyPath: timeToGo.duration
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1663577628, guid: eb585f4a557eb064781ba03a11412ec3, type: 3}
+      propertyPath: costToExtinguishFire
+      value: 0.001
       objectReference: {fileID: 0}
     - target: {fileID: 1663577628, guid: eb585f4a557eb064781ba03a11412ec3, type: 3}
       propertyPath: minDistanceFromPlayer
@@ -37756,7 +37734,7 @@ Transform:
   - {fileID: 286162509}
   - {fileID: 818195952}
   m_Father: {fileID: 0}
-  m_RootOrder: 13
+  m_RootOrder: 12
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1711516149
 PrefabInstance:
@@ -39797,6 +39775,10 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1663577628, guid: eb585f4a557eb064781ba03a11412ec3, type: 3}
+      propertyPath: costToExtinguishFire
+      value: 0.001
+      objectReference: {fileID: 0}
+    - target: {fileID: 1663577628, guid: eb585f4a557eb064781ba03a11412ec3, type: 3}
       propertyPath: minDistanceFromPlayer
       value: 10
       objectReference: {fileID: 0}
@@ -39989,6 +39971,10 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1663577628, guid: eb585f4a557eb064781ba03a11412ec3, type: 3}
+      propertyPath: costToExtinguishFire
+      value: 0.001
+      objectReference: {fileID: 0}
+    - target: {fileID: 1663577628, guid: eb585f4a557eb064781ba03a11412ec3, type: 3}
       propertyPath: minDistanceFromPlayer
       value: 10
       objectReference: {fileID: 0}
@@ -40094,6 +40080,10 @@ PrefabInstance:
     - target: {fileID: 1663577628, guid: eb585f4a557eb064781ba03a11412ec3, type: 3}
       propertyPath: timeToGo.duration
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1663577628, guid: eb585f4a557eb064781ba03a11412ec3, type: 3}
+      propertyPath: costToExtinguishFire
+      value: 0.001
       objectReference: {fileID: 0}
     - target: {fileID: 1663577628, guid: eb585f4a557eb064781ba03a11412ec3, type: 3}
       propertyPath: minDistanceFromPlayer
@@ -40685,7 +40675,7 @@ Transform:
   m_Children:
   - {fileID: 1867811501}
   m_Father: {fileID: 0}
-  m_RootOrder: 11
+  m_RootOrder: 10
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &1867811501 stripped
 Transform:
@@ -40707,6 +40697,10 @@ PrefabInstance:
     - target: {fileID: 1663577628, guid: eb585f4a557eb064781ba03a11412ec3, type: 3}
       propertyPath: timeToGo.duration
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1663577628, guid: eb585f4a557eb064781ba03a11412ec3, type: 3}
+      propertyPath: costToExtinguishFire
+      value: 0.001
       objectReference: {fileID: 0}
     - target: {fileID: 1663577628, guid: eb585f4a557eb064781ba03a11412ec3, type: 3}
       propertyPath: minDistanceFromPlayer
@@ -40840,7 +40834,7 @@ Transform:
   m_Children:
   - {fileID: 725904746}
   m_Father: {fileID: 0}
-  m_RootOrder: 12
+  m_RootOrder: 11
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &1878741179 stripped
 Transform:
@@ -43214,6 +43208,10 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1663577628, guid: eb585f4a557eb064781ba03a11412ec3, type: 3}
+      propertyPath: costToExtinguishFire
+      value: 0.001
+      objectReference: {fileID: 0}
+    - target: {fileID: 1663577628, guid: eb585f4a557eb064781ba03a11412ec3, type: 3}
       propertyPath: minDistanceFromPlayer
       value: 10
       objectReference: {fileID: 0}
@@ -44105,6 +44103,10 @@ PrefabInstance:
     - target: {fileID: 1663577628, guid: eb585f4a557eb064781ba03a11412ec3, type: 3}
       propertyPath: timeToGo.duration
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1663577628, guid: eb585f4a557eb064781ba03a11412ec3, type: 3}
+      propertyPath: costToExtinguishFire
+      value: 0.001
       objectReference: {fileID: 0}
     - target: {fileID: 1663577628, guid: eb585f4a557eb064781ba03a11412ec3, type: 3}
       propertyPath: minDistanceFromPlayer
@@ -47288,6 +47290,10 @@ PrefabInstance:
     - target: {fileID: 1663577628, guid: eb585f4a557eb064781ba03a11412ec3, type: 3}
       propertyPath: timeToGo.duration
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1663577628, guid: eb585f4a557eb064781ba03a11412ec3, type: 3}
+      propertyPath: costToExtinguishFire
+      value: 0.001
       objectReference: {fileID: 0}
     - target: {fileID: 1663577628, guid: eb585f4a557eb064781ba03a11412ec3, type: 3}
       propertyPath: minDistanceFromPlayer
