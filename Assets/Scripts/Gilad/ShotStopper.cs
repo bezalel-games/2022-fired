@@ -1,5 +1,6 @@
 using System;
 using Flames;
+using GreatArcStudios;
 using UnityEngine;
 
 namespace Gilad
@@ -7,11 +8,14 @@ namespace Gilad
     public class ShotStopper : MonoBehaviour
     {
 
-        [SerializeField] private float stopTime = 1f;
+        [SerializeField]
+        private float stopTime = 1f;
 
-        [SerializeField] private ThrowBall throwBall;
+        [SerializeField]
+        private ThrowBall throwBall;
 
-        [SerializeField] private GameObject headFlame;
+        [SerializeField]
+        private GameObject headFlame;
 
         private float _timeToStart;
 
@@ -19,6 +23,11 @@ namespace Gilad
         // Update is called once per frame
         void Update()
         {
+            if (PauseManager.Paused)
+            {
+                return;
+            }
+
             if (_timeToStart > 0f)
             {
                 _timeToStart -= Time.deltaTime;
@@ -32,7 +41,7 @@ namespace Gilad
         private void EnableShooting()
         {
             _timeToStart = 0f;
-            throwBall.IsShooting = true;
+            throwBall.CanShoot = true;
             headFlame.SetActive(true);
             var explosion = ExplosionPool.Instance.Pool.Get();
             explosion.transform.position = headFlame.transform.position;
@@ -49,7 +58,7 @@ namespace Gilad
         private void DisableShooting()
         {
             _timeToStart = stopTime;
-            throwBall.IsShooting = false;
+            throwBall.CanShoot = false;
             headFlame.SetActive(false);
         }
     }
