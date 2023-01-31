@@ -1,4 +1,5 @@
 using System;
+using Avrahamy;
 using BitStrap;
 using TMPro;
 using UnityEngine;
@@ -39,6 +40,9 @@ namespace Gilad
         private BoolAnimationParameter onGameEndAnimationParameter;
 
         [SerializeField]
+        private PassiveTimer delayMoveToCornerAnimationBy = new PassiveTimer(1);
+
+        [SerializeField]
         public UnityEvent<float> onPercentageUpdate;
 
         private float _overAllTime;
@@ -56,9 +60,18 @@ namespace Gilad
             _overAllTime = gameTime;
             _fireImageColor = fireImage.color;
             UpdateUi();
-            if (_hasAnimator)
+            delayMoveToCornerAnimationBy.Start();
+        }
+
+        private void Update()
+        {
+            if (delayMoveToCornerAnimationBy.IsSet && !delayMoveToCornerAnimationBy.IsActive)
             {
-                onGameEndAnimationParameter.Set(_animator, false);
+                if (_hasAnimator)
+                {
+                    onGameEndAnimationParameter.Set(_animator, false);
+                }
+                delayMoveToCornerAnimationBy.Clear();
             }
         }
 
