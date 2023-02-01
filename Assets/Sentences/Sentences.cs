@@ -2,8 +2,10 @@ using System;
 using System.Collections.Generic;
 using Avrahamy.EditorGadgets;
 using Avrahamy.Math;
+using BitStrap;
 using Gilad;
 using UnityEngine;
+using FloatRange = Avrahamy.Math.FloatRange;
 
 namespace Sentences
 {
@@ -12,30 +14,26 @@ namespace Sentences
     {
         [Tooltip("Takes the first bin with correct percentage, if overlapping")]
         [SerializeField]
+        [InlineScriptableObject]
         public List<SentencesHolder> sentenceBins;
 
         [SerializeField]
-        public Sentence defaultSentence = "Finished";
+        public Sentence defaultSentence;
 
-        public string GetRandomSentence(float percentage)
+        public Sentence GetRandomSentence(float percentage)
         {
-            if (sentenceBins.Count == 0)
-            {
-                return defaultSentence.sentence;
-            }
-
             foreach (var sentencesHolder in sentenceBins)
             {
                 if (sentencesHolder.sentences.Count > 0 && sentencesHolder.percentageRange.IsInRange(percentage))
                 {
-                    
+                    return sentencesHolder.GetRandomSentence();
                 }
             }
 
-            return "";
+            return defaultSentence;
         }
         
-        public string GetRandomSentence()
+        public Sentence GetRandomSentence()
         {
             return GetRandomSentence(Flammable.BurningRatio());
         }
@@ -43,12 +41,11 @@ namespace Sentences
 
     }
 
-    [Serializable]
-    public class SentencesHolder
+    public class SentencesHolder : ScriptableObject
     {
         [SerializeField]
-        [MinMaxRange(0, 1)]
-        public FloatRange percentageRange = new FloatRange(0, 0.1f);
+        [MinMaxRange(0f, 1f)]
+        public FloatRange percentageRange = new FloatRange(0f, 0.1f);
 
         [SerializeField]
         public List<Sentence> sentences;
@@ -66,19 +63,22 @@ namespace Sentences
         [TextArea]
         public string sentence = "You DED lol";
 
-        public Sentence(string sentence)
-        {
-            this.sentence = sentence;
-        }
+        [SerializeField]
+        public Sprite sentenceAsImage;
 
-        public Sentence()
-        {
-            
-        }
-
-        public static implicit operator Sentence(string sentence)
-        {
-            return new(sentence);
-        }
+        // public Sentence(string sentence)
+        // {
+        //     this.sentence = sentence;
+        // }
+        //
+        // public Sentence()
+        // {
+        //     
+        // }
+        //
+        // public static implicit operator Sentence(string sentence)
+        // {
+        //     return new(sentence);
+        // }
     }
 }
