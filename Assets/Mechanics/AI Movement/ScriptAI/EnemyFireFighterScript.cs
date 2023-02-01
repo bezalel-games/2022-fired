@@ -1,4 +1,5 @@
 using Avrahamy;
+using Avrahamy.Math;
 using BitStrap;
 using Gilad;
 using GreatArcStudios;
@@ -145,7 +146,8 @@ public class EnemyFireFighterScript : CharacterAI
         // bool toSeek = true;
         if (!Agent.pathPending && Agent.remainingDistance < distanceToStopFromFire + 1f)
         {
-            transform.LookAt(Goal.position);  // TODO: use slerp/lerp to rotate gradually
+            var position = Goal.position;
+            transform.LookAt(new Vector3(position.x, transform.position.y, position.z));  // TODO: use slerp/lerp to rotate gradually
             Agent.updateRotation = false;
 
             if (IsFacing())
