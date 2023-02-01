@@ -7440,6 +7440,7 @@ Transform:
   - {fileID: 1599542629}
   - {fileID: 1819528622}
   - {fileID: 267142121}
+  - {fileID: 1175584546}
   - {fileID: 39803699}
   - {fileID: 206043670}
   - {fileID: 1981987804}
@@ -7456,7 +7457,6 @@ Transform:
   - {fileID: 344507800}
   - {fileID: 1866722066}
   - {fileID: 1898013298}
-  - {fileID: 1175584546}
   - {fileID: 1384567729}
   - {fileID: 1913697549}
   - {fileID: 717033290}
@@ -24859,6 +24859,10 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 11492038, guid: 861b75cfe59c43d45bdc2d2a2b73b221, type: 3}
+      propertyPath: secretTimer.m_SingletonActionBindings.Array.data[3].m_Id
+      value: 4bcd9638-0fc9-48ec-9a5f-00bacd23cbe8
+      objectReference: {fileID: 0}
+    - target: {fileID: 11492038, guid: 861b75cfe59c43d45bdc2d2a2b73b221, type: 3}
       propertyPath: inputActions.m_SingletonActionBindings.Array.data[0].m_Id
       value: c808a025-28fe-45d5-8e36-ae9fe3fdba35
       objectReference: {fileID: 0}
@@ -24869,6 +24873,10 @@ PrefabInstance:
     - target: {fileID: 11492038, guid: 861b75cfe59c43d45bdc2d2a2b73b221, type: 3}
       propertyPath: onMenuEnter.m_PersistentCalls.m_Calls.Array.data[2].m_Mode
       value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 11492038, guid: 861b75cfe59c43d45bdc2d2a2b73b221, type: 3}
+      propertyPath: secretTimer.m_SingletonActionBindings.Array.data[3].m_Name
+      value: binding
       objectReference: {fileID: 0}
     - target: {fileID: 11492038, guid: 861b75cfe59c43d45bdc2d2a2b73b221, type: 3}
       propertyPath: inputActions.m_SingletonActionBindings.Array.data[0].m_Path
@@ -24887,6 +24895,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1105354844}
     - target: {fileID: 11492038, guid: 861b75cfe59c43d45bdc2d2a2b73b221, type: 3}
+      propertyPath: secretTimer.m_SingletonActionBindings.Array.data[3].m_Flags
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 11492038, guid: 861b75cfe59c43d45bdc2d2a2b73b221, type: 3}
       propertyPath: onMenuEnter.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 865359913}
@@ -24898,6 +24910,10 @@ PrefabInstance:
       propertyPath: onMenuEnter.m_PersistentCalls.m_Calls.Array.data[2].m_Target
       value: 
       objectReference: {fileID: 1105354844}
+    - target: {fileID: 11492038, guid: 861b75cfe59c43d45bdc2d2a2b73b221, type: 3}
+      propertyPath: secretTimer.m_SingletonActionBindings.Array.data[3].m_Action
+      value: Secret Timer
+      objectReference: {fileID: 0}
     - target: {fileID: 11492038, guid: 861b75cfe59c43d45bdc2d2a2b73b221, type: 3}
       propertyPath: inputActions.m_SingletonActionBindings.Array.data[0].m_Action
       value: Input Actions
@@ -26023,6 +26039,31 @@ PrefabInstance:
         type: 3}
       propertyPath: m_AnchoredPosition.y
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5931590179315540771, guid: 861b75cfe59c43d45bdc2d2a2b73b221,
+        type: 3}
+      propertyPath: m_OnEndEdit.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5931590179315540771, guid: 861b75cfe59c43d45bdc2d2a2b73b221,
+        type: 3}
+      propertyPath: m_OnEndEdit.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1883769450}
+    - target: {fileID: 5931590179315540771, guid: 861b75cfe59c43d45bdc2d2a2b73b221,
+        type: 3}
+      propertyPath: m_OnEndEdit.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: SetTime
+      objectReference: {fileID: 0}
+    - target: {fileID: 5931590179315540771, guid: 861b75cfe59c43d45bdc2d2a2b73b221,
+        type: 3}
+      propertyPath: m_OnEndEdit.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: Gilad.UiUpdate, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 5931590179315540771, guid: 861b75cfe59c43d45bdc2d2a2b73b221,
+        type: 3}
+      propertyPath: m_OnEndEdit.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
     - target: {fileID: 7943536672493918753, guid: 861b75cfe59c43d45bdc2d2a2b73b221,
         type: 3}
@@ -43847,7 +43888,7 @@ Transform:
   - {fileID: 89133375}
   - {fileID: 2114523572}
   m_Father: {fileID: 146670729}
-  m_RootOrder: 31
+  m_RootOrder: 15
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1181028823
 PrefabInstance:
@@ -81613,6 +81654,18 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 1882068358}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1883769450 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2340598950938738772, guid: f575e9d618c3edd4fa94251c479ad992,
+    type: 3}
+  m_PrefabInstance: {fileID: 1716911546}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 59ca11d5938b6114cbcefa190cabc56a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!20 &1883832925 stripped
 Camera:
   m_CorrespondingSourceObject: {fileID: 8944336655422409496, guid: f6d148d888ffbf54b9afe9936dfaec1f,

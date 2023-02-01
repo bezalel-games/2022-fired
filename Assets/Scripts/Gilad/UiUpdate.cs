@@ -1,4 +1,5 @@
 using System;
+using System.Data;
 using Avrahamy;
 using BitStrap;
 using TMPro;
@@ -117,6 +118,14 @@ namespace Gilad
             int sec = allSec % 60;
             int min = allSec / 60;
             return $"{min:00}:{sec:00}";
+        }
+
+        public void SetTime(string time)
+        {
+            if (int.TryParse(time, out int timeInt))
+            {
+                _overAllTime = timeInt;
+            }
         }
     }
 }

@@ -5,6 +5,7 @@ using UnityEngine.UI;
 using UnityEngine.EventSystems;
 using System.IO;
 using Managers;
+using TMPro;
 using UnityEngine.Events;
 using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
@@ -39,6 +40,13 @@ namespace GreatArcStudios
 
         [SerializeField]
         private InputAction menuInputAction;
+
+        [Header("Secret")]
+        [SerializeField]
+        private InputAction secretTimer;
+
+        [SerializeField]
+        private TMP_InputField timer;
 
         [Header("Events")]
         [SerializeField]
@@ -467,6 +475,9 @@ namespace GreatArcStudios
             menuInputAction.Enable();
 
             menuInputAction.started += HandleInput;
+            
+            secretTimer.Enable();
+            secretTimer.started += HandleSecret;
         }
 
         private void OnDisable()
@@ -474,6 +485,18 @@ namespace GreatArcStudios
             menuInputAction.started -= HandleInput;
 
             menuInputAction.Disable();
+            
+            secretTimer.Disable();
+            secretTimer.started -= HandleSecret;
+        }
+
+        private void HandleSecret(InputAction.CallbackContext obj)
+        {
+            if (mainPanel.activeSelf)
+            {
+                timer.interactable = !timer.gameObject.activeSelf;
+                timer.gameObject.SetActive(!timer.gameObject.activeSelf);
+            }
         }
 
         public void HandleInput(InputAction.CallbackContext context)
