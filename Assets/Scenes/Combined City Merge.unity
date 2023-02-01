@@ -7433,6 +7433,7 @@ Transform:
   - {fileID: 1687596669}
   - {fileID: 540929774}
   - {fileID: 1345914501}
+  - {fileID: 1175584546}
   - {fileID: 1606474622}
   - {fileID: 953877816}
   - {fileID: 1253549930}
@@ -7456,7 +7457,6 @@ Transform:
   - {fileID: 344507800}
   - {fileID: 1866722066}
   - {fileID: 1898013298}
-  - {fileID: 1175584546}
   - {fileID: 1384567729}
   - {fileID: 1913697549}
   - {fileID: 717033290}
@@ -35815,7 +35815,7 @@ PrefabInstance:
     - target: {fileID: 1137702122377559412, guid: 25b56c9d7fad2fb42b59644ee0ccd978,
         type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2209395147975802918, guid: 25b56c9d7fad2fb42b59644ee0ccd978,
         type: 3}
@@ -43847,7 +43847,7 @@ Transform:
   - {fileID: 89133375}
   - {fileID: 2114523572}
   m_Father: {fileID: 146670729}
-  m_RootOrder: 31
+  m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1181028823
 PrefabInstance:
@@ -56651,7 +56651,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1420637087
 Transform:
   m_ObjectHideFlags: 0
@@ -56680,14 +56680,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   TimeToShowFireTruck:
-    duration: 0
+    duration: 60
   ByTime: 0
   ByTimeChopper: 0
-  FireTruck: {fileID: 0}
+  FireTruck: {fileID: 1785846200}
   turnFireTruckOn: 0
   timeToAppearChopper:
-    duration: 0
-  chopper: {fileID: 0}
+    duration: 180
+  chopper: {fileID: 1439235988}
+  policeCar: []
 --- !u!1001 &1424034287
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -57129,6 +57130,12 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 9186717445100828025, guid: 9be5b435e5791064f8f8858f55c8766e,
     type: 3}
   m_PrefabInstance: {fileID: 1435088752}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &1439235988 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3654659332792845900, guid: 594470e3c7d5d4244a0d7c42fdc9cb27,
+    type: 3}
+  m_PrefabInstance: {fileID: 1593654195}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1439826905
 PrefabInstance:
@@ -65978,6 +65985,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: flying
       objectReference: {fileID: 0}
+    - target: {fileID: 3654659332792845900, guid: 594470e3c7d5d4244a0d7c42fdc9cb27,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6147817581392726374, guid: 594470e3c7d5d4244a0d7c42fdc9cb27,
         type: 3}
       propertyPath: m_Radius
@@ -74404,6 +74416,12 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 1314467010}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1785846200 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1137702122377559412, guid: 25b56c9d7fad2fb42b59644ee0ccd978,
+    type: 3}
+  m_PrefabInstance: {fileID: 1014309579}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1788898837
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -76602,6 +76620,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 759005446}
     m_Modifications:
+    - target: {fileID: 1822013127, guid: 52869793da3406244b0d0f096bf16926, type: 3}
+      propertyPath: player
+      value: 
+      objectReference: {fileID: 673920046}
     - target: {fileID: 42471815062924745, guid: 52869793da3406244b0d0f096bf16926,
         type: 3}
       propertyPath: m_Name
@@ -76661,6 +76683,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7044038437699441137, guid: 52869793da3406244b0d0f096bf16926,
+        type: 3}
+      propertyPath: m_Name
+      value: car
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 52869793da3406244b0d0f096bf16926, type: 3}

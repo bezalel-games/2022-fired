@@ -289,3 +289,16 @@ MonoBehaviour:
   minDistanceToFire: 20
   timeToGo:
     duration: 1
+  m_Flammable: {fileID: 2884014538254995376}
+--- !u!114 &2884014538254995376 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4944407858012704372, guid: a300ebacf81bd424dbdedb5d2beb3bfb,
+    type: 3}
+  m_PrefabInstance: {fileID: 7825007862328787396}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c2d3cd8cd4ee7fd49aa8ac9d6bb829b9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
