@@ -1,6 +1,7 @@
 using Avrahamy;
 using BitStrap;
 using Gilad;
+using GreatArcStudios;
 using UnityEngine;
 using Logger = Nemesh.Logger;
 
@@ -58,7 +59,7 @@ public class EnemyFireFighterScript : CharacterAI
     protected override void Update()
     {
         base.Update();
-        if(timeToInit.IsSet && timeToInit.IsActive)
+        if(timeToInit.IsSet && timeToInit.IsActive || PauseManager.Paused)
         {
             return;
         }
@@ -86,6 +87,10 @@ public class EnemyFireFighterScript : CharacterAI
                     ? player
                     : FindFire(transform);
             }
+            else
+            {
+                Goal = FindFire(transform);
+            }
             if(Goal != null)
             {
                 Goal = Distance(player, transform) < Distance(Goal, transform) ? player : Goal;
@@ -98,10 +103,10 @@ public class EnemyFireFighterScript : CharacterAI
             }
             timeToGo.Clear();
             wentRandom = false;
-        }
-        if (Goal != null)
-        {
-            Seek(Goal);
+            if (Goal != null && Goal != oldGoal)
+            {
+                Seek(Goal);
+            }
         }
         if (Goal != null && (GoalOnfire() || Goal == player)) // TODO: use an API
         {

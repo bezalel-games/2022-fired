@@ -242,13 +242,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   flames: []
-  numOfHits: 20
+  numOfHits: 16000
   hitDuration: 1
-  firePower: 1
-  waterPower: 1
-  timePower: 1
+  firePower: 1600
+  waterPower: 20
+  timePower: 1600
   lifeTime: 20
   onBurnedEvent: {fileID: 0}
+  removeFlamesOnBurned: 0
+  timeOnFireExtinguishRatio: 1
+  useRatioOnPowerLevel: 0
 --- !u!1 &5971865934872528315
 GameObject:
   m_ObjectHideFlags: 0
