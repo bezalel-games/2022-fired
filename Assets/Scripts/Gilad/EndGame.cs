@@ -1,5 +1,7 @@
 using System;
+using BitStrap;
 using GreatArcStudios;
+using TMPro;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.SceneManagement;
@@ -9,7 +11,17 @@ namespace Gilad
     public class EndGame : MonoBehaviour
     {
         [SerializeField] private GameObject pauseGameObject;
+        
+        [Header("Sentences")]
+        [SerializeField]
+        private TextMeshProUGUI sentenceText;
 
+        [SerializeField]
+        [InlineScriptableObject]
+        private Sentences.Sentences sentences;
+        
+        [Space]
+        [Header("Events")]
         [SerializeField] private UnityEvent onEnter;
 
         [SerializeField] private UnityEvent onLeave;
@@ -29,6 +41,7 @@ namespace Gilad
             {
                 pauseGameObject.SetActive(false);
             }
+            
         }
     }
 }
