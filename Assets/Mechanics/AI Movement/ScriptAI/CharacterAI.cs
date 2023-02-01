@@ -158,22 +158,41 @@ public abstract class CharacterAI : OptimizedBehaviour
 
         return res;
     }
-
-    //makes character run from goal
+//makes character run from goal
     protected virtual void RunAway(Transform runFrom)
     {
         var position = transform.position;
         Vector3 dirToFire = position - runFrom.position;
         Vector3 newPos = position + dirToFire; // TODO: NavMesh.SamplePosition
-        Agent.SetDestination(newPos);
+        if (NavMesh.SamplePosition(newPos, out var hit, Agent.height * 2f, Agent.areaMask))
+        {
+            Agent.SetDestination(hit.position);
+        }
         Agent.speed = runSpeed;
     }
 
     protected virtual void Seek(Transform other)
     {
-        // var position = other.position;
-        Agent.SetDestination(other.position);
+        if (NavMesh.SamplePosition(other.position, out var hit, Agent.height * 2f, Agent.areaMask))
+        {
+            Agent.SetDestination(hit.position);
+        }
     }
+    // //makes character run from goal
+    // protected virtual void RunAway(Transform runFrom)
+    // {
+    //     var position = transform.position;
+    //     Vector3 dirToFire = position - runFrom.position;
+    //     Vector3 newPos = position + dirToFire; // TODO: NavMesh.SamplePosition
+    //     Agent.SetDestination(newPos);
+    //     Agent.speed = runSpeed;
+    // }
+
+    // protected virtual void Seek(Transform other)
+    // {
+    //     // var position = other.position;
+    //     Agent.SetDestination(other.position);
+    // }
 
     //calculate distance between two transforms
     protected static float Distance(Transform inPlayer, Transform me)
@@ -193,17 +212,16 @@ public abstract class CharacterAI : OptimizedBehaviour
         {
             return null;
         }
-
         var max = listOfFlames.First(t => t != null); // TODO: use some sort of API
         if (max == null)
         {
             return null;
         }
         var curMax = Distance(max.transform, trans);
-        foreach (var curFire in Flammable.AllFlammables)
+        foreach (var curFire in listOfFlames)
         {
             var cur = Distance(curFire.transform, trans);
-            if ((Distance(max.transform, trans)) < curMax)
+            if (cur < curMax)
             {
                 curMax = cur;
                 max = curFire;

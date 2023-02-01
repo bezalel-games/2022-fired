@@ -3188,6 +3188,7 @@ GameObject:
   - component: {fileID: 70185778917515390}
   - component: {fileID: 2482697512481631864}
   - component: {fileID: 4542685083463414203}
+  - component: {fileID: 5678047244066474972}
   m_Layer: 0
   m_Name: fire_station
   m_TagString: Untagged
@@ -3263,6 +3264,19 @@ NavMeshObstacle:
   m_CarveOnlyStationary: 1
   m_Center: {x: 0, y: 3.3, z: 0}
   m_TimeToStationary: 0.5
+--- !u!65 &5678047244066474972
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8982082542964324527}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1.9853042, y: 2.5106978, z: 3.3724678}
+  m_Center: {x: 0.02579244, y: 1.0110242, z: -0.05441737}
 --- !u!1001 &5656869440656670474
 PrefabInstance:
   m_ObjectHideFlags: 0

@@ -5,6 +5,7 @@ using BitStrap;
 using Gilad;
 using StarterAssets;
 using UnityEngine;
+using UnityEngine.Android;
 using Logger = Nemesh.Logger;
 
 public class ThrowBall : MonoBehaviour
@@ -18,19 +19,28 @@ public class ThrowBall : MonoBehaviour
 
     [SerializeField]
     private FloatAnimationParameter throwSpeed;
-    
+
     [SerializeField]
     private float throwAnimationSpeed = 3f;
 
-    public bool IsShooting { set; get; }
+    public bool CanShoot
+    {
+        set
+        {
+            _canShoot = value;
+            throwBoolean.Set(_animator, _canShoot && _throwState);
+        }
+        get => _canShoot;
+    }
 
     private Animator _animator;
     private StarterAssetsInputs _input;
     private Cannon _cannon;
+    private bool _canShoot = true;
+    private bool _throwState;
 
     private void Awake()
     {
-        IsShooting = true;
         _animator = GetComponent<Animator>();
         _input = GetComponent<StarterAssetsInputs>();
         _cannon = GetComponentInChildren<Cannon>();
@@ -45,7 +55,7 @@ public class ThrowBall : MonoBehaviour
     {
         _input.onFireEvent.RemoveListener(OnThrow);
     }
-    
+
     [Button]
     private void OnThrow()
     {
@@ -54,12 +64,13 @@ public class ThrowBall : MonoBehaviour
 
     private void OnThrow(bool shouldThrow)
     {
-        if (!IsShooting) return;
-        // if (shouldThrow)  // TODO: and not already in state!
-        // {
-        //     throwTrigger.Set(_animator);
-        // }
-        throwBoolean.Set(_animator, shouldThrow);
+        _throwState = shouldThrow;
+        if (!CanShoot)
+        {
+            return;
+        }
+
+        throwBoolean.Set(_animator, _throwState);
         throwSpeed.Set(_animator, throwAnimationSpeed);
     }
 

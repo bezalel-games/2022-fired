@@ -27,7 +27,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 781436963899716462}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -10.5138, y: -3.607859, z: 1.0591}
+  m_LocalPosition: {x: -10.5138, y: 0.50214124, z: 1.0591}
   m_LocalScale: {x: 7.10981, y: 1, z: 13.260572}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -156,7 +156,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2674705487933837175}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 4.11, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -1757,7 +1757,7 @@ PrefabInstance:
     - target: {fileID: -8679921383154817045, guid: 9abfb72bf2c479f4aa4acb533166a0db,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: 4.11
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 9abfb72bf2c479f4aa4acb533166a0db,
         type: 3}
@@ -3351,6 +3351,22 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: 2493179789990374816, guid: 9abfb72bf2c479f4aa4acb533166a0db, type: 3}
+--- !u!208 &6239063474806386381
+NavMeshObstacle:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7113994191376920591}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Shape: 1
+  m_Extents: {x: 0.014, y: 0.011000001, z: 0.010000001}
+  m_MoveThreshold: 0.1
+  m_Carve: 1
+  m_CarveOnlyStationary: 1
+  m_Center: {x: 0, y: 0, z: 0}
+  m_TimeToStationary: 0.5
 --- !u!114 &203678077116335823
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3372,22 +3388,6 @@ MonoBehaviour:
   myAnimator: {fileID: 0}
   changeMaterialColor: 1
   changeToColor: {r: 0, g: 0, b: 0, a: 0}
---- !u!208 &6239063474806386381
-NavMeshObstacle:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7113994191376920591}
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Shape: 1
-  m_Extents: {x: 0.014, y: 0.011000001, z: 0.010000001}
-  m_MoveThreshold: 0.1
-  m_Carve: 1
-  m_CarveOnlyStationary: 1
-  m_Center: {x: 0, y: 0, z: 0}
-  m_TimeToStationary: 0.5
 --- !u!4 &7634213427497855669 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 9abfb72bf2c479f4aa4acb533166a0db,
@@ -3601,7 +3601,7 @@ PrefabInstance:
     - target: {fileID: 4519578809128119255, guid: 5808795ab31a67a449fd8a2e9a6de631,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.3941
+      value: 4.5041
       objectReference: {fileID: 0}
     - target: {fileID: 4519578809128119255, guid: 5808795ab31a67a449fd8a2e9a6de631,
         type: 3}

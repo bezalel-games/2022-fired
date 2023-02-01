@@ -1,6 +1,8 @@
 using Avrahamy;
+using Avrahamy.Math;
 using BitStrap;
 using Gilad;
+using GreatArcStudios;
 using UnityEngine;
 using Logger = Nemesh.Logger;
 
@@ -49,7 +51,7 @@ public class EnemyFireFighterScript : CharacterAI
     protected override void Start()
     {
         base.Start();
-        Goal = player;
+        Goal = null;
         Agent.SetDestination(RandomNavmeshLocation());
         percentage = initPerceantege;
     }
@@ -58,7 +60,7 @@ public class EnemyFireFighterScript : CharacterAI
     protected override void Update()
     {
         base.Update();
-        if(timeToInit.IsSet && timeToInit.IsActive)
+        if(timeToInit.IsSet && timeToInit.IsActive || PauseManager.Paused)
         {
             return;
         }
@@ -74,11 +76,12 @@ public class EnemyFireFighterScript : CharacterAI
         }
         if (!timeToGo.IsActive)
         {
-            if (stayNearInitPos && Vector3.Distance(initPos, transform.position)< theAreaToCover)
+            if (stayNearInitPos && Vector3.Distance(initPos, transform.position) > theAreaToCover)
             {
                 Agent.SetDestination(initPos);
                 return;
             }
+            var oldGoal = Goal;
             if(prioritizePlayer)
             {
                 Goal = Distance(player, transform) < minDistanceFromPlayer
@@ -93,16 +96,19 @@ public class EnemyFireFighterScript : CharacterAI
             {
                 Goal = Distance(player, transform) < Distance(Goal, transform) ? player : Goal;
             }
+            else
+            {
+                Goal = Distance(player, transform) < minDistanceFromPlayer
+                    ? player
+                    : null;
+            }
             timeToGo.Clear();
             wentRandom = false;
+            if (Goal != null && Goal != oldGoal)
+            {
+                Seek(Goal);
+            }
         }
-        // Goal = Distance(player, transform) < minDistanceFromPlayer ||
-        //        Distance(player, transform) > maxDistanceFromPlayer
-        //     ? player
-        //     : radiusWithCol.FindFire(transform);
-        // Goal = Distance(player, transform) < minDistanceFromPlayer
-        //     ? player
-        //     : FindFire(transform);
         if (Goal != null && (GoalOnfire() || Goal == player)) // TODO: use an API
         {
             
@@ -119,7 +125,7 @@ public class EnemyFireFighterScript : CharacterAI
         else
         {
             _shooter.StopShooting();
-            if (!Agent.pathPending && Agent.remainingDistance < stoppingDistance|| !wentRandom)
+            if (!Agent.pathPending &&  (Agent.remainingDistance < stoppingDistance || !wentRandom))
             {
                 var t = Agent.SetDestination(RandomNavmeshLocation());
                 timeToGo.Clear();
@@ -127,7 +133,6 @@ public class EnemyFireFighterScript : CharacterAI
             }
         }
         
-        // timeToGo.Start();
     }
 
     //return true if go after the fire
@@ -138,10 +143,11 @@ public class EnemyFireFighterScript : CharacterAI
             _shooter.StopShooting();
             return false;
         }
-        bool toSeek = true;
-        if (Agent.remainingDistance < distanceToStopFromFire + 1f)
+        // bool toSeek = true;
+        if (!Agent.pathPending && Agent.remainingDistance < distanceToStopFromFire + 1f)
         {
-            transform.LookAt(Goal.position);  // TODO: use slerp/lerp to rotate gradually
+            var position = Goal.position;
+            transform.LookAt(new Vector3(position.x, transform.position.y, position.z));  // TODO: use slerp/lerp to rotate gradually
             Agent.updateRotation = false;
 
             if (IsFacing())
@@ -149,7 +155,7 @@ public class EnemyFireFighterScript : CharacterAI
                 if (!(timeBetweenShots.IsSet && timeBetweenShots.IsActive))  // TODO patch
                 {
                     ExtinguishFire();
-                    toSeek = false;
+                    // toSeek = false;
                 }
                 
             }
@@ -159,10 +165,10 @@ public class EnemyFireFighterScript : CharacterAI
             Agent.updateRotation = true;
         }
 
-        if (toSeek)
-        {
-            Seek(Goal);
-        }
+        // if (toSeek)
+        // {
+        //     Seek(Goal);
+        // }
         if (shootDuration.IsSet && !shootDuration.IsActive)
         {
             percentage -= costToExtinguishFire;

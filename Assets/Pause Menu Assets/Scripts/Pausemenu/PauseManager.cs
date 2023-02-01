@@ -557,7 +557,6 @@ namespace GreatArcStudios
             audioPanel.SetActive(false);
             quitPanelAnimator.enabled = true;
             quitPanelAnimator.Play("QuitPanelIn");
-
         }
 
         /// <summary>
