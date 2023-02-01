@@ -238,7 +238,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1663577628, guid: eb585f4a557eb064781ba03a11412ec3, type: 3}
       propertyPath: distanceToStopFromFire
-      value: 8
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 1663577632, guid: eb585f4a557eb064781ba03a11412ec3, type: 3}
       propertyPath: m_Constraints
@@ -3315,7 +3315,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1663577628, guid: eb585f4a557eb064781ba03a11412ec3, type: 3}
       propertyPath: distanceToStopFromFire
-      value: 8
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 1663577632, guid: eb585f4a557eb064781ba03a11412ec3, type: 3}
       propertyPath: m_Constraints
@@ -11302,7 +11302,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1663577628, guid: eb585f4a557eb064781ba03a11412ec3, type: 3}
       propertyPath: distanceToStopFromFire
-      value: 8
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 1663577632, guid: eb585f4a557eb064781ba03a11412ec3, type: 3}
       propertyPath: m_Constraints
@@ -14352,7 +14352,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1663577628, guid: eb585f4a557eb064781ba03a11412ec3, type: 3}
       propertyPath: distanceToStopFromFire
-      value: 8
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 1663577632, guid: eb585f4a557eb064781ba03a11412ec3, type: 3}
       propertyPath: m_Constraints
@@ -15724,10 +15724,10 @@ Transform:
   - {fileID: 1711516150}
   - {fileID: 2018332349}
   - {fileID: 703287705}
+  - {fileID: 993252958}
   - {fileID: 1644551837}
   - {fileID: 984478278}
   - {fileID: 467062550}
-  - {fileID: 993252958}
   - {fileID: 1896351842}
   - {fileID: 146670729}
   m_Father: {fileID: 693915849}
@@ -18580,7 +18580,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1663577628, guid: eb585f4a557eb064781ba03a11412ec3, type: 3}
       propertyPath: distanceToStopFromFire
-      value: 8
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 1663577632, guid: eb585f4a557eb064781ba03a11412ec3, type: 3}
       propertyPath: m_Constraints
@@ -34243,7 +34243,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1663577628, guid: eb585f4a557eb064781ba03a11412ec3, type: 3}
       propertyPath: distanceToStopFromFire
-      value: 8
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 1663577632, guid: eb585f4a557eb064781ba03a11412ec3, type: 3}
       propertyPath: m_Constraints
@@ -34673,7 +34673,7 @@ Transform:
   - {fileID: 2049095078}
   - {fileID: 1489724424}
   m_Father: {fileID: 386262124}
-  m_RootOrder: 75
+  m_RootOrder: 72
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &994017393
 PrefabInstance:
@@ -35282,21 +35282,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1069280577}
     m_Modifications:
-    - target: {fileID: 218573964702746756, guid: 25b56c9d7fad2fb42b59644ee0ccd978,
-        type: 3}
-      propertyPath: m_BaseOffset
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 218573964702746756, guid: 25b56c9d7fad2fb42b59644ee0ccd978,
-        type: 3}
-      propertyPath: m_AgentTypeID
-      value: -334000983
-      objectReference: {fileID: 0}
-    - target: {fileID: 218573964702746756, guid: 25b56c9d7fad2fb42b59644ee0ccd978,
-        type: 3}
-      propertyPath: m_StoppingDistance
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 324890988264155086, guid: 25b56c9d7fad2fb42b59644ee0ccd978,
         type: 3}
       propertyPath: m_RootOrder
@@ -35352,107 +35337,16 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 888614145521553763, guid: 25b56c9d7fad2fb42b59644ee0ccd978,
-        type: 3}
-      propertyPath: m_LocalRotation.w
-      value: -0.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 888614145521553763, guid: 25b56c9d7fad2fb42b59644ee0ccd978,
-        type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 888614145521553763, guid: 25b56c9d7fad2fb42b59644ee0ccd978,
-        type: 3}
-      propertyPath: m_LocalRotation.y
-      value: -0.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 888614145521553763, guid: 25b56c9d7fad2fb42b59644ee0ccd978,
-        type: 3}
-      propertyPath: m_LocalRotation.z
-      value: -0.5
-      objectReference: {fileID: 0}
     - target: {fileID: 1137702122377559412, guid: 25b56c9d7fad2fb42b59644ee0ccd978,
         type: 3}
       propertyPath: m_Name
       value: FireTruck
       objectReference: {fileID: 0}
-    - target: {fileID: 1137702122377559412, guid: 25b56c9d7fad2fb42b59644ee0ccd978,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2209395147975802918, guid: 25b56c9d7fad2fb42b59644ee0ccd978,
-        type: 3}
-      propertyPath: player
-      value: 
-      objectReference: {fileID: 673920046}
-    - target: {fileID: 2209395147975802918, guid: 25b56c9d7fad2fb42b59644ee0ccd978,
-        type: 3}
-      propertyPath: angleMax
-      value: 90
-      objectReference: {fileID: 0}
-    - target: {fileID: 2209395147975802918, guid: 25b56c9d7fad2fb42b59644ee0ccd978,
-        type: 3}
-      propertyPath: initPerceantege
-      value: 100
-      objectReference: {fileID: 0}
-    - target: {fileID: 2209395147975802918, guid: 25b56c9d7fad2fb42b59644ee0ccd978,
-        type: 3}
-      propertyPath: stoppingDistance
-      value: 7
-      objectReference: {fileID: 0}
-    - target: {fileID: 2209395147975802918, guid: 25b56c9d7fad2fb42b59644ee0ccd978,
-        type: 3}
-      propertyPath: timeToGo.duration
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2209395147975802918, guid: 25b56c9d7fad2fb42b59644ee0ccd978,
-        type: 3}
-      propertyPath: costToExtinguishFire
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2209395147975802918, guid: 25b56c9d7fad2fb42b59644ee0ccd978,
-        type: 3}
-      propertyPath: shootDuration.duration
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2209395147975802918, guid: 25b56c9d7fad2fb42b59644ee0ccd978,
-        type: 3}
-      propertyPath: timeBetweenShots.duration
-      value: 0.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 4658904159321827778, guid: 25b56c9d7fad2fb42b59644ee0ccd978,
-        type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 9.62
-      objectReference: {fileID: 0}
-    - target: {fileID: 4658904159321827778, guid: 25b56c9d7fad2fb42b59644ee0ccd978,
-        type: 3}
-      propertyPath: m_LocalPosition.z
-      value: -0.16
-      objectReference: {fileID: 0}
-    - target: {fileID: 5113481355848818188, guid: 25b56c9d7fad2fb42b59644ee0ccd978,
-        type: 3}
-      propertyPath: fireBallObGameObject
-      value: 
-      objectReference: {fileID: 1289318078810796351, guid: 2073ebf181e154f43ab965cb439f0749,
-        type: 3}
-    - target: {fileID: 6068860056919117365, guid: 25b56c9d7fad2fb42b59644ee0ccd978,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 8578681250929491389, guid: 25b56c9d7fad2fb42b59644ee0ccd978,
         type: 3}
       propertyPath: player
       value: 
       objectReference: {fileID: 673920046}
-    - target: {fileID: 8578681250929491389, guid: 25b56c9d7fad2fb42b59644ee0ccd978,
-        type: 3}
-      propertyPath: points.Array.size
-      value: 6
-      objectReference: {fileID: 0}
     - target: {fileID: 8578681250929491389, guid: 25b56c9d7fad2fb42b59644ee0ccd978,
         type: 3}
       propertyPath: points.Array.data[0]
@@ -35483,9 +35377,7 @@ PrefabInstance:
       propertyPath: points.Array.data[5]
       value: 
       objectReference: {fileID: 403942169}
-    m_RemovedComponents:
-    - {fileID: 218573964702746759, guid: 25b56c9d7fad2fb42b59644ee0ccd978, type: 3}
-    - {fileID: 218573964702746778, guid: 25b56c9d7fad2fb42b59644ee0ccd978, type: 3}
+    m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 25b56c9d7fad2fb42b59644ee0ccd978, type: 3}
 --- !u!1001 &1018384349
 PrefabInstance:
@@ -38845,7 +38737,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1663577628, guid: eb585f4a557eb064781ba03a11412ec3, type: 3}
       propertyPath: distanceToStopFromFire
-      value: 8
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 1663577630, guid: eb585f4a557eb064781ba03a11412ec3, type: 3}
       propertyPath: m_AgentTypeID
@@ -43151,7 +43043,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1663577628, guid: eb585f4a557eb064781ba03a11412ec3, type: 3}
       propertyPath: distanceToStopFromFire
-      value: 8
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 1663577630, guid: eb585f4a557eb064781ba03a11412ec3, type: 3}
       propertyPath: m_AgentTypeID
@@ -45155,7 +45047,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1663577628, guid: eb585f4a557eb064781ba03a11412ec3, type: 3}
       propertyPath: distanceToStopFromFire
-      value: 8
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 1663577632, guid: eb585f4a557eb064781ba03a11412ec3, type: 3}
       propertyPath: m_Constraints
@@ -46869,7 +46761,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1663577628, guid: eb585f4a557eb064781ba03a11412ec3, type: 3}
       propertyPath: distanceToStopFromFire
-      value: 8
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 1663577630, guid: eb585f4a557eb064781ba03a11412ec3, type: 3}
       propertyPath: m_AgentTypeID
@@ -48916,7 +48808,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1663577628, guid: eb585f4a557eb064781ba03a11412ec3, type: 3}
       propertyPath: distanceToStopFromFire
-      value: 8
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 1663577632, guid: eb585f4a557eb064781ba03a11412ec3, type: 3}
       propertyPath: m_Constraints
@@ -50631,7 +50523,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1663577628, guid: eb585f4a557eb064781ba03a11412ec3, type: 3}
       propertyPath: distanceToStopFromFire
-      value: 8
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 1663577632, guid: eb585f4a557eb064781ba03a11412ec3, type: 3}
       propertyPath: m_Constraints
@@ -53641,7 +53533,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1663577628, guid: eb585f4a557eb064781ba03a11412ec3, type: 3}
       propertyPath: distanceToStopFromFire
-      value: 8
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 1663577630, guid: eb585f4a557eb064781ba03a11412ec3, type: 3}
       propertyPath: m_AgentTypeID
@@ -58667,7 +58559,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1663577628, guid: eb585f4a557eb064781ba03a11412ec3, type: 3}
       propertyPath: distanceToStopFromFire
-      value: 8
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 1663577630, guid: eb585f4a557eb064781ba03a11412ec3, type: 3}
       propertyPath: m_AgentTypeID
@@ -60614,7 +60506,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1663577628, guid: eb585f4a557eb064781ba03a11412ec3, type: 3}
       propertyPath: distanceToStopFromFire
-      value: 8
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 1663577630, guid: eb585f4a557eb064781ba03a11412ec3, type: 3}
       propertyPath: m_AgentTypeID
@@ -61996,7 +61888,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1663577628, guid: eb585f4a557eb064781ba03a11412ec3, type: 3}
       propertyPath: distanceToStopFromFire
-      value: 8
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 1663577632, guid: eb585f4a557eb064781ba03a11412ec3, type: 3}
       propertyPath: m_Constraints
@@ -65251,7 +65143,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1663577628, guid: eb585f4a557eb064781ba03a11412ec3, type: 3}
       propertyPath: distanceToStopFromFire
-      value: 8
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 1663577630, guid: eb585f4a557eb064781ba03a11412ec3, type: 3}
       propertyPath: m_AgentTypeID
@@ -66541,63 +66433,13 @@ PrefabInstance:
       objectReference: {fileID: 673920046}
     - target: {fileID: 3146810903617092915, guid: 594470e3c7d5d4244a0d7c42fdc9cb27,
         type: 3}
-      propertyPath: radius
-      value: 15
-      objectReference: {fileID: 0}
-    - target: {fileID: 3146810903617092915, guid: 594470e3c7d5d4244a0d7c42fdc9cb27,
-        type: 3}
-      propertyPath: angleMax
-      value: 45
-      objectReference: {fileID: 0}
-    - target: {fileID: 3146810903617092915, guid: 594470e3c7d5d4244a0d7c42fdc9cb27,
-        type: 3}
-      propertyPath: theAreaToCover
-      value: 100
-      objectReference: {fileID: 0}
-    - target: {fileID: 3146810903617092915, guid: 594470e3c7d5d4244a0d7c42fdc9cb27,
-        type: 3}
-      propertyPath: prioritizePlayer
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3146810903617092915, guid: 594470e3c7d5d4244a0d7c42fdc9cb27,
-        type: 3}
-      propertyPath: minDistanceToFire
-      value: 30
-      objectReference: {fileID: 0}
-    - target: {fileID: 3146810903617092915, guid: 594470e3c7d5d4244a0d7c42fdc9cb27,
-        type: 3}
-      propertyPath: timeToGo.duration
-      value: 0.25
-      objectReference: {fileID: 0}
-    - target: {fileID: 3146810903617092915, guid: 594470e3c7d5d4244a0d7c42fdc9cb27,
-        type: 3}
-      propertyPath: costToExtinguishFire
-      value: 0.00001
-      objectReference: {fileID: 0}
-    - target: {fileID: 3146810903617092915, guid: 594470e3c7d5d4244a0d7c42fdc9cb27,
-        type: 3}
-      propertyPath: minDistanceFromPlayer
-      value: 10
-      objectReference: {fileID: 0}
-    - target: {fileID: 3146810903617092915, guid: 594470e3c7d5d4244a0d7c42fdc9cb27,
-        type: 3}
-      propertyPath: distanceToStopFromFire
-      value: 4
+      propertyPath: stoppingFromPlayerIfFire
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 3654659332792845900, guid: 594470e3c7d5d4244a0d7c42fdc9cb27,
         type: 3}
       propertyPath: m_Name
       value: flying
-      objectReference: {fileID: 0}
-    - target: {fileID: 3654659332792845900, guid: 594470e3c7d5d4244a0d7c42fdc9cb27,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6147817581392726374, guid: 594470e3c7d5d4244a0d7c42fdc9cb27,
-        type: 3}
-      propertyPath: m_Radius
-      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 7436956127292752600, guid: 594470e3c7d5d4244a0d7c42fdc9cb27,
         type: 3}
@@ -66617,7 +66459,7 @@ PrefabInstance:
     - target: {fileID: 7436956127292752600, guid: 594470e3c7d5d4244a0d7c42fdc9cb27,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: -18.62
+      value: -16.54
       objectReference: {fileID: 0}
     - target: {fileID: 7436956127292752600, guid: 594470e3c7d5d4244a0d7c42fdc9cb27,
         type: 3}
@@ -68255,7 +68097,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1663577628, guid: eb585f4a557eb064781ba03a11412ec3, type: 3}
       propertyPath: distanceToStopFromFire
-      value: 8
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 1663577632, guid: eb585f4a557eb064781ba03a11412ec3, type: 3}
       propertyPath: m_Constraints
@@ -76087,7 +75929,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1663577628, guid: eb585f4a557eb064781ba03a11412ec3, type: 3}
       propertyPath: distanceToStopFromFire
-      value: 8
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 1663577630, guid: eb585f4a557eb064781ba03a11412ec3, type: 3}
       propertyPath: m_AgentTypeID
@@ -77475,7 +77317,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1663577628, guid: eb585f4a557eb064781ba03a11412ec3, type: 3}
       propertyPath: distanceToStopFromFire
-      value: 8
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 1663577632, guid: eb585f4a557eb064781ba03a11412ec3, type: 3}
       propertyPath: m_Constraints
@@ -78778,7 +78620,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1663577628, guid: eb585f4a557eb064781ba03a11412ec3, type: 3}
       propertyPath: distanceToStopFromFire
-      value: 8
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 1663577630, guid: eb585f4a557eb064781ba03a11412ec3, type: 3}
       propertyPath: m_AgentTypeID
@@ -80838,7 +80680,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1663577628, guid: eb585f4a557eb064781ba03a11412ec3, type: 3}
       propertyPath: distanceToStopFromFire
-      value: 8
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 1663577630, guid: eb585f4a557eb064781ba03a11412ec3, type: 3}
       propertyPath: m_AgentTypeID
@@ -86023,7 +85865,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1663577628, guid: eb585f4a557eb064781ba03a11412ec3, type: 3}
       propertyPath: distanceToStopFromFire
-      value: 8
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 1663577632, guid: eb585f4a557eb064781ba03a11412ec3, type: 3}
       propertyPath: m_Constraints
@@ -88487,7 +88329,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1663577628, guid: eb585f4a557eb064781ba03a11412ec3, type: 3}
       propertyPath: distanceToStopFromFire
-      value: 8
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 1663577632, guid: eb585f4a557eb064781ba03a11412ec3, type: 3}
       propertyPath: m_Constraints
@@ -93856,7 +93698,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1663577628, guid: eb585f4a557eb064781ba03a11412ec3, type: 3}
       propertyPath: distanceToStopFromFire
-      value: 8
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 1663577630, guid: eb585f4a557eb064781ba03a11412ec3, type: 3}
       propertyPath: m_AgentTypeID

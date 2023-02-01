@@ -39,6 +39,7 @@ public class FireTruckScript : CharacterAI
     private PassiveTimer timeBetweenShots;
 
     [SerializeField] private GameObject cannonHolder;
+    [SerializeField] private GameObject cannonHolder2;
     [SerializeField]
     [ReadOnly]
     private float percentage;
@@ -94,6 +95,10 @@ public class FireTruckScript : CharacterAI
                         ? player
                         : FindFire(transform);
                 }
+                else
+                {
+                    Goal = FindFire(transform);
+                }
                 if(Goal != null)
                 {
                     Goal = Distance(player, transform) < Distance(Goal, transform) ? player : Goal;
@@ -106,10 +111,10 @@ public class FireTruckScript : CharacterAI
                 }
                 timeToGo.Clear();
                 wentRandom = false;
-            }
-            if (Goal != null)
-            {
-                Seek(Goal);
+                if (Goal != null && Goal != oldGoal)
+                {
+                    Seek(Goal);
+                }
             }
             if (Goal != null && (GoalOnfire() || Goal == player)) // TODO: use an API
             {
@@ -151,10 +156,10 @@ public class FireTruckScript : CharacterAI
         if (!Agent.pathPending && Agent.remainingDistance < distanceToStopFromFire + 1f)
         {
             
-            
+            cannonHolder2.transform.LookAt(new Vector3(Goal.position.x,cannonHolder2.transform.position.y,  Goal.position.z));
             if (IsFacing())
             {
-                cannonHolder.transform.LookAt(new Vector3(Goal.position.x,cannonHolder.transform.position.y,  Goal.position.z));
+                cannonHolder.transform.LookAt(new Vector3(cannonHolder.transform.position.x,Goal.position.y,  cannonHolder.transform.position.z));
                 if (!(timeBetweenShots.IsSet && timeBetweenShots.IsActive))  // TODO patch
                 {
                     ExtinguishFire();
@@ -224,9 +229,9 @@ public class FireTruckScript : CharacterAI
 
     protected override bool IsFacing()
     {
-        var forw = new Vector3(cannonHolder.transform.forward.x, 0, cannonHolder.transform.forward.z);
+        var forw = new Vector3(cannonHolder2.transform.forward.x, 0, cannonHolder2.transform.forward.z);
         var goalPos = new Vector3(Goal.position.x, 0, Goal.position.z);
-        var transPos = new Vector3(cannonHolder.transform.position.x, 0, cannonHolder.transform.position.z);
+        var transPos = new Vector3(cannonHolder2.transform.position.x, 0, cannonHolder2.transform.position.z);
         float angleToPlayer = Vector3.Angle(forw, (goalPos - transPos).normalized);
         return Mathf.Abs(angleToPlayer) < angleMax;
         // return base.IsFacing();

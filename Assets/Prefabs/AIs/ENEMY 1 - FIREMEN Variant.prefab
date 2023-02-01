@@ -301,7 +301,7 @@ MonoBehaviour:
   angleMax: 45
   stayNearInitPos: 0
   theAreaToCover: 45
-  distanceToStopFromFire: 15
+  distanceToStopFromFire: 3
   Goal: {fileID: 0}
   fireGoal: {fileID: 0}
   debugDest: 0
