@@ -7456,6 +7456,7 @@ Transform:
   - {fileID: 344507800}
   - {fileID: 1866722066}
   - {fileID: 1898013298}
+  - {fileID: 1175584546}
   - {fileID: 1384567729}
   - {fileID: 1913697549}
   - {fileID: 717033290}
@@ -7463,7 +7464,6 @@ Transform:
   - {fileID: 985882273}
   - {fileID: 5859896}
   - {fileID: 1738339907}
-  - {fileID: 1175584546}
   - {fileID: 679557353}
   - {fileID: 2084574709}
   - {fileID: 1392166320}
@@ -10854,7 +10854,7 @@ Transform:
   - {fileID: 2379654798432442528}
   - {fileID: 1475999852}
   m_Father: {fileID: 620701447}
-  m_RootOrder: 2
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &238268437
 PrefabInstance:
@@ -23652,9 +23652,9 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
+  - {fileID: 237829920}
   - {fileID: 756540986}
   - {fileID: 14375405}
-  - {fileID: 237829920}
   - {fileID: 1875935213}
   m_Father: {fileID: 693915849}
   m_RootOrder: 3
@@ -28794,9 +28794,9 @@ Transform:
   - {fileID: 1952136864}
   - {fileID: 334922916}
   - {fileID: 1522459972}
-  - {fileID: 1021010465}
   - {fileID: 521969060}
   - {fileID: 562069130}
+  - {fileID: 1021010465}
   m_Father: {fileID: 693915849}
   m_RootOrder: 11
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -43847,7 +43847,7 @@ Transform:
   - {fileID: 89133375}
   - {fileID: 2114523572}
   m_Father: {fileID: 146670729}
-  m_RootOrder: 38
+  m_RootOrder: 31
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1181028823
 PrefabInstance:
@@ -56679,13 +56679,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5854ab20c880e5c4398b3d240205c430, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  TimeToShowPoliceCar:
+  TimeToShowFireTruck:
     duration: 0
   ByTime: 0
-  PoliceCar: {fileID: 0}
-  turnPoliceOn: 0
-  timeToAppear:
-    duration: 5
+  ByTimeChopper: 0
+  FireTruck: {fileID: 0}
+  turnFireTruckOn: 0
+  timeToAppearChopper:
+    duration: 0
   chopper: {fileID: 0}
 --- !u!1001 &1424034287
 PrefabInstance:
@@ -80004,26 +80005,6 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 663005990}
   m_PrefabAsset: {fileID: 0}
---- !u!95 &1867811502
-Animator:
-  serializedVersion: 4
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 112790965}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: a5c07ef5e0f0c53419be72eaf612169e, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_StabilizeFeet: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1001 &1869570958
 PrefabInstance:
   m_ObjectHideFlags: 0
