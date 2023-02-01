@@ -1984,6 +1984,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1181175998242354228}
     m_Modifications:
+    - target: {fileID: 1337178495447109192, guid: f32e43625ae25f74aaac19d6fa598a49,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 00990cdfe96d64749a61ef0c7e192b07, type: 2}
     - target: {fileID: 1337178495447109198, guid: f32e43625ae25f74aaac19d6fa598a49,
         type: 3}
       propertyPath: m_RootOrder
@@ -2007,17 +2012,17 @@ PrefabInstance:
     - target: {fileID: 1337178495447109198, guid: f32e43625ae25f74aaac19d6fa598a49,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: -0.019989587
       objectReference: {fileID: 0}
     - target: {fileID: 1337178495447109198, guid: f32e43625ae25f74aaac19d6fa598a49,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: 0.0910317
       objectReference: {fileID: 0}
     - target: {fileID: 1337178495447109198, guid: f32e43625ae25f74aaac19d6fa598a49,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: 0.019622833
       objectReference: {fileID: 0}
     - target: {fileID: 1337178495447109198, guid: f32e43625ae25f74aaac19d6fa598a49,
         type: 3}
@@ -2092,7 +2097,7 @@ PrefabInstance:
     - target: {fileID: 5409093431237493566, guid: f32e43625ae25f74aaac19d6fa598a49,
         type: 3}
       propertyPath: EmissionModule.rateOverTime.scalar
-      value: 5
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 5409093431237493566, guid: f32e43625ae25f74aaac19d6fa598a49,
         type: 3}
@@ -2109,7 +2114,8 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 1342439005888739685, guid: f32e43625ae25f74aaac19d6fa598a49, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: f32e43625ae25f74aaac19d6fa598a49, type: 3}
 --- !u!4 &6379198448914191468 stripped
 Transform:
@@ -2220,6 +2226,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1181175998360922015}
     m_Modifications:
+    - target: {fileID: 1337178495447109192, guid: f32e43625ae25f74aaac19d6fa598a49,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 00990cdfe96d64749a61ef0c7e192b07, type: 2}
     - target: {fileID: 1337178495447109198, guid: f32e43625ae25f74aaac19d6fa598a49,
         type: 3}
       propertyPath: m_RootOrder
@@ -2243,17 +2254,17 @@ PrefabInstance:
     - target: {fileID: 1337178495447109198, guid: f32e43625ae25f74aaac19d6fa598a49,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: 0.03095781
       objectReference: {fileID: 0}
     - target: {fileID: 1337178495447109198, guid: f32e43625ae25f74aaac19d6fa598a49,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: 0.093696035
       objectReference: {fileID: 0}
     - target: {fileID: 1337178495447109198, guid: f32e43625ae25f74aaac19d6fa598a49,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: -0.016207397
       objectReference: {fileID: 0}
     - target: {fileID: 1337178495447109198, guid: f32e43625ae25f74aaac19d6fa598a49,
         type: 3}
@@ -2328,7 +2339,7 @@ PrefabInstance:
     - target: {fileID: 5409093431237493566, guid: f32e43625ae25f74aaac19d6fa598a49,
         type: 3}
       propertyPath: EmissionModule.rateOverTime.scalar
-      value: 5
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 5409093431237493566, guid: f32e43625ae25f74aaac19d6fa598a49,
         type: 3}
@@ -2345,7 +2356,8 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 1342439005888739685, guid: f32e43625ae25f74aaac19d6fa598a49, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: f32e43625ae25f74aaac19d6fa598a49, type: 3}
 --- !u!4 &7389014948195612449 stripped
 Transform:
