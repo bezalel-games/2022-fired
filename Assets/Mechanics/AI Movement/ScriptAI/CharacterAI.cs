@@ -212,17 +212,16 @@ public abstract class CharacterAI : OptimizedBehaviour
         {
             return null;
         }
-
         var max = listOfFlames.First(t => t != null); // TODO: use some sort of API
         if (max == null)
         {
             return null;
         }
         var curMax = Distance(max.transform, trans);
-        foreach (var curFire in Flammable.AllFlammables)
+        foreach (var curFire in listOfFlames)
         {
             var cur = Distance(curFire.transform, trans);
-            if ((Distance(max.transform, trans)) < curMax)
+            if (cur < curMax)
             {
                 curMax = cur;
                 max = curFire;

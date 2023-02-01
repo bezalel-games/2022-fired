@@ -1,6 +1,8 @@
 using Avrahamy;
+using Avrahamy.Math;
 using BitStrap;
 using Gilad;
+using GreatArcStudios;
 using UnityEngine;
 using Logger = Nemesh.Logger;
 
@@ -58,7 +60,7 @@ public class EnemyFireFighterScript : CharacterAI
     protected override void Update()
     {
         base.Update();
-        if(timeToInit.IsSet && timeToInit.IsActive)
+        if(timeToInit.IsSet && timeToInit.IsActive || PauseManager.Paused)
         {
             return;
         }
@@ -86,6 +88,10 @@ public class EnemyFireFighterScript : CharacterAI
                     ? player
                     : FindFire(transform);
             }
+            else
+            {
+                Goal = FindFire(transform);
+            }
             if(Goal != null)
             {
                 Goal = Distance(player, transform) < Distance(Goal, transform) ? player : Goal;
@@ -98,10 +104,10 @@ public class EnemyFireFighterScript : CharacterAI
             }
             timeToGo.Clear();
             wentRandom = false;
-        }
-        if (Goal != null)
-        {
-            Seek(Goal);
+            if (Goal != null && Goal != oldGoal)
+            {
+                Seek(Goal);
+            }
         }
         if (Goal != null && (GoalOnfire() || Goal == player)) // TODO: use an API
         {
@@ -140,7 +146,8 @@ public class EnemyFireFighterScript : CharacterAI
         // bool toSeek = true;
         if (!Agent.pathPending && Agent.remainingDistance < distanceToStopFromFire + 1f)
         {
-            transform.LookAt(Goal.position);  // TODO: use slerp/lerp to rotate gradually
+            var position = Goal.position;
+            transform.LookAt(new Vector3(position.x, transform.position.y, position.z));  // TODO: use slerp/lerp to rotate gradually
             Agent.updateRotation = false;
 
             if (IsFacing())

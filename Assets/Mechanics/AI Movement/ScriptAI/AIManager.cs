@@ -8,32 +8,33 @@ public class AIManager : MonoBehaviour
 {
     [Header("Police Car manager")]
     [SerializeField]
-    private PassiveTimer TimeToShowPoliceCar;
+    private PassiveTimer TimeToShowFireTruck;
     
     // does it work by time
     [SerializeField] private bool ByTime;
+    [SerializeField] private bool ByTimeChopper;
 
     //PoliceCar game object
-    [SerializeField] private GameObject PoliceCar;
+    [SerializeField] private GameObject FireTruck;
 
     [SerializeField]
-    private bool turnPoliceOn = false;
-    [SerializeField]
-    private PassiveTimer timeToAppear;
+    private bool turnFireTruckOn = false;
+    [SerializeField] 
+    private PassiveTimer timeToAppearChopper;
     [SerializeField] private GameObject chopper;
     // Start is called before the first frame update
     void Start()
     {
         if (ByTime)
         {
-            TimeToShowPoliceCar.Start();
+            TimeToShowFireTruck.Start();
         }
 
-        if (turnPoliceOn)
+        if (turnFireTruckOn)
         {
-            ActivatePoliceCar();
+            ActivateFireTruck();
         }
-        timeToAppear.Start();
+        timeToAppearChopper.Start();
     }
 
     // Update is called once per frame
@@ -41,47 +42,55 @@ public class AIManager : MonoBehaviour
     {
         if(ByTime)
         {
-            policeCarSetIfTime();
+            FireTruckSetIfTime();
         }
-        
-        if (timeToAppear.IsSet )
+
+        if (ByTimeChopper)
         {
-            if (!timeToAppear.IsActive)
+            ChopperSet();
+        }
+
+    }
+
+    private void ChopperSet()
+    {
+        if (timeToAppearChopper.IsSet)
+        {
+            if (!timeToAppearChopper.IsActive)
             {
-                timeToAppear.Clear();
+                timeToAppearChopper.Clear();
                 chopper.SetActive(true);
-                
             }
+
             return;
         }
-        
     }
 
-    private void policeCarSetIfTime()
+    private void FireTruckSetIfTime()
     {
-        if (TimeToShowPoliceCar.IsSet)
+        if (TimeToShowFireTruck.IsSet)
         {
-            if (!TimeToShowPoliceCar.IsActive)
+            if (!TimeToShowFireTruck.IsActive)
             {
-                ActivatePoliceCar();
-                TimeToShowPoliceCar.Clear();
+                ActivateFireTruck();
+                TimeToShowFireTruck.Clear();
             }
         }
     }
 
-    public void ActivatePoliceCar()
+    public void ActivateFireTruck()
     {
-        PoliceCar.SetActive(true);
+        FireTruck.SetActive(true);
     }
     
-    public void DeactivatePoliceCar()
+    public void DeactivateFireTruck()
     {
-        PoliceCar.SetActive(false);
+        FireTruck.SetActive(false);
     }
 
     public void ResetTimer()
     {
-        TimeToShowPoliceCar.Clear();
-        TimeToShowPoliceCar.Start();
+        TimeToShowFireTruck.Clear();
+        TimeToShowFireTruck.Start();
     }
 }
