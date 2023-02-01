@@ -5,6 +5,7 @@ using Gilad;
 using Logger = Nemesh.Logger;
 using Avrahamy;
 using BitStrap;
+using GreatArcStudios;
 using UnityEngine.AI;
 
 public class flyingEnemy : CharacterAI
@@ -71,7 +72,7 @@ public class flyingEnemy : CharacterAI
     {
         base.Update();
         
-        if(timeToInit.IsSet && timeToInit.IsActive)
+        if(timeToInit.IsSet && timeToInit.IsActive || PauseManager.Paused)
         {
             return;
         }
