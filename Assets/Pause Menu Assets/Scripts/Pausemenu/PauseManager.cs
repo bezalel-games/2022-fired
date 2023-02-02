@@ -719,23 +719,23 @@ namespace GreatArcStudios
             }
             catch
             {
-                Debug.Log("You do not have multiple audio sources");
+                // Debug.Log("You do not have multiple audio sources");
                 audioMusicSlider.value = lastMusicMult;
             }
 
-            //Do this with the effects
-            try
-            {
-                a = effects[0].volume;
-                b = effects[1].volume;
-                f = a % b;
-                audioEffectsSlider.value = f;
-            }
-            catch
-            {
-                Debug.Log("You do not have multiple audio sources");
-                audioEffectsSlider.value = lastAudioMult;
-            }
+            // //Do this with the effects
+            // try
+            // {
+            //     a = effects[0].volume;
+            //     b = effects[1].volume;
+            //     f = a % b;
+            //     audioEffectsSlider.value = f;
+            // }
+            // catch
+            // {
+            //     Debug.Log("You do not have multiple audio sources");
+            //     audioEffectsSlider.value = lastAudioMult;
+            // }
 
         }
 
@@ -760,7 +760,7 @@ namespace GreatArcStudios
             {
                 for (int _musicAmt = 0; _musicAmt < music.Length; _musicAmt++)
                 {
-                    music[_musicAmt].volume *= f;
+                    music[_musicAmt].volume = f * 0.12f;
                 }
             }
             catch
