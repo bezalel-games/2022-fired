@@ -233,13 +233,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 0
-  walkSpeed: 2
-  runSpeed: 10
+  walkSpeed: 3
+  runSpeed: 17
   speedChangeRate: 10
   player: {fileID: 0}
-  stoppingDistance: 0.5
+  stoppingDistance: 2
   radius: 25
-  autoBreaking: 1
+  autoBreaking: 0
   angleMax: 45
   stayNearInitPos: 0
   theAreaToCover: 100

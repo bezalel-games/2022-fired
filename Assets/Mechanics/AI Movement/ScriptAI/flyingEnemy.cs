@@ -125,8 +125,8 @@ public class flyingEnemy : CharacterAI
 
             timeToGo.Clear();
             wentRandom = false;
-            // if (Goal != null && Goal != oldGoal)
-            if (Goal != null )
+            if (Goal != null && Goal != oldGoal)
+            // if (Goal != null )
             {
                 Seek(Goal);
             }
