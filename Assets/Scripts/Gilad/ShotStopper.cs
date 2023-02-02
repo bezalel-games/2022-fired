@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using Flames;
 using GreatArcStudios;
 using UnityEngine;
+using UnityEngine.Events;
 
 namespace Gilad
 {
@@ -23,6 +24,9 @@ namespace Gilad
         
         [SerializeField]
         private List<GameObject> otherFlames;
+
+        [SerializeField]
+        private UnityEvent onStopShooting;
 
         private float _timeToStart;
 
@@ -81,6 +85,7 @@ namespace Gilad
                     flame.SetActive(false);
                 }
             }
+            onStopShooting.Invoke();
         }
     }
 }
