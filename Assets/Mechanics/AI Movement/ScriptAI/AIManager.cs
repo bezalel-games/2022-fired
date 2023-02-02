@@ -22,6 +22,8 @@ public class AIManager : MonoBehaviour
     [SerializeField] 
     private PassiveTimer timeToAppearChopper;
     [SerializeField] private GameObject chopper;
+
+    [SerializeField] private GameObject []policeCar;
     // Start is called before the first frame update
     void Start()
     {
@@ -60,6 +62,10 @@ public class AIManager : MonoBehaviour
             {
                 timeToAppearChopper.Clear();
                 chopper.SetActive(true);
+                foreach (var car in policeCar)
+                {
+                    car.SetActive(true);
+                }
             }
 
             return;
