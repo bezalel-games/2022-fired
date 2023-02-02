@@ -248,13 +248,13 @@ MonoBehaviour:
   fireGoal: {fileID: 0}
   debugDest: 0
   dest: {x: 0, y: 0, z: 0}
-  minDistanceToFire: 30
+  minDistanceToFire: 500
   initPerceantege: 100
   stoppingFromPlayerIfFire: 5
   costToExtinguishFire: 0.00001
   timeToExtinguish: 0
   _shooter: {fileID: 7109315162369972141}
-  minDistanceFromPlayer: 10
+  minDistanceFromPlayer: 50
   maxDistanceFromPlayer: 30
   timeToGo:
     duration: 0.25

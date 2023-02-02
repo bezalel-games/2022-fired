@@ -32,8 +32,8 @@ public class AIManager : MonoBehaviour
     private bool endFireMan = false;
     
 
-    private int fireManIndex;
-    private int policeIndex;
+    private int fireManIndex = 0;
+    private int policeIndex = 0;
     // Start is called before the first frame update
     void Start()
     {
@@ -50,6 +50,7 @@ public class AIManager : MonoBehaviour
         timeToAppearFireMan = new PassiveTimer(5);
         timeToAppearPolice = new PassiveTimer(10);
         timeToAppearFireMan.Start();
+        timeToAppearPolice.Start();
     }
 
     // Update is called once per frame
@@ -166,7 +167,7 @@ public class AIManager : MonoBehaviour
     {
         if (policeIndex < policeCar.Length)
         {
-            policeCar[fireManIndex].SetActive(true);
+            policeCar[policeIndex].SetActive(true);
             policeIndex++;
         }
         else

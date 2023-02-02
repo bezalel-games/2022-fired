@@ -117,9 +117,10 @@ public class flyingEnemy : CharacterAI
             }
             else
             {
-                Goal = Distance(player, transform) < minDistanceFromPlayer
-                    ? player
-                    : null;
+                // Goal = Distance(player, transform) < minDistanceFromPlayer
+                //     ? player
+                //     : null;
+                Goal = player;
             }
 
             timeToGo.Clear();
@@ -235,7 +236,7 @@ public class flyingEnemy : CharacterAI
 
     protected virtual void Seek(Transform other)
     {
-        if (NavMesh.SamplePosition(other.position, out var hit, Agent.height * 2f, Agent.areaMask))
+        if (NavMesh.SamplePosition(new Vector3(other.position.x, transform.position.y, other.position.z), out var hit, Agent.height * 2f, Agent.areaMask))
         {
             Agent.SetDestination(hit.position);
         }
@@ -250,7 +251,7 @@ public class flyingEnemy : CharacterAI
         var position = transform.position;
         Vector3 dirToFire = position - runFrom.position;
         Vector3 newPos = position + dirToFire; // TODO: NavMesh.SamplePosition
-        if (NavMesh.SamplePosition(newPos, out var hit, Agent.height * 2f, Agent.areaMask))
+        if (NavMesh.SamplePosition(new Vector3(newPos.x, transform.position.y, newPos.z), out var hit, Agent.height * 2f, Agent.areaMask))
         {
             Agent.SetDestination(hit.position);
         }
