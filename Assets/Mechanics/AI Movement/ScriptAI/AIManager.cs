@@ -24,6 +24,16 @@ public class AIManager : MonoBehaviour
     [SerializeField] private GameObject chopper;
 
     [SerializeField] private GameObject []policeCar;
+    private PassiveTimer timeToAppearPolice;
+    private bool endPolice = false;
+    private bool startPolice = false;
+    [SerializeField] private GameObject[] fireMans;
+    private PassiveTimer timeToAppearFireMan;
+    private bool endFireMan = false;
+    
+
+    private int fireManIndex;
+    private int policeIndex;
     // Start is called before the first frame update
     void Start()
     {
@@ -37,6 +47,9 @@ public class AIManager : MonoBehaviour
             ActivateFireTruck();
         }
         timeToAppearChopper.Start();
+        timeToAppearFireMan = new PassiveTimer(5);
+        timeToAppearPolice = new PassiveTimer(10);
+        timeToAppearFireMan.Start();
     }
 
     // Update is called once per frame
@@ -50,6 +63,18 @@ public class AIManager : MonoBehaviour
         if (ByTimeChopper)
         {
             ChopperSet();
+            
+        }
+
+        if (!endFireMan)
+        {
+            FireManSet();
+            
+        }
+
+        if (!endPolice && startPolice)
+        {
+            PoliceSet();
         }
 
     }
@@ -62,10 +87,11 @@ public class AIManager : MonoBehaviour
             {
                 timeToAppearChopper.Clear();
                 chopper.SetActive(true);
-                foreach (var car in policeCar)
-                {
-                    car.SetActive(true);
-                }
+                startPolice = true;
+                // foreach (var car in policeCar)
+                // {
+                //     car.SetActive(true);
+                // }
             }
 
             return;
@@ -84,6 +110,31 @@ public class AIManager : MonoBehaviour
         }
     }
 
+    private void FireManSet()
+    {
+        if (timeToAppearFireMan.IsSet)
+        {
+            if (!timeToAppearFireMan.IsActive)
+            {
+                activateFireMan();
+                timeToAppearFireMan.Clear();
+                timeToAppearFireMan.Start();
+                
+            }
+        }
+    }private void PoliceSet()
+    {
+        if (timeToAppearPolice.IsSet)
+        {
+            if (!timeToAppearPolice.IsActive)
+            {
+                activatePolice();
+                timeToAppearPolice.Clear();
+                timeToAppearPolice.Start();
+            }
+        }
+    }
+
     public void ActivateFireTruck()
     {
         FireTruck.SetActive(true);
@@ -98,5 +149,29 @@ public class AIManager : MonoBehaviour
     {
         TimeToShowFireTruck.Clear();
         TimeToShowFireTruck.Start();
+    }
+
+    private void activateFireMan()
+    {
+        if (fireManIndex < fireMans.Length)
+        {
+            fireMans[fireManIndex].SetActive(true);
+            fireManIndex++;
+        }
+        else
+        {
+            endFireMan = true;
+        }
+    }private void activatePolice()
+    {
+        if (policeIndex < policeCar.Length)
+        {
+            policeCar[fireManIndex].SetActive(true);
+            policeIndex++;
+        }
+        else
+        {
+            endPolice = true;
+        }
     }
 }
