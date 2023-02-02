@@ -159,7 +159,9 @@ public class FireTruckScript : CharacterAI
             cannonHolder2.transform.LookAt(new Vector3(Goal.position.x,cannonHolder2.transform.position.y,  Goal.position.z));
             if (IsFacing())
             {
-                cannonHolder.transform.LookAt(new Vector3(cannonHolder.transform.position.x,Goal.position.y,  cannonHolder.transform.position.z));
+                cannonHolder.transform.LookAt(new Vector3(Goal.position.x,cannonHolder.transform.position.y,  Goal.position.z));
+
+                // cannonHolder.transform.LookAt(new Vector3(cannonHolder.transform.position.x,Goal.position.y,  cannonHolder.transform.position.z));
                 if (!(timeBetweenShots.IsSet && timeBetweenShots.IsActive))  // TODO patch
                 {
                     ExtinguishFire();

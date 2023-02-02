@@ -38,6 +38,7 @@ public class EnemyFireFighterScript : CharacterAI
 
     [SerializeField]
     private PassiveTimer timeBetweenShots;
+    [SerializeField] private GameObject cannonHolder;
 
     [SerializeField]
     [ReadOnly]
@@ -152,6 +153,8 @@ public class EnemyFireFighterScript : CharacterAI
 
             if (IsFacing())
             {
+                // cannonHolder.transform.LookAt(new Vector3(-cannonHolder.transform.forward.x,Goal.position.y,  cannonHolder.transform.forward.z));
+                cannonHolder.transform.LookAt(Goal.position);
                 if (!(timeBetweenShots.IsSet && timeBetweenShots.IsActive))  // TODO patch
                 {
                     ExtinguishFire();
