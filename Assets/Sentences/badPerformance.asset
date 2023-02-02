@@ -9,28 +9,27 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 0}
+  m_Script: {fileID: 11500000, guid: e32c0f4603575f644a4017a1df3a9073, type: 3}
   m_Name: badPerformance
   m_EditorClassIdentifier: Assembly-CSharp:Sentences:SentencesHolder
   percentageRange:
     min: 0
-    max: 1
+    max: 0.1
   sentences:
-  - sentence: "b\\\u05DE\u05EA\u05EA... \u05E6\u05D9\u05E4\u05D9\u05EA\u05D9 \u05DC\u05D9\u05D5\u05EA\u05E8,
-      \u05D4\u05D0\u05DE\u05EA."
+  - sentence: 
     sentenceAsImage: {fileID: 21300000, guid: e4ee4a7a46a5fef4b89d8ce64d3c523b, type: 3}
-  - sentence: "\u05D9\u05E4\u05D4 \u05DC\u05DA, \u05D7\u05E9\u05D1\u05EA \u05E2\u05DC
-      \u05D4\u05E1\u05D1\u05EA \u05DE\u05E7\u05E6\u05D5\u05E2?"
+  - sentence: 
     sentenceAsImage: {fileID: 21300000, guid: ca2070b0506e5c346b283d7da179daf2, type: 3}
-  - sentence: "\u05DC\u05D6\u05D4 \u05D0\u05EA\u05D4 \u05E7\u05D5\u05E8\u05D0 \u05D0\u05E9?"
+  - sentence: 
     sentenceAsImage: {fileID: 21300000, guid: d89e3cf6ecb7fcb478fa20d29f882f20, type: 3}
-  - sentence: "\u05DC\u05D5\u05D6\u05E8\u05E8\u05E8"
+  - sentence: 
     sentenceAsImage: {fileID: 21300000, guid: e967f403dfb2f454cbbcfcb9cf831ace, type: 3}
-  - sentence: "\u05D0\u05D5\u05DC\u05D9 \u05D1\u05D2\u05DC\u05D2\u05D5\u05DC \u05D4\u05D1\u05D0
-      \u05D0\u05EA\u05D4 \u05DC\u05D0 \u05D2\u05E8\u05D5\u05E2"
+  - sentence: 
     sentenceAsImage: {fileID: 21300000, guid: 1d388ec9966508744b43c8a85534fb3a, type: 3}
   - sentence: 
     sentenceAsImage: {fileID: 21300000, guid: 91a86366fc27b7340b410bc0bcfaa5d0, type: 3}
+  - sentence: 
+    sentenceAsImage: {fileID: 21300000, guid: cbae53f0832634e49bd47693fe74d218, type: 3}
   - sentence: 
     sentenceAsImage: {fileID: 21300000, guid: cbae53f0832634e49bd47693fe74d218, type: 3}
   - sentence: 
@@ -44,9 +43,11 @@ MonoBehaviour:
   - sentence: 
     sentenceAsImage: {fileID: 21300000, guid: ee5579705efed0c4c9b96a34bf0795de, type: 3}
   - sentence: 
-    sentenceAsImage: {fileID: 21300000, guid: bb6ed3dbf4c06174fb74e11f6c9f4bdc, type: 3}
+    sentenceAsImage: {fileID: 21300000, guid: c45c3002fb724614b9b81cdfb5b56c71, type: 3}
   - sentence: 
     sentenceAsImage: {fileID: 21300000, guid: c45c3002fb724614b9b81cdfb5b56c71, type: 3}
+  - sentence: 
+    sentenceAsImage: {fileID: 21300000, guid: bb6ed3dbf4c06174fb74e11f6c9f4bdc, type: 3}
   - sentence: 
     sentenceAsImage: {fileID: 21300000, guid: 0911c12d1e0dc1f41a9261dd336b71b9, type: 3}
   - sentence: 

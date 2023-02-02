@@ -41,21 +41,6 @@ namespace Sentences
 
     }
 
-    public class SentencesHolder : ScriptableObject
-    {
-        [SerializeField]
-        [MinMaxRange(0f, 1f)]
-        public FloatRange percentageRange = new FloatRange(0f, 0.1f);
-
-        [SerializeField]
-        public List<Sentence> sentences;
-
-        public Sentence GetRandomSentence()
-        {
-            return sentences.ChooseRandom();
-        }
-    }
-
     [Serializable]
     public class Sentence
     {
