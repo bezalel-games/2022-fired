@@ -1,0 +1,60 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e32c0f4603575f644a4017a1df3a9073, type: 3}
+  m_Name: badPerformance
+  m_EditorClassIdentifier: Assembly-CSharp:Sentences:SentencesHolder
+  percentageRange:
+    min: 0
+    max: 0.1
+  sentences:
+  - sentence: 
+    sentenceAsImage: {fileID: 21300000, guid: e4ee4a7a46a5fef4b89d8ce64d3c523b, type: 3}
+  - sentence: 
+    sentenceAsImage: {fileID: 21300000, guid: ca2070b0506e5c346b283d7da179daf2, type: 3}
+  - sentence: 
+    sentenceAsImage: {fileID: 21300000, guid: d89e3cf6ecb7fcb478fa20d29f882f20, type: 3}
+  - sentence: 
+    sentenceAsImage: {fileID: 21300000, guid: e967f403dfb2f454cbbcfcb9cf831ace, type: 3}
+  - sentence: 
+    sentenceAsImage: {fileID: 21300000, guid: 1d388ec9966508744b43c8a85534fb3a, type: 3}
+  - sentence: 
+    sentenceAsImage: {fileID: 21300000, guid: 91a86366fc27b7340b410bc0bcfaa5d0, type: 3}
+  - sentence: 
+    sentenceAsImage: {fileID: 21300000, guid: cbae53f0832634e49bd47693fe74d218, type: 3}
+  - sentence: 
+    sentenceAsImage: {fileID: 21300000, guid: cbae53f0832634e49bd47693fe74d218, type: 3}
+  - sentence: 
+    sentenceAsImage: {fileID: 21300000, guid: 8719b07f7d8cc8247b0a5b6c46b1c0b1, type: 3}
+  - sentence: 
+    sentenceAsImage: {fileID: 21300000, guid: 54298c962ff7843499a1dff72b960dce, type: 3}
+  - sentence: 
+    sentenceAsImage: {fileID: 21300000, guid: 3e0210131a739684a908ed10361ebe47, type: 3}
+  - sentence: 
+    sentenceAsImage: {fileID: 21300000, guid: eb08ea05035a7634bb443ab7fada3589, type: 3}
+  - sentence: 
+    sentenceAsImage: {fileID: 21300000, guid: ee5579705efed0c4c9b96a34bf0795de, type: 3}
+  - sentence: 
+    sentenceAsImage: {fileID: 21300000, guid: c45c3002fb724614b9b81cdfb5b56c71, type: 3}
+  - sentence: 
+    sentenceAsImage: {fileID: 21300000, guid: c45c3002fb724614b9b81cdfb5b56c71, type: 3}
+  - sentence: 
+    sentenceAsImage: {fileID: 21300000, guid: bb6ed3dbf4c06174fb74e11f6c9f4bdc, type: 3}
+  - sentence: 
+    sentenceAsImage: {fileID: 21300000, guid: 0911c12d1e0dc1f41a9261dd336b71b9, type: 3}
+  - sentence: 
+    sentenceAsImage: {fileID: 21300000, guid: 46e3913401580a24a854ae730540f163, type: 3}
+  - sentence: 
+    sentenceAsImage: {fileID: 21300000, guid: 02bc000e33a577a4b923c26c9b3e71f3, type: 3}
+  - sentence: 
+    sentenceAsImage: {fileID: 21300000, guid: ce2a70765f571104d946f5a69916a5c7, type: 3}
+  - sentence: 
+    sentenceAsImage: {fileID: 21300000, guid: bffe29d23bb23054eb67653323698653, type: 3}

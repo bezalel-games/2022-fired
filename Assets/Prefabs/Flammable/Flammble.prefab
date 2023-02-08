@@ -245,13 +245,17 @@ MonoBehaviour:
   numOfHits: 16000
   hitDuration: 1
   firePower: 1600
-  waterPower: 20
+  waterPower: 30
   timePower: 1600
   lifeTime: 20
   onBurnedEvent: {fileID: 0}
   removeFlamesOnBurned: 0
   timeOnFireExtinguishRatio: 1
   useRatioOnPowerLevel: 0
+  dieOnFullPower: 1
+  onFiredOn:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &5971865934872528315
 GameObject:
   m_ObjectHideFlags: 0

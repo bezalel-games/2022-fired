@@ -116,10 +116,17 @@ public class CivilianCar : CharacterAI
         if (points.Length == 0)
             return;
         // Set the agent to go to the currently selected destination.
-        Agent.SetDestination(points[destPoint].position);
+        if (NavMesh.SamplePosition(points[destPoint].position, out var hit, Agent.height * 2f, Agent.areaMask))
+        {
+            Agent.SetDestination(hit.position);
+            destPoint = (destPoint + 1) % points.Length;
+        }
+        // Agent.SetDestination(points[destPoint].position);
 
         // Choose the next point in the array as the destination,
         // cycling to the start if necessary.
-        destPoint = (destPoint + 1) % points.Length;
+        
+        // destPoint = (destPoint + 1) % points.Length;
+        
     }
 }

@@ -5,6 +5,7 @@ using UnityEngine.UI;
 using UnityEngine.EventSystems;
 using System.IO;
 using Managers;
+using TMPro;
 using UnityEngine.Events;
 using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
@@ -39,6 +40,13 @@ namespace GreatArcStudios
 
         [SerializeField]
         private InputAction menuInputAction;
+
+        [Header("Secret")]
+        [SerializeField]
+        private InputAction secretTimer;
+
+        [SerializeField]
+        private TMP_InputField timer;
 
         [Header("Events")]
         [SerializeField]
@@ -467,6 +475,9 @@ namespace GreatArcStudios
             menuInputAction.Enable();
 
             menuInputAction.started += HandleInput;
+            
+            secretTimer.Enable();
+            secretTimer.started += HandleSecret;
         }
 
         private void OnDisable()
@@ -474,6 +485,18 @@ namespace GreatArcStudios
             menuInputAction.started -= HandleInput;
 
             menuInputAction.Disable();
+            
+            secretTimer.Disable();
+            secretTimer.started -= HandleSecret;
+        }
+
+        private void HandleSecret(InputAction.CallbackContext obj)
+        {
+            if (mainPanel.activeSelf)
+            {
+                timer.interactable = !timer.gameObject.activeSelf;
+                timer.gameObject.SetActive(!timer.gameObject.activeSelf);
+            }
         }
 
         public void HandleInput(InputAction.CallbackContext context)
@@ -696,23 +719,23 @@ namespace GreatArcStudios
             }
             catch
             {
-                Debug.Log("You do not have multiple audio sources");
+                // Debug.Log("You do not have multiple audio sources");
                 audioMusicSlider.value = lastMusicMult;
             }
 
-            //Do this with the effects
-            try
-            {
-                a = effects[0].volume;
-                b = effects[1].volume;
-                f = a % b;
-                audioEffectsSlider.value = f;
-            }
-            catch
-            {
-                Debug.Log("You do not have multiple audio sources");
-                audioEffectsSlider.value = lastAudioMult;
-            }
+            // //Do this with the effects
+            // try
+            // {
+            //     a = effects[0].volume;
+            //     b = effects[1].volume;
+            //     f = a % b;
+            //     audioEffectsSlider.value = f;
+            // }
+            // catch
+            // {
+            //     Debug.Log("You do not have multiple audio sources");
+            //     audioEffectsSlider.value = lastAudioMult;
+            // }
 
         }
 
@@ -737,7 +760,7 @@ namespace GreatArcStudios
             {
                 for (int _musicAmt = 0; _musicAmt < music.Length; _musicAmt++)
                 {
-                    music[_musicAmt].volume *= f;
+                    music[_musicAmt].volume = f * 0.12f;
                 }
             }
             catch

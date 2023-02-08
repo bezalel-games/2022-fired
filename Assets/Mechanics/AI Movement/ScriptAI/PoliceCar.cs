@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using Avrahamy;
 using GreatArcStudios;
+using Gilad;
 
 public class PoliceCar : CharacterAI
 {
@@ -11,12 +12,16 @@ public class PoliceCar : CharacterAI
     [Header("PoliceCar")]
     [SerializeField]
     private PassiveTimer timeToGo;
+    [SerializeField]
+    private Flammable m_Flammable;
+    private bool toMove;
 
     // Start is called before the first frame update
     protected override void Start()
     {
         base.Start();
         Goal = player;
+        toMove = true;
     }
 
     // Update is called once per frame
@@ -27,11 +32,34 @@ public class PoliceCar : CharacterAI
         {
             return;
         }
-        MoveCharacter();
+        if (!m_Flammable.IsOnFire())
+        {
+            toMove = true;
+            Agent.enabled = true;
+            MoveCharacter();
+        }
+        else
+        {
+            toMove = false;
+            // Agent.isStopped= true;
+            Agent.enabled = false;
+        }
     }
 
     protected override void MoveCharacter()
     {
+        if (m_Flammable.IsDoneBurning())
+        {
+            toMove = false;
+            Agent.isStopped = true;
+            Agent.enabled = false;
+            return;
+        }
+
+        if (!toMove)
+        {
+            return;
+        }
         if (timeToGo.IsSet)
         {
             if (timeToGo.IsActive)

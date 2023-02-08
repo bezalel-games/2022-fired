@@ -11,7 +11,7 @@ namespace Gilad
 
         [SerializeField] private bool isFire = true;
 
-        private void OnTriggerEnter(Collider other)
+        protected virtual void OnTriggerEnter(Collider other)
         {
             flammable.Detect(isFire);
 

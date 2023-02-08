@@ -1,7 +1,9 @@
 using System;
+using System.Collections.Generic;
 using Flames;
 using GreatArcStudios;
 using UnityEngine;
+using UnityEngine.Events;
 
 namespace Gilad
 {
@@ -16,6 +18,15 @@ namespace Gilad
 
         [SerializeField]
         private GameObject headFlame;
+
+        [SerializeField]
+        private bool disableOtherFlames = true;
+        
+        [SerializeField]
+        private List<GameObject> otherFlames;
+
+        [SerializeField]
+        private UnityEvent onStopShooting;
 
         private float _timeToStart;
 
@@ -45,6 +56,13 @@ namespace Gilad
             headFlame.SetActive(true);
             var explosion = ExplosionPool.Instance.Pool.Get();
             explosion.transform.position = headFlame.transform.position;
+            if (disableOtherFlames)
+            {
+                foreach (var flame in otherFlames)
+                {
+                    flame.SetActive(true);
+                }
+            }
         }
 
         private void OnTriggerEnter(Collider other)
@@ -60,6 +78,14 @@ namespace Gilad
             _timeToStart = stopTime;
             throwBall.CanShoot = false;
             headFlame.SetActive(false);
+            if (disableOtherFlames)
+            {
+                foreach (var flame in otherFlames)
+                {
+                    flame.SetActive(false);
+                }
+            }
+            onStopShooting.Invoke();
         }
     }
 }

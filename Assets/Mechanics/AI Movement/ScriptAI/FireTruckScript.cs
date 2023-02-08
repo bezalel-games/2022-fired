@@ -159,7 +159,9 @@ public class FireTruckScript : CharacterAI
             cannonHolder2.transform.LookAt(new Vector3(Goal.position.x,cannonHolder2.transform.position.y,  Goal.position.z));
             if (IsFacing())
             {
-                cannonHolder.transform.LookAt(new Vector3(cannonHolder.transform.position.x,Goal.position.y,  cannonHolder.transform.position.z));
+                cannonHolder.transform.LookAt(new Vector3(Goal.position.x,cannonHolder.transform.position.y,  Goal.position.z));
+
+                // cannonHolder.transform.LookAt(new Vector3(cannonHolder.transform.position.x,Goal.position.y,  cannonHolder.transform.position.z));
                 if (!(timeBetweenShots.IsSet && timeBetweenShots.IsActive))  // TODO patch
                 {
                     ExtinguishFire();
@@ -220,11 +222,17 @@ public class FireTruckScript : CharacterAI
         if (points.Length == 0)
             return;
         // Set the agent to go to the currently selected destination.
-        Agent.SetDestination(points[destPoint].position);
+        if (NavMesh.SamplePosition(points[destPoint].position, out var hit, Agent.height * 2f, Agent.areaMask))
+        {
+            Agent.SetDestination(hit.position);
+            destPoint = (destPoint + 1) % points.Length;
+        }
+        // Agent.SetDestination(points[destPoint].position);
 
         // Choose the next point in the array as the destination,
         // cycling to the start if necessary.
-        destPoint = (destPoint + 1) % points.Length;
+        
+        // destPoint = (destPoint + 1) % points.Length;
     }
 
     protected override bool IsFacing()

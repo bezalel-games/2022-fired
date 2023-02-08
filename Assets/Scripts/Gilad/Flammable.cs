@@ -2,6 +2,8 @@ using System;
 using System.Collections.Generic;
 using Flames;
 using UnityEngine;
+using UnityEngine.Events;
+
 namespace Gilad
 {
     public class Flammable : MonoBehaviour
@@ -59,6 +61,12 @@ namespace Gilad
         [SerializeField]
         private bool useRatioOnPowerLevel;
 
+        [SerializeField]
+        private bool dieOnFullPower = true;
+
+        [SerializeField]
+        private UnityEvent onFiredOn;
+
         private float _timeOnFire = 0f;
 
         private int _powerLevel = 0;
@@ -66,7 +74,9 @@ namespace Gilad
         private Vector3[] _startSizes;
 
         private float _timeCount = 0f;
+
         private bool _onBurnedEventExists;
+
         private bool _startedBurning = false;
 
         private void Awake()
@@ -104,7 +114,7 @@ namespace Gilad
             if (_powerLevel > 0)
             {
                 _timeOnFire += Time.deltaTime;
-                if (_timeOnFire >= lifeTime)
+                if (_timeOnFire >= lifeTime || (dieOnFullPower && _powerLevel >= numOfHits))
                 {
                     ShutDown();
                     return;
@@ -194,6 +204,7 @@ namespace Gilad
                 StartBurning();
             }
             GrowFire(firePower);
+            onFiredOn.Invoke();
         }
 
         private void StartBurning()

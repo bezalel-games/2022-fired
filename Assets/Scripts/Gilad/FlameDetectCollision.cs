@@ -15,6 +15,8 @@ namespace Gilad
         [LayerSelector]
         [SerializeField]
         protected int waterLayer;
+        
+        
 
         private void OnCollisionEnter(Collision collision)
         {
@@ -28,6 +30,21 @@ namespace Gilad
             {
                 flammable.Detect(false);
                 collision.gameObject.SetActive(false);
+            }
+        }
+
+        protected override void OnTriggerEnter(Collider other)
+        {
+            var layer = other.gameObject.layer;
+            if (layer == fireLayer)
+            {
+                flammable.Detect(true);
+                other.gameObject.SetActive(false);
+            }
+            else if (layer == waterLayer)
+            {
+                flammable.Detect(false);
+                other.gameObject.SetActive(false);
             }
         }
     }
